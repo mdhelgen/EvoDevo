@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/16/trunk/EvoDevo/include/lemon/bits
+END
+graph_adaptor_extender.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/16/trunk/EvoDevo/include/lemon/bits/graph_adaptor_extender.h
+END
+solver_bits.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/16/trunk/EvoDevo/include/lemon/bits/solver_bits.h
+END
+map_extender.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/16/trunk/EvoDevo/include/lemon/bits/map_extender.h
+END
+array_map.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/16/trunk/EvoDevo/include/lemon/bits/array_map.h
+END
+edge_set_extender.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/16/trunk/EvoDevo/include/lemon/bits/edge_set_extender.h
+END
+vector_map.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/16/trunk/EvoDevo/include/lemon/bits/vector_map.h
+END
+graph_extender.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/16/trunk/EvoDevo/include/lemon/bits/graph_extender.h
+END
+bezier.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/16/trunk/EvoDevo/include/lemon/bits/bezier.h
+END
+default_map.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/16/trunk/EvoDevo/include/lemon/bits/default_map.h
+END
+path_dump.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/16/trunk/EvoDevo/include/lemon/bits/path_dump.h
+END
+alteration_notifier.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/16/trunk/EvoDevo/include/lemon/bits/alteration_notifier.h
+END
+enable_if.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/16/trunk/EvoDevo/include/lemon/bits/enable_if.h
+END
+variant.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/16/trunk/EvoDevo/include/lemon/bits/variant.h
+END
+traits.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/16/trunk/EvoDevo/include/lemon/bits/traits.h
+END

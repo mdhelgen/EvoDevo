@@ -1,0 +1,106 @@
+
+
+#include <fstream>
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+#include <vector>
+
+#include "Experiment.h"
+
+using namespace std;
+
+Experiment::Experiment(int ncells, int generations) {
+
+	printf("%d Cells for %d Generations\n", ncells, generations);
+
+	for (int i = 0; i < ncells; i++)
+		cells.push_back(new Cell());
+}
+
+/**
+ * Fill in
+ */
+Experiment::~Experiment() {
+
+	delete &cells;
+
+
+}
+
+/**
+ * Fill in
+ */
+void Experiment::start()
+{
+
+/*
+	ofstream output;
+
+
+	char filename[181];
+	snprintf(filename, 179, "./output/%d/score.log",getpid());
+
+	//Comment this and document in the report.
+	output.open(filename);
+
+	// loop once for each generation
+	for (int generation = 1; generation <= maxGenerations; generation++)
+	{
+		Cell* bestCell;
+		int bestCellScore = -1;
+
+		TRACE(4,"Beginning Generation " << generation << "...");
+		vector<Cell*>::iterator cellIterator = cells.begin();
+		while( cellIterator != cells.end() ) {
+
+
+			(*cellIterator)->nextGeneration();
+			++cellIterator;
+		}
+
+		// if this is a scoring generation
+		if (generation % scoringInterval == 0){
+
+			TRACE(5,"Beginning RK scoring...")
+			// loop through all of the cells
+			for(size_t i = 0; i < cells.size(); i++){
+
+				cells[i]->rungeKuttaEvaluate(RUNGE_KUTTA_STD_STEP,RUNGE_KUTTA_STD_LIMIT);
+
+				//get the score of the current cell
+				int score = cells[i]->getScore(1);
+
+				//if this is better than the previous best cell, save as the best cell
+				if(score > bestCellScore){
+					bestCell = cells[i];
+					bestCellScore = score;
+
+					TRACE(3,"Generation " << generation << " Best cell is now " << bestCell->cellID << " (score=" <<bestCellScore << ").")
+				}
+			}
+
+			TRACE(4,"RK scoring complete.")
+
+			TRACE(3,"Generation " << generation << " scoring finished, best cell is " << bestCell->cellID <<" (score=" <<bestCellScore <<").")
+
+			output << "Generation " << generation << ", best cell is " << bestCell->cellID <<" (score=" <<bestCellScore <<")."<< endl;
+
+			//redo Runge-Kutta with finer precision
+			bestCell->rungeKuttaEvaluate(RUNGE_KUTTA_PRECISE_STEP,RUNGE_KUTTA_PRECISE_LIMIT);
+			int betterScore = bestCell->getScore(1);
+			TRACE(3, "Generation " << generation << " best cell score is "<<betterScore <<" after precise rk.")
+
+
+		}
+
+		TRACE(3,"Generation " << generation << " Finished.");
+
+	}
+
+	output.close();
+
+	TRACE(2,"Experiment Finished.")
+*/
+}
+
