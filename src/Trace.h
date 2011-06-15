@@ -8,16 +8,35 @@
 #ifndef TRACE_H_
 #define TRACE_H_
 
-#define TRACE(x,y) if(
+#include <cstdarg>
+#include <cstring>
+#include <map>
 
-public::q
+using namespace std;
+
+struct cmp_str
+{
+  bool operator()(const char* a, const char* b)
+  {
+  	return strcmp(a,b) < 0;
+  }
+};
+
+class Trace{
+public:
+
 
 	Trace();
 	~Trace();
+	
+	map<const char*, int, cmp_str> traceTypes;
 
-	int addTraceType(const char*);
+	void addTraceType(const char*);
+	void trace(const char*, const char*, ...);
+
 	
-	
+
+};
 
 
 

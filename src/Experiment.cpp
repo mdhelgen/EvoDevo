@@ -10,12 +10,17 @@
 
 using namespace std;
 
+#include "ExternTrace.h"
+
+
+
 Experiment::Experiment(int ncells, int generations) {
 
-	printf("%d Cells for %d Generations\n", ncells, generations);
-
-	for (int i = 0; i < ncells; i++)
+	t->trace("arg","%d Cells for %d Generations\n", ncells, generations);
+	for (int i = 0; i < ncells; i++){
+		t->trace("init","Creating Cell (%d)\n",i);
 		cells.push_back(new Cell());
+	}
 }
 
 /**
@@ -23,7 +28,15 @@ Experiment::Experiment(int ncells, int generations) {
  */
 Experiment::~Experiment() {
 
-	delete &cells;
+
+
+	for(unsigned i = 0; i < cells.size(); i++){
+		t->trace("free","Deleting Cells[%d] at location %d\n",i,&(cells[i]));	
+		delete cells[i];
+	}
+	t->trace("free","Deleting Cell[] object at location %d\n", &cells);
+	cells.clear();
+
 
 
 }

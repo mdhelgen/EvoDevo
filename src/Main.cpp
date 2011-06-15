@@ -6,12 +6,23 @@
 
 #include "Experiment.h"
 
+#include "Trace.h"
+//#include "ExternTrace.h"
+
 using namespace std;
+
+Trace* t;
 
 int main(int argc, char** argv){
 
 static int verbose_flag;
 int c;
+
+t = new Trace();
+
+t->addTraceType("arg");
+t->addTraceType("init");
+t->addTraceType("free");
 
 int numCells = 2;
 int numGenerations = 10;
@@ -67,6 +78,7 @@ if(verbose_flag)
 
 Experiment* e = new Experiment(numCells, numGenerations);
 
+delete e;
 
 return 0;
 }
