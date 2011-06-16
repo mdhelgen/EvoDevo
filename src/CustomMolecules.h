@@ -1,6 +1,8 @@
 #ifndef CUSTOM_MOLECULES_H_
 #define CUSTOM_MOLECULES_H_
 
+#include <cmath>
+
 #include "Molecule.h"
 
 class DNA : public Molecule{
@@ -13,7 +15,9 @@ public:
 
 
 private:
-	float hill;
+	float kf;
+	float kr;
+	int hill;
 
 
 

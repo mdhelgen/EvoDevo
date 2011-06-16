@@ -29,10 +29,10 @@ int main(int argc, char** argv){
   t.addTraceType("init",1);
 
   //memory location of created objects
-  t.addTraceType("mloc",0);
+  t.addTraceType("mloc",1);
 
   //object deletion / destruction
-  t.addTraceType("free",0);
+  t.addTraceType("free",1);
 
   //calculated effect of interactions
   t.addTraceType("efct",1);

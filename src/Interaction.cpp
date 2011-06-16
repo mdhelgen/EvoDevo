@@ -20,15 +20,18 @@ Interaction::~Interaction(){
 }
 
 
-float Interaction::getEffect(ListDigraph* g, ListDigraph::NodeMap<int>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a){
-	t.trace("mloc","Interaction %u trace location: %u\n",(unsigned int)this, (unsigned int)&t);
-	t.trace("efct","Original Node value: %d\n", (*m)[a]);
+float Interaction::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a){
+	
+	
+	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
 	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
-	t.trace("efct","Opposite Node value: %d\n", (*m)[g->oppositeNode(a, g->arcFromId(arcID))]);
-	
+	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue());
 
-	return rate;
+	if(g->source(g->arcFromId(arcID)) == a)
+		return -1 * (*m)[a]->getValue() * rate;
+	else
+		return (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue() * rate;
 
 }
 

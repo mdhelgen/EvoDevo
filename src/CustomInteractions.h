@@ -11,7 +11,7 @@ public:
 	Test();
 	~Test();
 	
-	virtual float getEffect(ListDigraph* d, ListDigraph::NodeMap<int>* b, ListDigraph::ArcMap<Interaction*>* c, ListDigraph::Node a);
+	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node);
 
 
 private:

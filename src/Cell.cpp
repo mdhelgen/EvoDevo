@@ -20,10 +20,6 @@ Cell::Cell(){
 
 
 Cell::~Cell(){
- 
-    //t.trace("free", "Deleting NodeMap object at location %d\n", molecules);
-    //t.trace("free", "Deleting ArcMap object at location %d\n", interactions);
-    //t.trace("free", "Deleting ListDigraph object at location %d\n",derivs);
 
     t.trace("free", "Deleting DerivGraph object at location %d\n", &equations);    
     delete equations;

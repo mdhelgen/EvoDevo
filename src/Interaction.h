@@ -4,11 +4,15 @@
  * Data structure for an Interaction in the Cell.
  *
  */
+#ifndef INTERACTION_H_
+#define INTERACTION_H_
+
+#include "Molecule.h"
+
 #include "lemon/list_graph.h"
 using namespace lemon; 
 
-#ifndef INTERACTION_H_
-#define INTERACTION_H_
+
 
 class Interaction{
 
@@ -16,10 +20,11 @@ public:
 	Interaction();
 	~Interaction();
 
-	virtual float getEffect(ListDigraph* d, ListDigraph::NodeMap<int>* b, ListDigraph::ArcMap<Interaction*>* c, ListDigraph::Node a);
+	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node);
 	void setRate(float);
 	int arcID;
-private:
+	
+protected:
 	float rate;
 };
 

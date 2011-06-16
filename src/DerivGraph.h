@@ -5,6 +5,8 @@
 #include "lemon/concepts/maps.h"
 #include <cstdio>
 #include "Interaction.h"
+#include "CustomInteractions.h"
+#include "CustomMolecules.h"
 
 using namespace lemon;
 
@@ -18,7 +20,7 @@ public:
 	float getEffect(ListDigraph::Node, ListDigraph::Arc);
 private:
 	ListDigraph* derivs;
-	ListDigraph::NodeMap<int>* molecules;
+	ListDigraph::NodeMap<Molecule*>* molecules;
 	ListDigraph::ArcMap<Interaction*>* interactions;
 };
 
