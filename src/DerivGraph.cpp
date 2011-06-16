@@ -90,28 +90,17 @@ DerivGraph::~DerivGraph(){
 
 void DerivGraph::test(){
 
-   ListDigraph::Node n1 = derivs->addNode();
-   (*molecules)[n1] = new Molecule();
+   ListDigraph::Node n1 = add(new Molecule());
 
-   ListDigraph::Node n2 = derivs->addNode();
-   (*molecules)[n2] = new DNA();
+   ListDigraph::Node n2 = add(new DNA());
 
-   ListDigraph::Arc a1 = derivs->addArc(n1, n2);
-   (*interactions)[a1] = new Interaction();
-   (*interactions)[a1]->arcID = derivs->id(a1);
+   ListDigraph::Arc a1 = add(new Interaction(), n1, n2);
    
-   ListDigraph::Arc a2 = derivs->addArc(n1, n2);
-   (*interactions)[a2] = new Test();
-   (*interactions)[a2]->arcID = derivs->id(a2);
-
-
-   ListDigraph::Arc a3 = derivs->addArc(n2, n1);
-   (*interactions)[a3] = new Interaction();
-   (*interactions)[a3]->arcID = derivs->id(a3);
+   ListDigraph::Arc a2 = add(new Test(), n1, n2);
    
-   ListDigraph::Arc a4 = derivs->addArc(n2, n1);
-   (*interactions)[a4] = new Test();
-   (*interactions)[a4]->arcID = derivs->id(a4);
+   ListDigraph::Arc a3 = add(new Interaction(), n2, n1);
+   
+   ListDigraph::Arc a4 = add(new Test(), n2, n1);
 
 
    t.trace("efct","DerivGraph node 1 arc 1 getEffect: %f\n", getEffect(n1, a1));
@@ -132,4 +121,19 @@ float DerivGraph::getEffect(ListDigraph::Node m, ListDigraph::Arc i){
 
 	return (*interactions)[i]->getEffect(derivs, molecules, interactions, m);
 
+}
+
+ListDigraph::Node DerivGraph::add(Molecule * newMolecule){
+	
+	ListDigraph::Node newNode = derivs->addNode();
+	(*molecules)[newNode] = newMolecule;
+	return newNode;
+}
+
+ListDigraph::Arc DerivGraph::add(Interaction * newInteraction, ListDigraph::Node from, ListDigraph::Node to){
+
+	ListDigraph::Arc newArc = derivs->addArc(from, to);
+	(*interactions)[newArc] = newInteraction;
+	(*interactions)[newArc]->arcID = derivs->id(newArc);
+	return newArc;
 }

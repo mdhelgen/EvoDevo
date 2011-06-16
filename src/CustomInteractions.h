@@ -19,9 +19,22 @@ private:
 	float kr;
 	int hill;
 
+};
 
+
+class Txn : public Interaction{
 
 
 };
+
+class Tsln : public Interaction{
+
+
+};
+
+class Deg : public Interaction{
+
+};
+
 
 #endif
