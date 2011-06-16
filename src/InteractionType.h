@@ -7,13 +7,16 @@
 #ifndef INTERACTION_TYPE_H_
 #define INTERACTION_TYPE_H_
 
+#include "lemon/list_graph.h"
+
+
 class InteractionType{
 
 public:
 	InteractionType();
 	~InteractionType();
 
-
+	virtual float getEffect(ListDigraph::Arc a);
 
 private:
 	

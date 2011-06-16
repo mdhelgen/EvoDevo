@@ -1,4 +1,10 @@
-
+/**
+ * Experiment.cpp
+ *
+ * Create cells, loop generations, delete cells.
+ *
+ *
+ */
 
 #include <fstream>
 #include <iostream>
@@ -10,31 +16,54 @@
 
 using namespace std;
 
+//external declaration of Trace t
 #include "ExternTrace.h"
 
 
-
+/**
+ * Experiment::Experiment(int, int)
+ *
+ * Experiment constructor.
+ *
+ * @param number of Cell objects to be created.
+ * @param number of Generations the Experiment will run for.
+ *
+ */
 Experiment::Experiment(int ncells, int generations) {
 
-	t->trace("arg","%d Cells for %d Generations\n", ncells, generations);
+	
+	t.trace("init","Creating new Experiment\n");
+	
+	t.trace("mloc","Experiment location at %u\n",(unsigned int) this);
+
+	t.trace("args","%d Cells for %d Generations\n", ncells, generations);
+	
+	//create the cell objects and add them to our cells vector
 	for (int i = 0; i < ncells; i++){
-		t->trace("init","Creating Cell (%d)\n",i);
+		t.trace("init","Creating Cell (%d)\n",i);
 		cells.push_back(new Cell());
 	}
+	
+	t.trace("init","New Experiment created\n");
 }
 
 /**
- * Fill in
+ * Experiment::~Experiment(int, int)
+ *
+ * Experiment destructor.
+ *
+ * Deletes the Cell objects from the cells vector, then deletes the vector itself.
  */
 Experiment::~Experiment() {
 
 
-
+	//call the destructor for each cell in the vector
 	for(unsigned i = 0; i < cells.size(); i++){
-		t->trace("free","Deleting Cells[%d] at location %d\n",i,&(cells[i]));	
+		t.trace("free","Deleting Cells[%d] at location %d\n",i,&(cells[i]));	
 		delete cells[i];
 	}
-	t->trace("free","Deleting Cell[] object at location %d\n", &cells);
+
+	t.trace("free","Deleting Cell[] object at location %d\n", &cells);
 	cells.clear();
 
 
@@ -42,7 +71,7 @@ Experiment::~Experiment() {
 }
 
 /**
- * Fill in
+ * Deprecated 
  */
 void Experiment::start()
 {
