@@ -12,7 +12,7 @@ class Molecule{
 
 public:
 	Molecule();
-	~Molecule();
+	virtual ~Molecule();
 
 	virtual float getValue();
 

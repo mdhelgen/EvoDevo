@@ -4,7 +4,7 @@ IFLAGS = -I"../include"
 LFLAGS = -L"../lib"
 VPATH = "../src/
 
-OBJ_FILE	= Main.o Cell.o Experiment.o DerivGraph.o Interaction.o Molecule.o Trace.o
+OBJ_FILE	= Main.o Cell.o Experiment.o DerivGraph.o Interaction.o Molecule.o CustomMolecules.o Trace.o
 EXE_FILE	= EvoDevo
 OUTPUT_DIR	= ./output
 
@@ -32,6 +32,9 @@ Interaction.o: Interaction.cpp Interaction.h
 
 Molecule.o: Molecule.cpp Molecule.h
 	${CC} ${IFLAGS} ${CFLAGS} -c Molecule.cpp
+
+CustomMolecules.o: CustomMolecules.cpp CustomMolecules.h
+	${CC} ${IFLAGS} ${CFLAGS} -c CustomMolecules.cpp
 
 run: ${EXE_FILE}
 	EvoDevo
