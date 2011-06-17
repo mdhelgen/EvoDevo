@@ -7,7 +7,9 @@
 #include "Interaction.h"
 #include "CustomInteractions.h"
 #include "CustomMolecules.h"
+#include <vector>
 
+using namespace std;
 using namespace lemon;
 
 class DerivGraph{
@@ -22,7 +24,7 @@ private:
 	ListDigraph::NodeMap<Molecule*>* molecules;
 	ListDigraph::ArcMap<Interaction*>* interactions;
 	
-	//ListDigraph::NodeMap<vector<float>*>* rungeKuttaSolution;
+	ListDigraph::NodeMap<vector<float>*>* rungeKuttaSolution;
         
 	float getEffect(ListDigraph::Node, ListDigraph::Arc);
 	ListDigraph::Node add(Molecule*);

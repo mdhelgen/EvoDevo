@@ -30,6 +30,10 @@ using namespace std;
  * Each Node represents a type of molecule in the cell, and each Arc represents an interaction which has an
  * effect on the Nodes which it connects.
  *
+ * Allocates:
+ *     1 ListDigraph() object
+ *     2 ListDigraph::NodeMap objects
+ *     1 ListDigraph::ArcMap object
  */
 DerivGraph::DerivGraph(){
     
@@ -48,7 +52,9 @@ DerivGraph::DerivGraph(){
     //map interactions onto the arcs
     interactions = new ListDigraph::ArcMap<Interaction*>(*derivs);
     t.trace("mloc","DerivGraph %u ArcMap location at %u\n", (unsigned int) this, (unsigned int) interactions);
-    
+   
+    //store a vector of floats in each node, to store numerical integration results
+    rungeKuttaSolution = new ListDigraph::NodeMap<vector<float>*>(*derivs);
     
     t.trace("init","New DerivGraph created\n");
 }
@@ -58,7 +64,15 @@ DerivGraph::DerivGraph(){
  *
  * DerivGraph Destructor.
  *
- *
+ * Frees:
+ * 	1 NodeMap object
+ * 	   n contained Molecule objects
+ * 	1 NodeMap object
+ * 	   n contained Vector objects
+ * 	1 ArcMap object
+ * 	   m contained Interaction objects
+ * 	1 ListDigraph object
+ * 	
  *
  */
 DerivGraph::~DerivGraph(){
@@ -69,7 +83,8 @@ DerivGraph::~DerivGraph(){
 	t.trace("free","Deleting NodeMap member at location %u\n",(unsigned int) (*molecules)[it]);
    	delete (*molecules)[it];
    }
-   
+  
+   //delete the Molecule NodeMap
    t.trace("free","Deleting NodeMap object at location %u\n",molecules);
    delete molecules;
 
@@ -80,10 +95,21 @@ DerivGraph::~DerivGraph(){
 	delete (*interactions)[it];
    }
 
+   //delete the Interaction ArcMap
    t.trace("free","Deleting ArcMap object at location %d\n",interactions);
    delete interactions;
 
+   //delete all vector objects mapped by Nodes
+   for(ListDigraph::NodeIt it(*derivs); it !=INVALID; ++it){
+	t.trace("free","Deleting NodeMap member at location %u\n",(unsigned int) (*rungeKuttaSolution)[it]);
+   	delete (*rungeKuttaSolution)[it];
+   }
 
+   //delete the vector NodeMap
+   t.trace("free","Deleting members of NodeMap at location %d\n",rungeKuttaSolution);
+   delete rungeKuttaSolution;
+
+   //delete the ListDigraph
    t.trace("free","Deleting ListDigraph object at location %d\n",derivs);
    delete derivs;
 }
@@ -116,6 +142,21 @@ void DerivGraph::test(){
 
 
 }
+
+/**
+ * float DerivGraph::getEffect(ListDigraph::Node, ListDigraph::Arc)
+ *
+ * Get the effect that a particular interaction will have on another node.
+ *
+ * The effect of an Interaction is defined by the Interaction::getEffect method.
+ * The result of this method will be a positive or negative change in concentration.
+ *
+ * @param m The Node containing the Molecule being affected
+ * @param i The Arc containing the Interaction taking place
+ *
+ * @return  the effect a particular Arc (Interaction) will have on a Node (Molecule)
+ *
+ */
 float DerivGraph::getEffect(ListDigraph::Node m, ListDigraph::Arc i){
 
 
@@ -123,10 +164,12 @@ float DerivGraph::getEffect(ListDigraph::Node m, ListDigraph::Arc i){
 
 }
 
+
 ListDigraph::Node DerivGraph::add(Molecule * newMolecule){
 	
 	ListDigraph::Node newNode = derivs->addNode();
 	(*molecules)[newNode] = newMolecule;
+	(*rungeKuttaSolution)[newNode] = new vector<float>();
 	return newNode;
 }
 
