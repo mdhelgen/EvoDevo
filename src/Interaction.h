@@ -20,10 +20,12 @@ public:
 	Interaction();
 	~Interaction();
 
-	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node);
+	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 	void setRate(float);
-	int arcID;
 	
+	float rkApprox(ListDigraph::NodeMap<Molecule*>*, ListDigraph::Node, float, int);
+	int arcID;
+		
 protected:
 	float rate;
 };

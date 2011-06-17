@@ -41,5 +41,9 @@ CustomInteractions.o: CustomInteractions.cpp CustomInteractions.h
 
 run: ${EXE_FILE}
 	EvoDevo
+
+leakcheck: ${EXE_FILE}
+	valgrind --leak-check=full EvoDevo
+
 clean:
 	rm -rf ${OBJ_FILE} ${EXE_FILE} ${OUTPUT_DIR} 

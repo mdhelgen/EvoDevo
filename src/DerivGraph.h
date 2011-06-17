@@ -19,14 +19,13 @@ public:
 	~DerivGraph();
 	
 	void test();
+	void rungeKuttaEvaluate(float);
 private:
 	ListDigraph* derivs;
 	ListDigraph::NodeMap<Molecule*>* molecules;
 	ListDigraph::ArcMap<Interaction*>* interactions;
 	
-	ListDigraph::NodeMap<vector<float>*>* rungeKuttaSolution;
-        
-	float getEffect(ListDigraph::Node, ListDigraph::Arc);
+	float getEffect(ListDigraph::Node, ListDigraph::Arc, int, float);
 	ListDigraph::Node add(Molecule*);
 	ListDigraph::Arc add(Interaction*, ListDigraph::Node, ListDigraph::Node);
 };

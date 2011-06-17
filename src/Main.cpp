@@ -37,6 +37,8 @@ int main(int argc, char** argv){
   //calculated effect of interactions
   t.addTraceType("efct",1);
 
+  //runge kutta
+  t.addTraceType("rk-4",1);
 
   int numCells = 2;
   int numGenerations = 10;

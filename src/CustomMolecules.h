@@ -11,7 +11,7 @@ public:
 	DNA();
 	~DNA();
 	
-	float getValue();
+	virtual	float getValue();
 
 
 private:

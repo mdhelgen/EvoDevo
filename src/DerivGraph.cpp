@@ -53,9 +53,6 @@ DerivGraph::DerivGraph(){
     interactions = new ListDigraph::ArcMap<Interaction*>(*derivs);
     t.trace("mloc","DerivGraph %u ArcMap location at %u\n", (unsigned int) this, (unsigned int) interactions);
    
-    //store a vector of floats in each node, to store numerical integration results
-    rungeKuttaSolution = new ListDigraph::NodeMap<vector<float>*>(*derivs);
-    
     t.trace("init","New DerivGraph created\n");
 }
 
@@ -99,15 +96,6 @@ DerivGraph::~DerivGraph(){
    t.trace("free","Deleting ArcMap object at location %d\n",interactions);
    delete interactions;
 
-   //delete all vector objects mapped by Nodes
-   for(ListDigraph::NodeIt it(*derivs); it !=INVALID; ++it){
-	t.trace("free","Deleting NodeMap member at location %u\n",(unsigned int) (*rungeKuttaSolution)[it]);
-   	delete (*rungeKuttaSolution)[it];
-   }
-
-   //delete the vector NodeMap
-   t.trace("free","Deleting members of NodeMap at location %d\n",rungeKuttaSolution);
-   delete rungeKuttaSolution;
 
    //delete the ListDigraph
    t.trace("free","Deleting ListDigraph object at location %d\n",derivs);
@@ -116,31 +104,55 @@ DerivGraph::~DerivGraph(){
 
 void DerivGraph::test(){
 
-   ListDigraph::Node n1 = add(new Molecule());
+	ListDigraph::Node A = add(new Molecule());
+	ListDigraph::Node B = add(new Molecule());
+	ListDigraph::Node C = add(new Molecule());
 
-   ListDigraph::Node n2 = add(new DNA());
+	(*molecules)[A]->setValue(2);
+	(*molecules)[B]->setValue(4);
+	(*molecules)[C]->setValue(1);
 
-   ListDigraph::Arc a1 = add(new Interaction(), n1, n2);
-   
-   ListDigraph::Arc a2 = add(new Test(), n1, n2);
-   
-   ListDigraph::Arc a3 = add(new Interaction(), n2, n1);
-   
-   ListDigraph::Arc a4 = add(new Test(), n2, n1);
-
-
-   t.trace("efct","DerivGraph node 1 arc 1 getEffect: %f\n", getEffect(n1, a1));
-   t.trace("efct","DerivGraph node 2 arc 1 getEffect: %f\n", getEffect(n2, a1));
-   t.trace("efct","DerivGraph node 1 arc 2 getEffect: %f\n", getEffect(n1, a2));
-   t.trace("efct","DerivGraph node 2 arc 2 getEffect: %f\n", getEffect(n2, a2));
-   
-   t.trace("efct","DerivGraph node 1 arc 3 getEffect: %f\n", getEffect(n1, a3));
-   t.trace("efct","DerivGraph node 2 arc 3 getEffect: %f\n", getEffect(n2, a3));
-   t.trace("efct","DerivGraph node 1 arc 4 getEffect: %f\n", getEffect(n1, a4));
-   t.trace("efct","DerivGraph node 2 arc 4 getEffect: %f\n", getEffect(n2, a4));
-   
+	ListDigraph::Arc AB = add(new Interaction, A, B);
+	ListDigraph::Arc BC = add(new Interaction, B, C);
+	ListDigraph::Arc AC = add(new Interaction, A, C);
+	ListDigraph::Arc CB = add(new Interaction, C, B);
+	
+	(*interactions)[AB]->setRate(.01);
+	(*interactions)[BC]->setRate(.07);
+	(*interactions)[AC]->setRate(.03);
+	(*interactions)[CB]->setRate(.09);
 
 
+	float rkStep = 1.0;
+  
+	rungeKuttaEvaluate(rkStep); 
+}
+
+void DerivGraph::rungeKuttaEvaluate(float rkStep){
+
+	for(int i = 0; i< 10; i++){
+	for(int k = 0; k<4; k++){
+	for(ListDigraph::ArcIt it(*derivs); it != INVALID; ++it){
+		t.trace("rk-4","%f --> %f  (%f) s\n", (*molecules)[derivs->source(it)]->getValue(), 
+						      (*molecules)[derivs->target(it)]->getValue(),
+						      getEffect(derivs->source(it), it, 0, rkStep));
+
+		t.trace("rk-4","%f --> %f  (%f) t\n", (*molecules)[derivs->source(it)]->getValue(),
+						      (*molecules)[derivs->target(it)]->getValue(), 
+						      getEffect(derivs->target(it), it, 0, rkStep)); 
+		
+			(*molecules)[derivs->source(it)]->updateRkVal(k, getEffect(derivs->source(it), it, k, rkStep));
+			(*molecules)[derivs->target(it)]->updateRkVal(k, getEffect(derivs->target(it), it, k, rkStep));
+
+	}
+}
+	for(ListDigraph::NodeIt it(*derivs); it != INVALID; ++it){
+		(*molecules)[it]->nextPoint(rkStep);
+	}
+}
+	for(ListDigraph::NodeIt it(*derivs); it != INVALID; ++it){
+		(*molecules)[it]->outputRK();	
+	}
 }
 
 /**
@@ -153,26 +165,49 @@ void DerivGraph::test(){
  *
  * @param m The Node containing the Molecule being affected
  * @param i The Arc containing the Interaction taking place
+ * @param rkIteration The current iteration of the Runge-Kutta algorithm
  *
  * @return  the effect a particular Arc (Interaction) will have on a Node (Molecule)
  *
  */
-float DerivGraph::getEffect(ListDigraph::Node m, ListDigraph::Arc i){
+float DerivGraph::getEffect(ListDigraph::Node m, ListDigraph::Arc i, int rkIteration, float rkStep){
 
-
-	return (*interactions)[i]->getEffect(derivs, molecules, interactions, m);
+	return (*interactions)[i]->getEffect(derivs, molecules, interactions, m, rkIteration, rkStep);
 
 }
 
-
+/**
+ * ListDigraph::Node DerivGraph::add(Molecule*)
+ *
+ * Add a molecule to the ListDigraph and set up the NodeMaps for the new Molecule.
+ *
+ * @param newMolecule The new molecule being added.
+ *
+ * @return the Node object in the ListDigraph containing the new Molecule.
+ */
 ListDigraph::Node DerivGraph::add(Molecule * newMolecule){
 	
+	//add a new node to the ListDigraph
 	ListDigraph::Node newNode = derivs->addNode();
+	
+	//map the Molecule to the molecule NodeMap
 	(*molecules)[newNode] = newMolecule;
-	(*rungeKuttaSolution)[newNode] = new vector<float>();
+
+	//return the newly created Node
 	return newNode;
 }
 
+/**
+ * ListDigraph::Arc DerivGraph::add(Interaction*, ListDigraph::Node, ListDigraph::Node)
+ *
+ * Add a new Interaction to the ListDigraph, between the two supplied Nodes
+ * 
+ * @param newInteraction The new Interaction being added
+ * @param from The source node for the new Interaction
+ * @param to The target Node for the new Interaction
+ *
+ * @return the Arc object in the ListDigraph containing the new Interaction.
+ */
 ListDigraph::Arc DerivGraph::add(Interaction * newInteraction, ListDigraph::Node from, ListDigraph::Node to){
 
 	ListDigraph::Arc newArc = derivs->addArc(from, to);

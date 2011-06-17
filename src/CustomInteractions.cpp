@@ -32,7 +32,7 @@ Test::~Test(){
 }
 
 
-float Test::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a){
+float Test::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter){
 	t.trace("mloc","Interaction %u trace location: %u\n",(unsigned int)this, (unsigned int)&t);
 	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
