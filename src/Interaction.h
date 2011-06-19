@@ -8,11 +8,12 @@
 #define INTERACTION_H_
 
 #include "Molecule.h"
+#include "DerivGraph.h"
 
 #include "lemon/list_graph.h"
 using namespace lemon; 
 
-
+class DerivGraph;
 
 class Interaction{
 
@@ -20,10 +21,11 @@ public:
 	Interaction();
 	~Interaction();
 
-	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
-	void setRate(float);
+	virtual float getEffect(DerivGraph*, ListDigraph::Node, int, float);
+//	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 	
-	float rkApprox(ListDigraph::NodeMap<Molecule*>*, ListDigraph::Node, float, int);
+	float setRate(float);
+	
 	int arcID;
 		
 protected:

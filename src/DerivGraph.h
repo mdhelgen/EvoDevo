@@ -4,13 +4,19 @@
 #include "lemon/list_graph.h"
 #include "lemon/concepts/maps.h"
 #include <cstdio>
-#include "Interaction.h"
-#include "CustomInteractions.h"
-#include "CustomMolecules.h"
 #include <vector>
+//#include "Molecule.h"
+//#include "Interaction.h"
+//#include "CustomMolecules.h"
+//#include "CustomInteractions.h"
+
 
 using namespace std;
 using namespace lemon;
+
+class Molecule;
+class Interaction;
+//class Test;
 
 class DerivGraph{
 
@@ -20,6 +26,10 @@ public:
 	
 	void test();
 	void rungeKuttaEvaluate(float);
+	ListDigraph* getListDigraph();
+	ListDigraph::NodeMap<Molecule*>* getNodeMap();
+	ListDigraph::ArcMap<Interaction*>* getArcMap();
+
 private:
 	ListDigraph* derivs;
 	ListDigraph::NodeMap<Molecule*>* molecules;

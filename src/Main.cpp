@@ -40,6 +40,7 @@ int main(int argc, char** argv){
   //runge kutta
   t.addTraceType("rk-4",1);
 
+  t.addTraceType("updt",1);
   int numCells = 2;
   int numGenerations = 10;
 

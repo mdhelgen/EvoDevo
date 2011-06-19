@@ -10,8 +10,11 @@
 
 #include <cstdio>
 #include <vector>
+#include "DerivGraph.h"
 
 using namespace std;
+
+class DerivGraph;
 
 class Molecule{
 
@@ -25,7 +28,7 @@ public:
 	void setValue(float);
 	void outputRK();
 	float getrkVal(int);
-
+	float rkApprox(int, float);
 private:
 	float initialConcentration;
 	float currentConcentration;

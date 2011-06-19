@@ -5,10 +5,6 @@
  *
  */
 
-#include "Interaction.h"
-#include <cstdio>
-#include "lemon/list_graph.h"
-
 #include "CustomInteractions.h"
 
 #include "ExternTrace.h"
@@ -32,17 +28,26 @@ Test::~Test(){
 }
 
 
-float Test::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter){
+float Test::getEffect(DerivGraph* d, ListDigraph::Node a, int rkIter, float rkStep){
+	
+	ListDigraph* g = d->getListDigraph();
+	ListDigraph::NodeMap<Molecule*>* m = d->getNodeMap();
+	ListDigraph::ArcMap<Interaction*>* i = d->getArcMap();
+	
 	t.trace("mloc","Interaction %u trace location: %u\n",(unsigned int)this, (unsigned int)&t);
 	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
 	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
 	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue());
 
+
+	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
+
 	if(g->source(g->arcFromId(arcID)) == a)
 		return 0;
 	else
-		return (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue() * rate;
+		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
+
 
 }
 

@@ -20,7 +20,6 @@
 DNA::DNA(){
 
 	Molecule::Molecule();
-
 	
 	kf = .4;
 	kr = .35;
