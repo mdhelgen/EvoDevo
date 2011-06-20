@@ -11,6 +11,8 @@ using namespace std;
 //external declaration of Trace t
 #include "ExternTrace.h"
 
+int Cell::CellID = 0;
+
 /**
  * Cell::Cell()
  *
@@ -24,6 +26,11 @@ Cell::Cell(){
     t.trace("init", "Creating new Cell\n");
     t.trace("mloc", "Cell location at %u\n", (unsigned int) this);
     equations = new DerivGraph();
+   
+    currentGen = 0;
+   
+    CellID++;
+
     equations->test();
 
     t.trace("init", "New Cell created\n");
@@ -49,14 +56,16 @@ Cell::~Cell(){
 
 int Cell::mutate(){
 
-	double rn = r.rand(1);
-	if(rn < .4)
-		printf("mut: small\n");
-	else if( rn < .7)
-		printf("mut: large\n");
+	double mutationCategory = r.rand(1);
+	if(mutationCategory < .4)
+		t.trace("mutate","Mutation Type: Small\n");
+	else if(mutationCategory < .7)
+		t.trace("mutate","Mutation Type: Large\n");
 	else
-		printf("mut: null\n");
-
+		t.trace("mutate","Mutation Type: Null\n"); 
+	
+	
+	equations->rungeKuttaEvaluate(1.0);
 	return -1;
 }
 

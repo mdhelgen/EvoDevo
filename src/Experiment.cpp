@@ -85,7 +85,7 @@ for(int i = 1; i <= maxGenerations; i++)
 		//mutate
 		cells[c]->mutate();
 		//getscore
-		printf("Gen %d Cell loc %u\n", i, (unsigned int) cells[c]);
+		t.trace("mutate","Gen %-3d Cell loc %u\n", i, (unsigned int) cells[c]);
 	}
 }
 

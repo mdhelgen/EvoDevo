@@ -79,7 +79,7 @@ void Trace::trace(const char* tag, const char* format, ...){
 	if(traceTypes[tag]){
 		
 		//prefix message with tag
-		printf("[ %s ] \t",tag);
+		printf("[ %-6s ] \t",tag);
 		//output formatted trace message
 		vprintf(format, args);
 	}	

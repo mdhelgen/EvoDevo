@@ -17,7 +17,9 @@ Molecule::Molecule(){
 	currentConcentration = 4;
 
 	longName = "Molecule";
-	shortName = "m";
+	shortName = "a";
+	
+	moleculeID = -1;
 
 	//initialize Runge-Kutta intermediate values
 	rkVal[0] = 0;
@@ -91,13 +93,13 @@ void Molecule::updateRkVal(int index, float amount){
 float Molecule::rkApprox(int rkIteration, float rkStepSize){
 	switch(rkIteration){
 	case 0:
-		return currentConcentration;
+		return getValue();
 	case 1:
-		return (currentConcentration + ( rkVal[0] * (rkStepSize/2)));
+		return (getValue() + ( rkVal[0] * (rkStepSize/2)));
 	case 2:
-		return (currentConcentration + ( rkVal[1] * (rkStepSize/2)));
+		return (getValue() + ( rkVal[1] * (rkStepSize/2)));
 	case 3:
-		return (currentConcentration + ( rkVal[2] * rkStepSize ));
+		return (getValue() + ( rkVal[2] * rkStepSize ));
 	}
 
 	return currentConcentration;
@@ -122,11 +124,15 @@ void Molecule::nextPoint(float step){
 }
 
 char* Molecule::getShortName(){
+	
+	memset(buf, '\0', 80);
 	sprintf(buf, "%s%d", shortName, moleculeID);
 	return buf;
 }
 
 char* Molecule::getLongName(){
+
+	memset(buf, '\0', 80);
 	sprintf(buf, "%s %d", longName, moleculeID);
 	return buf;
 }
@@ -134,6 +140,17 @@ void Molecule::setID(int i){
 
 	moleculeID = i;
 }
+void Molecule::reset(){
+	
+	rungeKuttaSolution.erase(rungeKuttaSolution.begin(), rungeKuttaSolution.end());
+	rungeKuttaSolution.push_back(initialConcentration);
+	currentConcentration = initialConcentration;
+	rkVal[0] = 0;
+	rkVal[1] = 0;
+	rkVal[2] = 0;
+	rkVal[3] = 0;
+}
+
 
 /**
  * void Molecule::outputRK()
@@ -142,5 +159,5 @@ void Molecule::setID(int i){
  */
 void Molecule::outputRK(){
 	for(unsigned int i = 0; i< rungeKuttaSolution.size(); i++)
-		t.trace("rk-4","%f - %u - %f\n", initialConcentration, i, rungeKuttaSolution[i]);
+		t.trace("rk-4","%s - %u - %f\n", getShortName(), i, rungeKuttaSolution[i]);
 }

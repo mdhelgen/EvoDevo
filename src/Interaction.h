@@ -8,6 +8,7 @@
 #define INTERACTION_H_
 
 #include "Molecule.h"
+#include "CustomMolecules.h"
 
 #include "lemon/list_graph.h"
 using namespace lemon; 

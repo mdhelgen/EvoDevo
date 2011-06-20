@@ -105,29 +105,49 @@ DerivGraph::~DerivGraph(){
 
 void DerivGraph::test(){
 
-	ListDigraph::Node A = add(new DNA());
+/*
+	ListDigraph::Node A = add(new Molecule());
 	ListDigraph::Node B = add(new Molecule());
 	ListDigraph::Node C = add(new Molecule());
-	ListDigraph::Node D = add(new Molecule());
 
 	(*molecules)[A]->setValue(2);
-	(*molecules)[B]->setValue(1);
+	(*molecules)[B]->setValue(4);
 	(*molecules)[C]->setValue(1);
+
+	ListDigraph::Arc AB = add(new Interaction(), A, B);
+	ListDigraph::Arc AC = add(new Interaction(), A, C);
+	ListDigraph::Arc BC = add(new Interaction(), B, C);
+	ListDigraph::Arc CB = add(new Interaction(), C, B);
+
+	(*interactions)[AB]->setRate(.01);
+	(*interactions)[AC]->setRate(.03);
+	(*interactions)[BC]->setRate(.07);
+	(*interactions)[CB]->setRate(.09);
+*/
+	ListDigraph::Node A = add(new DNA());
+	ListDigraph::Node B = add(new mRNA());
+	ListDigraph::Node C = add(new Molecule());
+	ListDigraph::Node D = add(new Null());
+
+	(*molecules)[A]->setValue(10000);
+	(*molecules)[B]->setValue(10);
+	(*molecules)[C]->setValue(15);
+
+	printf("%f\n",(*molecules)[A]->getValue());
 
 	ListDigraph::Arc AB = add(new Transcription(), A, B);
 	ListDigraph::Arc BC = add(new Interaction(), B, C);
 	ListDigraph::Arc BD = add(new Degradation(), B, D);
 	ListDigraph::Arc CD = add(new Degradation(), C, D);
 	
-	(*interactions)[AB]->setRate(.01);
-	(*interactions)[BC]->setRate(.07);
-	(*interactions)[BD]->setRate(.03);
-	(*interactions)[CD]->setRate(.09);
+	(*interactions)[AB]->setRate(0);
+	(*interactions)[BC]->setRate(.05);
+	(*interactions)[BD]->setRate(0);
+	(*interactions)[CD]->setRate(0);
 
-
-	float rkStep = 1.0;
+//	float rkStep = 1.0;
   
-	rungeKuttaEvaluate(rkStep); 
+//	rungeKuttaEvaluate(rkStep); 
 }
 
 /**
@@ -139,6 +159,10 @@ void DerivGraph::test(){
  * @param rkStep the timestep (precision) between calculated points
  */
 void DerivGraph::rungeKuttaEvaluate(float rkStep){
+
+	for(ListDigraph::NodeIt it(*derivs); it != INVALID; ++it){
+		(*molecules)[it]->reset();
+	}
 	
 	//time loop
 	for(int i = 0; i< 10; i++){

@@ -10,6 +10,8 @@
 
 #include <cstdio>
 #include <vector>
+#include <cstring>
+
 
 using namespace std;
 
@@ -31,7 +33,7 @@ public:
 	char* getShortName();
 	char* getLongName();
 	void setID(int);
-
+	void reset();
 private:
 	float initialConcentration;
 	float currentConcentration;

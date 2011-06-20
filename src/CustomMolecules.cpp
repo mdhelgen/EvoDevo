@@ -21,7 +21,7 @@ DNA::DNA(){
 
 	Molecule::Molecule();
 	
-	kf = .4;
+	kf = 0;
 	kr = .35;
 	hill = 2;
 
@@ -51,4 +51,20 @@ float DNA::getValue(){
 
 	return (1/(1+pow(kf/kr,hill)));
 
+}
+
+Null::Null(){
+	longName = "NullNode";
+	shortName = "n";
+}
+Null::~Null(){}
+float Null::getValue(){
+	return 0;
+}
+
+mRNA::mRNA(){
+	longName = "mRNA";
+	shortName = "m";
+}
+mRNA::~mRNA(){
 }

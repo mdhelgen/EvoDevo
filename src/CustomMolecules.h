@@ -5,7 +5,6 @@
 
 #include "Molecule.h"
 
-class DerivGraph;
 
 class DNA : public Molecule{
 
@@ -13,7 +12,7 @@ public:
 	DNA();
 	~DNA();
 	
-	virtual	float getValue();
+	float getValue();
 
 
 private:
@@ -21,8 +20,21 @@ private:
 	float kr;
 	int hill;
 
+};
 
+class Null : public Molecule{
+public:
+	Null();
+	~Null();
 
+	virtual float getValue();
+
+};
+
+class mRNA : public Molecule{
+public:
+	mRNA();
+	~mRNA();
 
 };
 
