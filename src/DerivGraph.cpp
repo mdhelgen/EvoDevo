@@ -68,8 +68,6 @@ DerivGraph::DerivGraph(){
  * 	1 ArcMap object
  * 	   m contained Interaction objects
  * 	1 ListDigraph object
- * 	
- *
  */
 DerivGraph::~DerivGraph(){
 
@@ -214,6 +212,7 @@ float DerivGraph::getEffect(ListDigraph::Node m, ListDigraph::Arc i, int rkItera
 	Interaction* a = (*interactions)[i];
 
 	//calculate the effect this Interaction will have on the Molecule in Node m
+	
 	//return a->getEffect(this, m, rkIteration, rkStep);
 	return (*interactions)[i]->getEffect(derivs, molecules, interactions, m, rkIteration, rkStep);
 

@@ -18,9 +18,11 @@ Transcription::~Transcription(){
 }
 
 //float Transcription::getEffect(DerivGraph* d, ListDigraph::Node a, int rkIter, float rkStep){
+
+
 float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
-//	ListDigraph* g = d->getListDigraph();
-//	ListDigraph::NodeMap<Molecule*>* m = d->getNodeMap();
+
+
 	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
 	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");

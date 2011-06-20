@@ -11,7 +11,7 @@
 
 #include <cstdio>
 #include "Trace.h"
-
+#include <ostream>
 /**
  * Trace::Trace()
  *
@@ -22,7 +22,14 @@ Trace::Trace()
 {
  
  printf("Tracing loaded. (location %u)\n",(unsigned int) this);
+ traceFile = stdout;
 
+}
+
+Trace::Trace(const char* c)
+{
+	traceFile = fopen(c, "a");
+	
 }
 
 /**
@@ -79,9 +86,10 @@ void Trace::trace(const char* tag, const char* format, ...){
 	if(traceTypes[tag]){
 		
 		//prefix message with tag
-		printf("[ %-6s ] \t",tag);
+		fprintf(traceFile,"[ %-6s ] \t",tag);
+		
 		//output formatted trace message
-		vprintf(format, args);
+		vfprintf(traceFile,format, args);
 	}	
 	
 	va_end(args);
@@ -117,4 +125,13 @@ void Trace::disableTraceType(const char* tag){
 
 	Trace::trace("trce","Trace type \'%s\' disabled.\n", tag);
 
+}
+
+FILE* Trace::getTraceFile(){
+	return traceFile;
+}
+
+FILE* Trace::setTraceFile(FILE * tf){
+	traceFile = tf;
+	return traceFile;
 }

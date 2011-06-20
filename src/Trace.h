@@ -12,6 +12,9 @@
 #include <cstdarg>
 #include <cstring>
 #include <map>
+#include <iostream>
+#include <fstream>
+
 
 using namespace std;
 
@@ -30,7 +33,11 @@ public:
 
 
 	Trace();
+	Trace(const char*);
+
 	~Trace();
+
+	FILE* traceFile;
 
 	// char* keys, int values	
 	// a tag is enabled if the value is nonzero
@@ -38,7 +45,10 @@ public:
 
 	void addTraceType(const char*, int);
 	void trace(const char*, const char*, ...);
-	
+
+	FILE* getTraceFile();
+	FILE* setTraceFile(FILE*);
+
 	void enableTraceType(const char*);
 	void disableTraceType(const char*);
 	

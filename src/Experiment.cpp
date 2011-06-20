@@ -36,7 +36,8 @@ Experiment::Experiment(int ncells, int generations) {
 	
 	t.trace("mloc","Experiment location at %u\n",(unsigned int) this);
 
-	t.trace("args","%d Cells for %d Generations\n", ncells, generations);
+	t.trace("args","%d Cells\n",ncells);
+	t.trace("args","%d Generations\n", generations);
 
 	maxGenerations = generations;
 
@@ -71,6 +72,12 @@ Experiment::~Experiment() {
 
 
 }
+
+//void Experiment::outputGeneration(){
+
+
+//}
+
 
 /**
  * Deprecated 
