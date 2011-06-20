@@ -25,6 +25,8 @@ DNA::DNA(){
 	kr = .35;
 	hill = 2;
 
+	longName = "DNA";
+	shortName = "d";
 }
 
 

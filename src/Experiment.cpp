@@ -37,7 +37,9 @@ Experiment::Experiment(int ncells, int generations) {
 	t.trace("mloc","Experiment location at %u\n",(unsigned int) this);
 
 	t.trace("args","%d Cells for %d Generations\n", ncells, generations);
-	
+
+	maxGenerations = generations;
+
 	//create the cell objects and add them to our cells vector
 	for (int i = 0; i < ncells; i++){
 		t.trace("init","Creating Cell (%d)\n",i);
@@ -75,6 +77,17 @@ Experiment::~Experiment() {
  */
 void Experiment::start()
 {
+//getscore before anything
+for(int i = 1; i <= maxGenerations; i++)
+{
+	for(unsigned int c = 0; c < cells.size(); c++)
+	{
+		//mutate
+		cells[c]->mutate();
+		//getscore
+		printf("Gen %d Cell loc %u\n", i, (unsigned int) cells[c]);
+	}
+}
 
 /*
 	ofstream output;

@@ -12,7 +12,6 @@
 
 #include <iostream>
 #include "DerivGraph.h"
-#include "Interaction.h"
 using namespace std;
 
 #include "ExternTrace.h"
@@ -52,8 +51,10 @@ DerivGraph::DerivGraph(){
     //map interactions onto the arcs
     interactions = new ListDigraph::ArcMap<Interaction*>(*derivs);
     t.trace("mloc","DerivGraph %u ArcMap location at %u\n", (unsigned int) this, (unsigned int) interactions);
-   
+    
     t.trace("init","New DerivGraph created\n");
+
+    count++;
 }
 
 /**
@@ -71,12 +72,14 @@ DerivGraph::DerivGraph(){
  *
  */
 DerivGraph::~DerivGraph(){
-  
+
    //delete all Molecule objects mapped by Nodes
    t.trace("free","Deleting members of NodeMap at location %u\n",(unsigned int) molecules);
    for(ListDigraph::NodeIt it(*derivs); it !=INVALID; ++it){
 	t.trace("free","Deleting NodeMap member at location %u\n",(unsigned int) (*molecules)[it]);
-   	delete (*molecules)[it];
+	t.trace("free","longnname: %s\n", (*molecules)[it]->getLongName());
+	t.trace("free","shortname: %s\n", (*molecules)[it]->getShortName());
+	delete (*molecules)[it];
    }
   
    //delete the Molecule NodeMap
@@ -102,23 +105,24 @@ DerivGraph::~DerivGraph(){
 
 void DerivGraph::test(){
 
-	ListDigraph::Node A = add(new Molecule());
+	ListDigraph::Node A = add(new DNA());
 	ListDigraph::Node B = add(new Molecule());
 	ListDigraph::Node C = add(new Molecule());
+	ListDigraph::Node D = add(new Molecule());
 
 	(*molecules)[A]->setValue(2);
-	(*molecules)[B]->setValue(4);
+	(*molecules)[B]->setValue(1);
 	(*molecules)[C]->setValue(1);
 
-	ListDigraph::Arc AB = add(new Interaction, A, B);
-	ListDigraph::Arc BC = add(new Interaction, B, C);
-	ListDigraph::Arc AC = add(new Interaction, A, C);
-	ListDigraph::Arc CB = add(new Interaction, C, B);
+	ListDigraph::Arc AB = add(new Transcription(), A, B);
+	ListDigraph::Arc BC = add(new Interaction(), B, C);
+	ListDigraph::Arc BD = add(new Degradation(), B, D);
+	ListDigraph::Arc CD = add(new Degradation(), C, D);
 	
 	(*interactions)[AB]->setRate(.01);
 	(*interactions)[BC]->setRate(.07);
-	(*interactions)[AC]->setRate(.03);
-	(*interactions)[CB]->setRate(.09);
+	(*interactions)[BD]->setRate(.03);
+	(*interactions)[CD]->setRate(.09);
 
 
 	float rkStep = 1.0;
@@ -186,8 +190,8 @@ float DerivGraph::getEffect(ListDigraph::Node m, ListDigraph::Arc i, int rkItera
 	Interaction* a = (*interactions)[i];
 
 	//calculate the effect this Interaction will have on the Molecule in Node m
-	return a->getEffect(this, m, rkIteration, rkStep);
-	//return (*interactions)[i]->getEffect(derivs, molecules, interactions, m, rkIteration, rkStep);
+	//return a->getEffect(this, m, rkIteration, rkStep);
+	return (*interactions)[i]->getEffect(derivs, molecules, interactions, m, rkIteration, rkStep);
 
 }
 
@@ -201,12 +205,14 @@ float DerivGraph::getEffect(ListDigraph::Node m, ListDigraph::Arc i, int rkItera
  * @return the Node object in the ListDigraph containing the new Molecule.
  */
 ListDigraph::Node DerivGraph::add(Molecule * newMolecule){
-	
+
 	//add a new Node to the graph
 	ListDigraph::Node newNode = derivs->addNode();
 	
 	//map the new Node to the Molecule 
 	(*molecules)[newNode] = newMolecule;
+
+	newMolecule->setID(count++);
 
 	//return the newly created Node
 	return newNode;

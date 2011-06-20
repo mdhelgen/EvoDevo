@@ -16,6 +16,9 @@ Molecule::Molecule(){
 	//set default concentration
 	currentConcentration = 4;
 
+	longName = "Molecule";
+	shortName = "m";
+
 	//initialize Runge-Kutta intermediate values
 	rkVal[0] = 0;
 	rkVal[1] = 0;
@@ -116,6 +119,20 @@ void Molecule::nextPoint(float step){
 	rkVal[2] = 0;
 	rkVal[3] = 0;
 
+}
+
+char* Molecule::getShortName(){
+	sprintf(buf, "%s%d", shortName, moleculeID);
+	return buf;
+}
+
+char* Molecule::getLongName(){
+	sprintf(buf, "%s %d", longName, moleculeID);
+	return buf;
+}
+void Molecule::setID(int i){
+
+	moleculeID = i;
 }
 
 /**

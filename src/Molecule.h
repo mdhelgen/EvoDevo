@@ -10,7 +10,6 @@
 
 #include <cstdio>
 #include <vector>
-#include "DerivGraph.h"
 
 using namespace std;
 
@@ -29,11 +28,19 @@ public:
 	void outputRK();
 	float getrkVal(int);
 	float rkApprox(int, float);
+	char* getShortName();
+	char* getLongName();
+	void setID(int);
+
 private:
 	float initialConcentration;
 	float currentConcentration;
 	float rkVal[4]; 
-
+protected:
+	char buf[80];	
+	const char* longName;
+	const char* shortName;
+	int moleculeID;
 	vector<float> rungeKuttaSolution;
 };
 

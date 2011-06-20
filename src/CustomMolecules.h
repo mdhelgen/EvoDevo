@@ -5,6 +5,7 @@
 
 #include "Molecule.h"
 
+class DerivGraph;
 
 class DNA : public Molecule{
 

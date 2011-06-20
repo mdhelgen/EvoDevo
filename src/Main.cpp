@@ -94,6 +94,8 @@ if(verbose_flag)
 
 
 Experiment* e = new Experiment(numCells, numGenerations);
+e->start();
+
 
 t.trace("free","Deleting Experiment object at location %d\n", e);
 delete e;

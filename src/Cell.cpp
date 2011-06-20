@@ -5,8 +5,8 @@
  */
 #include <iostream>
 #include "Cell.h"
-
 using namespace std;
+
 
 //external declaration of Trace t
 #include "ExternTrace.h"
@@ -45,6 +45,19 @@ Cell::~Cell(){
     t.trace("free", "Deleting DerivGraph object at location %d\n", &equations);    
     delete equations;
 
-
-
 }
+
+int Cell::mutate(){
+
+	double rn = r.rand(1);
+	if(rn < .4)
+		printf("mut: small\n");
+	else if( rn < .7)
+		printf("mut: large\n");
+	else
+		printf("mut: null\n");
+
+	return -1;
+}
+
+
