@@ -10,7 +10,7 @@
 #include "ExternTrace.h"
 
 Transcription::Transcription(){
-
+	name="txn";
 }
 
 Transcription::~Transcription(){
@@ -38,7 +38,9 @@ float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* 
 
 }
 
-Degradation::Degradation(){}
+Degradation::Degradation(){
+	name="deg";
+}
 Degradation::~Degradation(){}
 
 //float Degradation::getEffect(DerivGraph* d, ListDigraph::Node a, int rkIter, float rkStep){
@@ -67,7 +69,7 @@ Test::Test(){
 	t.trace("mloc","Interaction at location %u\n", (unsigned int)this);
 	
 	rate = 3.0;
-	
+	name="test";	
 	t.trace("init","New Interaction created\n");
 }
 

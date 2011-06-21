@@ -31,7 +31,6 @@ struct cmp_str
 class Trace{
 public:
 
-
 	Trace();
 	Trace(const char*);
 
@@ -52,7 +51,7 @@ public:
 	void enableTraceType(const char*);
 	void disableTraceType(const char*);
 	
-
+	
 };
 
 

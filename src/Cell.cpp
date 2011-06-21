@@ -11,7 +11,7 @@ using namespace std;
 //external declaration of Trace t
 #include "ExternTrace.h"
 
-int Cell::CellID = 0;
+int Cell::CellCounter = 0;
 
 /**
  * Cell::Cell()
@@ -29,7 +29,7 @@ Cell::Cell(){
    
     currentGen = 0;
    
-    CellID++;
+    CellID = CellCounter++;
 
     equations->test();
 
@@ -55,17 +55,70 @@ Cell::~Cell(){
 }
 
 int Cell::mutate(){
-
+	currentGen++;
 	double mutationCategory = r.rand(1);
+	double mutationType = r.rand(1);
 	if(mutationCategory < .4)
-		t.trace("mutate","Mutation Type: Small\n");
+	{
+		t.trace("mutate","Mutation Category: Small\n");
+		
+		if(mutationType < .2)
+		{
+			t.trace("mutate","Mutation Type: Forward Rate Change\n");	
+		}//end fwd rate change
+		else if(mutationType < .4)
+		{
+
+			t.trace("mutate","Mutation Type: Reverse Rate Change\n");	
+		}//end rev rate change
+		else if(mutationType < .6)
+		{
+
+			t.trace("mutate","Mutation Type: Degradation Rate Change\n");	
+		}//end deg rate change
+		else if(mutationType < .8)
+		{
+
+			t.trace("mutate","Mutation Type: New PTM\n");	
+		}//end new ptm
+		else
+		{
+
+			t.trace("mutate","Mutation Type: Histone Modification\n");	
+		}//end histone mod
+
+	}//end small category
 	else if(mutationCategory < .7)
-		t.trace("mutate","Mutation Type: Large\n");
+	{
+		t.trace("mutate","Mutation Category: Large\n");
+		
+		if(mutationType < .33)
+		{
+
+			t.trace("mutate","Mutation Type: New Protein-Protein Complex\n");	
+		}//end new complex
+		else if(mutationType < .67)
+		{
+		
+			t.trace("mutate","Mutation Type: New Basic Protein\n");	
+		}//end new basic
+		else
+		{
+
+			t.trace("mutate","Mutation Type: New Protein-Promoter Interaction\n");
+		}//end new promoter
+
+	}//end large category
 	else
-		t.trace("mutate","Mutation Type: Null\n"); 
-	
+	{
+		t.trace("mutate","Mutation Category: Null\n"); 
+
+
+
+	}//end null mutation
 	
 	equations->rungeKuttaEvaluate(1.0);
+	equations->outputDotImage(CellID,currentGen );
 	return -1;
 }
 

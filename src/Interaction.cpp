@@ -18,7 +18,7 @@ Interaction::Interaction(){
 
 	t.trace("init","Creating new Interaction\n");
 	t.trace("mloc","Interaction at location %d\n", this);
-	
+        name = "default";	
 	rate = 5.0;
 	
 	t.trace("init","New Interaction created\n");
@@ -88,5 +88,11 @@ float Interaction::setRate(float f){
 	float oldRate = f;
 	rate = f;
 	return oldRate;
+
+}
+
+const char* Interaction::getName(){
+
+	return name;
 
 }

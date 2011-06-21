@@ -76,8 +76,6 @@ void Trace::addTraceType(const char* tag, int enabled){
  */
 void Trace::trace(const char* tag, const char* format, ...){
 
-
-		
 	va_list args;
 	// variable arguments start after format
 	va_start(args, format);

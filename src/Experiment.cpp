@@ -31,6 +31,7 @@ using namespace std;
  */
 Experiment::Experiment(int ncells, int generations) {
 
+
 	
 	t.trace("init","Creating new Experiment\n");
 	
@@ -46,7 +47,33 @@ Experiment::Experiment(int ncells, int generations) {
 		t.trace("init","Creating Cell (%d)\n",i);
 		cells.push_back(new Cell());
 	}
+/*	
+	char buf[200];
 	
+	const char* prefix = "../output";
+	mkdir(prefix , S_IRWXU | S_IRWXG | S_IRWXO);
+	
+	sprintf(buf, "%s/%d", prefix, getpid());
+	mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO);
+
+	sprintf(buf, "%s/%d/cell", prefix, getpid());
+	mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO);
+
+	sprintf(buf, "%s/%d/trace.txt", prefix, getpid());
+	FILE* tracef = fopen(buf, "a+");
+	fprintf(tracef, "test\n");
+
+	t.setTraceFile(tracef);
+
+	sprintf(buf, "%s/%d/cell/genXstd.csv", prefix, getpid());
+	FILE* stdfile = fopen(buf, "a+");
+	fprintf(stdfile, "test\n");
+
+	sprintf(buf, "%s/%d/cell/genXprec.csv", prefix, getpid());
+	FILE* precfile = fopen(buf, "a+");
+	fprintf(precfile, "test\n");
+*/
+
 	t.trace("init","New Experiment created\n");
 }
 
@@ -89,10 +116,10 @@ for(int i = 1; i <= maxGenerations; i++)
 {
 	for(unsigned int c = 0; c < cells.size(); c++)
 	{
+		t.trace("mutate","Gen %-3d Cell loc %u\n", i, (unsigned int) cells[c]);
 		//mutate
 		cells[c]->mutate();
 		//getscore
-		t.trace("mutate","Gen %-3d Cell loc %u\n", i, (unsigned int) cells[c]);
 	}
 }
 

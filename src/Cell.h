@@ -19,7 +19,9 @@ public:
 
 
 private:
-	static int CellID;
+	static int CellCounter;
+
+	int CellID;
 	int currentGen;
 	MTRand r;
 	DerivGraph* equations;

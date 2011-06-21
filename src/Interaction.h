@@ -22,9 +22,12 @@ public:
 
 //	virtual float getEffect(DerivGraph*, ListDigraph::Node, int, float);
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
-	
+
+	const char* getName();
+
 	float setRate(float);
-	
+
+	const char* name;
 	int arcID;
 		
 protected:

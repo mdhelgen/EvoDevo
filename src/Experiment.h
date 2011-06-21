@@ -10,6 +10,9 @@
 #ifndef EXPERIMENT_H_
 #define EXPERIMENT_H_
 
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <cstdio>
 #include <stdlib.h>
 #include <vector>
 #include <fstream>

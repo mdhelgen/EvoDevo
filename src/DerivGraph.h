@@ -5,6 +5,10 @@
 #include "lemon/concepts/maps.h"
 #include <cstdio>
 #include <vector>
+#include <fstream>
+#include <sys/stat.h>
+#include <sys/types.h>
+
 
 #include "Molecule.h"
 #include "Interaction.h"
@@ -33,6 +37,7 @@ public:
 	ListDigraph* getListDigraph();
 	ListDigraph::NodeMap<Molecule*>* getNodeMap();
 	ListDigraph::ArcMap<Interaction*>* getArcMap();
+	void outputDotImage(int, int);
 
 private:
 	ListDigraph* derivs;

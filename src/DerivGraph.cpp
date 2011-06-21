@@ -54,7 +54,7 @@ DerivGraph::DerivGraph(){
     
     t.trace("init","New DerivGraph created\n");
 
-    count++;
+    count=0;
 }
 
 /**
@@ -280,3 +280,35 @@ ListDigraph::ArcMap<Interaction*>* DerivGraph::getArcMap(){
 	return interactions;
 }
 
+void DerivGraph::outputDotImage(int cellNum, int gen){
+if(1)
+return;
+	char buf[200];
+	sprintf(buf, "dot -Tpng -oCell%dGen%d.png",cellNum, gen);
+	FILE* dot = popen(buf,"w");
+	
+	fprintf(dot,"digraph mol_interactions {\n");
+	fflush(dot);
+
+	fprintf(dot,"rankdir = LR;\n");
+	fflush(dot);
+
+	fprintf(dot,"size=\"8,5\"\n");
+	fflush(dot);
+
+	fprintf(dot,"node [shape = circle];\n");
+	fflush(dot);
+
+	for(ListDigraph::ArcIt it(*derivs); it != INVALID; ++it){
+		fprintf(dot, "%s -> %s [ label = \"%s\" ];\n",(*molecules)[derivs->source(it)]->getShortName(), (*molecules)[derivs->target(it)]->getShortName(), (*interactions)[it]->getName());
+		fflush(dot);
+}	
+	fprintf(dot,"}\n");
+	fflush(dot);
+
+	pclose(dot);
+
+
+
+
+}
