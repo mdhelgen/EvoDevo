@@ -48,19 +48,31 @@ public:
 };
 
 
-class Txn : public Interaction{
-
+class Translation : public Interaction{
+public:
+	Translation();
+	~Translation();
 
 };
 
-class Tsln : public Interaction{
-
-
+class ForwardComplexation : public Interaction{
+public:
+	ForwardComplexation(int, int);
+	~ForwardComplexation();
+	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
+	int firstNodeID;
+	int secondNodeID;
+};
+class ReverseComplexation : public Interaction{
+public:
+	ReverseComplexation(int, int);
+	~ReverseComplexation();
+	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
+	int firstNodeID;
+	int secondNodeID;
 };
 
 class Deg : public Interaction{
 
 };
-
-
 #endif

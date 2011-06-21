@@ -124,28 +124,65 @@ void DerivGraph::test(){
 */
 	ListDigraph::Node A = add(new DNA());
 	ListDigraph::Node B = add(new mRNA());
-	ListDigraph::Node C = add(new Molecule());
+	ListDigraph::Node C = add(new Protein());
 	ListDigraph::Node D = add(new Null());
 
-	(*molecules)[A]->setValue(10000);
+	ListDigraph::Node E = add(new DNA());
+	ListDigraph::Node F = add(new mRNA());
+	ListDigraph::Node G = add(new Protein());
+
+	(*molecules)[A]->setValue(1);
 	(*molecules)[B]->setValue(10);
 	(*molecules)[C]->setValue(15);
 
-	printf("%f\n",(*molecules)[A]->getValue());
+	(*molecules)[E]->setValue(1);
+	(*molecules)[F]->setValue(10);
+	(*molecules)[G]->setValue(15);
+
+
 
 	ListDigraph::Arc AB = add(new Transcription(), A, B);
-	ListDigraph::Arc BC = add(new Interaction(), B, C);
+	ListDigraph::Arc BC = add(new Translation(), B, C);
 	ListDigraph::Arc BD = add(new Degradation(), B, D);
 	ListDigraph::Arc CD = add(new Degradation(), C, D);
 	
-	(*interactions)[AB]->setRate(0);
+	ListDigraph::Arc EF = add(new Transcription(), E, F);
+	ListDigraph::Arc FG = add(new Translation(), F, G);
+	ListDigraph::Arc FD = add(new Degradation(), F, D);
+	ListDigraph::Arc GD = add(new Degradation(), G, D);
+	
+	(*interactions)[AB]->setRate(.05);
 	(*interactions)[BC]->setRate(.05);
-	(*interactions)[BD]->setRate(0);
-	(*interactions)[CD]->setRate(0);
+	(*interactions)[BD]->setRate(.01);
+	(*interactions)[CD]->setRate(.02);
 
-//	float rkStep = 1.0;
+	(*interactions)[EF]->setRate(.05);
+	(*interactions)[FG]->setRate(.05);
+	(*interactions)[FD]->setRate(.01);
+	(*interactions)[GD]->setRate(.02);
+
+
+	ListDigraph::Node CG = add(new Complex(derivs->id(C), derivs->id(G)));
+	(*molecules)[CG]->setValue(5);
+
+	ListDigraph::Arc CGf1 = add(new ForwardComplexation(derivs->id(C), derivs->id(G)), C, CG);
+	ListDigraph::Arc CGf2 = add(new ForwardComplexation(derivs->id(C), derivs->id(G)), G, CG);
+	ListDigraph::Arc CGr1 = add(new ReverseComplexation(derivs->id(C), derivs->id(G)), CG, C);
+	ListDigraph::Arc CGr2 = add(new ReverseComplexation(derivs->id(C), derivs->id(G)), CG, G);
+	ListDigraph::Arc CGdeg = add(new Degradation(), CG, D);
+
+	(*interactions)[CGf1]->setRate(.1);
+	(*interactions)[CGf2]->setRate(.1);
+
+	(*interactions)[CGr1]->setRate(.08);
+	(*interactions)[CGr2]->setRate(.08);
+
+	(*interactions)[CGdeg]->setRate(.04);
+
+
+	float rkStep = 1.0;
   
-//	rungeKuttaEvaluate(rkStep); 
+	rungeKuttaEvaluate(rkStep); 
 }
 
 /**
@@ -235,6 +272,8 @@ ListDigraph::Node DerivGraph::add(Molecule * newMolecule){
 	//map the new Node to the Molecule 
 	(*molecules)[newNode] = newMolecule;
 
+	(*molecules)[newNode]->nodeID = derivs->id(newNode);
+	
 	newMolecule->setID(count++);
 
 	//return the newly created Node
@@ -281,17 +320,17 @@ ListDigraph::ArcMap<Interaction*>* DerivGraph::getArcMap(){
 }
 
 void DerivGraph::outputDotImage(int cellNum, int gen){
-if(1)
+if(0)
 return;
 	char buf[200];
-	sprintf(buf, "dot -Tpng -oCell%dGen%d.png",cellNum, gen);
+	sprintf(buf, "circo -Tpng -oCell%dGen%d.png",cellNum, gen);
 	FILE* dot = popen(buf,"w");
 	
 	fprintf(dot,"digraph mol_interactions {\n");
 	fflush(dot);
 
-	fprintf(dot,"rankdir = LR;\n");
-	fflush(dot);
+//	fprintf(dot,"rankdir = LR;\n");
+//	fflush(dot);
 
 	fprintf(dot,"size=\"8,5\"\n");
 	fflush(dot);

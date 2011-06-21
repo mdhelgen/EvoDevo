@@ -68,3 +68,20 @@ mRNA::mRNA(){
 }
 mRNA::~mRNA(){
 }
+
+Protein::Protein(){
+	longName = "Protein";
+	shortName = "p";
+}
+Protein::~Protein(){}
+
+Complex::Complex(int n1, int n2){
+	longName="Complex";
+	shortName="c";
+	id1 = n1;
+	id2 = n2;
+}
+Complex::~Complex(){
+
+}
+

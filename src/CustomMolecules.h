@@ -38,4 +38,23 @@ public:
 
 };
 
+class Protein : public Molecule{
+public:
+	Protein();
+	~Protein();
+
+};
+
+class Complex : public Molecule{
+
+public:
+	Complex(int, int);
+	~Complex();
+
+private:
+
+	int id1;
+	int id2;
+
+};
 #endif

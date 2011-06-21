@@ -34,6 +34,8 @@ public:
 	char* getLongName();
 	void setID(int);
 	void reset();
+	int nodeID;
+
 private:
 	float initialConcentration;
 	float currentConcentration;
