@@ -33,6 +33,7 @@ public:
 	char* getShortName();
 	char* getLongName();
 	void setID(int);
+	int getID();
 	void reset();
 	int nodeID;
 

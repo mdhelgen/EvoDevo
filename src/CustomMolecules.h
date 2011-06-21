@@ -22,10 +22,10 @@ private:
 
 };
 
-class Null : public Molecule{
+class NullNode : public Molecule{
 public:
-	Null();
-	~Null();
+	NullNode();
+	~NullNode();
 
 	virtual float getValue();
 

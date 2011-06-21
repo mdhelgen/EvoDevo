@@ -8,7 +8,7 @@
 #include <fstream>
 #include <sys/stat.h>
 #include <sys/types.h>
-
+#include <typeinfo>
 
 #include "Molecule.h"
 #include "Interaction.h"
@@ -38,12 +38,18 @@ public:
 	ListDigraph::NodeMap<Molecule*>* getNodeMap();
 	ListDigraph::ArcMap<Interaction*>* getArcMap();
 	void outputDotImage(int, int);
+	
+	//mutation methods
+	void newBasic();
+
 
 private:
 	ListDigraph* derivs;
 	ListDigraph::NodeMap<Molecule*>* molecules;
 	ListDigraph::ArcMap<Interaction*>* interactions;
-	
+
+	ListDigraph::Node nullnode;
+
 	float getEffect(ListDigraph::Node, ListDigraph::Arc, int, float);
 	ListDigraph::Node add(Molecule*);
 	ListDigraph::Arc add(Interaction*, ListDigraph::Node, ListDigraph::Node);

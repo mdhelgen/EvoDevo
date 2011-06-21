@@ -43,6 +43,9 @@ int main(int argc, char** argv){
   //mutation
   t.addTraceType("mutate",1);
 
+  //polymorphic comparisons
+  t.addTraceType("typeid",1);
+
   int numCells = 2;
   int numGenerations = 10;
 

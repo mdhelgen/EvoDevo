@@ -55,6 +55,11 @@ DerivGraph::DerivGraph(){
     t.trace("init","New DerivGraph created\n");
 
     count=0;
+
+    nullnode = add(new NullNode());
+    (*molecules)[nullnode]->setID(count++);
+
+    newBasic();
 }
 
 /**
@@ -102,7 +107,7 @@ DerivGraph::~DerivGraph(){
 }
 
 void DerivGraph::test(){
-
+return;
 /*
 	ListDigraph::Node A = add(new Molecule());
 	ListDigraph::Node B = add(new Molecule());
@@ -122,22 +127,31 @@ void DerivGraph::test(){
 	(*interactions)[BC]->setRate(.07);
 	(*interactions)[CB]->setRate(.09);
 */
+
+	count = 1;
 	ListDigraph::Node A = add(new DNA());
+	(*molecules)[A]->setID(count++);
 	ListDigraph::Node B = add(new mRNA());
+	(*molecules)[B]->setID((*molecules)[A]->getID());
 	ListDigraph::Node C = add(new Protein());
-	ListDigraph::Node D = add(new Null());
+	(*molecules)[C]->setID((*molecules)[B]->getID());
+	ListDigraph::Node D = add(new NullNode());
+	(*molecules)[D]->setID(0);
 
 	ListDigraph::Node E = add(new DNA());
+	(*molecules)[E]->setID(count++);
 	ListDigraph::Node F = add(new mRNA());
+	(*molecules)[F]->setID((*molecules)[E]->getID());
 	ListDigraph::Node G = add(new Protein());
+	(*molecules)[G]->setID((*molecules)[F]->getID());
 
 	(*molecules)[A]->setValue(1);
 	(*molecules)[B]->setValue(10);
-	(*molecules)[C]->setValue(15);
+	(*molecules)[C]->setValue(5);
 
 	(*molecules)[E]->setValue(1);
 	(*molecules)[F]->setValue(10);
-	(*molecules)[G]->setValue(15);
+	(*molecules)[G]->setValue(5);
 
 
 
@@ -164,6 +178,8 @@ void DerivGraph::test(){
 
 	ListDigraph::Node CG = add(new Complex(derivs->id(C), derivs->id(G)));
 	(*molecules)[CG]->setValue(5);
+	
+	(*molecules)[CG]->setID(count++);
 
 	ListDigraph::Arc CGf1 = add(new ForwardComplexation(derivs->id(C), derivs->id(G)), C, CG);
 	ListDigraph::Arc CGf2 = add(new ForwardComplexation(derivs->id(C), derivs->id(G)), G, CG);
@@ -179,10 +195,10 @@ void DerivGraph::test(){
 
 	(*interactions)[CGdeg]->setRate(.04);
 
-
-	float rkStep = 1.0;
+//	float rkStep = 1.0;
   
-	rungeKuttaEvaluate(rkStep); 
+//	rungeKuttaEvaluate(rkStep); 
+
 }
 
 /**
@@ -273,8 +289,9 @@ ListDigraph::Node DerivGraph::add(Molecule * newMolecule){
 	(*molecules)[newNode] = newMolecule;
 
 	(*molecules)[newNode]->nodeID = derivs->id(newNode);
-	
-	newMolecule->setID(count++);
+
+	t.trace("typeid","Adding molecule of typeid %s\n",typeid(*newMolecule).name());
+//	newMolecule->setID(count++);
 
 	//return the newly created Node
 	return newNode;
@@ -307,23 +324,32 @@ ListDigraph::Arc DerivGraph::add(Interaction * newInteraction, ListDigraph::Node
 	return newArc;
 }
 
-ListDigraph* DerivGraph::getListDigraph(){
-	return derivs;
+void DerivGraph::newBasic(){
+	
+	//create a new DNA, MRNA, and Protein
+	ListDigraph::Node d = add(new DNA());
+	ListDigraph::Node m = add(new mRNA());
+	ListDigraph::Node p = add(new Protein());
+
+	//give the DNA the next unique ID, and assign the same ID to the rest of the system
+	(*molecules)[d]->setID(count++);
+	(*molecules)[m]->setID((*molecules)[d]->getID());
+	(*molecules)[p]->setID((*molecules)[d]->getID());
+
+	//create the interactions between the newly created basic system
+	ListDigraph::Arc txn = add(new Transcription(), d, m);
+	ListDigraph::Arc tsln = add(new Translation(), m, p);
+	ListDigraph::Arc mdeg = add(new Degradation(), m, nullnode);
+	ListDigraph::Arc pdeg = add(new Degradation(), p, nullnode);
+
 }
 
-ListDigraph::NodeMap<Molecule*>* DerivGraph::getNodeMap(){
-	return molecules;
-}
-
-ListDigraph::ArcMap<Interaction*>* DerivGraph::getArcMap(){
-	return interactions;
-}
 
 void DerivGraph::outputDotImage(int cellNum, int gen){
 if(0)
 return;
 	char buf[200];
-	sprintf(buf, "circo -Tpng -oCell%dGen%d.png",cellNum, gen);
+	sprintf(buf, "neato -Gsize=\"6,6\" -Tpng -oCell%dGen%d.png",cellNum, gen);
 	FILE* dot = popen(buf,"w");
 	
 	fprintf(dot,"digraph mol_interactions {\n");
@@ -338,10 +364,17 @@ return;
 	fprintf(dot,"node [shape = circle];\n");
 	fflush(dot);
 
+	fprintf(dot,"edge [len =2 ] ;\n");
+	fflush(dot);
+
 	for(ListDigraph::ArcIt it(*derivs); it != INVALID; ++it){
 		fprintf(dot, "%s -> %s [ label = \"%s\" ];\n",(*molecules)[derivs->source(it)]->getShortName(), (*molecules)[derivs->target(it)]->getShortName(), (*interactions)[it]->getName());
 		fflush(dot);
 }	
+
+	fprintf(dot, "overlap=scale\n");
+	fflush(dot);
+
 	fprintf(dot,"}\n");
 	fflush(dot);
 

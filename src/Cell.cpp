@@ -31,7 +31,7 @@ Cell::Cell(){
    
     CellID = CellCounter++;
 
-    equations->test();
+  //  equations->test();
 
     t.trace("init", "New Cell created\n");
 

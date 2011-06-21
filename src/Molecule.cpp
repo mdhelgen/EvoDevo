@@ -140,6 +140,10 @@ void Molecule::setID(int i){
 
 	moleculeID = i;
 }
+
+int Molecule::getID(){
+	return moleculeID;
+}
 void Molecule::reset(){
 	
 	rungeKuttaSolution.erase(rungeKuttaSolution.begin(), rungeKuttaSolution.end());

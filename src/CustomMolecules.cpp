@@ -53,12 +53,12 @@ float DNA::getValue(){
 
 }
 
-Null::Null(){
-	longName = "NullNode";
+NullNode::NullNode(){
+	longName = "NullNodeNode";
 	shortName = "n";
 }
-Null::~Null(){}
-float Null::getValue(){
+NullNode::~NullNode(){}
+float NullNode::getValue(){
 	return 0;
 }
 
