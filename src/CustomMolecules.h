@@ -42,15 +42,14 @@ class Protein : public Molecule{
 public:
 	Protein();
 	~Protein();
-
 };
 
-class Complex : public Molecule{
+class Complex : public Protein{
 
 public:
 	Complex(int, int);
 	~Complex();
-
+	int getComponentId(int);
 private:
 
 	int id1;

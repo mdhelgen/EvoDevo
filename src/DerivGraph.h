@@ -43,7 +43,7 @@ public:
 	void reverseRateChange();
 	void degradationRateChange();
 	DNA* histoneMod();
-	
+	void newComplex();	
 
 private:
 

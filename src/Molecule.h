@@ -31,8 +31,8 @@ public:
 	void outputRK();
 	float getrkVal(int);
 	virtual float rkApprox(int, float);
-	char* getShortName();
-	char* getLongName();
+	virtual	char* getShortName();
+	virtual char* getLongName();
 	void setID(int);
 	int getID();
 	void reset();

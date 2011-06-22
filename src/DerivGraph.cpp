@@ -470,7 +470,7 @@ void DerivGraph::forwardRateChange(){
 
 	Interaction* selectedInteraction;
 
-	int selectedIndex = r.randInt(totalSize - 1);
+	unsigned int selectedIndex = r.randInt(totalSize - 1);
 	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
 	
 	if(selectedIndex < TranslationList->size())
@@ -512,7 +512,7 @@ void DerivGraph::reverseRateChange(){
 
 	Interaction* selectedInteraction;
 
-	int selectedIndex = r.randInt(totalSize - 1);
+	unsigned int selectedIndex = r.randInt(totalSize - 1);
 	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
 	
 	if(selectedIndex < ReverseComplexationList->size())
@@ -568,6 +568,99 @@ DNA* DerivGraph::histoneMod(){
 	return (*DNAList)[selectedIndex];
 }
 
+void DerivGraph::newComplex(){
+
+	unsigned int i1 = -1;
+	unsigned int i2 = -1;
+	Protein* p1;
+	Protein* p2;
+	int totalSize = 0;
+	totalSize += ProteinList->size();
+	totalSize += ComplexList->size();
+
+	if(totalSize < 2)
+	{
+		t.trace("mutate","New Complex failed. Not enough proteins\n");
+		return;
+	}
+	while(i1 == i2)
+	{
+		i1 = r.randInt(totalSize-1);
+		i2 = r.randInt(totalSize-1);
+
+	}
+
+	t.trace("mutate","Complex: %d - %d (%d + %d)\n",i1,i2,ProteinList->size(), ComplexList->size());
+
+
+	if(i1 < ProteinList->size())
+	{
+		t.trace("mutate","ProteinList[%d]\n", i1);
+		p1 = (*ProteinList)[i1];
+	}
+	else if(i1 >= ProteinList->size())
+	{
+		i1 -= ProteinList->size();
+		t.trace("mutate","ComplexList[%d]\n",i1);
+		p1 = (*ComplexList)[i1];
+
+	}
+	
+	if(i2 < ProteinList->size())
+	{
+		t.trace("mutate","ProteinList[%d]\n", i2);
+		p2 = (*ProteinList)[i2];
+	}
+	else if(i2 >= ProteinList->size())
+	{
+		i2 -= ProteinList->size();
+		t.trace("mutate","ComplexList[%d]\n",i2);
+		p2 = (*ComplexList)[i2];
+
+	}
+	
+	int id1 = p1->nodeID;
+	int id2 = p2->nodeID;
+	ListDigraph::Node n1 = derivs->nodeFromId(id1);
+	ListDigraph::Node n2 = derivs->nodeFromId(id2);
+
+
+	int a = 0;
+	int b = 0;
+	for(unsigned int c = 0; c < ComplexList->size(); c++)
+	{
+		a = (*ComplexList)[c]->getComponentId(1);
+		b = (*ComplexList)[c]->getComponentId(2);
+		if( (a == id1 && b == id2) || (a == id2 && b == id1))
+		{
+			t.trace("mutate","New Complex failed. Already Exists\n");
+			return;
+		}
+	}
+
+
+	ListDigraph::Node comp = add(new Complex(id1, id2));
+	(*molecules)[comp]->setID(count++);
+
+	ListDigraph::Arc f1 = add(new ForwardComplexation(id1, id2), n1, comp); 
+	ListDigraph::Arc f2 = add(new ForwardComplexation(id1, id2), n2, comp); 
+	ListDigraph::Arc r1 = add(new ReverseComplexation(id1, id2), comp, n1); 
+	ListDigraph::Arc r2 = add(new ReverseComplexation(id1, id2), comp, n2); 
+	ListDigraph::Arc deg = add(new Degradation(), comp, nullnode);	
+
+	ComplexList->push_back( (Complex*) (*molecules)[comp]);
+	
+	ForwardComplexationList->push_back( (ForwardComplexation*) (*interactions)[f1]);
+	ForwardComplexationList->push_back( (ForwardComplexation*) (*interactions)[f2]);
+	ReverseComplexationList->push_back( (ReverseComplexation*) (*interactions)[r1]);
+	ReverseComplexationList->push_back( (ReverseComplexation*) (*interactions)[r2]);
+	DegradationList->push_back( (Degradation*) (*interactions)[f1]);
+
+	t.trace("mutate","New complex created\n");
+
+
+}
+
 /**
  * void DerivGraph::outputDotImage(int, int)
  *
@@ -584,7 +677,7 @@ DNA* DerivGraph::histoneMod(){
 void DerivGraph::outputDotImage(int cellNum, int gen){
 	
 	char buf[200];
-	sprintf(buf, "neato -Gsize=\"6,6\" -Tpng -oCell%dGen%d.png",cellNum, gen);
+	sprintf(buf, "dot -Gsize=\"6,6\" -Tpng -oCell%dGen%d.png",cellNum, gen);
 
 	//popen forks and execs and returns a pipe to the new process stdin
 	FILE* dot = popen(buf,"w");

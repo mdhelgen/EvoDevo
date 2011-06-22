@@ -56,6 +56,7 @@ Cell::~Cell(){
 
 int Cell::mutate(){
 	currentGen++;
+
 	double mutationCategory = r.rand(1);
 	double mutationType = r.rand(1);
 	if(mutationCategory < .4)
@@ -99,6 +100,7 @@ int Cell::mutate(){
 		if(mutationType < .33)
 		{
 			t.trace("mutate","Mutation Type: New Protein-Protein Complex\n");	
+			equations->newComplex();
 		}//end new complex
 		else if(mutationType < .67)
 		{

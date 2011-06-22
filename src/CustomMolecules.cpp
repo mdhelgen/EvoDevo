@@ -90,6 +90,7 @@ Protein::Protein(){
 	t.trace("init","Molecule %u type:Protein\n", (unsigned int) this);	
 	longName = "Protein";
 	shortName = "p";
+
 }
 Protein::~Protein(){}
 
@@ -105,6 +106,16 @@ Complex::Complex(int n1, int n2){
 	id2 = n2;
 }
 Complex::~Complex(){
+
+}
+
+
+int Complex::getComponentId(int i){
+	if (i==1)
+		return id1;
+	if (i==2)
+		return id2;
+	return 0;
 
 }
 
