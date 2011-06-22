@@ -19,7 +19,7 @@ Interaction::Interaction(){
 	t.trace("init","Creating new Interaction\n");
 	t.trace("mloc","Interaction at location %d\n", this);
         name = "default";	
-	rate = 5.0;
+	rate = .05;
 	
 	t.trace("init","New Interaction created\n");
 }

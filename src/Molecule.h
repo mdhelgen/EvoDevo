@@ -10,6 +10,7 @@
 
 #include <cstdio>
 #include <vector>
+#include <typeinfo>
 #include <cstring>
 
 
@@ -29,7 +30,7 @@ public:
 	void setValue(float);
 	void outputRK();
 	float getrkVal(int);
-	float rkApprox(int, float);
+	virtual float rkApprox(int, float);
 	char* getShortName();
 	char* getLongName();
 	void setID(int);

@@ -69,7 +69,6 @@ Translation::Translation(){
 	t.trace("cust","Custom Interaction type Translation\n");
 	t.trace("mloc","Interaction at location %u\n", (unsigned int)this);
 	
-	rate = 3.0;
 	name="tsln";	
 
 	t.trace("init","New Interaction created\n");
@@ -82,7 +81,6 @@ ForwardComplexation::ForwardComplexation(int n1, int n2){
 	t.trace("cust","Custom Interaction type Complexation\n");
 	t.trace("mloc","Interaction at location %u\n", (unsigned int) this);
 
-	rate = 3.0;
 	name="f_cmplx";
 
 	firstNodeID = n1;
@@ -123,7 +121,6 @@ ReverseComplexation::ReverseComplexation(int n1, int n2){
 	t.trace("cust","Custom Interaction type Complexation\n");
 	t.trace("mloc","Interaction at location %u\n", (unsigned int) this);
 
-	rate = 3.0;
 	name="r_cmplx";
 
 	firstNodeID = n1;
@@ -166,7 +163,6 @@ Test::Test(){
 	t.trace("cust","Custom Interaction type Test\n");
 	t.trace("mloc","Interaction at location %u\n", (unsigned int)this);
 	
-	rate = 3.0;
 	name="test";	
 	t.trace("init","New Interaction created\n");
 }

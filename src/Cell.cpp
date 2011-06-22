@@ -94,13 +94,14 @@ int Cell::mutate(){
 		
 		if(mutationType < .33)
 		{
-
 			t.trace("mutate","Mutation Type: New Protein-Protein Complex\n");	
 		}//end new complex
 		else if(mutationType < .67)
 		{
-		
+			equations->newBasic();
+
 			t.trace("mutate","Mutation Type: New Basic Protein\n");	
+				
 		}//end new basic
 		else
 		{

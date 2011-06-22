@@ -15,6 +15,7 @@ Molecule::Molecule(){
 
 	//set default concentration
 	currentConcentration = 4;
+	initialConcentration = 4;
 
 	longName = "Molecule";
 	shortName = "a";

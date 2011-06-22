@@ -13,7 +13,7 @@ public:
 	~DNA();
 	
 	float getValue();
-
+	float rkApprox(int, float);
 
 private:
 	float kf;

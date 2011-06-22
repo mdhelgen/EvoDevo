@@ -51,6 +51,22 @@ DerivGraph::DerivGraph(){
     //map interactions onto the arcs
     interactions = new ListDigraph::ArcMap<Interaction*>(*derivs);
     t.trace("mloc","DerivGraph %u ArcMap location at %u\n", (unsigned int) this, (unsigned int) interactions);
+   
+    MoleculeList = new vector<Molecule*>();
+    t.trace("mloc","DerivGraph %u MoleculeList vector at %u\n", (unsigned int) this, (unsigned int) MoleculeList);
+    
+    ProteinList = new vector<Protein*>();
+    t.trace("mloc","DerivGraph %u ProteinList vector at %u\n", (unsigned int) this, (unsigned int) ProteinList);
+    
+    mRNAList = new vector<mRNA*>();
+    t.trace("mloc","DerivGraph %u mRNAList vector at %u\n", (unsigned int) this, (unsigned int) mRNAList);
+    
+    DNAList = new vector<DNA*>();
+    t.trace("mloc","DerivGraph %u DNAList vector at %u\n", (unsigned int) this, (unsigned int) DNAList);
+    
+    ComplexList = new vector<Complex*>();
+    t.trace("mloc","DerivGraph %u ComplexList vector at %u\n", (unsigned int) this, (unsigned int) ComplexList);
+
     
     t.trace("init","New DerivGraph created\n");
 
@@ -59,7 +75,12 @@ DerivGraph::DerivGraph(){
     nullnode = add(new NullNode());
     (*molecules)[nullnode]->setID(count++);
 
+
+/** Test code **/
     newBasic();
+    newBasic();
+    newBasic();
+//	test();
 }
 
 /**
@@ -75,6 +96,13 @@ DerivGraph::DerivGraph(){
  * 	1 ListDigraph object
  */
 DerivGraph::~DerivGraph(){
+
+
+   delete ProteinList;
+   delete mRNAList;
+   delete DNAList;
+   delete ComplexList;
+   delete MoleculeList;
 
    //delete all Molecule objects mapped by Nodes
    t.trace("free","Deleting members of NodeMap at location %u\n",(unsigned int) molecules);
@@ -107,11 +135,14 @@ DerivGraph::~DerivGraph(){
 }
 
 void DerivGraph::test(){
-return;
-/*
+	
+	
 	ListDigraph::Node A = add(new Molecule());
 	ListDigraph::Node B = add(new Molecule());
 	ListDigraph::Node C = add(new Molecule());
+	(*molecules)[A]->setID(count++);
+	(*molecules)[B]->setID((*molecules)[A]->getID());
+	(*molecules)[C]->setID((*molecules)[A]->getID());
 
 	(*molecules)[A]->setValue(2);
 	(*molecules)[B]->setValue(4);
@@ -126,8 +157,9 @@ return;
 	(*interactions)[AC]->setRate(.03);
 	(*interactions)[BC]->setRate(.07);
 	(*interactions)[CB]->setRate(.09);
-*/
 
+return;
+/*
 	count = 1;
 	ListDigraph::Node A = add(new DNA());
 	(*molecules)[A]->setID(count++);
@@ -198,7 +230,7 @@ return;
 //	float rkStep = 1.0;
   
 //	rungeKuttaEvaluate(rkStep); 
-
+*/
 }
 
 /**
@@ -290,9 +322,7 @@ ListDigraph::Node DerivGraph::add(Molecule * newMolecule){
 
 	(*molecules)[newNode]->nodeID = derivs->id(newNode);
 
-	t.trace("typeid","Adding molecule of typeid %s\n",typeid(*newMolecule).name());
-//	newMolecule->setID(count++);
-
+	
 	//return the newly created Node
 	return newNode;
 }
@@ -325,11 +355,22 @@ ListDigraph::Arc DerivGraph::add(Interaction * newInteraction, ListDigraph::Node
 }
 
 void DerivGraph::newBasic(){
-	
+
+	t.trace("mutate","DerivGraph %u, new Basic Protein\n",(unsigned int)this);
+
 	//create a new DNA, MRNA, and Protein
 	ListDigraph::Node d = add(new DNA());
 	ListDigraph::Node m = add(new mRNA());
 	ListDigraph::Node p = add(new Protein());
+
+	//add references to the appropriate lists
+	DNAList->push_back((DNA*)(*molecules)[d]);
+	mRNAList->push_back((mRNA*)(*molecules)[m]);
+	ProteinList->push_back((Protein*)(*molecules)[p]);
+	
+	t.trace("mutate","DNAList.size() = %d\n", DNAList->size());
+	t.trace("mutate","mRNAList.size() = %d\n", mRNAList->size());
+	t.trace("mutate","ProteinList.size() = %d\n", ProteinList->size());
 
 	//give the DNA the next unique ID, and assign the same ID to the rest of the system
 	(*molecules)[d]->setID(count++);
@@ -346,8 +387,6 @@ void DerivGraph::newBasic(){
 
 
 void DerivGraph::outputDotImage(int cellNum, int gen){
-if(0)
-return;
 	char buf[200];
 	sprintf(buf, "neato -Gsize=\"6,6\" -Tpng -oCell%dGen%d.png",cellNum, gen);
 	FILE* dot = popen(buf,"w");
@@ -379,8 +418,5 @@ return;
 	fflush(dot);
 
 	pclose(dot);
-
-
-
 
 }

@@ -7,7 +7,7 @@
  *
  */
 #include "CustomMolecules.h"
-
+#include "ExternTrace.h"
 /**
  * DNA::DNA()
  *
@@ -20,7 +20,7 @@
 DNA::DNA(){
 
 	Molecule::Molecule();
-	
+	t.trace("init","Molecule %u type:DNA\n", (unsigned int) this);	
 	kf = 0;
 	kr = .35;
 	hill = 2;
@@ -53,8 +53,16 @@ float DNA::getValue(){
 
 }
 
+float DNA::rkApprox(int rkstep, float step)
+{
+	return DNA::getValue();
+}
+
 NullNode::NullNode(){
-	longName = "NullNodeNode";
+	Molecule::Molecule();
+	
+	t.trace("init","Molecule %u type:NulNode\n", (unsigned int) this);	
+	longName = "NullNode";
 	shortName = "n";
 }
 NullNode::~NullNode(){}
@@ -63,6 +71,8 @@ float NullNode::getValue(){
 }
 
 mRNA::mRNA(){
+	Molecule::Molecule();
+	t.trace("init","Molecule %u type:mRNA\n", (unsigned int) this);	
 	longName = "mRNA";
 	shortName = "m";
 }
@@ -70,12 +80,18 @@ mRNA::~mRNA(){
 }
 
 Protein::Protein(){
+	Molecule::Molecule();
+	t.trace("init","Molecule %u type:Protein\n", (unsigned int) this);	
 	longName = "Protein";
 	shortName = "p";
 }
 Protein::~Protein(){}
 
 Complex::Complex(int n1, int n2){
+	
+	Molecule::Molecule();
+	t.trace("init","Molecule %u type:Complex\n", (unsigned int) this);	
+	
 	longName="Complex";
 	shortName="c";
 	id1 = n1;

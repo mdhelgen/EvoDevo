@@ -10,6 +10,7 @@
 #include <sys/types.h>
 #include <typeinfo>
 
+
 #include "Molecule.h"
 #include "Interaction.h"
 
@@ -18,13 +19,6 @@
 
 using namespace std;
 using namespace lemon;
-
-//class Molecule;
-//class DNA;
-
-//class Interaction;
-//class Transcription;
-//class Degradation;
 
 class DerivGraph{
 
@@ -44,20 +38,30 @@ public:
 
 
 private:
+	
+	//graph structure
 	ListDigraph* derivs;
 	ListDigraph::NodeMap<Molecule*>* molecules;
 	ListDigraph::ArcMap<Interaction*>* interactions;
 
+	vector<Molecule*>* MoleculeList;
+	vector<Protein*>* ProteinList;
+	vector<mRNA*>* mRNAList;
+	vector<DNA*>* DNAList;
+	vector<Complex*>* ComplexList;
+
+
+	//null node
 	ListDigraph::Node nullnode;
 
+
+	//helper method
 	float getEffect(ListDigraph::Node, ListDigraph::Arc, int, float);
+	//utility method
 	ListDigraph::Node add(Molecule*);
 	ListDigraph::Arc add(Interaction*, ListDigraph::Node, ListDigraph::Node);
 	int count;
 };
-
-
-
 
 
 #endif
