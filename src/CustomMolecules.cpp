@@ -22,8 +22,7 @@ DNA::DNA(){
 	t.trace("init","\n");
 	Molecule::Molecule();
 	t.trace("init","Molecule %u type:DNA\n", (unsigned int) this);	
-	kf = 0;
-	kr = .35;
+	promoterId = -1;
 	hill = 2;
 	histoneModValue = 1;
 
@@ -51,8 +50,15 @@ DNA::~DNA(){
  */
 float DNA::getValue(){
 
-	return histoneModValue * (1/(1+pow(kf/kr,hill)));
 
+	
+	return histoneModValue;
+	/*
+	if(kf == -1 && kr == -1)
+		return histoneModValue * 1.0;
+	
+	return histoneModValue * (1/(1+pow(kf/kr,hill)));
+*/
 }
 float DNA::rkApprox(int rkstep, float step)
 {

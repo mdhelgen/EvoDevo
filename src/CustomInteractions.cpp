@@ -30,11 +30,21 @@ float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* 
 	Molecule* thisMol = (*m)[a];
 	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
 
+	
+
 	if(g->source(g->arcFromId(arcID)) == a)
 		return 0;
 	else
-		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
-
+	{
+		int prom_id = ((DNA*)oppositeMol)->promoterId;
+		if(prom_id == -1)
+			return oppositeMol->rkApprox(rkIter, rkStep) * rate;
+		PromoterBind* pb = (PromoterBind*)(*i)[g->arcFromId(prom_id)];
+		float f = pb->kf;
+		float r = pb->kr;
+		int h = ((DNA*)oppositeMol)->hill;
+		return (1/(1+pow(f/r,h))) * oppositeMol->rkApprox(rkIter, rkStep) * rate;
+	}
 }
 
 Degradation::Degradation(){
@@ -215,3 +225,27 @@ float Test::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDi
 
 }
 
+PromoterBind::PromoterBind(float fwdRate, float revRate){
+	name="pro";
+	kf = fwdRate;
+	kr = revRate;
+}
+PromoterBind::~PromoterBind(){}
+
+
+float PromoterBind::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
+	
+	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
+	t.trace("efct","Interaction Rate: %f\n", rate);
+	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
+	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue());
+
+	Molecule* thisMol = (*m)[a];
+	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
+
+	if(g->source(g->arcFromId(arcID)) == a)
+		return -1 * oppositeMol->rkApprox(rkIter, rkStep) * (kf-kr);
+	else
+		return 0;
+
+}

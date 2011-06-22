@@ -109,6 +109,8 @@ DerivGraph::DerivGraph(){
     ReversePTMList = new vector<ReversePTM*>();
     t.trace("mloc","DerivGraph %u ReversePTMList vector at %u\n", (unsigned int) this, (unsigned int) ReversePTMList);
 
+    PromoterBindList = new vector<PromoterBind*>();
+    t.trace("mloc","DerivGraph %u PromoterBindList vector at %u\n", (unsigned int) this, (unsigned int) PromoterBindList);
 
 
     t.trace("init","New DerivGraph created\n");
@@ -156,6 +158,7 @@ DerivGraph::~DerivGraph(){
    delete ReverseComplexationList;
    delete ForwardPTMList;
    delete ReversePTMList;
+   delete PromoterBindList;
 
 
    //delete all Molecule objects mapped by Nodes
@@ -658,6 +661,40 @@ void DerivGraph::newComplex(){
 
 	t.trace("mutate","New complex created\n");
 
+
+}
+
+void DerivGraph::newPromoter(){
+
+	int selectionIndex = r.randInt(DNAList->size() -1);
+	if( (*DNAList)[selectionIndex]->promoterId >= 0)
+	{
+		t.trace("mutate","New Promoter Failed: already taken\n");
+		return;
+	}
+	DNA* d = (*DNAList)[selectionIndex];
+
+	
+	int selectionIndex2 = r.randInt(ProteinList->size() -1);
+	Protein* p = (*ProteinList)[selectionIndex2];
+	
+	ListDigraph::Node nd = derivs->nodeFromId(d->nodeID);
+	ListDigraph::Node np = derivs->nodeFromId(p->nodeID);
+	
+	float fwd = 0;
+	float rev = 1;
+	while(rev > fwd)
+	{
+		fwd = min_rate + r.rand(max_rate - min_rate);
+		rev = min_rate + r.rand(max_rate - min_rate);
+	}
+	t.trace("mutate","gene: %s protein: %s kf: %f kr: %f\n",d->getShortName(),p->getShortName(), fwd, rev);
+
+	ListDigraph::Arc a = add(new PromoterBind(fwd, rev), np, nd);
+	d->promoterId = derivs->id(a);
+
+	PromoterBindList->push_back( (PromoterBind*) (*interactions)[a]);
+	
 
 }
 

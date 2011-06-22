@@ -85,6 +85,16 @@ public:
 
 };
 
+class PromoterBind : public Interaction{
+public:
+	PromoterBind(float, float);
+	~PromoterBind();
+	float kf;
+	float kr;
+	
+	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
+};
+
 
 
 #endif

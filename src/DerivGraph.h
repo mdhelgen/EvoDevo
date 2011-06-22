@@ -44,7 +44,7 @@ public:
 	void degradationRateChange();
 	DNA* histoneMod();
 	void newComplex();	
-
+	void newPromoter();
 private:
 
 	float max_rate;
@@ -71,6 +71,7 @@ private:
 	vector<ReverseComplexation*>* ReverseComplexationList;
 	vector<ForwardPTM*>* ForwardPTMList;
 	vector<ReversePTM*>* ReversePTMList;
+	vector<PromoterBind*>* PromoterBindList;
 
 	//null node
 	ListDigraph::Node nullnode;

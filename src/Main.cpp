@@ -35,7 +35,7 @@ int main(int argc, char** argv){
   t.addTraceType("free",1);
 
   //calculated effect of interactions
-  t.addTraceType("efct",1);
+  t.addTraceType("efct",0);
 
   //runge kutta
   t.addTraceType("rk-4",1);

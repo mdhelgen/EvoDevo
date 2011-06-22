@@ -56,7 +56,6 @@ Cell::~Cell(){
 
 int Cell::mutate(){
 	currentGen++;
-
 	double mutationCategory = r.rand(1);
 	double mutationType = r.rand(1);
 	if(mutationCategory < .4)
@@ -110,8 +109,8 @@ int Cell::mutate(){
 		}//end new basic
 		else
 		{
-
 			t.trace("mutate","Mutation Type: New Protein-Promoter Interaction\n");
+			equations->newPromoter();
 		}//end new promoter
 
 	}//end large category
