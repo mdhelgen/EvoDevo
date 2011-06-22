@@ -43,8 +43,11 @@ public:
 	map<const char*, int, cmp_str> traceTypes;
 
 	void addTraceType(const char*, int);
+	#ifdef NOTRACING 
+	inline void trace(const char*, const char*, ...){0;}
+	#else
 	void trace(const char*, const char*, ...);
-
+	#endif
 	FILE* getTraceFile();
 	FILE* setTraceFile(FILE*);
 

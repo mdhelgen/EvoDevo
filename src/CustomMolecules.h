@@ -14,12 +14,12 @@ public:
 	
 	float getValue();
 	float rkApprox(int, float);
-
+	void setHistoneModValue(float);
 private:
 	float kf;
 	float kr;
 	int hill;
-
+	float histoneModValue;
 };
 
 class NullNode : public Molecule{

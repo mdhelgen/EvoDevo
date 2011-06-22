@@ -91,6 +91,10 @@ float Interaction::setRate(float f){
 
 }
 
+float Interaction::getRate(){
+	return rate;
+}
+
 const char* Interaction::getName(){
 
 	return name;

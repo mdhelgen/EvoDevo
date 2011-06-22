@@ -9,7 +9,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <typeinfo>
-
+#include "MersenneTwister.h"
 
 #include "Molecule.h"
 #include "Interaction.h"
@@ -28,32 +28,50 @@ public:
 	
 	void test();
 	void rungeKuttaEvaluate(float);
+	void outputDotImage(int, int);
+
+	MTRand r;
+
+	//deprecated?
 	ListDigraph* getListDigraph();
 	ListDigraph::NodeMap<Molecule*>* getNodeMap();
 	ListDigraph::ArcMap<Interaction*>* getArcMap();
-	void outputDotImage(int, int);
 	
 	//mutation methods
 	void newBasic();
-
+	void forwardRateChange();
+	void reverseRateChange();
+	void degradationRateChange();
+	DNA* histoneMod();
+	
 
 private:
-	
+
+	float max_rate;
+	float min_rate;
+
 	//graph structure
 	ListDigraph* derivs;
 	ListDigraph::NodeMap<Molecule*>* molecules;
 	ListDigraph::ArcMap<Interaction*>* interactions;
 
+	// molecule lists
 	vector<Molecule*>* MoleculeList;
 	vector<Protein*>* ProteinList;
 	vector<mRNA*>* mRNAList;
 	vector<DNA*>* DNAList;
 	vector<Complex*>* ComplexList;
 
+	// interaction lists
+	vector<Interaction*>* InteractionList;
+	vector<Transcription*>* TranscriptionList;
+	vector<Translation*>* TranslationList;
+	vector<Degradation*>* DegradationList;
+	vector<ForwardComplexation*>* ForwardComplexationList;
+	vector<ReverseComplexation*>* ReverseComplexationList;
 
 	//null node
 	ListDigraph::Node nullnode;
-
 
 	//helper method
 	float getEffect(ListDigraph::Node, ListDigraph::Arc, int, float);

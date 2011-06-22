@@ -46,7 +46,6 @@ int main(int argc, char** argv){
   //polymorphic comparisons
   t.addTraceType("typeid",1);
 
-  t.addTraceType("typlst",1);
 
   int numCells = 2;
   int numGenerations = 10;

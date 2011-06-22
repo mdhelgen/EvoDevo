@@ -65,10 +65,11 @@ int Cell::mutate(){
 		if(mutationType < .2)
 		{
 			t.trace("mutate","Mutation Type: Forward Rate Change\n");	
+			equations->forwardRateChange();
 		}//end fwd rate change
 		else if(mutationType < .4)
 		{
-
+			
 			t.trace("mutate","Mutation Type: Reverse Rate Change\n");	
 		}//end rev rate change
 		else if(mutationType < .6)
@@ -83,8 +84,8 @@ int Cell::mutate(){
 		}//end new ptm
 		else
 		{
-
 			t.trace("mutate","Mutation Type: Histone Modification\n");	
+			equations->histoneMod();
 		}//end histone mod
 
 	}//end small category
@@ -98,9 +99,8 @@ int Cell::mutate(){
 		}//end new complex
 		else if(mutationType < .67)
 		{
-			equations->newBasic();
-
 			t.trace("mutate","Mutation Type: New Basic Protein\n");	
+			equations->newBasic();
 				
 		}//end new basic
 		else
@@ -119,8 +119,12 @@ int Cell::mutate(){
 	}//end null mutation
 	
 	equations->rungeKuttaEvaluate(1.0);
-	equations->outputDotImage(CellID,currentGen );
+	//equations->outputDotImage(CellID,currentGen );
 	return -1;
 }
 
+void Cell::outputDotImage(){
+	printf("dot\n");
+	equations->outputDotImage(CellID, currentGen);
+}
 

@@ -74,6 +74,7 @@ void Trace::addTraceType(const char* tag, int enabled){
  * @param format string
  * @param ... variable arguments corresponding to format string
  */
+#ifndef NOTRACING
 void Trace::trace(const char* tag, const char* format, ...){
 
 	va_list args;
@@ -93,6 +94,7 @@ void Trace::trace(const char* tag, const char* format, ...){
 	va_end(args);
 
 }
+#endif
 
 /**
  * Trace::enableTraceType(const char*)

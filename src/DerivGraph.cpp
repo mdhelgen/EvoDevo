@@ -35,7 +35,8 @@ using namespace std;
  *     1 ListDigraph::ArcMap object
  */
 DerivGraph::DerivGraph(){
-    
+	max_rate = 1.0;
+	min_rate = .05;
     t.trace("init","Creating new DerivGraph\n");
     
     t.trace("mloc","DerivGraph location at %u\n",(unsigned int) this);
@@ -51,13 +52,30 @@ DerivGraph::DerivGraph(){
     //map interactions onto the arcs
     interactions = new ListDigraph::ArcMap<Interaction*>(*derivs);
     t.trace("mloc","DerivGraph %u ArcMap location at %u\n", (unsigned int) this, (unsigned int) interactions);
-   
+  
+  /*
+   * Set up the list vectors.
+   *
+   * These vectors hold references to molecules and of the same type, which are added manually in the DerivGraph mutation
+   * methods.
+   *
+   * The vector lists are convenient when trying to iterate a selected type or get a random member, and are more
+   * efficient than iterating the entire graph.
+   *
+   * These vectors must be deleted in the destructor. The member objects are all pointers to objects deleted elsewhere.
+   *
+   * NOTE: If a molecule is deleted from the derivgraph, references to that molecule should be removed from the vectors
+   */
+
+    //all molecules are added to this list
     MoleculeList = new vector<Molecule*>();
     t.trace("mloc","DerivGraph %u MoleculeList vector at %u\n", (unsigned int) this, (unsigned int) MoleculeList);
     
+    //basic proteins are added to this list
     ProteinList = new vector<Protein*>();
     t.trace("mloc","DerivGraph %u ProteinList vector at %u\n", (unsigned int) this, (unsigned int) ProteinList);
     
+    //mRNAs are added to this list
     mRNAList = new vector<mRNA*>();
     t.trace("mloc","DerivGraph %u mRNAList vector at %u\n", (unsigned int) this, (unsigned int) mRNAList);
     
@@ -67,7 +85,27 @@ DerivGraph::DerivGraph(){
     ComplexList = new vector<Complex*>();
     t.trace("mloc","DerivGraph %u ComplexList vector at %u\n", (unsigned int) this, (unsigned int) ComplexList);
 
+    InteractionList = new vector<Interaction*>();
+    t.trace("mloc","DerivGraph %u InteractionList vector at %u\n", (unsigned int) this, (unsigned int) InteractionList);
     
+    TranscriptionList = new vector<Transcription*>();
+    t.trace("mloc","DerivGraph %u TranscriptionList vector at %u\n", (unsigned int) this, (unsigned int) TranscriptionList);
+    
+    TranslationList = new vector<Translation*>();
+    t.trace("mloc","DerivGraph %u TranslationList vector at %u\n", (unsigned int) this, (unsigned int) TranslationList);
+    
+    DegradationList = new vector<Degradation*>();
+    t.trace("mloc","DerivGraph %u DegradationList vector at %u\n", (unsigned int) this, (unsigned int) DegradationList);
+    
+    ForwardComplexationList = new vector<ForwardComplexation*>();
+    t.trace("mloc","DerivGraph %u ForwardComplexationList vector at %u\n", (unsigned int) this, (unsigned int) ForwardComplexationList);
+    
+    ReverseComplexationList = new vector<ReverseComplexation*>();
+    t.trace("mloc","DerivGraph %u ReverseComplexationList vector at %u\n", (unsigned int) this, (unsigned int) ReverseComplexationList);
+
+
+
+
     t.trace("init","New DerivGraph created\n");
 
     count=0;
@@ -97,19 +135,31 @@ DerivGraph::DerivGraph(){
  */
 DerivGraph::~DerivGraph(){
 
-
+   //delete the various molecule lists
    delete ProteinList;
    delete mRNAList;
    delete DNAList;
    delete ComplexList;
    delete MoleculeList;
 
+   //delete the various interaction lists
+   delete InteractionList;
+   delete TranscriptionList;
+   delete TranslationList;
+   delete DegradationList;
+   delete ForwardComplexationList;
+   delete ReverseComplexationList;
+
    //delete all Molecule objects mapped by Nodes
    t.trace("free","Deleting members of NodeMap at location %u\n",(unsigned int) molecules);
    for(ListDigraph::NodeIt it(*derivs); it !=INVALID; ++it){
+	
 	t.trace("free","Deleting NodeMap member at location %u\n",(unsigned int) (*molecules)[it]);
+	
+	//output some information about the molecule being deleted
 	t.trace("free","longnname: %s\n", (*molecules)[it]->getLongName());
 	t.trace("free","shortname: %s\n", (*molecules)[it]->getShortName());
+	
 	delete (*molecules)[it];
    }
   
@@ -120,7 +170,8 @@ DerivGraph::~DerivGraph(){
    //delete all Interaction objects mapped by Arcs
    t.trace("free","Deleting members of ArcMap at location %u\n", interactions);
    for(ListDigraph::ArcIt it(*derivs); it !=INVALID; ++it){
-   	t.trace("free","Deleting ArcMap member at location %d\n", (*interactions)[it]);
+   	
+	t.trace("free","Deleting ArcMap member at location %d\n", (*interactions)[it]);
 	delete (*interactions)[it];
    }
 
@@ -243,28 +294,31 @@ return;
  */
 void DerivGraph::rungeKuttaEvaluate(float rkStep){
 
-	for(ListDigraph::NodeIt it(*derivs); it != INVALID; ++it){
+	//reset the runge-kutta internal variables for all molecules
+	for(ListDigraph::NodeIt it(*derivs); it != INVALID; ++it)
 		(*molecules)[it]->reset();
-	}
+
 	
+
 	//time loop
 	for(int i = 0; i< 10; i++){
 			
-		//this loop runs each of the four runge-kutta iterations
+
+		//each iteration of this loop refines the approximation based on the previous calculations	
 		for(int k = 0; k<4; k++){
 			
-			//loop through arc in the graph
+			//for every interaction in the graph
 			for(ListDigraph::ArcIt it(*derivs); it != INVALID; ++it){
 				
-				//get the effect the interaction has on the source node, and update the rkval
+				//calculate the effect this interaction has on the source molecule
 				(*molecules)[derivs->source(it)]->updateRkVal(k, getEffect(derivs->source(it), it, k, rkStep));
-				//get the effect the interaction has on the target node, and update the rkval
+				//calculate the effect this interaction has on the target molecule
 				(*molecules)[derivs->target(it)]->updateRkVal(k, getEffect(derivs->target(it), it, k, rkStep));
 
 			}
 		}
 
-		//after the four rkVals are calcualted for all molecules, the next point can be calculated
+		//after the four rkVals are calcualted for all molecules, the next point can be computed
 		for(ListDigraph::NodeIt it(*derivs); it != INVALID; ++it){
 			(*molecules)[it]->nextPoint(rkStep);
 		}
@@ -281,24 +335,21 @@ void DerivGraph::rungeKuttaEvaluate(float rkStep){
  *
  * Get the effect that a particular interaction will have on another node.
  *
+ *
  * The effect of an Interaction is defined by the Interaction::getEffect method.
  * The result of this method will be a positive or negative change in concentration.
  *
  * @param m The Node containing the Molecule being affected
  * @param i The Arc containing the Interaction taking place
  * @param rkIteration The current iteration of the Runge-Kutta algorithm
+ * @param rkStep The timestep advanced by Runge-Kutta
  *
  * @return  the effect a particular Arc (Interaction) will have on a Node (Molecule)
  *
  */
 float DerivGraph::getEffect(ListDigraph::Node m, ListDigraph::Arc i, int rkIteration, float rkStep){
 
-	//get the Interaction for this arc
-	Interaction* a = (*interactions)[i];
-
-	//calculate the effect this Interaction will have on the Molecule in Node m
-	
-	//return a->getEffect(this, m, rkIteration, rkStep);
+	//get the effect the chosen interaction will have on the chosen molecule
 	return (*interactions)[i]->getEffect(derivs, molecules, interactions, m, rkIteration, rkStep);
 
 }
@@ -319,9 +370,10 @@ ListDigraph::Node DerivGraph::add(Molecule * newMolecule){
 	
 	//map the new Node to the Molecule 
 	(*molecules)[newNode] = newMolecule;
-
+	
+	//store the nodeid in the molecule
+	//this allow sthe molecule to find its position in the graph structure
 	(*molecules)[newNode]->nodeID = derivs->id(newNode);
-
 	
 	//return the newly created Node
 	return newNode;
@@ -346,8 +398,8 @@ ListDigraph::Arc DerivGraph::add(Interaction * newInteraction, ListDigraph::Node
 	//map the new Arc to the Interaction 
 	(*interactions)[newArc] = newInteraction;
 	
-	//store the arcID of the mapped Arc in the Interaction
-	//this gives the Interaction information about its position in the graph
+	//store the arcid in the interaction
+	//this allows the interaction to find its position in the graph structure
 	(*interactions)[newArc]->arcID = derivs->id(newArc);
 
 	//return the newly created Arc
@@ -363,39 +415,121 @@ void DerivGraph::newBasic(){
 	ListDigraph::Node m = add(new mRNA());
 	ListDigraph::Node p = add(new Protein());
 
-	//add references to the appropriate lists
-	DNAList->push_back((DNA*)(*molecules)[d]);
-	mRNAList->push_back((mRNA*)(*molecules)[m]);
-	ProteinList->push_back((Protein*)(*molecules)[p]);
-	
-	t.trace("mutate","DNAList.size() = %d\n", DNAList->size());
-	t.trace("mutate","mRNAList.size() = %d\n", mRNAList->size());
-	t.trace("mutate","ProteinList.size() = %d\n", ProteinList->size());
-
-	//give the DNA the next unique ID, and assign the same ID to the rest of the system
-	(*molecules)[d]->setID(count++);
-	(*molecules)[m]->setID((*molecules)[d]->getID());
-	(*molecules)[p]->setID((*molecules)[d]->getID());
-
 	//create the interactions between the newly created basic system
 	ListDigraph::Arc txn = add(new Transcription(), d, m);
 	ListDigraph::Arc tsln = add(new Translation(), m, p);
 	ListDigraph::Arc mdeg = add(new Degradation(), m, nullnode);
 	ListDigraph::Arc pdeg = add(new Degradation(), p, nullnode);
+	
+	
+	//give the DNA the next unique ID, and assign the same ID to the rest of the system
+	// ex. d5 -> m5 -> p5   instead of d5 -> m6 -> p7
+	(*molecules)[d]->setID(count++);
+	(*molecules)[m]->setID((*molecules)[d]->getID());
+	(*molecules)[p]->setID((*molecules)[d]->getID());
+
+
+	//add molecule references to the appropriate lists
+	DNAList->push_back( (DNA*) (*molecules)[d]);
+	mRNAList->push_back( (mRNA*) (*molecules)[m]);
+	ProteinList->push_back( (Protein*) (*molecules)[p]);
+
+	//add interaction references to the appropriate lists
+	TranscriptionList->push_back( (Transcription*) (*interactions)[txn]);
+	TranslationList->push_back( (Translation*) (*interactions)[tsln]);
+	DegradationList->push_back( (Degradation*) (*interactions)[mdeg]);
+	DegradationList->push_back( (Degradation*) (*interactions)[pdeg]);
+
+
+	//the listsizes help to easily verify objects were created and added
+	t.trace("mutate","DNAList.size() = %d\n", DNAList->size());
+	t.trace("mutate","mRNAList.size() = %d\n", mRNAList->size());
+	t.trace("mutate","ProteinList.size() = %d\n", ProteinList->size());
+
+	t.trace("mutate","TranscriptionList.size() = %d\n", TranscriptionList->size());
+	t.trace("mutate","TranslationList.size() = %d\n", TranslationList->size());
+	t.trace("mutate","DegradationList.size() = %d\n", DegradationList->size());
 
 }
 
+void DerivGraph::forwardRateChange(){
+	
+	int totalSize = 0;
+	totalSize += TranslationList->size();
+	totalSize += ForwardComplexationList->size();
+	t.trace("mutate","size = %d (%d + %d)\n", totalSize-1, TranslationList->size(), ForwardComplexationList->size());
 
+	Interaction* selectedInteraction;
+
+	int selectedIndex = r.randInt(totalSize - 1);
+	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
+	
+	if(selectedIndex < TranslationList->size())
+	{
+		t.trace("mutate","TranslationList[%d]\n", selectedIndex);
+		selectedInteraction = (*TranslationList)[selectedIndex];
+	}
+	else if(selectedIndex >= TranslationList->size())
+	{
+		selectedIndex -= TranslationList->size();
+		t.trace("mutate","ForwardComplexation[%d]\n",selectedIndex);
+		selectedInteraction = (*ForwardComplexationList)[selectedIndex];
+	}
+
+	ListDigraph::Arc selectedArc= derivs->arcFromId(selectedInteraction->arcID);
+
+	Molecule* source = (*molecules)[derivs->source(selectedArc)];
+	Molecule* target = (*molecules)[derivs->target(selectedArc)];
+	float newRate = min_rate + r.rand(max_rate - min_rate);
+	t.trace("mutate","%s -> %s new rate: %f (old rate: %f)\n",source->getShortName(), target->getShortName(), newRate, selectedInteraction->getRate());
+
+
+}
+
+void DerivGraph::reverseRateChange(){
+
+}
+
+void DerivGraph::degradationRateChange(){
+
+}
+
+DNA* DerivGraph::histoneMod(){
+
+	//choose a random index from the DNAList vector	
+	int selectedIndex = r.randInt(DNAList->size()-1);
+	//choose a new value for the histone mod [0,2]
+	float newHistoneModValue = r.rand(2.0);
+
+	//set the selected DNA's histone mod value to the new number
+	(*DNAList)[selectedIndex]->setHistoneModValue(newHistoneModValue);
+	t.trace("mutate","Histone Mod: DNAList[%d] -> %s. New Value = %f\n",selectedIndex, (*DNAList)[selectedIndex]->getShortName(), newHistoneModValue);
+	return (*DNAList)[selectedIndex];
+}
+
+/**
+ * void DerivGraph::outputDotImage(int, int)
+ *
+ * Output a png image of the current graph structure using GraphViz.
+ *
+ * A process running GraphViz is forked and a pipe opened to its standard in.
+ * The general layout of the output file can be changed below.
+ * The Node and Arc names are defined within the Molecule and Interaction classes.
+ *
+ * @param cellNum the cell number to put in the filename
+ * @param gen the generation number to put in the filename
+ *
+ */
 void DerivGraph::outputDotImage(int cellNum, int gen){
+	
 	char buf[200];
 	sprintf(buf, "neato -Gsize=\"6,6\" -Tpng -oCell%dGen%d.png",cellNum, gen);
+
+	//popen forks and execs and returns a pipe to the new process stdin
 	FILE* dot = popen(buf,"w");
 	
 	fprintf(dot,"digraph mol_interactions {\n");
 	fflush(dot);
-
-//	fprintf(dot,"rankdir = LR;\n");
-//	fflush(dot);
 
 	fprintf(dot,"size=\"8,5\"\n");
 	fflush(dot);
@@ -406,6 +540,7 @@ void DerivGraph::outputDotImage(int cellNum, int gen){
 	fprintf(dot,"edge [len =2 ] ;\n");
 	fflush(dot);
 
+	//iterate all of the Arcs and add them to the visualization. Nodes are implicitly defined by the source and target of the interactions.
 	for(ListDigraph::ArcIt it(*derivs); it != INVALID; ++it){
 		fprintf(dot, "%s -> %s [ label = \"%s\" ];\n",(*molecules)[derivs->source(it)]->getShortName(), (*molecules)[derivs->target(it)]->getShortName(), (*interactions)[it]->getName());
 		fflush(dot);
@@ -417,6 +552,7 @@ void DerivGraph::outputDotImage(int cellNum, int gen){
 	fprintf(dot,"}\n");
 	fflush(dot);
 
+	//close cleanly
 	pclose(dot);
 
 }

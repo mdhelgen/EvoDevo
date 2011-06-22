@@ -26,7 +26,7 @@ public:
 	const char* getName();
 
 	float setRate(float);
-
+	float getRate();
 	const char* name;
 	int arcID;
 		

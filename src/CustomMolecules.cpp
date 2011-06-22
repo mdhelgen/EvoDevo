@@ -19,11 +19,13 @@
  */
 DNA::DNA(){
 
+	t.trace("init","\n");
 	Molecule::Molecule();
 	t.trace("init","Molecule %u type:DNA\n", (unsigned int) this);	
 	kf = 0;
 	kr = .35;
 	hill = 2;
+	histoneModValue = 1;
 
 	longName = "DNA";
 	shortName = "d";
@@ -49,13 +51,15 @@ DNA::~DNA(){
  */
 float DNA::getValue(){
 
-	return (1/(1+pow(kf/kr,hill)));
+	return histoneModValue * (1/(1+pow(kf/kr,hill)));
 
 }
-
 float DNA::rkApprox(int rkstep, float step)
 {
 	return DNA::getValue();
+}
+void DNA::setHistoneModValue(float newVal){
+	histoneModValue = newVal;
 }
 
 NullNode::NullNode(){
@@ -71,6 +75,7 @@ float NullNode::getValue(){
 }
 
 mRNA::mRNA(){
+	t.trace("init","\n");
 	Molecule::Molecule();
 	t.trace("init","Molecule %u type:mRNA\n", (unsigned int) this);	
 	longName = "mRNA";
@@ -80,6 +85,7 @@ mRNA::~mRNA(){
 }
 
 Protein::Protein(){
+	t.trace("init","\n");
 	Molecule::Molecule();
 	t.trace("init","Molecule %u type:Protein\n", (unsigned int) this);	
 	longName = "Protein";
@@ -88,7 +94,8 @@ Protein::Protein(){
 Protein::~Protein(){}
 
 Complex::Complex(int n1, int n2){
-	
+
+	t.trace("init","\n");
 	Molecule::Molecule();
 	t.trace("init","Molecule %u type:Complex\n", (unsigned int) this);	
 	
