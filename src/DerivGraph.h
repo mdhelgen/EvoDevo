@@ -69,6 +69,8 @@ private:
 	vector<Degradation*>* DegradationList;
 	vector<ForwardComplexation*>* ForwardComplexationList;
 	vector<ReverseComplexation*>* ReverseComplexationList;
+	vector<ForwardPTM*>* ForwardPTMList;
+	vector<ReversePTM*>* ReversePTMList;
 
 	//null node
 	ListDigraph::Node nullnode;

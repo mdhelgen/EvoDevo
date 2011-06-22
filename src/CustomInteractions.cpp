@@ -17,7 +17,6 @@ Transcription::~Transcription(){
 
 }
 
-//float Transcription::getEffect(DerivGraph* d, ListDigraph::Node a, int rkIter, float rkStep){
 
 
 float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
@@ -43,11 +42,9 @@ Degradation::Degradation(){
 }
 Degradation::~Degradation(){}
 
-//float Degradation::getEffect(DerivGraph* d, ListDigraph::Node a, int rkIter, float rkStep){
 
 float Degradation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
-//	ListDigraph* g = d->getListDigraph();
-//	ListDigraph::NodeMap<Molecule*>* m = d->getNodeMap();
+	
 	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
 	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
@@ -75,6 +72,7 @@ Translation::Translation(){
 }
 
 Translation::~Translation(){}
+
 
 ForwardComplexation::ForwardComplexation(int n1, int n2){
 	t.trace("init","Creating new Interaction\n");
@@ -156,6 +154,30 @@ float ReverseComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 
 }
 
+ForwardPTM::ForwardPTM(){
+
+	t.trace("init","Creating new Interaction\n");
+	t.trace("cust","Custom Interaction type ForwardPTM\n");
+	t.trace("mloc","Interaction at location %u\n", (unsigned int)this);
+	
+	name="f_ptm";	
+
+	t.trace("init","New Interaction created\n");
+}
+
+ForwardPTM::~ForwardPTM(){}
+ReversePTM::ReversePTM(){
+
+	t.trace("init","Creating new Interaction\n");
+	t.trace("cust","Custom Interaction type ReversePTM\n");
+	t.trace("mloc","Interaction at location %u\n", (unsigned int)this);
+	
+	name="r_ptm";	
+
+	t.trace("init","New Interaction created\n");
+}
+
+ReversePTM::~ReversePTM(){}
 
 Test::Test(){
 

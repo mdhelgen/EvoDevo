@@ -72,7 +72,19 @@ public:
 	int secondNodeID;
 };
 
-class Deg : public Interaction{
+class ForwardPTM : public Interaction{
+public:
+	ForwardPTM();
+	~ForwardPTM();
+};
+
+class ReversePTM : public Interaction{
+public:
+	ReversePTM();
+	~ReversePTM();
 
 };
+
+
+
 #endif

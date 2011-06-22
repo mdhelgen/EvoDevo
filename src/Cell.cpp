@@ -66,16 +66,19 @@ int Cell::mutate(){
 		{
 			t.trace("mutate","Mutation Type: Forward Rate Change\n");	
 			equations->forwardRateChange();
+
 		}//end fwd rate change
 		else if(mutationType < .4)
 		{
-			
 			t.trace("mutate","Mutation Type: Reverse Rate Change\n");	
+			equations->reverseRateChange();
+
 		}//end rev rate change
 		else if(mutationType < .6)
 		{
-
 			t.trace("mutate","Mutation Type: Degradation Rate Change\n");	
+			equations->degradationRateChange();
+		
 		}//end deg rate change
 		else if(mutationType < .8)
 		{

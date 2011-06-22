@@ -103,6 +103,11 @@ DerivGraph::DerivGraph(){
     ReverseComplexationList = new vector<ReverseComplexation*>();
     t.trace("mloc","DerivGraph %u ReverseComplexationList vector at %u\n", (unsigned int) this, (unsigned int) ReverseComplexationList);
 
+    ForwardPTMList = new vector<ForwardPTM*>();
+    t.trace("mloc","DerivGraph %u ForwardPTMList vector at %u\n", (unsigned int) this, (unsigned int) ForwardPTMList);
+
+    ReversePTMList = new vector<ReversePTM*>();
+    t.trace("mloc","DerivGraph %u ReversePTMList vector at %u\n", (unsigned int) this, (unsigned int) ReversePTMList);
 
 
 
@@ -149,6 +154,9 @@ DerivGraph::~DerivGraph(){
    delete DegradationList;
    delete ForwardComplexationList;
    delete ReverseComplexationList;
+   delete ForwardPTMList;
+   delete ReversePTMList;
+
 
    //delete all Molecule objects mapped by Nodes
    t.trace("free","Deleting members of NodeMap at location %u\n",(unsigned int) molecules);
@@ -457,6 +465,7 @@ void DerivGraph::forwardRateChange(){
 	int totalSize = 0;
 	totalSize += TranslationList->size();
 	totalSize += ForwardComplexationList->size();
+	
 	t.trace("mutate","size = %d (%d + %d)\n", totalSize-1, TranslationList->size(), ForwardComplexationList->size());
 
 	Interaction* selectedInteraction;
@@ -483,14 +492,66 @@ void DerivGraph::forwardRateChange(){
 	float newRate = min_rate + r.rand(max_rate - min_rate);
 	t.trace("mutate","%s -> %s new rate: %f (old rate: %f)\n",source->getShortName(), target->getShortName(), newRate, selectedInteraction->getRate());
 
+	selectedInteraction->setRate(newRate);
 
 }
 
 void DerivGraph::reverseRateChange(){
 
+	int totalSize = 0;
+	totalSize += ReverseComplexationList->size();
+	totalSize += ReversePTMList->size();
+	
+	if(totalSize < 1)
+	{
+		t.trace("mutate","Reverse rate change failure: no reverse rates\n");
+		return;
+	}
+
+	t.trace("mutate","size = %d (%d + %d)\n", totalSize-1, ReverseComplexationList->size(), ReversePTMList->size());
+
+	Interaction* selectedInteraction;
+
+	int selectedIndex = r.randInt(totalSize - 1);
+	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
+	
+	if(selectedIndex < ReverseComplexationList->size())
+	{
+		t.trace("mutate","ReverseComplexationList[%d]\n", selectedIndex);
+		selectedInteraction = (*ReverseComplexationList)[selectedIndex];
+	}
+	else if(selectedIndex >= ReverseComplexationList->size())
+	{
+		selectedIndex -= ReverseComplexationList->size();
+		t.trace("mutate","ReversePTM[%d]\n",selectedIndex);
+		selectedInteraction = (*ReversePTMList)[selectedIndex];
+	}
+
+	ListDigraph::Arc selectedArc= derivs->arcFromId(selectedInteraction->arcID);
+
+	Molecule* source = (*molecules)[derivs->source(selectedArc)];
+	Molecule* target = (*molecules)[derivs->target(selectedArc)];
+	float newRate = min_rate + r.rand(max_rate - min_rate);
+	t.trace("mutate","%s -> %s new rate: %f (old rate: %f)\n",source->getShortName(), target->getShortName(), newRate, selectedInteraction->getRate());
+
+	selectedInteraction->setRate(newRate);
 }
 
 void DerivGraph::degradationRateChange(){
+	
+	int selectedIndex = r.randInt(DegradationList->size()-1);
+	float newRate = min_rate + r.rand(max_rate - min_rate);
+
+	Interaction* selectedInteraction = (*DegradationList)[selectedIndex];
+
+	ListDigraph::Arc selectedArc= derivs->arcFromId(selectedInteraction->arcID);
+
+	Molecule* source = (*molecules)[derivs->source(selectedArc)];
+	Molecule* target = (*molecules)[derivs->target(selectedArc)];
+
+
+	t.trace("mutate","%s -> %s new rate: %f (old rate: %f)\n",source->getShortName(), target->getShortName(), newRate, selectedInteraction->getRate());
+	selectedInteraction->setRate(newRate);
 
 }
 
