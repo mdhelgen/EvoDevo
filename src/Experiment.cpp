@@ -126,8 +126,10 @@ for(int i = 1; i <= maxGenerations; i++)
 	}
 }
 
-for(unsigned int c = 0; c < cells.size(); c++)
+for(unsigned int c = 0; c < cells.size(); c++){
 	cells[c]->outputDotImage();
+	cells[c]->outputDataPlot();
+}
 
 /*
 	ofstream output;

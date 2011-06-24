@@ -29,6 +29,7 @@ public:
 	void setValue(float);
 	void outputRK();
 	float getrkVal(int);
+	vector<float>* getRungeKuttaSolution();
 	virtual float rkApprox(int, float);
 	virtual	char* getShortName();
 	virtual char* getLongName();

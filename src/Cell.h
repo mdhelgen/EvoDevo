@@ -17,7 +17,7 @@ public:
 	~Cell();
 	int mutate();
 	void outputDotImage();
-
+	void outputDataPlot();
 private:
 	static int CellCounter;
 

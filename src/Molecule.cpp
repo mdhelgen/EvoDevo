@@ -169,6 +169,10 @@ void Molecule::reset(){
 	rkVal[3] = 0;
 }
 
+vector<float>* Molecule::getRungeKuttaSolution(){
+	return &rungeKuttaSolution;
+
+}
 
 /**
  * void Molecule::outputRK()

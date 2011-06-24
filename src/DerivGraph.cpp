@@ -462,6 +462,10 @@ void DerivGraph::newBasic(){
 	DNAList->push_back( (DNA*) (*molecules)[d]);
 	mRNAList->push_back( (mRNA*) (*molecules)[m]);
 	ProteinList->push_back( (Protein*) (*molecules)[p]);
+	MoleculeList->push_back( (*molecules)[d]);
+	MoleculeList->push_back( (*molecules)[m]);
+	MoleculeList->push_back( (*molecules)[p]);
+
 
 	//add interaction references to the appropriate lists
 	TranscriptionList->push_back( (Transcription*) (*interactions)[txn]);
@@ -678,7 +682,8 @@ void DerivGraph::newComplex(){
 	ListDigraph::Arc deg = add(new Degradation(), comp, nullnode);	
 
 	ComplexList->push_back( (Complex*) (*molecules)[comp]);
-	
+	MoleculeList->push_back((*molecules)[comp]);
+
 	ForwardComplexationList->push_back( (ForwardComplexation*) (*interactions)[f1]);
 	ForwardComplexationList->push_back( (ForwardComplexation*) (*interactions)[f2]);
 	ReverseComplexationList->push_back( (ReverseComplexation*) (*interactions)[r1]);
@@ -745,7 +750,7 @@ void DerivGraph::newPromoter(){
 void DerivGraph::outputDotImage(int cellNum, int gen){
 	
 	char buf[200];
-	sprintf(buf, "dot -Gsize=\"20,20\" -Tpng -oCell%dGen%d.png",cellNum, gen);
+	sprintf(buf, "dot -Gsize=\"20,20\" -Tpng -o../output/Cell%dGen%d.png",cellNum, gen);
 
 	//popen forks and execs and returns a pipe to the new process stdin
 	FILE* dot = popen(buf,"w");
@@ -778,28 +783,46 @@ void DerivGraph::outputDotImage(int cellNum, int gen){
 	pclose(dot);
 
 }
-/*
-void DerivGraph::outputDataPlot(int cellNum, int gen){
+void DerivGraph::outputDataPlot(int cellNum, int gen, float step){
 	
 	FILE* gnuplot = popen("gnuplot","w");
-	fprintf(gnuplot, "set term png\n");
-	fflush(gnuplot);
-	fprintf(gnuplot, "set xlabel \"time\"\n");
-	fflush(gnuplot);
 
-	fprintf(gnuplot, "set ylabel \"concentration\"\n");
-	fflush(gnuplot);
+	//FILE* gnuplot = fopen("test.txt","w");
+	for(unsigned int i =  0; i < MoleculeList->size(); i++){
+	
+		fprintf(gnuplot, "set term png\n");
+		fflush(gnuplot);
+	
+		fprintf(gnuplot, "set xlabel \"time\"\n");
+		fflush(gnuplot);
 
-	fprintf(gnuplot, "set format x \"%c03.2f\"\n",'%');
-	fflush(gnuplot);
+		fprintf(gnuplot, "set ylabel \"concentration\"\n");
+		fflush(gnuplot);
 
-	fprintf(gnuplot, "set output \"cell%d.gen%d.plot.png\"\n",cellNum, gen);
-	fflush(gnuplot);
-	for(unsigned int i = 0; i< ProteinList->size(); i++)
-	{
-		fprintf(gnuplot, "plot \"-\" using 1:2 t \"%s\" pt 1\n",(*ProteinList)[i]->getLongName());:q
-*/
+		fprintf(gnuplot, "set format x \"%c03.2f\"\n",'%');
+		fflush(gnuplot);
 
-
-
-
+		fprintf(gnuplot, "set output \"../output/%sc%dg%d.plot.png\"\n",(*MoleculeList)[i]->getShortName(),cellNum, gen);
+		fflush(gnuplot);
+	
+		fprintf(gnuplot, "plot \\\n");
+		fflush(gnuplot);
+	
+		fprintf(gnuplot, "\"-\" using 2:($1==%d ? $3 : 1/0) t \"%s\" pt 1 \n",i,(*MoleculeList)[i]->getLongName());
+		fflush(gnuplot);
+	
+		float t;
+		t = 0;
+		for(unsigned int j = 0; j < (*MoleculeList)[i]->getRungeKuttaSolution()->size(); j++)
+		{	
+			float k = (*MoleculeList)[i]->getRungeKuttaSolution()->at(j);
+			fprintf(gnuplot, "%d %f %f\n",i, t, k);
+			fflush(gnuplot);
+			t+=step;
+		}	
+	
+		fprintf(gnuplot, "exit\n");
+		fflush(gnuplot);
+	}
+	pclose(gnuplot);
+}

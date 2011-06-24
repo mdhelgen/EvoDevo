@@ -107,7 +107,7 @@ float ForwardComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
 	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue());
 
-
+	Molecule* thisMol = (*m)[a];
 	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
 
 	Molecule* compMol1 = (*m)[g->nodeFromId(firstNodeID)];
@@ -157,7 +157,7 @@ float ReverseComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 		return -1 * .5 * rate * (*m)[a]->rkApprox(rkIter, rkStep);
 	//effect on target node
 	else
-		return  rate * (*m)[a]->rkApprox(rkIter, rkStep); 
+		return  rate * oppositeMol->rkApprox(rkIter, rkStep); 
 
 }
 

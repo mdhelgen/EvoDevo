@@ -30,7 +30,7 @@ public:
 	void test();
 	void rungeKuttaEvaluate(float);
 	void outputDotImage(int, int);
-
+	void outputDataPlot(int, int, float);
 	MTRand r;
 
 

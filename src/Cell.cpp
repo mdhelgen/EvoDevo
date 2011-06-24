@@ -133,3 +133,6 @@ void Cell::outputDotImage(){
 	equations->outputDotImage(CellID, currentGen);
 }
 
+void Cell::outputDataPlot(){
+	equations->outputDataPlot(CellID, currentGen, 0.5);
+}
