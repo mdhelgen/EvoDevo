@@ -47,6 +47,7 @@ float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* 
 	}
 }
 
+
 Degradation::Degradation(){
 	name="deg";
 }
@@ -64,7 +65,7 @@ float Degradation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m,
 	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
 
 	if(g->source(g->arcFromId(arcID)) == a)
-		return -1 * oppositeMol->rkApprox(rkIter, rkStep) * rate;
+		return -1 * thisMol->rkApprox(rkIter, rkStep) * rate;
 	else
 		return 0;
 
@@ -88,7 +89,6 @@ ForwardComplexation::ForwardComplexation(int n1, int n2){
 	t.trace("init","Creating new Interaction\n");
 	t.trace("cust","Custom Interaction type Complexation\n");
 	t.trace("mloc","Interaction at location %u\n", (unsigned int) this);
-
 	name="f_cmplx";
 
 	firstNodeID = n1;
@@ -102,7 +102,6 @@ ForwardComplexation::~ForwardComplexation(){}
 
 float ForwardComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
 	
-	t.trace("mloc","Interaction %u trace location: %u\n",(unsigned int)this, (unsigned int)&t);
 	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
 	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
@@ -130,7 +129,6 @@ ReverseComplexation::ReverseComplexation(int n1, int n2){
 	t.trace("mloc","Interaction at location %u\n", (unsigned int) this);
 
 	name="r_cmplx";
-
 	firstNodeID = n1;
 	secondNodeID = n2;
 	
@@ -142,7 +140,6 @@ ReverseComplexation::~ReverseComplexation(){}
 
 float ReverseComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
 	
-	t.trace("mloc","Interaction %u trace location: %u\n",(unsigned int)this, (unsigned int)&t);
 	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
 	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
@@ -189,26 +186,25 @@ ReversePTM::ReversePTM(){
 
 ReversePTM::~ReversePTM(){}
 
-Test::Test(){
+TestInt::TestInt(){
 
 	t.trace("init","Creating new Interaction\n");
-	t.trace("cust","Custom Interaction type Test\n");
+	t.trace("cust","Custom Interaction type TestInt\n");
 	t.trace("mloc","Interaction at location %u\n", (unsigned int)this);
 	
 	name="test";	
 	t.trace("init","New Interaction created\n");
 }
 
-Test::~Test(){
+TestInt::~TestInt(){
 
 
 }
 
 
-float Test::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
+float TestInt::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
 	
 	
-	t.trace("mloc","Interaction %u trace location: %u\n",(unsigned int)this, (unsigned int)&t);
 	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
 	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
@@ -229,6 +225,7 @@ PromoterBind::PromoterBind(float fwdRate, float revRate){
 	name="pro";
 	kf = fwdRate;
 	kr = revRate;
+	rate = kf - kr;
 }
 PromoterBind::~PromoterBind(){}
 

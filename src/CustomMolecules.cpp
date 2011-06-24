@@ -27,7 +27,7 @@ DNA::DNA(){
 	histoneModValue = 1;
 
 	longName = "DNA";
-	shortName = "d";
+	shortName = "g";
 }
 
 
@@ -58,7 +58,7 @@ float DNA::getValue(){
 		return histoneModValue * 1.0;
 	
 	return histoneModValue * (1/(1+pow(kf/kr,hill)));
-*/
+	*/
 }
 float DNA::rkApprox(int rkstep, float step)
 {

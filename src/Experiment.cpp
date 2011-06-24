@@ -14,6 +14,8 @@
 
 #include "Experiment.h"
 
+#include "cpptest.h"
+
 using namespace std;
 
 //external declaration of Trace t
@@ -30,7 +32,6 @@ using namespace std;
  *
  */
 Experiment::Experiment(int ncells, int generations) {
-
 
 	
 	t.trace("init","Creating new Experiment\n");
@@ -111,6 +112,8 @@ Experiment::~Experiment() {
  */
 void Experiment::start()
 {
+
+
 //getscore before anything
 for(int i = 1; i <= maxGenerations; i++)
 {

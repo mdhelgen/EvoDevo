@@ -10,7 +10,7 @@ OUTPUT_DIR	= ./output
 
 
 ${EXE_FILE}: ${OBJ_FILE}
-	${CC} ${LFLAGS} -o ${EXE_FILE} ${OBJ_FILE} 
+	${CC} ${LFLAGS} -o ${EXE_FILE} ${OBJ_FILE}  
 
 Main.o: Main.cpp
 	${CC} ${IFLAGS} ${CFLAGS} -c $< -o $@ 

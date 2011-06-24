@@ -55,6 +55,7 @@ Cell::~Cell(){
 }
 
 int Cell::mutate(){
+	
 	currentGen++;
 	double mutationCategory = r.rand(1);
 	double mutationType = r.rand(1);
@@ -122,8 +123,8 @@ int Cell::mutate(){
 
 	}//end null mutation
 	
-	equations->rungeKuttaEvaluate(1.0);
-	//equations->outputDotImage(CellID,currentGen );
+	equations->rungeKuttaEvaluate(0.5);
+	equations->outputDotImage(CellID,currentGen );
 	return -1;
 }
 

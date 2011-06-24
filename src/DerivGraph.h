@@ -20,6 +20,7 @@
 using namespace std;
 using namespace lemon;
 
+
 class DerivGraph{
 
 public:
@@ -31,6 +32,7 @@ public:
 	void outputDotImage(int, int);
 
 	MTRand r;
+
 
 	//deprecated?
 	ListDigraph* getListDigraph();
@@ -45,10 +47,16 @@ public:
 	DNA* histoneMod();
 	void newComplex();	
 	void newPromoter();
+	
+
 private:
 
 	float max_rate;
 	float min_rate;
+
+	int maxComp;
+	int maxBasic;
+	int maxProm;
 
 	//graph structure
 	ListDigraph* derivs;

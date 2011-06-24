@@ -83,8 +83,9 @@ void Molecule::setValue(float v){
  *
  */
 void Molecule::updateRkVal(int index, float amount){
-	
+	t.trace("rk-val","%s rkval[%d] update %f + %f = %f\n",getShortName(), index, rkVal[index], amount, rkVal[index]+amount);	
 	rkVal[index] += amount;
+	t.trace("rk-val","%s new rkval[%d] = %f\n", getShortName(), index, rkVal[index]);
 }
 
 /**
@@ -92,19 +93,24 @@ void Molecule::updateRkVal(int index, float amount){
  *
  */
 float Molecule::rkApprox(int rkIteration, float rkStepSize){
+	
+	float approxVal = 0;
+	
 	switch(rkIteration){
 	case 0:
-		return getValue();
+		approxVal = getValue();
+		break;
 	case 1:
-		return (getValue() + ( rkVal[0] * (rkStepSize/2)));
+		approxVal = (getValue() + ( rkVal[0] * (rkStepSize/2)));
+		break;
 	case 2:
-		return (getValue() + ( rkVal[1] * (rkStepSize/2)));
+		approxVal = (getValue() + ( rkVal[1] * (rkStepSize/2)));
+		break;
 	case 3:
-		return (getValue() + ( rkVal[2] * rkStepSize ));
+		approxVal = (getValue() + ( rkVal[2] * rkStepSize ));
+		break;
 	}
-
-	return currentConcentration;
-
+	return approxVal < 0 ? 0 : approxVal;
 }
 
 /**
@@ -113,9 +119,16 @@ float Molecule::rkApprox(int rkIteration, float rkStepSize){
  */
 void Molecule::nextPoint(float step){
 
-	t.trace("rk-4","rkvals: %f %f %f %f\n",rkVal[0], rkVal[1], rkVal[2], rkVal[3]);
-	currentConcentration += ((step/6) * (rkVal[0] + 2*rkVal[1] + 2*rkVal[2] + rkVal[3]));
-
+	t.trace("rk-val","%s rkvals: %f %f %f %f\n",getShortName(), rkVal[0], rkVal[1], rkVal[2], rkVal[3]);
+	
+	float delta = ((step/6) * (rkVal[0] + 2*rkVal[1] + 2*rkVal[2] + rkVal[3]));
+	t.trace("rk-new","%s(%d) conc: %f delta: %f\n",getShortName(),rungeKuttaSolution.size(), currentConcentration, delta);
+	currentConcentration+=delta;	
+	
+	if(currentConcentration < 0){
+		t.trace("rk-new", "%s %f being set to 0\n",getShortName(),currentConcentration);
+		currentConcentration = 0;
+	}
 	rungeKuttaSolution.push_back(currentConcentration);
 	rkVal[0] = 0;
 	rkVal[1] = 0;

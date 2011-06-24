@@ -20,7 +20,6 @@ Interaction::Interaction(){
 	t.trace("mloc","Interaction at location %d\n", this);
         name = "default";	
 	rate = .05;
-	
 	t.trace("init","New Interaction created\n");
 }
 
@@ -54,12 +53,8 @@ Interaction::~Interaction(){
  * @param rkStep The stepsize of Runge-Kutta
  *
  */
-//float Interaction::getEffect(DerivGraph* d, ListDigraph::Node a, int rkIter, float rkStep){
 float Interaction::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
 	
-//	ListDigraph* g = d->getListDigraph();
-//	ListDigraph::NodeMap<Molecule*>* m = d->getNodeMap();
-//	ListDigraph::ArcMap<Interaction*>* i = d->getArcMap();
 	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
 	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");

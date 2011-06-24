@@ -16,6 +16,8 @@ using namespace std;
 
 #include "ExternTrace.h"
 
+
+
 /**
  * DerivGraph::DerivGraph()
  *
@@ -37,6 +39,10 @@ using namespace std;
 DerivGraph::DerivGraph(){
 	max_rate = 1.0;
 	min_rate = .05;
+//	maxBasic = 5;
+//	maxComp = 2;
+//	maxProm = 2;
+
     t.trace("init","Creating new DerivGraph\n");
     
     t.trace("mloc","DerivGraph location at %u\n",(unsigned int) this);
@@ -121,11 +127,14 @@ DerivGraph::DerivGraph(){
     (*molecules)[nullnode]->setID(count++);
 
 
+
+
 /** Test code **/
     newBasic();
     newBasic();
     newBasic();
-//	test();
+	//test();
+
 }
 
 /**
@@ -196,6 +205,7 @@ DerivGraph::~DerivGraph(){
    delete derivs;
 }
 
+
 void DerivGraph::test(){
 	
 	
@@ -203,8 +213,8 @@ void DerivGraph::test(){
 	ListDigraph::Node B = add(new Molecule());
 	ListDigraph::Node C = add(new Molecule());
 	(*molecules)[A]->setID(count++);
-	(*molecules)[B]->setID((*molecules)[A]->getID());
-	(*molecules)[C]->setID((*molecules)[A]->getID());
+	(*molecules)[B]->setID(count++);
+	(*molecules)[C]->setID(count++);
 
 	(*molecules)[A]->setValue(2);
 	(*molecules)[B]->setValue(4);
@@ -219,6 +229,8 @@ void DerivGraph::test(){
 	(*interactions)[AC]->setRate(.03);
 	(*interactions)[BC]->setRate(.07);
 	(*interactions)[CB]->setRate(.09);
+
+	rungeKuttaEvaluate(1.0);
 
 return;
 /*
@@ -312,7 +324,7 @@ void DerivGraph::rungeKuttaEvaluate(float rkStep){
 	
 
 	//time loop
-	for(int i = 0; i< 10; i++){
+	for(float i = 0; i< 10; i+=rkStep){
 			
 
 		//each iteration of this loop refines the approximation based on the previous calculations	
@@ -420,7 +432,13 @@ ListDigraph::Arc DerivGraph::add(Interaction * newInteraction, ListDigraph::Node
 void DerivGraph::newBasic(){
 
 	t.trace("mutate","DerivGraph %u, new Basic Protein\n",(unsigned int)this);
-
+/*
+	if (DNAList->size() >= maxBasic)
+	{
+		t.trace("mutate","Basic Protein count is at limit\n");
+		return;
+	}
+*/
 	//create a new DNA, MRNA, and Protein
 	ListDigraph::Node d = add(new DNA());
 	ListDigraph::Node m = add(new mRNA());
@@ -572,6 +590,14 @@ DNA* DerivGraph::histoneMod(){
 }
 
 void DerivGraph::newComplex(){
+/*
+	if(ComplexList->size() >= maxComp)
+	{
+		t.trace("mutate","Total Complex protein count is at limit\n");
+		return;
+
+	}
+*/
 
 	unsigned int i1 = -1;
 	unsigned int i2 = -1;
@@ -665,7 +691,12 @@ void DerivGraph::newComplex(){
 }
 
 void DerivGraph::newPromoter(){
-
+/*
+	if(PromoterBindList->size() >= maxProm){
+		t.trace("mutate","Promoter count is at limit\n");
+		return;
+	}
+*/
 	int selectionIndex = r.randInt(DNAList->size() -1);
 	if( (*DNAList)[selectionIndex]->promoterId >= 0)
 	{
@@ -714,7 +745,7 @@ void DerivGraph::newPromoter(){
 void DerivGraph::outputDotImage(int cellNum, int gen){
 	
 	char buf[200];
-	sprintf(buf, "dot -Gsize=\"6,6\" -Tpng -oCell%dGen%d.png",cellNum, gen);
+	sprintf(buf, "dot -Gsize=\"20,20\" -Tpng -oCell%dGen%d.png",cellNum, gen);
 
 	//popen forks and execs and returns a pipe to the new process stdin
 	FILE* dot = popen(buf,"w");
@@ -733,7 +764,7 @@ void DerivGraph::outputDotImage(int cellNum, int gen){
 
 	//iterate all of the Arcs and add them to the visualization. Nodes are implicitly defined by the source and target of the interactions.
 	for(ListDigraph::ArcIt it(*derivs); it != INVALID; ++it){
-		fprintf(dot, "%s -> %s [ label = \"%s\" ];\n",(*molecules)[derivs->source(it)]->getShortName(), (*molecules)[derivs->target(it)]->getShortName(), (*interactions)[it]->getName());
+		fprintf(dot, "%s -> %s [ label = \"%s (%f)\"];\n",(*molecules)[derivs->source(it)]->getShortName(), (*molecules)[derivs->target(it)]->getShortName(), (*interactions)[it]->getName(), (*interactions)[it]->getRate());
 		fflush(dot);
 }	
 
@@ -747,3 +778,28 @@ void DerivGraph::outputDotImage(int cellNum, int gen){
 	pclose(dot);
 
 }
+/*
+void DerivGraph::outputDataPlot(int cellNum, int gen){
+	
+	FILE* gnuplot = popen("gnuplot","w");
+	fprintf(gnuplot, "set term png\n");
+	fflush(gnuplot);
+	fprintf(gnuplot, "set xlabel \"time\"\n");
+	fflush(gnuplot);
+
+	fprintf(gnuplot, "set ylabel \"concentration\"\n");
+	fflush(gnuplot);
+
+	fprintf(gnuplot, "set format x \"%c03.2f\"\n",'%');
+	fflush(gnuplot);
+
+	fprintf(gnuplot, "set output \"cell%d.gen%d.plot.png\"\n",cellNum, gen);
+	fflush(gnuplot);
+	for(unsigned int i = 0; i< ProteinList->size(); i++)
+	{
+		fprintf(gnuplot, "plot \"-\" using 1:2 t \"%s\" pt 1\n",(*ProteinList)[i]->getLongName());:q
+*/
+
+
+
+

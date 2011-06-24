@@ -20,16 +20,16 @@ public:
 	Interaction();
 	~Interaction();
 
-//	virtual float getEffect(DerivGraph*, ListDigraph::Node, int, float);
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 
 	const char* getName();
 
 	float setRate(float);
-	float getRate();
+	virtual	float getRate();
 	const char* name;
 	int arcID;
-		
+
+
 protected:
 	float rate;
 };

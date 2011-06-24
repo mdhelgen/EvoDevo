@@ -27,6 +27,7 @@ public:
 	~Experiment();
 
 	void start();
+	friend class ExperimentTests;
 
 private:
 	vector<Cell*> cells;

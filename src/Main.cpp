@@ -40,6 +40,9 @@ int main(int argc, char** argv){
   //runge kutta
   t.addTraceType("rk-4",1);
 
+  t.addTraceType("rk-val",1);
+  t.addTraceType("rk-new",1);
+
   //mutation
   t.addTraceType("mutate",1);
 
