@@ -451,6 +451,19 @@ ListDigraph::Arc DerivGraph::add(Interaction * newInteraction, ListDigraph::Node
 	return newArc;
 }
 
+/**
+ * DerivGraph::newBasic()
+ *
+ * Create a new DNA, mRNA, and protein in the cell.
+ *
+ * DNA ---> mRNA ----> Protein
+ *            |           |
+ *            v           v
+ *           Deg         Deg
+ *
+ *
+ *
+ */
 void DerivGraph::newBasic(){
 
 	t.trace("mutate","DerivGraph %u, new Basic Protein\n",(unsigned int)this);
@@ -507,24 +520,34 @@ void DerivGraph::newBasic(){
 
 }
 
+/**
+ * Randomly select a forward interaction and modify its rate.
+ *
+ *
+ */
 void DerivGraph::forwardRateChange(){
-	
+
+	//get the total number of forward interactions
 	int totalSize = 0;
 	totalSize += TranslationList->size();
 	totalSize += ForwardComplexationList->size();
+
 	
 	t.trace("mutate","size = %d (%d + %d)\n", totalSize-1, TranslationList->size(), ForwardComplexationList->size());
 
 	Interaction* selectedInteraction;
-
+	
+	//select a random integer 
 	unsigned int selectedIndex = r.randInt(totalSize - 1);
 	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
-	
+
+	//if the random integer is less than the translationlist size
 	if(selectedIndex < TranslationList->size())
 	{
 		t.trace("mutate","TranslationList[%d]\n", selectedIndex);
 		selectedInteraction = (*TranslationList)[selectedIndex];
 	}
+	
 	else if(selectedIndex >= TranslationList->size())
 	{
 		selectedIndex -= TranslationList->size();
@@ -536,7 +559,9 @@ void DerivGraph::forwardRateChange(){
 
 	Molecule* source = (*molecules)[derivs->source(selectedArc)];
 	Molecule* target = (*molecules)[derivs->target(selectedArc)];
-	float newRate = min_rate + r.rand(max_rate - min_rate);
+
+float newRate = min_rate + r.rand(max_rate - min_rate);
+	
 	t.trace("mutate","%s -> %s new rate: %f (old rate: %f)\n",source->getShortName(), target->getShortName(), newRate, selectedInteraction->getRate());
 
 	selectedInteraction->setRate(newRate);
@@ -642,25 +667,25 @@ void DerivGraph::newPTM(){
 	{
 		selectedIndex -= ProteinList->size();
 		t.trace("mutate","PTMList[%d]\n",selectedIndex);
-		selectedMolecule = (Molecule*) (*ProteinList)[selectedIndex];
+		selectedMolecule = (Molecule*) (*PTMList)[selectedIndex];
 		PTMSelected = 1;
 	}
 
-	if(selectedMolecule->wasPTM)
-		return;
-	selectedMolecule->wasPTM = 1;
 
 	ListDigraph::Node selectedNode = derivs->nodeFromId(selectedMolecule->nodeID);
 	
 	ListDigraph::Node newPTM;
 	
 	newPTM = add(new PTMProtein());
-
+	
+	for(int i = 0; i< 4; i++)
+		((PTMProtein*)(*molecules)[newPTM])->setPTMCount(i, selectedMolecule->getPTMCount(i));
 
 	PTMList->push_back( (PTMProtein*) (*molecules)[newPTM]);
 	MoleculeList->push_back( (*molecules)[newPTM]);
 	(*molecules)[newPTM]->setID(count++);
-
+	
+	((PTMProtein*)(*molecules)[newPTM])->addRandPTM(r.randInt(3));
 	
 	ListDigraph::Arc PTM_f = add(new ForwardPTM(), selectedNode, newPTM);
 	ListDigraph::Arc PTM_r = add(new ReversePTM(), newPTM, selectedNode);

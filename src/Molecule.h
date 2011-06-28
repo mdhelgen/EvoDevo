@@ -12,7 +12,7 @@
 #include <vector>
 #include <typeinfo>
 #include <cstring>
-
+#include "MersenneTwister.h"
 
 using namespace std;
 
@@ -38,6 +38,12 @@ public:
 	void reset();
 	int nodeID;
 	int wasPTM;
+
+	int PTMArray[4];
+	int getPTMCount(int, int);
+	MTRand r;
+	
+	virtual int getPTMCount(int);
 private:
 	float initialConcentration;
 	float currentConcentration;

@@ -147,9 +147,20 @@ PTMProtein::PTMProtein(PTMProtein* c )
 	PTMArray[1] = c->PTMArray[1];
 	PTMArray[2] = c->PTMArray[2];
 	PTMArray[3] = c->PTMArray[3];
+
+}
+void PTMProtein::addRandPTM(int i){
+
+	PTMArray[i]++;
+
 }
 
+void PTMProtein::setPTMCount(int index, int count){
+	
+	PTMArray[index] = count;
 
+
+}
 
 char* PTMProtein::getLongName(){
 

@@ -5,7 +5,6 @@
 #include <map>
 #include "Molecule.h"
 
-
 class PTMProtein : public Molecule{
 
 public:
@@ -15,8 +14,9 @@ public:
 	
 	~PTMProtein();
 	char* getLongName();	
-	int PTMArray[4];
-
+	void addRandPTM(int);
+	
+	void setPTMCount(int, int);
 };
 class DNA : public Molecule{
 

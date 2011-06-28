@@ -32,7 +32,10 @@ Molecule::Molecule(){
 	
 	t.trace("init", "New Molecule created\n");
 	
-
+	PTMArray[0] = 0;
+	PTMArray[1] = 0;
+	PTMArray[2] = 0;
+	PTMArray[3] = 0;
 }
 
 /**
@@ -177,8 +180,11 @@ vector<float>* Molecule::getRungeKuttaSolution(){
 
 }
 
+int Molecule::getPTMCount(int index){
+	return PTMArray[index];
+}
 
-
+/*
 int Molecule::getScore(){
 
 
