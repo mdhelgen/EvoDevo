@@ -91,6 +91,9 @@ DerivGraph::DerivGraph(){
     ComplexList = new vector<Complex*>();
     t.trace("mloc","DerivGraph %u ComplexList vector at %u\n", (unsigned int) this, (unsigned int) ComplexList);
 
+    PTMList = new vector<PTMProtein*>();
+    t.trace("mloc","DerivGraph %u PTMList vector at %u\n", (unsigned int) this, (unsigned int) PTMList);
+
     InteractionList = new vector<Interaction*>();
     t.trace("mloc","DerivGraph %u InteractionList vector at %u\n", (unsigned int) this, (unsigned int) InteractionList);
     
@@ -133,7 +136,25 @@ DerivGraph::DerivGraph(){
     newBasic();
     newBasic();
     newBasic();
-	//test();
+    newPTM();
+    newPTM();
+    newPTM();
+    newPTM();
+    newPTM();
+    newPTM();
+    newPTM();
+    newPTM();
+    newPTM();
+    newPTM();
+    newPTM();
+    newPTM();
+    newPTM();
+    newPTM();
+    newPTM();
+//test();
+
+
+	rungeKuttaEvaluate(1);	
 
 }
 
@@ -157,6 +178,7 @@ DerivGraph::~DerivGraph(){
    delete DNAList;
    delete ComplexList;
    delete MoleculeList;
+   delete PTMList;
 
    //delete the various interaction lists
    delete InteractionList;
@@ -591,6 +613,63 @@ DNA* DerivGraph::histoneMod(){
 	(*DNAList)[selectedIndex]->setHistoneModValue(newHistoneModValue);
 	t.trace("mutate","Histone Mod: DNAList[%d] -> %s. New Value = %f\n",selectedIndex, (*DNAList)[selectedIndex]->getShortName(), newHistoneModValue);
 	return (*DNAList)[selectedIndex];
+}
+
+void DerivGraph::newPTM(){
+
+
+	int PTMSelected = -1;
+
+	int totalSize = 0;
+	totalSize += ProteinList->size();
+	totalSize += PTMList->size();
+	
+
+	t.trace("mutate","size = %d (%d + %d)\n", totalSize-1, ProteinList->size(), PTMList->size());
+
+	Molecule* selectedMolecule;
+
+	unsigned int selectedIndex = r.randInt(totalSize - 1);
+	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
+	
+	if(selectedIndex < ProteinList->size())
+	{
+		t.trace("mutate","ProteinList[%d]\n", selectedIndex);
+		selectedMolecule = (Molecule*) (*ProteinList)[selectedIndex];
+		PTMSelected = 0;
+	}
+	else if(selectedIndex >= ProteinList->size())
+	{
+		selectedIndex -= ProteinList->size();
+		t.trace("mutate","PTMList[%d]\n",selectedIndex);
+		selectedMolecule = (Molecule*) (*ProteinList)[selectedIndex];
+		PTMSelected = 1;
+	}
+
+	if(selectedMolecule->wasPTM)
+		return;
+	selectedMolecule->wasPTM = 1;
+
+	ListDigraph::Node selectedNode = derivs->nodeFromId(selectedMolecule->nodeID);
+	
+	ListDigraph::Node newPTM;
+	
+	newPTM = add(new PTMProtein());
+
+
+	PTMList->push_back( (PTMProtein*) (*molecules)[newPTM]);
+	MoleculeList->push_back( (*molecules)[newPTM]);
+	(*molecules)[newPTM]->setID(count++);
+
+	
+	ListDigraph::Arc PTM_f = add(new ForwardPTM(), selectedNode, newPTM);
+	ListDigraph::Arc PTM_r = add(new ReversePTM(), newPTM, selectedNode);
+	ListDigraph::Arc PTM_d = add(new Degradation(), newPTM, nullnode);
+
+
+	t.trace("mutate","OldPTM: %s\n",(PTMProtein*) selectedMolecule->getLongName());
+	t.trace("mutate","NewPTM: %s\n",(PTMProtein*) (*molecules)[newPTM]->getLongName());
+
 }
 
 void DerivGraph::newComplex(){

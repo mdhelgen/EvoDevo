@@ -125,3 +125,41 @@ int Complex::getComponentId(int i){
 
 }
 
+
+PTMProtein::PTMProtein(){
+
+	t.trace("init","Molecule %u type:PTM\n", (unsigned int) this);
+
+	longName = "PTM";
+	shortName = "ptm";
+
+	PTMArray[0] = 0;
+	PTMArray[1] = 0;
+	PTMArray[2] = 0;
+	PTMArray[3] = 0;
+
+	wasPTM = 0;
+}
+
+PTMProtein::PTMProtein(PTMProtein* c )
+{
+	PTMArray[0] = c->PTMArray[0];
+	PTMArray[1] = c->PTMArray[1];
+	PTMArray[2] = c->PTMArray[2];
+	PTMArray[3] = c->PTMArray[3];
+}
+
+
+
+char* PTMProtein::getLongName(){
+
+        memset(buf, '\0', 80);
+        sprintf(buf, "%s %d (%d,%d,%d,%d)", longName, moleculeID, PTMArray[0],PTMArray[1],PTMArray[2],PTMArray[3]);
+        return buf;
+}
+
+PTMProtein::~PTMProtein(){
+}
+
+
+

@@ -21,6 +21,8 @@ Molecule::Molecule(){
 	shortName = "a";
 	
 	moleculeID = -1;
+	
+	wasPTM = 0;
 
 	//initialize Runge-Kutta intermediate values
 	rkVal[0] = 0;
@@ -29,6 +31,7 @@ Molecule::Molecule(){
 	rkVal[3] = 0;
 	
 	t.trace("init", "New Molecule created\n");
+	
 
 }
 
@@ -174,6 +177,14 @@ vector<float>* Molecule::getRungeKuttaSolution(){
 
 }
 
+
+
+int Molecule::getScore(){
+
+
+
+}
+
 /**
  * void Molecule::outputRK()
  *
@@ -183,3 +194,6 @@ void Molecule::outputRK(){
 	for(unsigned int i = 0; i< rungeKuttaSolution.size(); i++)
 		t.trace("rk-4","%s - %u - %f\n", getShortName(), i, rungeKuttaSolution[i]);
 }
+
+
+

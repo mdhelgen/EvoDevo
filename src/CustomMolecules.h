@@ -2,10 +2,22 @@
 #define CUSTOM_MOLECULES_H_
 
 #include <cmath>
-
+#include <map>
 #include "Molecule.h"
 
 
+class PTMProtein : public Molecule{
+
+public:
+
+	PTMProtein();
+	PTMProtein(PTMProtein* );
+	
+	~PTMProtein();
+	char* getLongName();	
+	int PTMArray[4];
+
+};
 class DNA : public Molecule{
 
 public:

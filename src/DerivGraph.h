@@ -47,7 +47,7 @@ public:
 	DNA* histoneMod();
 	void newComplex();	
 	void newPromoter();
-	
+	void newPTM();	
 
 private:
 
@@ -69,6 +69,7 @@ private:
 	vector<mRNA*>* mRNAList;
 	vector<DNA*>* DNAList;
 	vector<Complex*>* ComplexList;
+	vector<PTMProtein*>* PTMList;
 
 	// interaction lists
 	vector<Interaction*>* InteractionList;

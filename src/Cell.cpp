@@ -59,6 +59,8 @@ int Cell::mutate(){
 	currentGen++;
 	double mutationCategory = r.rand(1);
 	double mutationType = r.rand(1);
+
+	return 0;
 	if(mutationCategory < .4)
 	{
 		t.trace("mutate","Mutation Category: Small\n");

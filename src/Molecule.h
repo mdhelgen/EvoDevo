@@ -37,13 +37,13 @@ public:
 	int getID();
 	void reset();
 	int nodeID;
-
+	int wasPTM;
 private:
 	float initialConcentration;
 	float currentConcentration;
 	float rkVal[4]; 
 protected:
-	char buf[80];	
+	char buf[200];	
 	const char* longName;
 	const char* shortName;
 	int moleculeID;
