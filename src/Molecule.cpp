@@ -184,7 +184,6 @@ int Molecule::getPTMCount(int index){
 	return PTMArray[index];
 }
 
-/*
 int Molecule::getScore(){
 
 

@@ -38,7 +38,8 @@ public:
 	void reset();
 	int nodeID;
 	int wasPTM;
-
+	
+	int getScore();
 	int PTMArray[4];
 	int getPTMCount(int, int);
 	MTRand r;

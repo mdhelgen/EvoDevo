@@ -33,6 +33,8 @@ Cell::Cell(){
 
   //  equations->test();
 
+	equations->newBasic();
+
     t.trace("init", "New Cell created\n");
 
 
@@ -60,7 +62,6 @@ int Cell::mutate(){
 	double mutationCategory = r.rand(1);
 	double mutationType = r.rand(1);
 
-	return 0;
 	if(mutationCategory < .4)
 	{
 		t.trace("mutate","Mutation Category: Small\n");
@@ -85,8 +86,8 @@ int Cell::mutate(){
 		}//end deg rate change
 		else if(mutationType < .8)
 		{
-
 			t.trace("mutate","Mutation Type: New PTM\n");	
+			equations->newPTM();
 		}//end new ptm
 		else
 		{
@@ -127,11 +128,12 @@ int Cell::mutate(){
 	
 	equations->rungeKuttaEvaluate(0.5);
 	equations->outputDotImage(CellID,currentGen );
+	
 	return -1;
 }
 
 void Cell::outputDotImage(){
-	printf("dot\n");
+//	printf("dot\n");
 	equations->outputDotImage(CellID, currentGen);
 }
 

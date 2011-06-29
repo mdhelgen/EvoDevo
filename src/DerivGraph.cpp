@@ -132,7 +132,7 @@ DerivGraph::DerivGraph(){
 
 
 
-/** Test code **/
+/** Test code /
     newBasic();
     newBasic();
     newBasic();
@@ -154,8 +154,8 @@ DerivGraph::DerivGraph(){
 //test();
 
 
-	rungeKuttaEvaluate(1);	
-
+	rungeKuttaEvaluate(.5);	
+*/
 }
 
 /**
@@ -531,23 +531,22 @@ void DerivGraph::forwardRateChange(){
 	int totalSize = 0;
 	totalSize += TranslationList->size();
 	totalSize += ForwardComplexationList->size();
-
+	totalSize += ForwardPTMList->size();
 	
 	t.trace("mutate","size = %d (%d + %d)\n", totalSize-1, TranslationList->size(), ForwardComplexationList->size());
 
 	Interaction* selectedInteraction;
 	
-	//select a random integer 
+	//select a random integer between 0 and the total number of forward interactions
 	unsigned int selectedIndex = r.randInt(totalSize - 1);
 	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
 
-	//if the random integer is less than the translationlist size
+	//
 	if(selectedIndex < TranslationList->size())
 	{
 		t.trace("mutate","TranslationList[%d]\n", selectedIndex);
 		selectedInteraction = (*TranslationList)[selectedIndex];
 	}
-	
 	else if(selectedIndex >= TranslationList->size())
 	{
 		selectedIndex -= TranslationList->size();
@@ -649,7 +648,6 @@ void DerivGraph::newPTM(){
 	totalSize += ProteinList->size();
 	totalSize += PTMList->size();
 	
-
 	t.trace("mutate","size = %d (%d + %d)\n", totalSize-1, ProteinList->size(), PTMList->size());
 
 	Molecule* selectedMolecule;
@@ -678,11 +676,14 @@ void DerivGraph::newPTM(){
 	
 	newPTM = add(new PTMProtein());
 	
+	//copy the ptm counts to the new PTMProtein
 	for(int i = 0; i< 4; i++)
 		((PTMProtein*)(*molecules)[newPTM])->setPTMCount(i, selectedMolecule->getPTMCount(i));
 
+	//add the new PTM to the relevant lists
 	PTMList->push_back( (PTMProtein*) (*molecules)[newPTM]);
 	MoleculeList->push_back( (*molecules)[newPTM]);
+	
 	(*molecules)[newPTM]->setID(count++);
 	
 	((PTMProtein*)(*molecules)[newPTM])->addRandPTM(r.randInt(3));
@@ -691,6 +692,9 @@ void DerivGraph::newPTM(){
 	ListDigraph::Arc PTM_r = add(new ReversePTM(), newPTM, selectedNode);
 	ListDigraph::Arc PTM_d = add(new Degradation(), newPTM, nullnode);
 
+	DegradationList->push_back( (Degradation*) (*interactions)[PTM_d]);
+	ForwardPTMList->push_back( (ForwardPTM*) (*interactions)[PTM_f]);
+	ReversePTMList->push_back( (ReversePTM*) (*interactions)[PTM_r]);
 
 	t.trace("mutate","OldPTM: %s\n",(PTMProtein*) selectedMolecule->getLongName());
 	t.trace("mutate","NewPTM: %s\n",(PTMProtein*) (*molecules)[newPTM]->getLongName());
