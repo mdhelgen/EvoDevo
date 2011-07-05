@@ -43,6 +43,7 @@ int main(int argc, char** argv){
   t.addTraceType("rk-val",1);
   t.addTraceType("rk-new",1);
 
+  t.addTraceType("score",1);
   //mutation
   t.addTraceType("mutate",1);
 

@@ -18,6 +18,7 @@ public:
 	int mutate();
 	void outputDotImage();
 	void outputDataPlot();
+	void getScore();
 private:
 	static int CellCounter;
 

@@ -17,10 +17,13 @@ Molecule::Molecule(){
 	currentConcentration = 4;
 	initialConcentration = 4;
 
+	//set the long and short name prefix for this molecule
 	longName = "Molecule";
 	shortName = "a";
 	
+	//set the molecule id
 	moleculeID = -1;
+	
 	
 	wasPTM = 0;
 
@@ -32,6 +35,7 @@ Molecule::Molecule(){
 	
 	t.trace("init", "New Molecule created\n");
 	
+	//initialize the PTMArray
 	PTMArray[0] = 0;
 	PTMArray[1] = 0;
 	PTMArray[2] = 0;
@@ -64,8 +68,12 @@ float Molecule::getrkVal(int k){
 }
 
 /**
- * float Molecule::getValue()
+ * float Molecule::getValue() 
+ * (Virtual Function) 
  *
+ * Get the current value of this molecule. 
+ *
+ * @returns the current value of the concentration
  */
 float Molecule::getValue(){
 
@@ -76,6 +84,7 @@ float Molecule::getValue(){
 /**
  * void Molecule::setValue(float)
  *
+ * @param v the new value to set as the concentration
  */
 void Molecule::setValue(float v){
 
@@ -87,6 +96,10 @@ void Molecule::setValue(float v){
 /**
  * void Molecule::updateRkVal(int, float)
  *
+ * Adds some amount to the specified intermediate values used by Runge-Kutta.
+ *
+ * @param index The index of the rkValue array to update
+ * @param amount The amount to add to the rkValue array
  */
 void Molecule::updateRkVal(int index, float amount){
 	t.trace("rk-val","%s rkval[%d] update %f + %f = %f\n",getShortName(), index, rkVal[index], amount, rkVal[index]+amount);	
@@ -96,7 +109,17 @@ void Molecule::updateRkVal(int index, float amount){
 
 /**
  * float Molecule::rkApprox(int, float)
+ * (Virtual Function) 
  *
+ * Returns the next approximate value of this molecule for the next timestep for the specified
+ * stage of Runge-Kutta. Runge-Kutta uses successive iterations to make more accurate approximations
+ * of a solution. 
+ *
+ * rkApprox should be used in Interaction::getEffect, to provide the Runge-Kutta corrected concentrations
+ * of molecules during runge-kutta calculation instead of the base value for all iterations.
+ *
+ * @param rkIteration the current iteration of Runge-Kutta
+ * @param rkStepSize the timestep being used by Runge-Kutta
  */
 float Molecule::rkApprox(int rkIteration, float rkStepSize){
 	
@@ -121,7 +144,10 @@ float Molecule::rkApprox(int rkIteration, float rkStepSize){
 
 /**
  * void Molecule::nextPoint(float)
+ * 
+ * Adds a data point to the rungeKuttaSolution based on the rkVals calculated by Runge-Kutta
  *
+ * @param step The stepsize used to calculate the rkVals
  */
 void Molecule::nextPoint(float step){
 
@@ -143,6 +169,19 @@ void Molecule::nextPoint(float step){
 
 }
 
+/**
+ * char* Molecule::getShortName()
+ * (Virtual function)
+ *
+ * Return the "short" name of a molecule.
+ *
+ * The short name consists of the short prefix set in the constructor appended to the moleculeID
+ * with no space in between.
+ * Ex. g1, p4, ptm2
+ *
+ * @return the short name of the current molecule
+ *
+ */
 char* Molecule::getShortName(){
 	
 	memset(buf, '\0', 80);
@@ -150,20 +189,55 @@ char* Molecule::getShortName(){
 	return buf;
 }
 
+/**
+ * char* Molecule::getLongName()
+ * (Virtual function)
+ * 
+ * Return the "long" name of a molecule.
+ *
+ * The long name consists of the long prefix set in the constructor appended to the moleculeID with a space
+ * in between.
+ * Ex. DNA 1, Protein 3, Complex 8
+ *
+ * @return the long name of the current molecule
+ */
 char* Molecule::getLongName(){
 
 	memset(buf, '\0', 80);
 	sprintf(buf, "%s %d", longName, moleculeID);
 	return buf;
 }
+
+/**
+ * void Molecule::setID(int)
+ *
+ * Set the ID of a molecule, used when displaying molecule names. The ID is a number which is not necessarily unique, but should only be shared
+ * between strongly related molecules.
+ *
+ */
 void Molecule::setID(int i){
 
 	moleculeID = i;
 }
 
+/**
+ * int Molecule::getID()
+ *
+ * Get the ID of the current molecule.
+ *
+ * @return the current Molecule's ID
+ */
 int Molecule::getID(){
 	return moleculeID;
 }
+
+/**
+ * void Molecule::reset()
+ *
+ * Reset the molecule between Runge-Kutta runs. The vector containing runge-kutta data points is erased, the initial
+ * concentration is added as the first element, and the rkVals are all reset to 0.
+ *
+ */
 void Molecule::reset(){
 	
 	rungeKuttaSolution.erase(rungeKuttaSolution.begin(), rungeKuttaSolution.end());
@@ -175,17 +249,69 @@ void Molecule::reset(){
 	rkVal[3] = 0;
 }
 
+/**
+ *
+ *
+ *
+ *
+ */
 vector<float>* Molecule::getRungeKuttaSolution(){
 	return &rungeKuttaSolution;
 
 }
 
+/**
+ *
+ *
+ *
+ *
+ */
 int Molecule::getPTMCount(int index){
 	return PTMArray[index];
 }
 
+/**
+ *
+ *
+ *
+ *
+ */
 int Molecule::getScore(){
 
+	int prevDir = 0;
+	int currentDir = 0;
+	int numChanges = 0;
+
+	float diff = 0.0;
+
+	for(int i = 1; i < rungeKuttaSolution.size(); i++){
+		//how has the value changed this timestep	
+		diff = rungeKuttaSolution[i] - rungeKuttaSolution[i-1];
+		
+		//if the value is constant move to the next point	
+		if(diff == 0)
+			continue;
+		//the current slope is negative
+		if(diff < 0)
+			currentDir = -1;
+		//the current slope is positive
+		if(diff > 0)
+			currentDir = 1;
+
+		t.trace("score", "%s%d (%d, %f) - (%d, %f), dir = %d, prev = %d\n",shortName, moleculeID ,i, rungeKuttaSolution[i], i-1, rungeKuttaSolution[i-1], currentDir, prevDir);
+
+		// if the current slope direction has changed, add 1 to score
+		if((currentDir == 1 && prevDir == -1) ||
+		   (currentDir == -1 && prevDir == 1)){
+			numChanges += 1;
+		   	t.trace("score", "%s%d changes: %d\n", shortName, moleculeID, numChanges);
+		}
+		// save the new slope direction	
+		prevDir = currentDir;
+
+
+	}
+	return numChanges;
 
 
 }

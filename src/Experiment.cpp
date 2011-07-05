@@ -123,6 +123,7 @@ for(int i = 1; i <= maxGenerations; i++)
 		//mutate
 		cells[c]->mutate();
 		//getscore
+		cells[c]->getScore();
 	}
 }
 

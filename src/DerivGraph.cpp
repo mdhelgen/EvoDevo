@@ -124,8 +124,10 @@ DerivGraph::DerivGraph(){
 
     t.trace("init","New DerivGraph created\n");
 
+    //the count is used to name new molecules
     count=0;
 
+    //create the null node targeted by degradation interactions
     nullnode = add(new NullNode());
     (*molecules)[nullnode]->setID(count++);
 
@@ -255,78 +257,7 @@ void DerivGraph::test(){
 	rungeKuttaEvaluate(1.0);
 
 return;
-/*
-	count = 1;
-	ListDigraph::Node A = add(new DNA());
-	(*molecules)[A]->setID(count++);
-	ListDigraph::Node B = add(new mRNA());
-	(*molecules)[B]->setID((*molecules)[A]->getID());
-	ListDigraph::Node C = add(new Protein());
-	(*molecules)[C]->setID((*molecules)[B]->getID());
-	ListDigraph::Node D = add(new NullNode());
-	(*molecules)[D]->setID(0);
 
-	ListDigraph::Node E = add(new DNA());
-	(*molecules)[E]->setID(count++);
-	ListDigraph::Node F = add(new mRNA());
-	(*molecules)[F]->setID((*molecules)[E]->getID());
-	ListDigraph::Node G = add(new Protein());
-	(*molecules)[G]->setID((*molecules)[F]->getID());
-
-	(*molecules)[A]->setValue(1);
-	(*molecules)[B]->setValue(10);
-	(*molecules)[C]->setValue(5);
-
-	(*molecules)[E]->setValue(1);
-	(*molecules)[F]->setValue(10);
-	(*molecules)[G]->setValue(5);
-
-
-
-	ListDigraph::Arc AB = add(new Transcription(), A, B);
-	ListDigraph::Arc BC = add(new Translation(), B, C);
-	ListDigraph::Arc BD = add(new Degradation(), B, D);
-	ListDigraph::Arc CD = add(new Degradation(), C, D);
-	
-	ListDigraph::Arc EF = add(new Transcription(), E, F);
-	ListDigraph::Arc FG = add(new Translation(), F, G);
-	ListDigraph::Arc FD = add(new Degradation(), F, D);
-	ListDigraph::Arc GD = add(new Degradation(), G, D);
-	
-	(*interactions)[AB]->setRate(.05);
-	(*interactions)[BC]->setRate(.05);
-	(*interactions)[BD]->setRate(.01);
-	(*interactions)[CD]->setRate(.02);
-
-	(*interactions)[EF]->setRate(.05);
-	(*interactions)[FG]->setRate(.05);
-	(*interactions)[FD]->setRate(.01);
-	(*interactions)[GD]->setRate(.02);
-
-
-	ListDigraph::Node CG = add(new Complex(derivs->id(C), derivs->id(G)));
-	(*molecules)[CG]->setValue(5);
-	
-	(*molecules)[CG]->setID(count++);
-
-	ListDigraph::Arc CGf1 = add(new ForwardComplexation(derivs->id(C), derivs->id(G)), C, CG);
-	ListDigraph::Arc CGf2 = add(new ForwardComplexation(derivs->id(C), derivs->id(G)), G, CG);
-	ListDigraph::Arc CGr1 = add(new ReverseComplexation(derivs->id(C), derivs->id(G)), CG, C);
-	ListDigraph::Arc CGr2 = add(new ReverseComplexation(derivs->id(C), derivs->id(G)), CG, G);
-	ListDigraph::Arc CGdeg = add(new Degradation(), CG, D);
-
-	(*interactions)[CGf1]->setRate(.1);
-	(*interactions)[CGf2]->setRate(.1);
-
-	(*interactions)[CGr1]->setRate(.08);
-	(*interactions)[CGr2]->setRate(.08);
-
-	(*interactions)[CGdeg]->setRate(.04);
-
-//	float rkStep = 1.0;
-  
-//	rungeKuttaEvaluate(rkStep); 
-*/
 }
 
 /**
@@ -343,11 +274,8 @@ void DerivGraph::rungeKuttaEvaluate(float rkStep){
 	for(ListDigraph::NodeIt it(*derivs); it != INVALID; ++it)
 		(*molecules)[it]->reset();
 
-	
-
 	//time loop
 	for(float i = 0; i< 10; i+=rkStep){
-			
 
 		//each iteration of this loop refines the approximation based on the previous calculations	
 		for(int k = 0; k<4; k++){
@@ -369,7 +297,7 @@ void DerivGraph::rungeKuttaEvaluate(float rkStep){
 		}
 	}
 	
-	//test output, display the values calculated by runge kutta
+	//test output, display the values calculated by runge kutta for each molecule to stdout
 	for(ListDigraph::NodeIt it(*derivs); it != INVALID; ++it){
 		(*molecules)[it]->outputRK();	
 	}
@@ -495,10 +423,12 @@ void DerivGraph::newBasic(){
 
 	//add molecule references to the appropriate lists
 	DNAList->push_back( (DNA*) (*molecules)[d]);
-	mRNAList->push_back( (mRNA*) (*molecules)[m]);
-	ProteinList->push_back( (Protein*) (*molecules)[p]);
 	MoleculeList->push_back( (*molecules)[d]);
+
+	mRNAList->push_back( (mRNA*) (*molecules)[m]);
 	MoleculeList->push_back( (*molecules)[m]);
+
+	ProteinList->push_back( (Protein*) (*molecules)[p]);
 	MoleculeList->push_back( (*molecules)[p]);
 
 
@@ -521,9 +451,13 @@ void DerivGraph::newBasic(){
 }
 
 /**
+ * void DerivGraph::forwardRateChange()
+ *
  * Randomly select a forward interaction and modify its rate.
- *
- *
+ * 
+ * Forward interactions are of type Translation, ForwardComplex
+ * 
+ * TODO: add ForwardPTMs
  */
 void DerivGraph::forwardRateChange(){
 
@@ -531,7 +465,7 @@ void DerivGraph::forwardRateChange(){
 	int totalSize = 0;
 	totalSize += TranslationList->size();
 	totalSize += ForwardComplexationList->size();
-	totalSize += ForwardPTMList->size();
+	//totalSize += ForwardPTMList->size();
 	
 	t.trace("mutate","size = %d (%d + %d)\n", totalSize-1, TranslationList->size(), ForwardComplexationList->size());
 
@@ -566,7 +500,14 @@ float newRate = min_rate + r.rand(max_rate - min_rate);
 	selectedInteraction->setRate(newRate);
 
 }
-
+/**
+ * void DerivGraph::reverseRateChange()
+ *
+ * Randomly select a reverse interaction and modify its rate.
+ *
+ * Reverse interactions are of type ReverseComplexation, ReversePTM
+ * 
+ */
 void DerivGraph::reverseRateChange(){
 
 	int totalSize = 0;
@@ -607,7 +548,13 @@ void DerivGraph::reverseRateChange(){
 
 	selectedInteraction->setRate(newRate);
 }
-
+/**
+ * void DerivGraph::degradationRateChange()
+ *
+ * Randomly select a degradation interaction and modify its rate.
+ *
+ * Degradation interactions are of type Degradation
+ */
 void DerivGraph::degradationRateChange(){
 	
 	int selectedIndex = r.randInt(DegradationList->size()-1);
@@ -625,7 +572,17 @@ void DerivGraph::degradationRateChange(){
 	selectedInteraction->setRate(newRate);
 
 }
-
+/**
+ * void DerivGraph::histoneMod()
+ *
+ * Randomly select a DNA molecule, and set the Histone factor to a random value [0,2].
+ *
+ * The histone value is a constant multiplied factor applied to the rate of mRNA production
+ * by a DNA molecule. It is initialized at 1.0, and is randomly assigned a value between [0,2].
+ *
+ * A value [0,1) results in repression of mRNA production.
+ * A value (1,2] results in activation of mRNA production.
+ */
 DNA* DerivGraph::histoneMod(){
 
 	//choose a random index from the DNAList vector	
@@ -638,7 +595,15 @@ DNA* DerivGraph::histoneMod(){
 	t.trace("mutate","Histone Mod: DNAList[%d] -> %s. New Value = %f\n",selectedIndex, (*DNAList)[selectedIndex]->getShortName(), newHistoneModValue);
 	return (*DNAList)[selectedIndex];
 }
-
+/**
+ * void DerivGraph::newPTM()
+ *
+ * Randomly select a Protein molecule to which a PTM should be applied. The new PTM Protein
+ * has the same counts of modifications, with a random index incremented by one to reflect
+ * the new value. A PTM can be applied to a basic protein or a previously existing PTM.
+ *
+ * TODO: check if a PTM already exists on a protein and prevent duplicate PTM's
+ */
 void DerivGraph::newPTM(){
 
 
@@ -700,7 +665,18 @@ void DerivGraph::newPTM(){
 	t.trace("mutate","NewPTM: %s\n",(PTMProtein*) (*molecules)[newPTM]->getLongName());
 
 }
-
+/**
+ * void DerivGraph::newComplex()
+ *
+ * Randomly select two Protein molecules to be complexed together. 
+ *
+ * If the two selected proteins already exist in a complex reaction together, the mutation
+ * will fail.
+ *
+ * Molecules which can complex together are Protein, and ComplexProteins
+ *
+ * TODO: add PTM's to the possible complex
+ */
 void DerivGraph::newComplex(){
 /*
 	if(ComplexList->size() >= maxComp)
@@ -802,7 +778,16 @@ void DerivGraph::newComplex(){
 
 
 }
-
+/**
+ * void DerivGraph::newPromoter()
+ *
+ * Select a random protein and DNA to add a Protein-Promoter interaction to.
+ *
+ * The Protein-Promoter interaction is used in conjunction with the Hill model
+ * of cooperativity, and affects the Goodwin term used by DNA to calculate 
+ * the rate of production.
+ *
+ */
 void DerivGraph::newPromoter(){
 /*
 	if(PromoterBindList->size() >= maxProm){
@@ -840,6 +825,23 @@ void DerivGraph::newPromoter(){
 	PromoterBindList->push_back( (PromoterBind*) (*interactions)[a]);
 	
 
+}
+
+Molecule* DerivGraph::getBestMolecule(){
+
+	Molecule* bestMolecule;
+	int maxScore = -1;
+	int s = -1;
+
+	for(unsigned int i =  0; i < MoleculeList->size(); i++){
+		s = (*MoleculeList)[i]->getScore();
+		if(s > maxScore){
+			maxScore = s;
+			bestMolecule = (*MoleculeList)[i];
+		}
+
+	}
+	return bestMolecule;
 }
 
 /**
@@ -891,6 +893,18 @@ void DerivGraph::outputDotImage(int cellNum, int gen){
 	pclose(dot);
 
 }
+/**
+ * void DerivGraph::outputDataPlot(int, int, float)
+ * 
+ * Output a png image of the concentration data of molecules plotted by Gnuplot.
+ *
+ * For each molecule in the MoleculeList, a process running gnuplot is forked to which
+ * data from Runge-Kutta is fed to produce a plot.
+ * 
+ * @param cellNum the cell number to put in the filename
+ * @param gen the generation number to put in the filename
+ * @param step the stepSize used between the rungeKuttaSolution data points
+ */
 void DerivGraph::outputDataPlot(int cellNum, int gen, float step){
 	
 	FILE* gnuplot = popen("gnuplot","w");
@@ -934,3 +948,6 @@ void DerivGraph::outputDataPlot(int cellNum, int gen, float step){
 	}
 	pclose(gnuplot);
 }
+
+
+

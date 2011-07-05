@@ -132,6 +132,12 @@ int Cell::mutate(){
 	return -1;
 }
 
+void Cell::getScore(){
+
+	equations->getBestMolecule();
+
+}
+
 void Cell::outputDotImage(){
 //	printf("dot\n");
 	equations->outputDotImage(CellID, currentGen);

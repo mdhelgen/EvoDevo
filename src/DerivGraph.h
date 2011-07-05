@@ -27,12 +27,13 @@ public:
 	DerivGraph();
 	~DerivGraph();
 	
+	MTRand r;
+	
 	void test();
 	void rungeKuttaEvaluate(float);
 	void outputDotImage(int, int);
 	void outputDataPlot(int, int, float);
-	MTRand r;
-
+	Molecule* getBestMolecule();
 
 	//deprecated?
 	ListDigraph* getListDigraph();
