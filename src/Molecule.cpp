@@ -298,7 +298,7 @@ int Molecule::getScore(){
 		if(diff > 0)
 			currentDir = 1;
 
-		t.trace("score", "%s%d (%d, %f) - (%d, %f), dir = %d, prev = %d\n",shortName, moleculeID ,i, rungeKuttaSolution[i], i-1, rungeKuttaSolution[i-1], currentDir, prevDir);
+	//	t.trace("score", "%s%d (%d, %f) - (%d, %f), dir = %d, prev = %d\n",shortName, moleculeID ,i, rungeKuttaSolution[i], i-1, rungeKuttaSolution[i-1], currentDir, prevDir);
 
 		// if the current slope direction has changed, add 1 to score
 		if((currentDir == 1 && prevDir == -1) ||

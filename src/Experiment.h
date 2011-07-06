@@ -23,18 +23,24 @@ using namespace std;
 
 class Experiment {
 public:
-	Experiment(int, int);
+	Experiment(int ncells, int generations, int max_basic, int max_ptm, int max_comp, int max_prom, float min_kinetic_rate, float max_kinetic_rate);
 	~Experiment();
 
 	void start();
-	friend class ExperimentTests;
 
 private:
 	vector<Cell*> cells;
 
 	int maxGenerations;
 	int numCells;
-	
+	int maxBasic;
+	int maxPTM;
+	int maxComp;
+	int maxProm;
+	float minKineticRate;
+	float maxKineticRate;
+
+
 	int scoringInterval;
 	int numHighScores;
 };

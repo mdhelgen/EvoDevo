@@ -33,7 +33,7 @@ public:
 	void rungeKuttaEvaluate(float);
 	void outputDotImage(int, int);
 	void outputDataPlot(int, int, float);
-	Molecule* getBestMolecule();
+	Molecule* getBestMolecule(int);
 
 	//deprecated?
 	ListDigraph* getListDigraph();

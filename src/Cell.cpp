@@ -127,15 +127,18 @@ int Cell::mutate(){
 	}//end null mutation
 	
 	equations->rungeKuttaEvaluate(0.5);
-	equations->outputDotImage(CellID,currentGen );
+//	equations->outputDotImage(CellID,currentGen );
 	
 	return -1;
 }
 
 void Cell::getScore(){
 
-	equations->getBestMolecule();
-
+	Molecule* m = equations->getBestMolecule(CellID);
+	if (m->getScore() > 2){
+		outputDataPlot();
+	}
+		
 }
 
 void Cell::outputDotImage(){

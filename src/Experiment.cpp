@@ -14,7 +14,6 @@
 
 #include "Experiment.h"
 
-#include "cpptest.h"
 
 using namespace std;
 
@@ -31,7 +30,8 @@ using namespace std;
  * @param number of Generations the Experiment will run for.
  *
  */
-Experiment::Experiment(int ncells, int generations) {
+Experiment::Experiment(int ncells, int generations, int max_basic, int max_ptm, int max_comp, int max_prom, float min_kinetic_rate, float max_kinetic_rate)
+	   :maxBasic(max_basic), maxPTM(max_ptm), maxComp(max_comp), maxProm(max_prom), minKineticRate(min_kinetic_rate), maxKineticRate(max_kinetic_rate){
 
 	
 	t.trace("init","Creating new Experiment\n");
@@ -101,6 +101,7 @@ Experiment::~Experiment() {
 
 }
 
+
 //void Experiment::outputGeneration(){
 
 
@@ -126,7 +127,7 @@ for(int i = 1; i <= maxGenerations; i++)
 		cells[c]->getScore();
 	}
 }
-
+return;
 for(unsigned int c = 0; c < cells.size(); c++){
 	cells[c]->outputDotImage();
 	cells[c]->outputDataPlot();

@@ -20,39 +20,52 @@ int main(int argc, char** argv){
 
 
   //trace related trace messages
-  t.addTraceType("trce",1);
+  t.addTraceType("trce",0);
   
   //program arguments
   t.addTraceType("args",1);
  
   //object creation / construction
-  t.addTraceType("init",1);
+  t.addTraceType("init",0);
 
   //memory location of created objects
-  t.addTraceType("mloc",1);
+  t.addTraceType("mloc",0);
 
   //object deletion / destruction
-  t.addTraceType("free",1);
+  t.addTraceType("free",0);
 
   //calculated effect of interactions
   t.addTraceType("efct",0);
 
   //runge kutta
-  t.addTraceType("rk-4",1);
+  t.addTraceType("rk-4",0);
 
-  t.addTraceType("rk-val",1);
-  t.addTraceType("rk-new",1);
+  t.addTraceType("rk-val",0);
+  t.addTraceType("rk-new",0);
 
   t.addTraceType("score",1);
   //mutation
   t.addTraceType("mutate",1);
 
   //polymorphic comparisons
-  t.addTraceType("typeid",1);
+  t.addTraceType("typeid",0);
 
 
   int numCells = 2;
   int numGenerations = 10;
+
+  int maxBasic = 1;
+  int maxPTM = 1;
+  int maxComp = 1;
+  int maxPromoter = 1;
+
+  float minKineticRate = 0;
+  float maxKineticRate = 1;
+
+  float initialConcentration = 0;
+
+  float rkTimeLimit = 20;
+  float rkTimeStep = .05;
 
 
   while(1){
@@ -63,13 +76,23 @@ int main(int argc, char** argv){
 
       {"cells",  required_argument, 0, 'c'},
       {"gens",  required_argument, 0, 'g'},
+      {"minrate", required_argument, 0, 'a'},
+      {"maxrate", required_argument, 0, 'b'},
+      {"maxbasic", required_argument, 0, 'd'},
+      {"maxptm", required_argument, 0, 'e'},
+      {"maxcomp", required_argument, 0, 'f'},
+      {"maxprom", required_argument, 0, 'h'},
+      {"initconc", required_argument, 0, 'i'},
+      {"rklim", required_argument, 0, 'j'},
+      {"rkstep", required_argument, 0, 'k'},
+      
       {0,0,0,0}
      };
 
  int option_index = 0;
 
 
- c = getopt_long (argc, argv, "abc:g:", long_options, &option_index);
+ c = getopt_long (argc, argv, "a:b:c:d:e:f:g:h:i:j:k:", long_options, &option_index);
 
  if (c == -1)
  	break;
@@ -83,12 +106,38 @@ int main(int argc, char** argv){
 			printf(" with arg %s", optarg);
 		printf("\n");
 		break;
-
+	case 'a':
+		minKineticRate = atof(optarg);
+		break;
+	case 'b':
+		maxKineticRate = atof(optarg);
+		break;
 	case 'c':
 		numCells = atoi(optarg);
 		break;
+	case 'd':
+		maxBasic = atoi(optarg);
+		break;
+	case 'e':
+		maxPTM = atoi(optarg);
+		break;
+	case 'f':
+		maxComp = atoi(optarg);
+		break;
 	case 'g':
 		numGenerations = atoi(optarg);
+		break;
+	case 'h':
+		maxPromoter = atoi(optarg);
+		break;
+	case 'i':
+		initialConcentration = atof(optarg);
+		break;
+	case 'j':
+		rkTimeLimit = atof(optarg);
+		break;
+	case 'k':
+		rkTimeStep = atof(optarg);
 		break;
 	case '?':
 		break;
@@ -103,7 +152,8 @@ if(verbose_flag)
 
 
 
-Experiment* e = new Experiment(numCells, numGenerations);
+Experiment* e = new Experiment(numCells, numGenerations, maxBasic, maxPTM, maxComp, maxPromoter, minKineticRate, maxKineticRate);
+
 e->start();
 
 

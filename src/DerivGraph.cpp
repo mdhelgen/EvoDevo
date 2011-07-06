@@ -39,8 +39,8 @@ using namespace std;
 DerivGraph::DerivGraph(){
 	max_rate = 1.0;
 	min_rate = .05;
-//	maxBasic = 5;
-//	maxComp = 2;
+	maxBasic = 5;
+	maxComp = 2;
 //	maxProm = 2;
 
     t.trace("init","Creating new DerivGraph\n");
@@ -395,13 +395,11 @@ ListDigraph::Arc DerivGraph::add(Interaction * newInteraction, ListDigraph::Node
 void DerivGraph::newBasic(){
 
 	t.trace("mutate","DerivGraph %u, new Basic Protein\n",(unsigned int)this);
-/*
 	if (DNAList->size() >= maxBasic)
 	{
 		t.trace("mutate","Basic Protein count is at limit\n");
 		return;
 	}
-*/
 	//create a new DNA, MRNA, and Protein
 	ListDigraph::Node d = add(new DNA());
 	ListDigraph::Node m = add(new mRNA());
@@ -678,14 +676,12 @@ void DerivGraph::newPTM(){
  * TODO: add PTM's to the possible complex
  */
 void DerivGraph::newComplex(){
-/*
 	if(ComplexList->size() >= maxComp)
 	{
 		t.trace("mutate","Total Complex protein count is at limit\n");
 		return;
 
 	}
-*/
 
 	unsigned int i1 = -1;
 	unsigned int i2 = -1;
@@ -827,7 +823,7 @@ void DerivGraph::newPromoter(){
 
 }
 
-Molecule* DerivGraph::getBestMolecule(){
+Molecule* DerivGraph::getBestMolecule(int CellID){
 
 	Molecule* bestMolecule;
 	int maxScore = -1;
@@ -841,6 +837,7 @@ Molecule* DerivGraph::getBestMolecule(){
 		}
 
 	}
+	t.trace("score","Cell %d best molecule is %s (%d)\n",CellID, bestMolecule->getShortName(), maxScore);
 	return bestMolecule;
 }
 
