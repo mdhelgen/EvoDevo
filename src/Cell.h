@@ -13,7 +13,7 @@
 class Cell{
 
 public:
-	Cell();
+	Cell(int, int, int, int,float,float, float, float, float);
 	~Cell();
 	int mutate();
 	void outputDotImage();
@@ -26,7 +26,8 @@ private:
 	int currentGen;
 	MTRand r;
 	DerivGraph* equations;
-
+	float rkTimeStep;
+	float rkTimeLimit;
 };
 
 

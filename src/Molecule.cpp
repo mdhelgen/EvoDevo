@@ -14,8 +14,8 @@ Molecule::Molecule(){
 	t.trace("mloc", "Molecule location at %u\n", (unsigned int) this);
 
 	//set default concentration
-	currentConcentration = 4;
-	initialConcentration = 4;
+	currentConcentration = 5;
+	initialConcentration = 5;
 
 	//set the long and short name prefix for this molecule
 	longName = "Molecule";

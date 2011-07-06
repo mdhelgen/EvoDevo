@@ -21,12 +21,21 @@ int Cell::CellCounter = 0;
  * Allocates:
  * 	1 derivGraph object
  */
-Cell::Cell(){
+Cell::Cell(int max_basic, int max_ptm, int max_comp, int max_promoter,float min_kinetic_rate, float max_kinetic_rate, float rk_time_step, float rk_time_limit, float initial_conc){
 
     t.trace("init", "Creating new Cell\n");
     t.trace("mloc", "Cell location at %u\n", (unsigned int) this);
     equations = new DerivGraph();
-   
+    
+    //set the limits of mutation occurrences
+    equations->setLimits(max_basic, max_ptm, max_comp, max_promoter);
+    equations->setKineticRateLimits(min_kinetic_rate, max_kinetic_rate);
+    equations->setRungeKuttaEval(rk_time_step, rk_time_limit);
+    equations->setDefaultInitialConc(initial_conc);
+
+    rkTimeStep = rk_time_step;
+    rkTimeLimit = rk_time_limit;
+
     currentGen = 0;
    
     CellID = CellCounter++;
@@ -126,7 +135,7 @@ int Cell::mutate(){
 
 	}//end null mutation
 	
-	equations->rungeKuttaEvaluate(0.5);
+	equations->rungeKuttaEvaluate(rkTimeStep, rkTimeLimit);
 //	equations->outputDotImage(CellID,currentGen );
 	
 	return -1;
@@ -147,5 +156,5 @@ void Cell::outputDotImage(){
 }
 
 void Cell::outputDataPlot(){
-	equations->outputDataPlot(CellID, currentGen, 0.5);
+	equations->outputDataPlot(CellID, currentGen, rkTimeStep);
 }

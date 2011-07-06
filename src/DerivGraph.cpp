@@ -37,12 +37,7 @@ using namespace std;
  *     1 ListDigraph::ArcMap object
  */
 DerivGraph::DerivGraph(){
-	max_rate = 1.0;
-	min_rate = .05;
-	maxBasic = 5;
-	maxComp = 2;
-//	maxProm = 2;
-
+    
     t.trace("init","Creating new DerivGraph\n");
     
     t.trace("mloc","DerivGraph location at %u\n",(unsigned int) this);
@@ -254,7 +249,7 @@ void DerivGraph::test(){
 	(*interactions)[BC]->setRate(.07);
 	(*interactions)[CB]->setRate(.09);
 
-	rungeKuttaEvaluate(1.0);
+	rungeKuttaEvaluate(rkTimeStep, rkTimeLimit);
 
 return;
 
@@ -268,14 +263,16 @@ return;
  *
  * @param rkStep the timestep (precision) between calculated points
  */
-void DerivGraph::rungeKuttaEvaluate(float rkStep){
+void DerivGraph::rungeKuttaEvaluate(float rkStep, float rkLimit){
 
 	//reset the runge-kutta internal variables for all molecules
 	for(ListDigraph::NodeIt it(*derivs); it != INVALID; ++it)
 		(*molecules)[it]->reset();
 
+	
+
 	//time loop
-	for(float i = 0; i< 10; i+=rkStep){
+	for(float i = 0; i< rkLimit; i+=rkStep){
 
 		//each iteration of this loop refines the approximation based on the previous calculations	
 		for(int k = 0; k<4; k++){
@@ -347,7 +344,10 @@ ListDigraph::Node DerivGraph::add(Molecule * newMolecule){
 	//store the nodeid in the molecule
 	//this allow sthe molecule to find its position in the graph structure
 	(*molecules)[newNode]->nodeID = derivs->id(newNode);
-	
+
+
+	(*molecules)[newNode]->setValue(defaultInitialConcentration);
+
 	//return the newly created Node
 	return newNode;
 }
@@ -375,6 +375,7 @@ ListDigraph::Arc DerivGraph::add(Interaction * newInteraction, ListDigraph::Node
 	//this allows the interaction to find its position in the graph structure
 	(*interactions)[newArc]->arcID = derivs->id(newArc);
 
+	(*interactions)[newArc]->setRate(minKineticRate + r.rand(maxKineticRate-minKineticRate));
 	//return the newly created Arc
 	return newArc;
 }
@@ -491,7 +492,7 @@ void DerivGraph::forwardRateChange(){
 	Molecule* source = (*molecules)[derivs->source(selectedArc)];
 	Molecule* target = (*molecules)[derivs->target(selectedArc)];
 
-float newRate = min_rate + r.rand(max_rate - min_rate);
+float newRate = minKineticRate + r.rand(maxKineticRate - minKineticRate);
 	
 	t.trace("mutate","%s -> %s new rate: %f (old rate: %f)\n",source->getShortName(), target->getShortName(), newRate, selectedInteraction->getRate());
 
@@ -541,7 +542,7 @@ void DerivGraph::reverseRateChange(){
 
 	Molecule* source = (*molecules)[derivs->source(selectedArc)];
 	Molecule* target = (*molecules)[derivs->target(selectedArc)];
-	float newRate = min_rate + r.rand(max_rate - min_rate);
+	float newRate = minKineticRate + r.rand(maxKineticRate - minKineticRate);
 	t.trace("mutate","%s -> %s new rate: %f (old rate: %f)\n",source->getShortName(), target->getShortName(), newRate, selectedInteraction->getRate());
 
 	selectedInteraction->setRate(newRate);
@@ -556,7 +557,7 @@ void DerivGraph::reverseRateChange(){
 void DerivGraph::degradationRateChange(){
 	
 	int selectedIndex = r.randInt(DegradationList->size()-1);
-	float newRate = min_rate + r.rand(max_rate - min_rate);
+	float newRate = minKineticRate + r.rand(maxKineticRate - minKineticRate);
 
 	Interaction* selectedInteraction = (*DegradationList)[selectedIndex];
 
@@ -604,6 +605,11 @@ DNA* DerivGraph::histoneMod(){
  */
 void DerivGraph::newPTM(){
 
+	if(PTMList->size() >= maxPTM)
+	{
+		t.trace("mutate","PTM count is at limit\n");
+		return;
+	}
 
 	int PTMSelected = -1;
 
@@ -810,8 +816,8 @@ void DerivGraph::newPromoter(){
 	float rev = 1;
 	while(rev > fwd)
 	{
-		fwd = min_rate + r.rand(max_rate - min_rate);
-		rev = min_rate + r.rand(max_rate - min_rate);
+		fwd = minKineticRate + r.rand(maxKineticRate - minKineticRate);
+		rev = minKineticRate + r.rand(maxKineticRate - minKineticRate);
 	}
 	t.trace("mutate","gene: %s protein: %s kf: %f kr: %f\n",d->getShortName(),p->getShortName(), fwd, rev);
 
@@ -945,6 +951,63 @@ void DerivGraph::outputDataPlot(int cellNum, int gen, float step){
 	}
 	pclose(gnuplot);
 }
+/**
+ * DerivGraph::setLimits(int, int, int, int)
+ *
+ * Set the occurrence limits for mutation types
+ *
+ * @param max_basic Maximum basic proteins allowed
+ * @param max_ptm Maximum number of post translationally modified proteins allowed
+ * @param max_comp Maximum number of complexed proteins allowed
+ * @param max_promoter Maximum number of protein-promoter interactions allowed
+ */
+void DerivGraph::setLimits(int max_basic, int max_ptm, int max_comp, int max_promoter){
+	maxBasic = max_basic;
+	maxPTM = max_ptm;
+	maxComp = max_comp;
+	maxProm = max_promoter;
+	t.trace("args","Max Basic: %d\n", maxBasic);
+	t.trace("args","Max PTM: %d\n", maxPTM);
+	t.trace("args","Max Complex: %d\n", maxComp);
+	t.trace("args","Max Promoters: %d\n", maxProm);
 
+}
+/**
+ * DerivGraph::setRungeKuttaEval(float, float)
+ *
+ * Set the parameters for runge-kutta evalutation
+ *
+ * @param rk_time_step The timestep between points (t, conc) calculated by Runge-Kutta
+ * @param rk_time_limit The upper time limit for Runge-Kutta calculation (time = x axis)
+ */
+void DerivGraph::setRungeKuttaEval(float rk_time_step, float rk_time_limit){
+	rkTimeStep = rk_time_step;
+	rkTimeLimit = rk_time_limit;
+}
 
+/**
+ * DerivGraph::setKineticRateLimits(float, float)
+ *
+ * Assign lower and upper bounds to the randomly generated kinetic rates
+ *
+ * @param min_kinetic_rate The lower bound on random kinetic rates
+ * @param max_kinetic_rate The upper bound on random kinetic rates
+ */
+void DerivGraph::setKineticRateLimits(float min_kinetic_rate, float max_kinetic_rate){
+	minKineticRate = min_kinetic_rate;
+	maxKineticRate = max_kinetic_rate;
 
+}
+
+/**
+ * DerivGraph::setDefaultInitialConcentration(float)
+ *
+ * Set the default initial concentration for molecules
+ *
+ * @param initial_conc The initial concentration for new molecules
+ */
+void DerivGraph::setDefaultInitialConc(float initial_conc){
+
+	defaultInitialConcentration = initial_conc;
+
+}

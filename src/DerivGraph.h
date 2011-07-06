@@ -30,10 +30,16 @@ public:
 	MTRand r;
 	
 	void test();
-	void rungeKuttaEvaluate(float);
+	void rungeKuttaEvaluate(float, float);
 	void outputDotImage(int, int);
 	void outputDataPlot(int, int, float);
 	Molecule* getBestMolecule(int);
+
+	void setLimits(int, int, int, int);
+	void setKineticRateLimits(float, float);
+	void setRungeKuttaEval(float, float);
+	void setDefaultInitialConc(float);
+
 
 	//deprecated?
 	ListDigraph* getListDigraph();
@@ -52,12 +58,18 @@ public:
 
 private:
 
-	float max_rate;
-	float min_rate;
+	float minKineticRate;
+	float maxKineticRate;
+
+	float defaultInitialConcentration;
 
 	int maxComp;
 	int maxBasic;
 	int maxProm;
+	int maxPTM;
+
+	float rkTimeStep;
+	float rkTimeLimit;
 
 	//graph structure
 	ListDigraph* derivs;

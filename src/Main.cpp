@@ -26,19 +26,19 @@ int main(int argc, char** argv){
   t.addTraceType("args",1);
  
   //object creation / construction
-  t.addTraceType("init",0);
+  t.addTraceType("init",1);
 
   //memory location of created objects
-  t.addTraceType("mloc",0);
+  t.addTraceType("mloc",1);
 
   //object deletion / destruction
-  t.addTraceType("free",0);
+  t.addTraceType("free",1);
 
   //calculated effect of interactions
   t.addTraceType("efct",0);
 
   //runge kutta
-  t.addTraceType("rk-4",0);
+  t.addTraceType("rk-4",1);
 
   t.addTraceType("rk-val",0);
   t.addTraceType("rk-new",0);
@@ -152,7 +152,7 @@ if(verbose_flag)
 
 
 
-Experiment* e = new Experiment(numCells, numGenerations, maxBasic, maxPTM, maxComp, maxPromoter, minKineticRate, maxKineticRate);
+Experiment* e = new Experiment(numCells, numGenerations, maxBasic, maxPTM, maxComp, maxPromoter, minKineticRate, maxKineticRate, rkTimeLimit, rkTimeStep, initialConcentration);
 
 e->start();
 

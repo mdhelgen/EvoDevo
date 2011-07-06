@@ -30,8 +30,8 @@ using namespace std;
  * @param number of Generations the Experiment will run for.
  *
  */
-Experiment::Experiment(int ncells, int generations, int max_basic, int max_ptm, int max_comp, int max_prom, float min_kinetic_rate, float max_kinetic_rate)
-	   :maxBasic(max_basic), maxPTM(max_ptm), maxComp(max_comp), maxProm(max_prom), minKineticRate(min_kinetic_rate), maxKineticRate(max_kinetic_rate){
+Experiment::Experiment(int ncells, int generations, int max_basic, int max_ptm, int max_comp, int max_prom, float min_kinetic_rate, float max_kinetic_rate, float rk_time_limit, float rk_time_step, float initial_conc)
+	   :maxBasic(max_basic), maxPTM(max_ptm), maxComp(max_comp), maxProm(max_prom), minKineticRate(min_kinetic_rate), maxKineticRate(max_kinetic_rate), rkTimeLimit(rk_time_limit), rkTimeStep(rk_time_step), initialConc(initial_conc){
 
 	
 	t.trace("init","Creating new Experiment\n");
@@ -46,8 +46,9 @@ Experiment::Experiment(int ncells, int generations, int max_basic, int max_ptm, 
 	//create the cell objects and add them to our cells vector
 	for (int i = 0; i < ncells; i++){
 		t.trace("init","Creating Cell (%d)\n",i);
-		cells.push_back(new Cell());
+		cells.push_back(new Cell(maxBasic, maxPTM, maxComp, maxProm,minKineticRate,maxKineticRate, rkTimeStep, rkTimeLimit, initialConc));
 	}
+
 /*	
 	char buf[200];
 	
@@ -127,7 +128,6 @@ for(int i = 1; i <= maxGenerations; i++)
 		cells[c]->getScore();
 	}
 }
-return;
 for(unsigned int c = 0; c < cells.size(); c++){
 	cells[c]->outputDotImage();
 	cells[c]->outputDataPlot();

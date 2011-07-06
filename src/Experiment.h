@@ -23,7 +23,7 @@ using namespace std;
 
 class Experiment {
 public:
-	Experiment(int ncells, int generations, int max_basic, int max_ptm, int max_comp, int max_prom, float min_kinetic_rate, float max_kinetic_rate);
+	Experiment(int ncells, int generations, int max_basic, int max_ptm, int max_comp, int max_prom, float min_kinetic_rate, float max_kinetic_rate, float rk_time_limit, float rk_time_step, float initial_conc);
 	~Experiment();
 
 	void start();
@@ -40,6 +40,10 @@ private:
 	float minKineticRate;
 	float maxKineticRate;
 
+	float initialConc;
+
+	float rkTimeLimit;
+	float rkTimeStep;
 
 	int scoringInterval;
 	int numHighScores;
