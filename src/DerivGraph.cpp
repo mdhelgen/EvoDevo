@@ -396,7 +396,7 @@ ListDigraph::Arc DerivGraph::add(Interaction * newInteraction, ListDigraph::Node
 void DerivGraph::newBasic(){
 
 	t.trace("mutate","DerivGraph %u, new Basic Protein\n",(unsigned int)this);
-	if (DNAList->size() >= maxBasic)
+	if ((int)DNAList->size() >= maxBasic)
 	{
 		t.trace("mutate","Basic Protein count is at limit\n");
 		return;
@@ -605,7 +605,7 @@ DNA* DerivGraph::histoneMod(){
  */
 void DerivGraph::newPTM(){
 
-	if(PTMList->size() >= maxPTM)
+	if((int)PTMList->size() >= maxPTM)
 	{
 		t.trace("mutate","PTM count is at limit\n");
 		return;
@@ -682,7 +682,7 @@ void DerivGraph::newPTM(){
  * TODO: add PTM's to the possible complex
  */
 void DerivGraph::newComplex(){
-	if(ComplexList->size() >= maxComp)
+	if((int)ComplexList->size() >= maxComp)
 	{
 		t.trace("mutate","Total Complex protein count is at limit\n");
 		return;
@@ -791,12 +791,12 @@ void DerivGraph::newComplex(){
  *
  */
 void DerivGraph::newPromoter(){
-/*
-	if(PromoterBindList->size() >= maxProm){
+
+	if((int)PromoterBindList->size() >= maxProm){
 		t.trace("mutate","Promoter count is at limit\n");
 		return;
 	}
-*/
+	
 	int selectionIndex = r.randInt(DNAList->size() -1);
 	if( (*DNAList)[selectionIndex]->promoterId >= 0)
 	{
@@ -831,7 +831,7 @@ void DerivGraph::newPromoter(){
 
 Molecule* DerivGraph::getBestMolecule(int CellID){
 
-	Molecule* bestMolecule;
+	Molecule* bestMolecule = 0;
 	int maxScore = -1;
 	int s = -1;
 

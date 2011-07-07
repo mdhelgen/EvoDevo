@@ -23,8 +23,12 @@ Molecule::Molecule(){
 	
 	//set the molecule id
 	moleculeID = -1;
-	
-	
+
+	numChanges = 0;
+	prevDir = 0;
+	currentDir = 0;
+
+
 	wasPTM = 0;
 
 	//initialize Runge-Kutta intermediate values
@@ -151,6 +155,7 @@ float Molecule::rkApprox(int rkIteration, float rkStepSize){
  */
 void Molecule::nextPoint(float step){
 
+	float prevConc = currentConcentration;
 	t.trace("rk-val","%s rkvals: %f %f %f %f\n",getShortName(), rkVal[0], rkVal[1], rkVal[2], rkVal[3]);
 	
 	float delta = ((step/6) * (rkVal[0] + 2*rkVal[1] + 2*rkVal[2] + rkVal[3]));
@@ -167,8 +172,22 @@ void Molecule::nextPoint(float step){
 	rkVal[2] = 0;
 	rkVal[3] = 0;
 
-}
+	if(currentConcentration == prevConc)
+		return;
+	if(currentConcentration - prevConc > 0)
+		currentDir = 1;
+	if(currentConcentration - prevConc < 0)
+		currentDir = -1;
+	
+	t.trace("score", "%s%d - %d (%f , %f), dir = %d, prev = %d\n",shortName, moleculeID ,rungeKuttaSolution.size(),currentConcentration, prevConc , currentDir, prevDir);
+	
+	if((prevDir == -1 && currentDir == 1) || (prevDir == 1 && currentDir == -1))
+		numChanges++;
+	
+	prevDir = currentDir;
 
+	return;
+}
 /**
  * char* Molecule::getShortName()
  * (Virtual function)
@@ -247,6 +266,9 @@ void Molecule::reset(){
 	rkVal[1] = 0;
 	rkVal[2] = 0;
 	rkVal[3] = 0;
+	prevDir = 0;
+	currentDir = 0;
+	numChanges = 0;
 }
 
 /**
@@ -278,13 +300,17 @@ int Molecule::getPTMCount(int index){
  */
 int Molecule::getScore(){
 
+
+	return numChanges;
+
+	/*
 	int prevDir = 0;
 	int currentDir = 0;
 	int numChanges = 0;
 
 	float diff = 0.0;
 
-	for(int i = 1; i < rungeKuttaSolution.size(); i++){
+	for(unsigned int i = 1; i < rungeKuttaSolution.size(); i++){
 		//how has the value changed this timestep	
 		diff = rungeKuttaSolution[i] - rungeKuttaSolution[i-1];
 		
@@ -312,7 +338,7 @@ int Molecule::getScore(){
 
 	}
 	return numChanges;
-
+*/
 
 }
 

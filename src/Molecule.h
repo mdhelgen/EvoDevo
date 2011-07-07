@@ -50,7 +50,11 @@ private:
 	float initialConcentration;
 	float currentConcentration;
 	float rkVal[4]; 
-	
+	int numChanges;
+	int prevDir;
+	int currentDir;
+
+
 protected:
 	char buf[200];	
 	const char* longName;

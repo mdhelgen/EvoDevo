@@ -40,12 +40,13 @@ private:
 	float minKineticRate;
 	float maxKineticRate;
 
-	float initialConc;
 
 	float rkTimeLimit;
 	float rkTimeStep;
 
-	int scoringInterval;
+	float initialConc;
+
+int scoringInterval;
 	int numHighScores;
 };
 

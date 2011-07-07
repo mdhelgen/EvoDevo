@@ -26,9 +26,17 @@ using namespace std;
  *
  * Experiment constructor.
  *
- * @param number of Cell objects to be created.
- * @param number of Generations the Experiment will run for.
- *
+ * @param ncells number of Cell objects to be created.
+ * @param generations number of Generations the Experiment will run for.
+ * @param max_basic maximum number of basic proteins allowed in each Cell
+ * @param max_ptm maximum number of PTM proteins allowed in each Cell
+ * @param max_comp maximum number of complexed proteins allowed in each Cell
+ * @param max_prom maximum number of protein-promoter interactions allowed in each cell
+ * @param min_kinetic_rate the lower bound on randomly generated kinetic rates
+ * @param max_kinetic_rate the upper bound on randomly generated kinetic rates
+ * @param rk_time_limit the stopping condition for runge-kutta iteration
+ * @param rk_time_step how much time to advance each iteration
+ * @param initial_conc the initial concentration for molecules
  */
 Experiment::Experiment(int ncells, int generations, int max_basic, int max_ptm, int max_comp, int max_prom, float min_kinetic_rate, float max_kinetic_rate, float rk_time_limit, float rk_time_step, float initial_conc)
 	   :maxBasic(max_basic), maxPTM(max_ptm), maxComp(max_comp), maxProm(max_prom), minKineticRate(min_kinetic_rate), maxKineticRate(max_kinetic_rate), rkTimeLimit(rk_time_limit), rkTimeStep(rk_time_step), initialConc(initial_conc){

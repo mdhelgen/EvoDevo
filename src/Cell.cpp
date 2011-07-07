@@ -141,9 +141,12 @@ int Cell::mutate(){
 	return -1;
 }
 
-void Cell::getScore(){
+int Cell::getScore(){
 
 	Molecule* m = equations->getBestMolecule(CellID);
+	
+	return m->getScore();
+	
 	if (m->getScore() > 2){
 		outputDataPlot();
 	}
