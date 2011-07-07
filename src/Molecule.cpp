@@ -195,7 +195,7 @@ void Molecule::nextPoint(float step){
 	if(delta < 0)
 		currentDir = -1;
 	
-	t.trace("score", "%s%d - %d (%f , %f), dir = %d, prev = %d\n",shortName, moleculeID,currentConcentration,delta  , currentDir, prevDir);
+	t.trace("score", "%s%d - (%f , %f), dir = %d, prev = %d\n",shortName, moleculeID,currentConcentration,delta  , currentDir, prevDir);
 
 	//if the value previously decreased and just increased, or previously increased and just decreased, add to the change count
 	if((prevDir == -1 && currentDir == 1) || (prevDir == 1 && currentDir == -1))

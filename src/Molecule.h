@@ -49,7 +49,8 @@ public:
 private:
 	float initialConcentration;
 	float currentConcentration;
-	float rkVal[4]; 
+	float rkVal[4];
+protected:
 	int numChanges;
 	int prevDir;
 	int currentDir;

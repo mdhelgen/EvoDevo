@@ -18,7 +18,9 @@ int main(int argc, char** argv){
   int verbose_flag = 0;
   int graphviz_flag = 0;
   int gnuplot_flag = 0;
-  
+  int outputall_flag = 0;
+
+
   int c;
 
 
@@ -26,29 +28,32 @@ int main(int argc, char** argv){
   t.addTraceType("trce",0);
   
   //program arguments
-  t.addTraceType("args",1);
+  t.addTraceType("args",0);
  
   //object creation / construction
-  t.addTraceType("init",1);
+  t.addTraceType("init",0);
 
   //memory location of created objects
-  t.addTraceType("mloc",1);
+  t.addTraceType("mloc",0);
 
   //object deletion / destruction
-  t.addTraceType("free",1);
+  t.addTraceType("free",0);
 
   //calculated effect of interactions
   t.addTraceType("efct",0);
 
+  //generational messages
+  t.addTraceType("gens",1);
+
   //runge kutta
-  t.addTraceType("rk-4",1);
+  t.addTraceType("rk-4",0);
 
   t.addTraceType("rk-val",0);
   t.addTraceType("rk-new",0);
 
-  t.addTraceType("score",1);
+  t.addTraceType("score",0);
   //mutation
-  t.addTraceType("mutate",1);
+  t.addTraceType("mutate",0);
 
   //polymorphic comparisons
   t.addTraceType("typeid",0);
@@ -76,6 +81,7 @@ int main(int argc, char** argv){
      {
       {"graphviz", no_argument, &graphviz_flag, 1},
       {"gnuplot",   no_argument, &gnuplot_flag, 1},
+      {"outputall", no_argument, &outputall_flag, 1},
 
       {"cells",  required_argument, 0, 'c'},
       {"gens",  required_argument, 0, 'g'},
@@ -156,7 +162,7 @@ if(verbose_flag)
 
 
 Experiment* e = new Experiment(numCells, numGenerations, maxBasic, maxPTM, maxComp, maxPromoter, minKineticRate, maxKineticRate, rkTimeLimit, rkTimeStep, initialConcentration);
-e->setOutputOptions(graphviz_flag, gnuplot_flag);
+e->setOutputOptions(graphviz_flag, gnuplot_flag, outputall_flag);
 e->start();
 
 

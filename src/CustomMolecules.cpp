@@ -25,7 +25,8 @@ DNA::DNA(){
 	promoterId = -1;
 	hill = 2;
 	histoneModValue = 1;
-
+	currentDir = 0;
+	prevDir = 0;
 	longName = "DNA";
 	shortName = "g";
 }
@@ -74,6 +75,8 @@ NullNode::NullNode(){
 	t.trace("init","Molecule %u type:NulNode\n", (unsigned int) this);	
 	longName = "NullNode";
 	shortName = "n";
+	currentDir = 0;
+	prevDir = 0;
 }
 NullNode::~NullNode(){}
 float NullNode::getValue(){
@@ -86,6 +89,9 @@ mRNA::mRNA(){
 	t.trace("init","Molecule %u type:mRNA\n", (unsigned int) this);	
 	longName = "mRNA";
 	shortName = "m";
+	currentDir = 0;
+	prevDir = 0;
+
 }
 mRNA::~mRNA(){
 }
@@ -96,7 +102,9 @@ Protein::Protein(){
 	t.trace("init","Molecule %u type:Protein\n", (unsigned int) this);	
 	longName = "Protein";
 	shortName = "p";
-
+	currentDir = 0;
+	prevDir = 0;
+	numChanges = 0;
 }
 Protein::~Protein(){}
 
@@ -106,6 +114,9 @@ Complex::Complex(int n1, int n2){
 	Molecule::Molecule();
 	t.trace("init","Molecule %u type:Complex\n", (unsigned int) this);	
 	
+	currentDir = 0;
+	prevDir = 0;
+
 	longName="Complex";
 	shortName="c";
 	id1 = n1;
@@ -132,6 +143,9 @@ PTMProtein::PTMProtein(){
 
 	longName = "PTM";
 	shortName = "ptm";
+
+	currentDir = 0;
+	prevDir = 0;
 
 	PTMArray[0] = 0;
 	PTMArray[1] = 0;

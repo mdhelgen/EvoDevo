@@ -111,11 +111,11 @@ Experiment::~Experiment() {
 }
 
 
-void Experiment::setOutputOptions(int gv_flag, int gp_flag){
+void Experiment::setOutputOptions(int gv_flag, int gp_flag, int eachgen_flag){
 
 	graphviz_enabled = gv_flag;
 	gnuplot_enabled = gp_flag;
-
+	output_each_gen = eachgen_flag;
 }
 
 /**
@@ -124,93 +124,36 @@ void Experiment::setOutputOptions(int gv_flag, int gp_flag){
 void Experiment::start()
 {
 
-t.trace("args","Graphviz: %d\n",graphviz_enabled);
-t.trace("args","Gnuplot: %d\n", gnuplot_enabled);
+	t.trace("args","Graphviz: %d\n",graphviz_enabled);
+	t.trace("args","Gnuplot: %d\n", gnuplot_enabled);
 
-//getscore before anything
-for(int i = 1; i <= maxGenerations; i++)
-{
-	for(unsigned int c = 0; c < cells.size(); c++)
+	//generational loop
+	for(int i = 1; i <= maxGenerations; i++)
 	{
-		t.trace("mutate","Gen %-3d Cell loc %u\n", i, (unsigned int) cells[c]);
-		//mutate
-		cells[c]->mutate();
-		//getscore
-		cells[c]->getScore();
+		t.trace("gens","Generation %d started (max %d)\n",i, maxGenerations);
+		for(unsigned int c = 0; c < cells.size(); c++)
+		{
+			t.trace("mutate","Gen %-3d Cell loc %u\n", i, (unsigned int) cells[c]);
+			//mutate
+			cells[c]->mutate();
+			//getscore
+			cells[c]->getScore();
+		
+			//if the flag is set, generate output every generation
+			if(output_each_gen && graphviz_enabled)
+				cells[c]->outputDotImage();
+			if(output_each_gen && gnuplot_enabled)
+				cells[c]->outputDataPlot();
+		}
+		t.trace("gens","Generation %d finished (max %d)\n",i, maxGenerations);
 	}
-}
-for(unsigned int c = 0; c < cells.size(); c++){
-	cells[c]->outputDotImage();
-	cells[c]->outputDataPlot();
-}
-
-/*
-	ofstream output;
-
-
-	char filename[181];
-	snprintf(filename, 179, "./output/%d/score.log",getpid());
-
-	//Comment this and document in the report.
-	output.open(filename);
-
-	// loop once for each generation
-	for (int generation = 1; generation <= maxGenerations; generation++)
-	{
-		Cell* bestCell;
-		int bestCellScore = -1;
-
-		TRACE(4,"Beginning Generation " << generation << "...");
-		vector<Cell*>::iterator cellIterator = cells.begin();
-		while( cellIterator != cells.end() ) {
-
-
-			(*cellIterator)->nextGeneration();
-			++cellIterator;
-		}
-
-		// if this is a scoring generation
-		if (generation % scoringInterval == 0){
-
-			TRACE(5,"Beginning RK scoring...")
-			// loop through all of the cells
-			for(size_t i = 0; i < cells.size(); i++){
-
-				cells[i]->rungeKuttaEvaluate(RUNGE_KUTTA_STD_STEP,RUNGE_KUTTA_STD_LIMIT);
-
-				//get the score of the current cell
-				int score = cells[i]->getScore(1);
-
-				//if this is better than the previous best cell, save as the best cell
-				if(score > bestCellScore){
-					bestCell = cells[i];
-					bestCellScore = score;
-
-					TRACE(3,"Generation " << generation << " Best cell is now " << bestCell->cellID << " (score=" <<bestCellScore << ").")
-				}
-			}
-
-			TRACE(4,"RK scoring complete.")
-
-			TRACE(3,"Generation " << generation << " scoring finished, best cell is " << bestCell->cellID <<" (score=" <<bestCellScore <<").")
-
-			output << "Generation " << generation << ", best cell is " << bestCell->cellID <<" (score=" <<bestCellScore <<")."<< endl;
-
-			//redo Runge-Kutta with finer precision
-			bestCell->rungeKuttaEvaluate(RUNGE_KUTTA_PRECISE_STEP,RUNGE_KUTTA_PRECISE_LIMIT);
-			int betterScore = bestCell->getScore(1);
-			TRACE(3, "Generation " << generation << " best cell score is "<<betterScore <<" after precise rk.")
-
-
-		}
-
-		TRACE(3,"Generation " << generation << " Finished.");
-
+	//generate output at the end of the experiment
+	for(unsigned int c = 0; c < cells.size(); c++){
+		if(graphviz_enabled)
+			cells[c]->outputDotImage();
+		if(gnuplot_enabled)
+			cells[c]->outputDataPlot();
 	}
 
-	output.close();
-
-	TRACE(2,"Experiment Finished.")
-*/
 }
 

@@ -28,7 +28,7 @@ public:
 
 	void start();
 
-	void setOutputOptions(int, int);
+	void setOutputOptions(int, int, int);
 private:
 	vector<Cell*> cells;
 
@@ -47,12 +47,13 @@ private:
 
 	float initialConc;
 
+	// output flags
 	int graphviz_enabled;
 	int gnuplot_enabled;
+        int output_each_gen;
 
 
-
-int scoringInterval;
+	int scoringInterval;
 	int numHighScores;
 };
 
