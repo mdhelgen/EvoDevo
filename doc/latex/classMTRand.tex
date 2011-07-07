@@ -1,0 +1,539 @@
+\hypertarget{classMTRand}{
+\section{MTRand Class Reference}
+\label{classMTRand}\index{MTRand@{MTRand}}
+}
+
+
+{\ttfamily \#include $<$MersenneTwister.h$>$}\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \hyperlink{classMTRand_ab8fea37d16b55e1a0fe06149e325f1b6a60f472facea8fabd42765cd91273db7b}{N} =  624
+ \}
+\item 
+enum \{ \hyperlink{classMTRand_a7d9f4f1783a4e45f7834dd5174dfc2a1a3899803ea0d4da3018d311ed4902d9cc}{SAVE} =  N + 1
+ \}
+\item 
+typedef unsigned long \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMTRand_a172bc7e7cf1e578ef3f9c90a8cee3eb1}{MTRand} (const \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} oneSeed)
+\item 
+\hyperlink{classMTRand_a380e79e0192b46426abcefa6e2dd082e}{MTRand} (\hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} $\ast$const bigSeed, \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} const seedLength=N)
+\item 
+\hyperlink{classMTRand_a265dc65546e26073c0d5f8787b045a1d}{MTRand} ()
+\item 
+\hyperlink{classMTRand_aff69d4a4ec88475bab03a295e8fb0f60}{MTRand} (const \hyperlink{classMTRand}{MTRand} \&o)
+\item 
+\hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} \hyperlink{classMTRand_ad1008efd4fe0e8aae30459c2c58cfe35}{randInt} ()
+\item 
+\hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} \hyperlink{classMTRand_a3515bbf6e1b46680a4ce6968451942b6}{randInt} (const \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} n)
+\item 
+double \hyperlink{classMTRand_a76d129a2d850c24ff4a0613f299cf3a5}{rand} ()
+\item 
+double \hyperlink{classMTRand_aa4fe82fc27fd81414ce7554093a9766b}{rand} (const double n)
+\item 
+double \hyperlink{classMTRand_afd05e468983b3a3d66ce0f403bd666af}{randExc} ()
+\item 
+double \hyperlink{classMTRand_aa1e89d6c7ac8737567b3ccf8fe70b6de}{randExc} (const double n)
+\item 
+double \hyperlink{classMTRand_a4d3a475aa72fe6d1a6d7d9e16d6a732e}{randDblExc} ()
+\item 
+double \hyperlink{classMTRand_a1a81d8f00de8f553d4b8626d64e1c544}{randDblExc} (const double n)
+\item 
+double \hyperlink{classMTRand_abbb87a08d622d58fdee0eea4cb5471a0}{operator()} ()
+\item 
+double \hyperlink{classMTRand_a15f4daf79febbe4ff43c3e6ce2c4fcbe}{rand53} ()
+\item 
+double \hyperlink{classMTRand_a4c284f626b6d40a0367ff2a949ea1944}{randNorm} (const double mean=0.0, const double stddev=1.0)
+\item 
+void \hyperlink{classMTRand_a1e21a79e0a30225fffe924229e34a923}{seed} (const \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} oneSeed)
+\item 
+void \hyperlink{classMTRand_a5758103776b131e8ea46b6dc1b9fb267}{seed} (\hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} $\ast$const bigSeed, const \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} seedLength=N)
+\item 
+void \hyperlink{classMTRand_ad88ea3363d55bafb62826bbd130279c2}{seed} ()
+\item 
+void \hyperlink{classMTRand_ad60e0f3f5c90baab75b74f9a2ccae871}{save} (\hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} $\ast$saveArray) const 
+\item 
+void \hyperlink{classMTRand_a8302e9a8cd16d8dfc536a85bf2f68be0}{load} (\hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} $\ast$const loadArray)
+\item 
+\hyperlink{classMTRand}{MTRand} \& \hyperlink{classMTRand_a3a6eb21add6f6ef4ce2d3280f2518521}{operator=} (const \hyperlink{classMTRand}{MTRand} \&o)
+\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \hyperlink{classMTRand_a10c3437be98225f5b0beee1ed8c033c8a133070000b798889cd75535ea0d5bb71}{M} =  397
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classMTRand_a9b9a20998f5c805af6301ce5c37dcfc3}{initialize} (const \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} oneSeed)
+\item 
+void \hyperlink{classMTRand_a1d5fcb69d83f4d2fd653883c8352f86c}{reload} ()
+\item 
+\hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} \hyperlink{classMTRand_a45eea926a0602e4bb5c0b90b04779826}{hiBit} (const \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} u) const 
+\item 
+\hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} \hyperlink{classMTRand_a6f5a4a532e1c3acd42052046594205be}{loBit} (const \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} u) const 
+\item 
+\hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} \hyperlink{classMTRand_ad846f81f7abfc1b20c51d1563b8e5d45}{loBits} (const \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} u) const 
+\item 
+\hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} \hyperlink{classMTRand_abdd5587252ed1ac89cb274e4bf4881da}{mixBits} (const \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} u, const \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} v) const 
+\item 
+\hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} \hyperlink{classMTRand_a8539a48116c85704c5101981cb0823e7}{magic} (const \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} u) const 
+\item 
+\hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} \hyperlink{classMTRand_acf32530212717166e3d02dd3cc0b68c4}{twist} (const \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} m, const \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} s0, const \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} s1) const 
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} \hyperlink{classMTRand_a486885d03f38c844315d002e6312fa23}{hash} (time\_\-t \hyperlink{Main_8cpp_aa116c3492d6719f5f9213a5b26620b8d}{t}, clock\_\-t c)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} \hyperlink{classMTRand_a2c87f537429bf0b0f6a452c22b9eebba}{state} \mbox{[}N\mbox{]}
+\item 
+\hyperlink{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{uint32} $\ast$ \hyperlink{classMTRand_a2b80858137c88fe69d4d2bdc665bcf93}{pNext}
+\item 
+int \hyperlink{classMTRand_a98eabf568c88f121e44f487397f32495}{left}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std::ostream \& \hyperlink{classMTRand_a059061d50a1e54ee3067d4e1dbdd7c64}{operator$<$$<$} (std::ostream \&os, const \hyperlink{classMTRand}{MTRand} \&mtrand)
+\item 
+std::istream \& \hyperlink{classMTRand_a45b02a702835a3be42171c5c2dc79b2d}{operator$>$$>$} (std::istream \&is, \hyperlink{classMTRand}{MTRand} \&mtrand)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\hypertarget{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}{
+\index{MTRand@{MTRand}!uint32@{uint32}}
+\index{uint32@{uint32}!MTRand@{MTRand}}
+\subsubsection[{uint32}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned long {\bf MTRand::uint32}}}
+\label{classMTRand_a45478edf9e24dcd2a5164bac3889d6a2}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classMTRand_ab8fea37d16b55e1a0fe06149e325f1b6}{
+\subsubsection[{"@0}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}
+\label{classMTRand_ab8fea37d16b55e1a0fe06149e325f1b6}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{N@{N}!MTRand@{MTRand}}\index{MTRand@{MTRand}!N@{N}}\item[{\em 
+\hypertarget{classMTRand_ab8fea37d16b55e1a0fe06149e325f1b6a60f472facea8fabd42765cd91273db7b}{
+N}
+\label{classMTRand_ab8fea37d16b55e1a0fe06149e325f1b6a60f472facea8fabd42765cd91273db7b}
+}]\end{description}
+\end{Desc}
+
+\hypertarget{classMTRand_a7d9f4f1783a4e45f7834dd5174dfc2a1}{
+\subsubsection[{"@1}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}
+\label{classMTRand_a7d9f4f1783a4e45f7834dd5174dfc2a1}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{SAVE@{SAVE}!MTRand@{MTRand}}\index{MTRand@{MTRand}!SAVE@{SAVE}}\item[{\em 
+\hypertarget{classMTRand_a7d9f4f1783a4e45f7834dd5174dfc2a1a3899803ea0d4da3018d311ed4902d9cc}{
+SAVE}
+\label{classMTRand_a7d9f4f1783a4e45f7834dd5174dfc2a1a3899803ea0d4da3018d311ed4902d9cc}
+}]\end{description}
+\end{Desc}
+
+\hypertarget{classMTRand_a10c3437be98225f5b0beee1ed8c033c8}{
+\subsubsection[{"@2}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classMTRand_a10c3437be98225f5b0beee1ed8c033c8}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{M@{M}!MTRand@{MTRand}}\index{MTRand@{MTRand}!M@{M}}\item[{\em 
+\hypertarget{classMTRand_a10c3437be98225f5b0beee1ed8c033c8a133070000b798889cd75535ea0d5bb71}{
+M}
+\label{classMTRand_a10c3437be98225f5b0beee1ed8c033c8a133070000b798889cd75535ea0d5bb71}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classMTRand_a172bc7e7cf1e578ef3f9c90a8cee3eb1}{
+\index{MTRand@{MTRand}!MTRand@{MTRand}}
+\index{MTRand@{MTRand}!MTRand@{MTRand}}
+\subsubsection[{MTRand}]{\setlength{\rightskip}{0pt plus 5cm}MTRand::MTRand (const {\bf uint32} {\em oneSeed})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_a172bc7e7cf1e578ef3f9c90a8cee3eb1}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{classMTRand_a172bc7e7cf1e578ef3f9c90a8cee3eb1_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_a380e79e0192b46426abcefa6e2dd082e}{
+\index{MTRand@{MTRand}!MTRand@{MTRand}}
+\index{MTRand@{MTRand}!MTRand@{MTRand}}
+\subsubsection[{MTRand}]{\setlength{\rightskip}{0pt plus 5cm}MTRand::MTRand ({\bf uint32} $\ast$const  {\em bigSeed}, \/  {\bf uint32} const {\em seedLength} = {\ttfamily N})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_a380e79e0192b46426abcefa6e2dd082e}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{classMTRand_a380e79e0192b46426abcefa6e2dd082e_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_a265dc65546e26073c0d5f8787b045a1d}{
+\index{MTRand@{MTRand}!MTRand@{MTRand}}
+\index{MTRand@{MTRand}!MTRand@{MTRand}}
+\subsubsection[{MTRand}]{\setlength{\rightskip}{0pt plus 5cm}MTRand::MTRand ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_a265dc65546e26073c0d5f8787b045a1d}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{classMTRand_a265dc65546e26073c0d5f8787b045a1d_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_aff69d4a4ec88475bab03a295e8fb0f60}{
+\index{MTRand@{MTRand}!MTRand@{MTRand}}
+\index{MTRand@{MTRand}!MTRand@{MTRand}}
+\subsubsection[{MTRand}]{\setlength{\rightskip}{0pt plus 5cm}MTRand::MTRand (const {\bf MTRand} \& {\em o})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_aff69d4a4ec88475bab03a295e8fb0f60}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classMTRand_a486885d03f38c844315d002e6312fa23}{
+\index{MTRand@{MTRand}!hash@{hash}}
+\index{hash@{hash}!MTRand@{MTRand}}
+\subsubsection[{hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf MTRand::uint32} MTRand::hash (time\_\-t {\em t}, \/  clock\_\-t {\em c})\hspace{0.3cm}{\ttfamily  \mbox{[}inline, static, protected\mbox{]}}}}
+\label{classMTRand_a486885d03f38c844315d002e6312fa23}
+\hypertarget{classMTRand_a45eea926a0602e4bb5c0b90b04779826}{
+\index{MTRand@{MTRand}!hiBit@{hiBit}}
+\index{hiBit@{hiBit}!MTRand@{MTRand}}
+\subsubsection[{hiBit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32} MTRand::hiBit (const {\bf uint32} {\em u}) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline, protected\mbox{]}}}}
+\label{classMTRand_a45eea926a0602e4bb5c0b90b04779826}
+\hypertarget{classMTRand_a9b9a20998f5c805af6301ce5c37dcfc3}{
+\index{MTRand@{MTRand}!initialize@{initialize}}
+\index{initialize@{initialize}!MTRand@{MTRand}}
+\subsubsection[{initialize}]{\setlength{\rightskip}{0pt plus 5cm}void MTRand::initialize (const {\bf uint32} {\em oneSeed})\hspace{0.3cm}{\ttfamily  \mbox{[}inline, protected\mbox{]}}}}
+\label{classMTRand_a9b9a20998f5c805af6301ce5c37dcfc3}
+\hypertarget{classMTRand_a8302e9a8cd16d8dfc536a85bf2f68be0}{
+\index{MTRand@{MTRand}!load@{load}}
+\index{load@{load}!MTRand@{MTRand}}
+\subsubsection[{load}]{\setlength{\rightskip}{0pt plus 5cm}void MTRand::load ({\bf uint32} $\ast$const  {\em loadArray})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_a8302e9a8cd16d8dfc536a85bf2f68be0}
+\hypertarget{classMTRand_a6f5a4a532e1c3acd42052046594205be}{
+\index{MTRand@{MTRand}!loBit@{loBit}}
+\index{loBit@{loBit}!MTRand@{MTRand}}
+\subsubsection[{loBit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32} MTRand::loBit (const {\bf uint32} {\em u}) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline, protected\mbox{]}}}}
+\label{classMTRand_a6f5a4a532e1c3acd42052046594205be}
+\hypertarget{classMTRand_ad846f81f7abfc1b20c51d1563b8e5d45}{
+\index{MTRand@{MTRand}!loBits@{loBits}}
+\index{loBits@{loBits}!MTRand@{MTRand}}
+\subsubsection[{loBits}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32} MTRand::loBits (const {\bf uint32} {\em u}) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline, protected\mbox{]}}}}
+\label{classMTRand_ad846f81f7abfc1b20c51d1563b8e5d45}
+\hypertarget{classMTRand_a8539a48116c85704c5101981cb0823e7}{
+\index{MTRand@{MTRand}!magic@{magic}}
+\index{magic@{magic}!MTRand@{MTRand}}
+\subsubsection[{magic}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32} MTRand::magic (const {\bf uint32} {\em u}) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline, protected\mbox{]}}}}
+\label{classMTRand_a8539a48116c85704c5101981cb0823e7}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=132pt]{classMTRand_a8539a48116c85704c5101981cb0823e7_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_abdd5587252ed1ac89cb274e4bf4881da}{
+\index{MTRand@{MTRand}!mixBits@{mixBits}}
+\index{mixBits@{mixBits}!MTRand@{MTRand}}
+\subsubsection[{mixBits}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32} MTRand::mixBits (const {\bf uint32} {\em u}, \/  const {\bf uint32} {\em v}) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline, protected\mbox{]}}}}
+\label{classMTRand_abdd5587252ed1ac89cb274e4bf4881da}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=139pt]{classMTRand_abdd5587252ed1ac89cb274e4bf4881da_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_abbb87a08d622d58fdee0eea4cb5471a0}{
+\index{MTRand@{MTRand}!operator()@{operator()}}
+\index{operator()@{operator()}!MTRand@{MTRand}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}double MTRand::operator() ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_abbb87a08d622d58fdee0eea4cb5471a0}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=420pt]{classMTRand_abbb87a08d622d58fdee0eea4cb5471a0_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_a3a6eb21add6f6ef4ce2d3280f2518521}{
+\index{MTRand@{MTRand}!operator=@{operator=}}
+\index{operator=@{operator=}!MTRand@{MTRand}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf MTRand} \& MTRand::operator= (const {\bf MTRand} \& {\em o})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_a3a6eb21add6f6ef4ce2d3280f2518521}
+\hypertarget{classMTRand_aa4fe82fc27fd81414ce7554093a9766b}{
+\index{MTRand@{MTRand}!rand@{rand}}
+\index{rand@{rand}!MTRand@{MTRand}}
+\subsubsection[{rand}]{\setlength{\rightskip}{0pt plus 5cm}double MTRand::rand (const double {\em n})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_aa4fe82fc27fd81414ce7554093a9766b}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=420pt]{classMTRand_aa4fe82fc27fd81414ce7554093a9766b_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_a76d129a2d850c24ff4a0613f299cf3a5}{
+\index{MTRand@{MTRand}!rand@{rand}}
+\index{rand@{rand}!MTRand@{MTRand}}
+\subsubsection[{rand}]{\setlength{\rightskip}{0pt plus 5cm}double MTRand::rand ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_a76d129a2d850c24ff4a0613f299cf3a5}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=399pt]{classMTRand_a76d129a2d850c24ff4a0613f299cf3a5_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_a15f4daf79febbe4ff43c3e6ce2c4fcbe}{
+\index{MTRand@{MTRand}!rand53@{rand53}}
+\index{rand53@{rand53}!MTRand@{MTRand}}
+\subsubsection[{rand53}]{\setlength{\rightskip}{0pt plus 5cm}double MTRand::rand53 ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_a15f4daf79febbe4ff43c3e6ce2c4fcbe}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=406pt]{classMTRand_a15f4daf79febbe4ff43c3e6ce2c4fcbe_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_a1a81d8f00de8f553d4b8626d64e1c544}{
+\index{MTRand@{MTRand}!randDblExc@{randDblExc}}
+\index{randDblExc@{randDblExc}!MTRand@{MTRand}}
+\subsubsection[{randDblExc}]{\setlength{\rightskip}{0pt plus 5cm}double MTRand::randDblExc (const double {\em n})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_a1a81d8f00de8f553d4b8626d64e1c544}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=420pt]{classMTRand_a1a81d8f00de8f553d4b8626d64e1c544_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_a4d3a475aa72fe6d1a6d7d9e16d6a732e}{
+\index{MTRand@{MTRand}!randDblExc@{randDblExc}}
+\index{randDblExc@{randDblExc}!MTRand@{MTRand}}
+\subsubsection[{randDblExc}]{\setlength{\rightskip}{0pt plus 5cm}double MTRand::randDblExc ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_a4d3a475aa72fe6d1a6d7d9e16d6a732e}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=417pt]{classMTRand_a4d3a475aa72fe6d1a6d7d9e16d6a732e_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_aa1e89d6c7ac8737567b3ccf8fe70b6de}{
+\index{MTRand@{MTRand}!randExc@{randExc}}
+\index{randExc@{randExc}!MTRand@{MTRand}}
+\subsubsection[{randExc}]{\setlength{\rightskip}{0pt plus 5cm}double MTRand::randExc (const double {\em n})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_aa1e89d6c7ac8737567b3ccf8fe70b6de}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=420pt]{classMTRand_aa1e89d6c7ac8737567b3ccf8fe70b6de_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_afd05e468983b3a3d66ce0f403bd666af}{
+\index{MTRand@{MTRand}!randExc@{randExc}}
+\index{randExc@{randExc}!MTRand@{MTRand}}
+\subsubsection[{randExc}]{\setlength{\rightskip}{0pt plus 5cm}double MTRand::randExc ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_afd05e468983b3a3d66ce0f403bd666af}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=409pt]{classMTRand_afd05e468983b3a3d66ce0f403bd666af_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_a3515bbf6e1b46680a4ce6968451942b6}{
+\index{MTRand@{MTRand}!randInt@{randInt}}
+\index{randInt@{randInt}!MTRand@{MTRand}}
+\subsubsection[{randInt}]{\setlength{\rightskip}{0pt plus 5cm}{\bf MTRand::uint32} MTRand::randInt (const {\bf uint32} {\em n})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_a3515bbf6e1b46680a4ce6968451942b6}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=407pt]{classMTRand_a3515bbf6e1b46680a4ce6968451942b6_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_ad1008efd4fe0e8aae30459c2c58cfe35}{
+\index{MTRand@{MTRand}!randInt@{randInt}}
+\index{randInt@{randInt}!MTRand@{MTRand}}
+\subsubsection[{randInt}]{\setlength{\rightskip}{0pt plus 5cm}{\bf MTRand::uint32} MTRand::randInt ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_ad1008efd4fe0e8aae30459c2c58cfe35}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{classMTRand_ad1008efd4fe0e8aae30459c2c58cfe35_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_a4c284f626b6d40a0367ff2a949ea1944}{
+\index{MTRand@{MTRand}!randNorm@{randNorm}}
+\index{randNorm@{randNorm}!MTRand@{MTRand}}
+\subsubsection[{randNorm}]{\setlength{\rightskip}{0pt plus 5cm}double MTRand::randNorm (const double {\em mean} = {\ttfamily 0.0}, \/  const double {\em stddev} = {\ttfamily 1.0})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_a4c284f626b6d40a0367ff2a949ea1944}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=420pt]{classMTRand_a4c284f626b6d40a0367ff2a949ea1944_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_a1d5fcb69d83f4d2fd653883c8352f86c}{
+\index{MTRand@{MTRand}!reload@{reload}}
+\index{reload@{reload}!MTRand@{MTRand}}
+\subsubsection[{reload}]{\setlength{\rightskip}{0pt plus 5cm}void MTRand::reload ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline, protected\mbox{]}}}}
+\label{classMTRand_a1d5fcb69d83f4d2fd653883c8352f86c}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{classMTRand_a1d5fcb69d83f4d2fd653883c8352f86c_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_ad60e0f3f5c90baab75b74f9a2ccae871}{
+\index{MTRand@{MTRand}!save@{save}}
+\index{save@{save}!MTRand@{MTRand}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}void MTRand::save ({\bf uint32} $\ast$ {\em saveArray}) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_ad60e0f3f5c90baab75b74f9a2ccae871}
+\hypertarget{classMTRand_ad88ea3363d55bafb62826bbd130279c2}{
+\index{MTRand@{MTRand}!seed@{seed}}
+\index{seed@{seed}!MTRand@{MTRand}}
+\subsubsection[{seed}]{\setlength{\rightskip}{0pt plus 5cm}void MTRand::seed ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_ad88ea3363d55bafb62826bbd130279c2}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=129pt]{classMTRand_ad88ea3363d55bafb62826bbd130279c2_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_a5758103776b131e8ea46b6dc1b9fb267}{
+\index{MTRand@{MTRand}!seed@{seed}}
+\index{seed@{seed}!MTRand@{MTRand}}
+\subsubsection[{seed}]{\setlength{\rightskip}{0pt plus 5cm}void MTRand::seed ({\bf uint32} $\ast$const  {\em bigSeed}, \/  const {\bf uint32} {\em seedLength} = {\ttfamily N})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_a5758103776b131e8ea46b6dc1b9fb267}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{classMTRand_a5758103776b131e8ea46b6dc1b9fb267_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_a1e21a79e0a30225fffe924229e34a923}{
+\index{MTRand@{MTRand}!seed@{seed}}
+\index{seed@{seed}!MTRand@{MTRand}}
+\subsubsection[{seed}]{\setlength{\rightskip}{0pt plus 5cm}void MTRand::seed (const {\bf uint32} {\em oneSeed})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMTRand_a1e21a79e0a30225fffe924229e34a923}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{classMTRand_a1e21a79e0a30225fffe924229e34a923_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classMTRand_acf32530212717166e3d02dd3cc0b68c4}{
+\index{MTRand@{MTRand}!twist@{twist}}
+\index{twist@{twist}!MTRand@{MTRand}}
+\subsubsection[{twist}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32} MTRand::twist (const {\bf uint32} {\em m}, \/  const {\bf uint32} {\em s0}, \/  const {\bf uint32} {\em s1}) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline, protected\mbox{]}}}}
+\label{classMTRand_acf32530212717166e3d02dd3cc0b68c4}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{classMTRand_acf32530212717166e3d02dd3cc0b68c4_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classMTRand_a059061d50a1e54ee3067d4e1dbdd7c64}{
+\index{MTRand@{MTRand}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!MTRand@{MTRand}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std::ostream\& operator$<$$<$ (std::ostream \& {\em os}, \/  const {\bf MTRand} \& {\em mtrand})\hspace{0.3cm}{\ttfamily  \mbox{[}friend\mbox{]}}}}
+\label{classMTRand_a059061d50a1e54ee3067d4e1dbdd7c64}
+\hypertarget{classMTRand_a45b02a702835a3be42171c5c2dc79b2d}{
+\index{MTRand@{MTRand}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!MTRand@{MTRand}}
+\subsubsection[{operator$>$$>$}]{\setlength{\rightskip}{0pt plus 5cm}std::istream\& operator$>$$>$ (std::istream \& {\em is}, \/  {\bf MTRand} \& {\em mtrand})\hspace{0.3cm}{\ttfamily  \mbox{[}friend\mbox{]}}}}
+\label{classMTRand_a45b02a702835a3be42171c5c2dc79b2d}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classMTRand_a98eabf568c88f121e44f487397f32495}{
+\index{MTRand@{MTRand}!left@{left}}
+\index{left@{left}!MTRand@{MTRand}}
+\subsubsection[{left}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf MTRand::left}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classMTRand_a98eabf568c88f121e44f487397f32495}
+\hypertarget{classMTRand_a2b80858137c88fe69d4d2bdc665bcf93}{
+\index{MTRand@{MTRand}!pNext@{pNext}}
+\index{pNext@{pNext}!MTRand@{MTRand}}
+\subsubsection[{pNext}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32}$\ast$ {\bf MTRand::pNext}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classMTRand_a2b80858137c88fe69d4d2bdc665bcf93}
+\hypertarget{classMTRand_a2c87f537429bf0b0f6a452c22b9eebba}{
+\index{MTRand@{MTRand}!state@{state}}
+\index{state@{state}!MTRand@{MTRand}}
+\subsubsection[{state}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32} {\bf MTRand::state}\mbox{[}N\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classMTRand_a2c87f537429bf0b0f6a452c22b9eebba}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{MersenneTwister_8h}{MersenneTwister.h}\end{DoxyCompactItemize}

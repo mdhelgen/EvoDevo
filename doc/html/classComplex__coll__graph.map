@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classProtein.html" title="Protein" alt="" coords="12,181,81,211"/>
+<area shape="rect" id="node4" href="$classMolecule.html" title="Molecule" alt="" coords="5,101,88,131"/>
+<area shape="rect" id="node6" href="$classMTRand.html" title="MTRand" alt="" coords="9,5,84,35"/>
+</map>

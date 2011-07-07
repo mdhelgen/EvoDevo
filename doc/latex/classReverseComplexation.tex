@@ -1,0 +1,107 @@
+\hypertarget{classReverseComplexation}{
+\section{ReverseComplexation Class Reference}
+\label{classReverseComplexation}\index{ReverseComplexation@{ReverseComplexation}}
+}
+
+
+{\ttfamily \#include $<$CustomInteractions.h$>$}Inheritance diagram for ReverseComplexation:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classReverseComplexation__inherit__graph}
+\end{center}
+\end{figure}
+Collaboration diagram for ReverseComplexation:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classReverseComplexation__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classReverseComplexation_a12c42d3947dcd67f5cff0e9dd218a4c6}{ReverseComplexation} (int, int)
+\item 
+\hyperlink{classReverseComplexation_a8f2824bf550b11d11dd51db704534473}{$\sim$ReverseComplexation} ()
+\item 
+virtual float \hyperlink{classReverseComplexation_a9dceec2b67efbe7c14a7e53c959263f5}{getEffect} (ListDigraph $\ast$, ListDigraph::NodeMap$<$ \hyperlink{classMolecule}{Molecule} $\ast$ $>$ $\ast$, ListDigraph::ArcMap$<$ \hyperlink{classInteraction}{Interaction} $\ast$ $>$ $\ast$, ListDigraph::Node, int, float)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classReverseComplexation_aa9ed054c37191c54e372b941eb49478f}{firstNodeID}
+\item 
+int \hyperlink{classReverseComplexation_a2d42a108e3fce695be1b9867e4f16ec4}{secondNodeID}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classReverseComplexation_a12c42d3947dcd67f5cff0e9dd218a4c6}{
+\index{ReverseComplexation@{ReverseComplexation}!ReverseComplexation@{ReverseComplexation}}
+\index{ReverseComplexation@{ReverseComplexation}!ReverseComplexation@{ReverseComplexation}}
+\subsubsection[{ReverseComplexation}]{\setlength{\rightskip}{0pt plus 5cm}ReverseComplexation::ReverseComplexation (int {\em n1}, \/  int {\em n2})}}
+\label{classReverseComplexation_a12c42d3947dcd67f5cff0e9dd218a4c6}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classReverseComplexation_a12c42d3947dcd67f5cff0e9dd218a4c6_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{classReverseComplexation_a8f2824bf550b11d11dd51db704534473}{
+\index{ReverseComplexation@{ReverseComplexation}!$\sim$ReverseComplexation@{$\sim$ReverseComplexation}}
+\index{$\sim$ReverseComplexation@{$\sim$ReverseComplexation}!ReverseComplexation@{ReverseComplexation}}
+\subsubsection[{$\sim$ReverseComplexation}]{\setlength{\rightskip}{0pt plus 5cm}ReverseComplexation::$\sim$ReverseComplexation ()}}
+\label{classReverseComplexation_a8f2824bf550b11d11dd51db704534473}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classReverseComplexation_a9dceec2b67efbe7c14a7e53c959263f5}{
+\index{ReverseComplexation@{ReverseComplexation}!getEffect@{getEffect}}
+\index{getEffect@{getEffect}!ReverseComplexation@{ReverseComplexation}}
+\subsubsection[{getEffect}]{\setlength{\rightskip}{0pt plus 5cm}float ReverseComplexation::getEffect (ListDigraph $\ast$ {\em g}, \/  ListDigraph::NodeMap$<$ {\bf Molecule} $\ast$ $>$ $\ast$ {\em m}, \/  ListDigraph::ArcMap$<$ {\bf Interaction} $\ast$ $>$ $\ast$ {\em i}, \/  ListDigraph::Node {\em a}, \/  int {\em rkIter}, \/  float {\em rkStep})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classReverseComplexation_a9dceec2b67efbe7c14a7e53c959263f5}
+float Interaction::getEffect(ListDigraph$\ast$ , NodeMap$<$Molecule$\ast$$>$$\ast$ , ArcMap$<$Interaction$\ast$$>$$\ast$ , Node , int, float)
+
+Get the effect this interaction has on a particular node.
+
+This method defines the behavior of an interaction which connects two molecules. The effect on Node a can be dependent on any other molecule, which can be accessed using the ListDigraph, NodeMap, and ArcMap parameters.
+
+Runge-\/Kutta iteratively approximates the change in concentration during a given timestep. The first iteration is based soley on the current concentration, and each further iteration takes the result of the previous iteration into account. The Runge-\/Kutta data are stored in each molecule, and it is necessary to call Molecule::rkApprox(stepsize, iteration) rather than \hyperlink{classMolecule_a554ea822918374775d5f52b5d49d8195}{Molecule::getValue()} to get the current Iteration's approximated concentration.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em g}]The graph object containing Node-\/Node relationships. \item[{\em m}]The NodeMap object containing Node-\/Molecule mappings. \item[{\em i}]The ArcMap object containing Arc-\/Interaction mappings. \item[{\em a}]The Node to calculate the effect for \item[{\em rkIter}]The current iteration of Runge-\/Kutta \mbox{[}0,3\mbox{]} \item[{\em rkStep}]The stepsize of Runge-\/Kutta \end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classInteraction_a6328831e714adf9c8177f6052d2e017f}{Interaction}.
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{classReverseComplexation_a9dceec2b67efbe7c14a7e53c959263f5_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classReverseComplexation_aa9ed054c37191c54e372b941eb49478f}{
+\index{ReverseComplexation@{ReverseComplexation}!firstNodeID@{firstNodeID}}
+\index{firstNodeID@{firstNodeID}!ReverseComplexation@{ReverseComplexation}}
+\subsubsection[{firstNodeID}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf ReverseComplexation::firstNodeID}}}
+\label{classReverseComplexation_aa9ed054c37191c54e372b941eb49478f}
+\hypertarget{classReverseComplexation_a2d42a108e3fce695be1b9867e4f16ec4}{
+\index{ReverseComplexation@{ReverseComplexation}!secondNodeID@{secondNodeID}}
+\index{secondNodeID@{secondNodeID}!ReverseComplexation@{ReverseComplexation}}
+\subsubsection[{secondNodeID}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf ReverseComplexation::secondNodeID}}}
+\label{classReverseComplexation_a2d42a108e3fce695be1b9867e4f16ec4}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{CustomInteractions_8h}{CustomInteractions.h}\item 
+\hyperlink{CustomInteractions_8cpp}{CustomInteractions.cpp}\end{DoxyCompactItemize}

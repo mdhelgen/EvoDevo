@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classTrace.html#a307942e3b0179af28fb7a7a0868fe4b1" title="Trace::addTraceType" alt="" coords="111,59,268,88"/>
+<area shape="rect" id="node7" href="$classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="548,85,652,115"/>
+<area shape="rect" id="node12" href="$classExperiment.html#ab15fca04be9b7bcad65b264b23b4a499" title="Experiment::start" alt="" coords="117,163,261,192"/>
+<area shape="rect" id="node5" href="$classTrace.html#ace78e6fb4da6fc7cb85ec4ee5421c148" title="Trace::disableTraceType" alt="" coords="317,5,499,35"/>
+<area shape="rect" id="node9" href="$classTrace.html#aba8fd6ff6e39496ca25050ae01800523" title="Trace::enableTraceType" alt="" coords="319,59,497,88"/>
+</map>
