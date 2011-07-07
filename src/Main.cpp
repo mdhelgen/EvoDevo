@@ -15,7 +15,10 @@ Trace t;
 
 int main(int argc, char** argv){
 
-  static int verbose_flag;
+  int verbose_flag = 0;
+  int graphviz_flag = 0;
+  int gnuplot_flag = 0;
+  
   int c;
 
 
@@ -71,8 +74,8 @@ int main(int argc, char** argv){
   while(1){
     static struct option long_options[] =
      {
-      {"verbose", no_argument, &verbose_flag, 1},
-      {"brief",   no_argument, &verbose_flag, 0},
+      {"graphviz", no_argument, &graphviz_flag, 1},
+      {"gnuplot",   no_argument, &gnuplot_flag, 1},
 
       {"cells",  required_argument, 0, 'c'},
       {"gens",  required_argument, 0, 'g'},
@@ -153,7 +156,7 @@ if(verbose_flag)
 
 
 Experiment* e = new Experiment(numCells, numGenerations, maxBasic, maxPTM, maxComp, maxPromoter, minKineticRate, maxKineticRate, rkTimeLimit, rkTimeStep, initialConcentration);
-
+e->setOutputOptions(graphviz_flag, gnuplot_flag);
 e->start();
 
 

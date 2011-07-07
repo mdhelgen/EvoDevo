@@ -111,11 +111,12 @@ Experiment::~Experiment() {
 }
 
 
-//void Experiment::outputGeneration(){
+void Experiment::setOutputOptions(int gv_flag, int gp_flag){
 
+	graphviz_enabled = gv_flag;
+	gnuplot_enabled = gp_flag;
 
-//}
-
+}
 
 /**
  * Deprecated 
@@ -123,6 +124,8 @@ Experiment::~Experiment() {
 void Experiment::start()
 {
 
+t.trace("args","Graphviz: %d\n",graphviz_enabled);
+t.trace("args","Gnuplot: %d\n", gnuplot_enabled);
 
 //getscore before anything
 for(int i = 1; i <= maxGenerations; i++)

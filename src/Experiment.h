@@ -28,6 +28,7 @@ public:
 
 	void start();
 
+	void setOutputOptions(int, int);
 private:
 	vector<Cell*> cells;
 
@@ -45,6 +46,11 @@ private:
 	float rkTimeStep;
 
 	float initialConc;
+
+	int graphviz_enabled;
+	int gnuplot_enabled;
+
+
 
 int scoringInterval;
 	int numHighScores;

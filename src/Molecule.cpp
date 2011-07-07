@@ -155,35 +155,53 @@ float Molecule::rkApprox(int rkIteration, float rkStepSize){
  */
 void Molecule::nextPoint(float step){
 
-	float prevConc = currentConcentration;
 	t.trace("rk-val","%s rkvals: %f %f %f %f\n",getShortName(), rkVal[0], rkVal[1], rkVal[2], rkVal[3]);
 	
+	//runge-kutta calculation of change in value during the current timestep
 	float delta = ((step/6) * (rkVal[0] + 2*rkVal[1] + 2*rkVal[2] + rkVal[3]));
-	t.trace("rk-new","%s(%d) conc: %f delta: %f\n",getShortName(),rungeKuttaSolution.size(), currentConcentration, delta);
-	currentConcentration+=delta;	
 	
+	t.trace("rk-new","%s(%d) conc: %f delta: %f\n",getShortName(),rungeKuttaSolution.size(), currentConcentration, delta);
+	
+	//add the change in value to the current value
+	currentConcentration+=delta;	
+
+	//ensure non-negative concentration
 	if(currentConcentration < 0){
 		t.trace("rk-new", "%s %f being set to 0\n",getShortName(),currentConcentration);
 		currentConcentration = 0;
 	}
+
+	//add the new value to the solution vector
 	rungeKuttaSolution.push_back(currentConcentration);
+	
+	//reset the rkVals to zero
 	rkVal[0] = 0;
 	rkVal[1] = 0;
 	rkVal[2] = 0;
 	rkVal[3] = 0;
 
-	if(currentConcentration == prevConc)
+	/*
+	 * Scoring -- Oscillation counting
+	 * 
+	 * as points are added, check to see if the direction has changed from the previous direction
+	 */
+	if(delta == 0)
 		return;
-	if(currentConcentration - prevConc > 0)
+
+	//the value just increased
+	if(delta > 0)
 		currentDir = 1;
-	if(currentConcentration - prevConc < 0)
+	//the value just decreased
+	if(delta < 0)
 		currentDir = -1;
 	
-	t.trace("score", "%s%d - %d (%f , %f), dir = %d, prev = %d\n",shortName, moleculeID ,rungeKuttaSolution.size(),currentConcentration, prevConc , currentDir, prevDir);
-	
+	t.trace("score", "%s%d - %d (%f , %f), dir = %d, prev = %d\n",shortName, moleculeID,currentConcentration,delta  , currentDir, prevDir);
+
+	//if the value previously decreased and just increased, or previously increased and just decreased, add to the change count
 	if((prevDir == -1 && currentDir == 1) || (prevDir == 1 && currentDir == -1))
 		numChanges++;
-	
+
+	//save for the next point
 	prevDir = currentDir;
 
 	return;
