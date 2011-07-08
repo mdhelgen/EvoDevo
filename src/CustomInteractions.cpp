@@ -84,6 +84,22 @@ Translation::Translation(){
 
 Translation::~Translation(){}
 
+float Translation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
+	
+	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
+	t.trace("efct","Interaction Rate: %f\n", rate);
+	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
+	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue());
+
+	Molecule* thisMol = (*m)[a];
+	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
+
+	if(g->source(g->arcFromId(arcID)) == a)
+		return 0;
+	else
+		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
+
+}
 
 ForwardComplexation::ForwardComplexation(int n1, int n2){
 	t.trace("init","Creating new Interaction\n");

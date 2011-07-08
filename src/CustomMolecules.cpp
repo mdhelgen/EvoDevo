@@ -23,6 +23,7 @@ DNA::DNA(){
 	Molecule::Molecule();
 	t.trace("init","Molecule %u type:DNA\n", (unsigned int) this);	
 	promoterId = -1;
+	currentConcentration = 0;
 	hill = 2;
 	histoneModValue = 1;
 	currentDir = 0;
@@ -76,6 +77,7 @@ NullNode::NullNode(){
 	longName = "NullNode";
 	shortName = "n";
 	currentDir = 0;
+	currentConcentration = 0;
 	prevDir = 0;
 }
 NullNode::~NullNode(){}
@@ -91,6 +93,7 @@ mRNA::mRNA(){
 	shortName = "m";
 	currentDir = 0;
 	prevDir = 0;
+	currentConcentration = 0;
 
 }
 mRNA::~mRNA(){
@@ -104,6 +107,7 @@ Protein::Protein(){
 	shortName = "p";
 	currentDir = 0;
 	prevDir = 0;
+	currentConcentration = 0;
 	numChanges = 0;
 }
 Protein::~Protein(){}
@@ -121,6 +125,7 @@ Complex::Complex(int n1, int n2){
 	shortName="c";
 	id1 = n1;
 	id2 = n2;
+	currentConcentration = 0;
 }
 Complex::~Complex(){
 

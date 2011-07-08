@@ -128,31 +128,6 @@ DerivGraph::DerivGraph(){
 
 
 
-
-/** Test code /
-    newBasic();
-    newBasic();
-    newBasic();
-    newPTM();
-    newPTM();
-    newPTM();
-    newPTM();
-    newPTM();
-    newPTM();
-    newPTM();
-    newPTM();
-    newPTM();
-    newPTM();
-    newPTM();
-    newPTM();
-    newPTM();
-    newPTM();
-    newPTM();
-//test();
-
-
-	rungeKuttaEvaluate(.5);	
-*/
 }
 
 /**
@@ -228,9 +203,9 @@ DerivGraph::~DerivGraph(){
 void DerivGraph::test(){
 	
 	
-	ListDigraph::Node A = add(new Molecule());
-	ListDigraph::Node B = add(new Molecule());
-	ListDigraph::Node C = add(new Molecule());
+	ListDigraph::Node A = add(new Protein());
+	ListDigraph::Node B = add(new Protein());
+	ListDigraph::Node C = add(new Protein());
 	(*molecules)[A]->setID(count++);
 	(*molecules)[B]->setID(count++);
 	(*molecules)[C]->setID(count++);
@@ -239,10 +214,10 @@ void DerivGraph::test(){
 	(*molecules)[B]->setValue(4);
 	(*molecules)[C]->setValue(1);
 
-	ListDigraph::Arc AB = add(new Interaction(), A, B);
-	ListDigraph::Arc AC = add(new Interaction(), A, C);
-	ListDigraph::Arc BC = add(new Interaction(), B, C);
-	ListDigraph::Arc CB = add(new Interaction(), C, B);
+	ListDigraph::Arc AB = add(new ForwardPTM(), A, B);
+	ListDigraph::Arc AC = add(new ForwardPTM(), A, C);
+	ListDigraph::Arc BC = add(new ForwardPTM(), B, C);
+	ListDigraph::Arc CB = add(new ForwardPTM(), C, B);
 
 	(*interactions)[AB]->setRate(.01);
 	(*interactions)[AC]->setRate(.03);
@@ -282,6 +257,7 @@ void DerivGraph::rungeKuttaEvaluate(float rkStep, float rkLimit){
 				
 				//calculate the effect this interaction has on the source molecule
 				(*molecules)[derivs->source(it)]->updateRkVal(k, getEffect(derivs->source(it), it, k, rkStep));
+
 				//calculate the effect this interaction has on the target molecule
 				(*molecules)[derivs->target(it)]->updateRkVal(k, getEffect(derivs->target(it), it, k, rkStep));
 
@@ -474,7 +450,7 @@ void DerivGraph::forwardRateChange(){
 	unsigned int selectedIndex = r.randInt(totalSize - 1);
 	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
 
-	//
+	//get the interaction that corresponds to the selected Index
 	if(selectedIndex < TranslationList->size())
 	{
 		t.trace("mutate","TranslationList[%d]\n", selectedIndex);
@@ -487,15 +463,18 @@ void DerivGraph::forwardRateChange(){
 		selectedInteraction = (*ForwardComplexationList)[selectedIndex];
 	}
 
+	//get the arc which holds the interaction
 	ListDigraph::Arc selectedArc= derivs->arcFromId(selectedInteraction->arcID);
 
 	Molecule* source = (*molecules)[derivs->source(selectedArc)];
 	Molecule* target = (*molecules)[derivs->target(selectedArc)];
 
-float newRate = minKineticRate + r.rand(maxKineticRate - minKineticRate);
+	//get a random kinetic rate
+	float newRate = minKineticRate + r.rand(maxKineticRate - minKineticRate);
 	
 	t.trace("mutate","%s -> %s new rate: %f (old rate: %f)\n",source->getShortName(), target->getShortName(), newRate, selectedInteraction->getRate());
 
+	//set the chosen interaction rate to the newly generated rate
 	selectedInteraction->setRate(newRate);
 
 }
@@ -831,9 +810,13 @@ void DerivGraph::newPromoter(){
 
 Molecule* DerivGraph::getBestMolecule(int CellID){
 
+
+	rungeKuttaEvaluate(rkTimeStep, rkTimeLimit);
+
 	Molecule* bestMolecule = 0;
 	int maxScore = -1;
 	int s = -1;
+
 
 	for(unsigned int i =  0; i < MoleculeList->size(); i++){
 		s = (*MoleculeList)[i]->getScore();
@@ -871,10 +854,10 @@ void DerivGraph::outputDotImage(int cellNum, int gen){
 	fprintf(dot,"digraph mol_interactions {\n");
 	fflush(dot);
 
-	fprintf(dot,"size=\"8,5\"\n");
-	fflush(dot);
+	//fprintf(dot,"size=\"8,5\"\n");
+	//fflush(dot);
 
-	fprintf(dot,"node [shape = circle];\n");
+	fprintf(dot,"node [shape = ellipse];\n");
 	fflush(dot);
 
 	fprintf(dot,"edge [len =2 ] ;\n");
@@ -882,7 +865,7 @@ void DerivGraph::outputDotImage(int cellNum, int gen){
 
 	//iterate all of the Arcs and add them to the visualization. Nodes are implicitly defined by the source and target of the interactions.
 	for(ListDigraph::ArcIt it(*derivs); it != INVALID; ++it){
-		fprintf(dot, "\"%s(%d)\" -> \"%s(%d)\" [ label = \"%s (%f)\"];\n",(*molecules)[derivs->source(it)]->getShortName(),(*molecules)[derivs->source(it)]->getScore(), (*molecules)[derivs->target(it)]->getShortName(),(*molecules)[derivs->target(it)]->getScore(), (*interactions)[it]->getName(), (*interactions)[it]->getRate());
+		fprintf(dot, "\"%s (%d)\" -> \"%s (%d)\" [ label = \"%s (%f)\",  penwidth= %f];\n",(*molecules)[derivs->source(it)]->getShortName(),(*molecules)[derivs->source(it)]->getScore(), (*molecules)[derivs->target(it)]->getShortName(),(*molecules)[derivs->target(it)]->getScore(), (*interactions)[it]->getName(), (*interactions)[it]->getRate(), 0.5 + 2*(*interactions)[it]->getRate()/maxKineticRate);
 		fflush(dot);
 }	
 
@@ -933,7 +916,7 @@ void DerivGraph::outputDataPlot(int cellNum, int gen, float step){
 		fprintf(gnuplot, "plot \\\n");
 		fflush(gnuplot);
 	
-		fprintf(gnuplot, "\"-\" using 2:($1==%d ? $3 : 1/0) t \"%s\" pt 1 \n",i,(*MoleculeList)[i]->getLongName());
+		fprintf(gnuplot, "\"-\" using 2:($1==%d ? $3 : 1/0) t \"%s\" pt 1 with linespoints\n",i,(*MoleculeList)[i]->getLongName());
 		fflush(gnuplot);
 	
 		float t;

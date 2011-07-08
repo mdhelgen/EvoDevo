@@ -29,8 +29,14 @@ Cell::Cell(int max_basic, int max_ptm, int max_comp, int max_promoter,float min_
     
     //set the limits of mutation occurrences
     equations->setLimits(max_basic, max_ptm, max_comp, max_promoter);
+    
+    //kinetic rate lower and upper bounds
     equations->setKineticRateLimits(min_kinetic_rate, max_kinetic_rate);
+
+    //runge kutta timestep and time limit
     equations->setRungeKuttaEval(rk_time_step, rk_time_limit);
+
+    //molecule initial concentration
     equations->setDefaultInitialConc(initial_conc);
 
     rkTimeStep = rk_time_step;
@@ -40,7 +46,7 @@ Cell::Cell(int max_basic, int max_ptm, int max_comp, int max_promoter,float min_
    
     CellID = CellCounter++;
 
-  //  equations->test();
+    //equations->test();
 
 	equations->newBasic();
 
@@ -135,7 +141,7 @@ int Cell::mutate(){
 
 	}//end null mutation
 	
-	equations->rungeKuttaEvaluate(rkTimeStep, rkTimeLimit);
+	//equations->rungeKuttaEvaluate(rkTimeStep, rkTimeLimit);
 //	equations->outputDotImage(CellID,currentGen );
 	
 	return -1;

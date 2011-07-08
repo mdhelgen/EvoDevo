@@ -45,18 +45,15 @@ public:
 	MTRand r;
 	
 	virtual int getPTMCount(int);
-	
-private:
+protected:	
 	float initialConcentration;
 	float currentConcentration;
 	float rkVal[4];
-protected:
 	int numChanges;
 	int prevDir;
 	int currentDir;
 
 
-protected:
 	char buf[200];	
 	const char* longName;
 	const char* shortName;

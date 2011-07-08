@@ -28,7 +28,7 @@ int main(int argc, char** argv){
   t.addTraceType("trce",0);
   
   //program arguments
-  t.addTraceType("args",0);
+  t.addTraceType("args",1);
  
   //object creation / construction
   t.addTraceType("init",0);
@@ -51,7 +51,7 @@ int main(int argc, char** argv){
   t.addTraceType("rk-val",0);
   t.addTraceType("rk-new",0);
 
-  t.addTraceType("score",1);
+  t.addTraceType("score",0);
   //mutation
   t.addTraceType("mutate",0);
 

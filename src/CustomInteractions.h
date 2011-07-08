@@ -52,7 +52,7 @@ class Translation : public Interaction{
 public:
 	Translation();
 	~Translation();
-
+	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 };
 
 class ForwardComplexation : public Interaction{

@@ -143,7 +143,7 @@ float Molecule::rkApprox(int rkIteration, float rkStepSize){
 		approxVal = (getValue() + ( rkVal[2] * rkStepSize ));
 		break;
 	}
-	return approxVal < 0 ? 0 : approxVal;
+	return approxVal < 0.0001 ? 0 : approxVal;
 }
 
 /**
@@ -179,7 +179,7 @@ void Molecule::nextPoint(float step){
 	rkVal[1] = 0;
 	rkVal[2] = 0;
 	rkVal[3] = 0;
-
+	
 	/*
 	 * Scoring -- Oscillation counting
 	 * 
