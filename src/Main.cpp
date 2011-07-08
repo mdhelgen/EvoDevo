@@ -51,7 +51,7 @@ int main(int argc, char** argv){
   t.addTraceType("rk-val",0);
   t.addTraceType("rk-new",0);
 
-  t.addTraceType("score",0);
+  t.addTraceType("score",1);
   //mutation
   t.addTraceType("mutate",0);
 
@@ -61,6 +61,8 @@ int main(int argc, char** argv){
 
   int numCells = 2;
   int numGenerations = 10;
+
+  int scoringInterval = 1;
 
   int maxBasic = 1;
   int maxPTM = 1;
@@ -94,14 +96,15 @@ int main(int argc, char** argv){
       {"initconc", required_argument, 0, 'i'},
       {"rklim", required_argument, 0, 'j'},
       {"rkstep", required_argument, 0, 'k'},
-      
+      {"interval", required_argument, 0, 'l'},
+
       {0,0,0,0}
      };
 
  int option_index = 0;
 
 
- c = getopt_long (argc, argv, "a:b:c:d:e:f:g:h:i:j:k:", long_options, &option_index);
+ c = getopt_long (argc, argv, "a:b:c:d:e:f:g:h:i:j:k:l:", long_options, &option_index);
 
  if (c == -1)
  	break;
@@ -148,6 +151,9 @@ int main(int argc, char** argv){
 	case 'k':
 		rkTimeStep = atof(optarg);
 		break;
+	case 'l':
+		scoringInterval = atoi(optarg);
+		break;
 	case '?':
 		break;
 	default:
@@ -162,7 +168,7 @@ if(verbose_flag)
 
 
 Experiment* e = new Experiment(numCells, numGenerations, maxBasic, maxPTM, maxComp, maxPromoter, minKineticRate, maxKineticRate, rkTimeLimit, rkTimeStep, initialConcentration);
-e->setOutputOptions(graphviz_flag, gnuplot_flag, outputall_flag);
+e->setOutputOptions(graphviz_flag, gnuplot_flag, outputall_flag, scoringInterval);
 e->start();
 
 

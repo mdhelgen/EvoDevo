@@ -28,7 +28,7 @@ public:
 
 	void start();
 
-	void setOutputOptions(int, int, int);
+	void setOutputOptions(int, int, int, int);
 private:
 	vector<Cell*> cells;
 

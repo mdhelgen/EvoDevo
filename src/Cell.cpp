@@ -147,9 +147,6 @@ int Cell::getScore(){
 	
 	return m->getScore();
 	
-	if (m->getScore() > 2){
-		outputDataPlot();
-	}
 		
 }
 

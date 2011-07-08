@@ -19,6 +19,7 @@ public:
 	void outputDotImage();
 	void outputDataPlot();
 	int getScore();
+	int getID(){ return CellID; };
 private:
 	static int CellCounter;
 

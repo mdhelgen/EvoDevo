@@ -111,42 +111,73 @@ Experiment::~Experiment() {
 }
 
 
-void Experiment::setOutputOptions(int gv_flag, int gp_flag, int eachgen_flag){
+void Experiment::setOutputOptions(int gv_flag, int gp_flag, int eachgen_flag, int scoring_interval){
 
 	graphviz_enabled = gv_flag;
 	gnuplot_enabled = gp_flag;
 	output_each_gen = eachgen_flag;
+	scoringInterval = scoring_interval;
 }
 
-/**
- * Deprecated 
- */
 void Experiment::start()
 {
 
 	t.trace("args","Graphviz: %d\n",graphviz_enabled);
 	t.trace("args","Gnuplot: %d\n", gnuplot_enabled);
 
+	int bestScore = -1;
+	Cell* bestCell = 0;
+
 	//generational loop
 	for(int i = 1; i <= maxGenerations; i++)
 	{
+		bestScore = -1;
+		bestCell = 0;
+		
 		t.trace("gens","Generation %d started (max %d)\n",i, maxGenerations);
 		for(unsigned int c = 0; c < cells.size(); c++)
 		{
 			t.trace("mutate","Gen %-3d Cell loc %u\n", i, (unsigned int) cells[c]);
 			//mutate
 			cells[c]->mutate();
-			//getscore
-			cells[c]->getScore();
-		
+			
+			//if scoring interval is 5, this runs every 5 generations
+			if(i % scoringInterval == 0)
+			{
+				//keep track of the cell with the highest score so far
+				if(cells[c]->getScore() > bestScore){
+					bestCell = cells[c];
+					bestScore = bestCell->getScore();
+					t.trace("score","Best cell is cell %d with score %d\n",bestCell->getID(), bestCell->getScore());
+				}		
+			}	
+
+
 			//if the flag is set, generate output every generation
 			if(output_each_gen && graphviz_enabled)
 				cells[c]->outputDotImage();
 			if(output_each_gen && gnuplot_enabled)
 				cells[c]->outputDataPlot();
 		}
+
+		//if the scoring interval is 5, this runs every 5 generations
+		if(i % scoringInterval == 0){
+			
+			//all cells have been checked, so the bestCell variable holds the cell with the highest score
+			t.trace("score","Best cell at end of Generation %d is cell %d with score %d\n", i, bestCell->getID(), bestCell->getScore());
+			
+			//output the cell
+			if(graphviz_enabled)
+				bestCell->outputDotImage();
+			if(gnuplot_enabled)
+				bestCell->outputDataPlot();
+		}
 		t.trace("gens","Generation %d finished (max %d)\n",i, maxGenerations);
 	}
+	
+	return;
+
+
 	//generate output at the end of the experiment
 	for(unsigned int c = 0; c < cells.size(); c++){
 		if(graphviz_enabled)

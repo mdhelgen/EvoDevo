@@ -882,7 +882,7 @@ void DerivGraph::outputDotImage(int cellNum, int gen){
 
 	//iterate all of the Arcs and add them to the visualization. Nodes are implicitly defined by the source and target of the interactions.
 	for(ListDigraph::ArcIt it(*derivs); it != INVALID; ++it){
-		fprintf(dot, "%s -> %s [ label = \"%s (%f)\"];\n",(*molecules)[derivs->source(it)]->getShortName(), (*molecules)[derivs->target(it)]->getShortName(), (*interactions)[it]->getName(), (*interactions)[it]->getRate());
+		fprintf(dot, "\"%s(%d)\" -> \"%s(%d)\" [ label = \"%s (%f)\"];\n",(*molecules)[derivs->source(it)]->getShortName(),(*molecules)[derivs->source(it)]->getScore(), (*molecules)[derivs->target(it)]->getShortName(),(*molecules)[derivs->target(it)]->getScore(), (*interactions)[it]->getName(), (*interactions)[it]->getRate());
 		fflush(dot);
 }	
 
@@ -910,7 +910,7 @@ void DerivGraph::outputDotImage(int cellNum, int gen){
  */
 void DerivGraph::outputDataPlot(int cellNum, int gen, float step){
 	
-	FILE* gnuplot = popen("gnuplot","w");
+	FILE* gnuplot = popen("gnuplot > /dev/null 2>&1","w");
 
 	//FILE* gnuplot = fopen("test.txt","w");
 	for(unsigned int i =  0; i < MoleculeList->size(); i++){
