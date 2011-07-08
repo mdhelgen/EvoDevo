@@ -49,7 +49,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="preprocessor">#include &lt;vector&gt;</span>
 <a name="l00013"></a>00013 <span class="preprocessor">#include &lt;typeinfo&gt;</span>
 <a name="l00014"></a>00014 <span class="preprocessor">#include &lt;cstring&gt;</span>
-<a name="l00015"></a>00015 <span class="preprocessor">#include &quot;<a class="code" href="MersenneTwister_8h.html">MersenneTwister.h</a>&quot;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &quot;MersenneTwister.h&quot;</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="keyword">using namespace </span>std;
 <a name="l00018"></a>00018 
@@ -79,33 +79,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00042"></a>00042         <span class="keywordtype">int</span> <a class="code" href="classMolecule.html#a125243e73faff1e5e482e65ba923ca3a">getScore</a>();
 <a name="l00043"></a><a class="code" href="classMolecule.html#ae6aff39305dd77531ea5a213b6f2b1c5">00043</a>         <span class="keywordtype">int</span> <a class="code" href="classMolecule.html#ae6aff39305dd77531ea5a213b6f2b1c5">PTMArray</a>[4];
 <a name="l00044"></a>00044         <span class="keywordtype">int</span> <a class="code" href="classMolecule.html#ae946ae8bea91c5893ad9bf0fb66b6e0d">getPTMCount</a>(<span class="keywordtype">int</span>, <span class="keywordtype">int</span>);
-<a name="l00045"></a><a class="code" href="classMolecule.html#af036bbaa1f3ec537d3711ae3242d3074">00045</a>         <a class="code" href="classMTRand.html">MTRand</a> <a class="code" href="classMolecule.html#af036bbaa1f3ec537d3711ae3242d3074">r</a>;
+<a name="l00045"></a><a class="code" href="classMolecule.html#af036bbaa1f3ec537d3711ae3242d3074">00045</a>         MTRand <a class="code" href="classMolecule.html#af036bbaa1f3ec537d3711ae3242d3074">r</a>;
 <a name="l00046"></a>00046         
 <a name="l00047"></a>00047         <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classMolecule.html#ae946ae8bea91c5893ad9bf0fb66b6e0d">getPTMCount</a>(<span class="keywordtype">int</span>);
 <a name="l00048"></a>00048         
 <a name="l00049"></a>00049 <span class="keyword">private</span>:
 <a name="l00050"></a>00050         <span class="keywordtype">float</span> initialConcentration;
 <a name="l00051"></a>00051         <span class="keywordtype">float</span> currentConcentration;
-<a name="l00052"></a>00052         <span class="keywordtype">float</span> rkVal[4]; 
-<a name="l00053"></a>00053         
-<a name="l00054"></a>00054 <span class="keyword">protected</span>:
-<a name="l00055"></a><a class="code" href="classMolecule.html#a5b6f24dea7138830541e938e2eed707a">00055</a>         <span class="keywordtype">char</span> <a class="code" href="classMolecule.html#a5b6f24dea7138830541e938e2eed707a">buf</a>[200];  
-<a name="l00056"></a><a class="code" href="classMolecule.html#a4ac09eefeba07dcb455014acc1ad00c9">00056</a>         <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classMolecule.html#a4ac09eefeba07dcb455014acc1ad00c9">longName</a>;
-<a name="l00057"></a><a class="code" href="classMolecule.html#ae79f60ef35ffcb500e91013f59563e03">00057</a>         <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classMolecule.html#ae79f60ef35ffcb500e91013f59563e03">shortName</a>;
-<a name="l00058"></a><a class="code" href="classMolecule.html#a563a9a295191833b51660f77749e3628">00058</a>         <span class="keywordtype">int</span> <a class="code" href="classMolecule.html#a563a9a295191833b51660f77749e3628">moleculeID</a>;
-<a name="l00059"></a><a class="code" href="classMolecule.html#a3e3be6cd7b1286e8d8d489642ab19641">00059</a>         vector&lt;float&gt; <a class="code" href="classMolecule.html#a3e3be6cd7b1286e8d8d489642ab19641">rungeKuttaSolution</a>;
-<a name="l00060"></a>00060 };
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062 
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064 <span class="preprocessor">#endif</span>
+<a name="l00052"></a>00052         <span class="keywordtype">float</span> rkVal[4];
+<a name="l00053"></a>00053 <span class="keyword">protected</span>:
+<a name="l00054"></a><a class="code" href="classMolecule.html#a526a58eb943156887bb75b24bdb2b8a0">00054</a>         <span class="keywordtype">int</span> <a class="code" href="classMolecule.html#a526a58eb943156887bb75b24bdb2b8a0">numChanges</a>;
+<a name="l00055"></a><a class="code" href="classMolecule.html#acefb24656feeb161148e9594db6ada0b">00055</a>         <span class="keywordtype">int</span> <a class="code" href="classMolecule.html#acefb24656feeb161148e9594db6ada0b">prevDir</a>;
+<a name="l00056"></a><a class="code" href="classMolecule.html#a4cd5591c0a8c07ceec922c4f2e8f295c">00056</a>         <span class="keywordtype">int</span> <a class="code" href="classMolecule.html#a4cd5591c0a8c07ceec922c4f2e8f295c">currentDir</a>;
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059 <span class="keyword">protected</span>:
+<a name="l00060"></a><a class="code" href="classMolecule.html#a5b6f24dea7138830541e938e2eed707a">00060</a>         <span class="keywordtype">char</span> <a class="code" href="classMolecule.html#a5b6f24dea7138830541e938e2eed707a">buf</a>[200];  
+<a name="l00061"></a><a class="code" href="classMolecule.html#a4ac09eefeba07dcb455014acc1ad00c9">00061</a>         <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classMolecule.html#a4ac09eefeba07dcb455014acc1ad00c9">longName</a>;
+<a name="l00062"></a><a class="code" href="classMolecule.html#ae79f60ef35ffcb500e91013f59563e03">00062</a>         <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classMolecule.html#ae79f60ef35ffcb500e91013f59563e03">shortName</a>;
+<a name="l00063"></a><a class="code" href="classMolecule.html#a563a9a295191833b51660f77749e3628">00063</a>         <span class="keywordtype">int</span> <a class="code" href="classMolecule.html#a563a9a295191833b51660f77749e3628">moleculeID</a>;
+<a name="l00064"></a><a class="code" href="classMolecule.html#a3e3be6cd7b1286e8d8d489642ab19641">00064</a>         vector&lt;float&gt; <a class="code" href="classMolecule.html#a3e3be6cd7b1286e8d8d489642ab19641">rungeKuttaSolution</a>;
+<a name="l00065"></a>00065 };
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 <span class="preprocessor">#endif</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

@@ -8,13 +8,13 @@
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=144pt]{classCell__coll__graph}
+\includegraphics[width=130pt]{classCell__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classCell_a394510643e8664cf12b5efaf5cb99f71}{Cell} ()
+\hyperlink{classCell_af85b728fb894b346b654eea910958180}{Cell} (int, int, int, int, float, float, float, float, float)
 \item 
 \hyperlink{classCell_a9fa559f7a28e2b4336c6879ca09304d8}{$\sim$Cell} ()
 \item 
@@ -24,7 +24,9 @@ void \hyperlink{classCell_a535ddddc0471fa874a0b22a54bd38c1a}{outputDotImage} ()
 \item 
 void \hyperlink{classCell_a8e117526c56dda4d0d56d840d1558835}{outputDataPlot} ()
 \item 
-void \hyperlink{classCell_aa36f550bfdb53c896ca1dd0be03eac70}{getScore} ()
+int \hyperlink{classCell_a3fbb8b244cc5c516d0728a987d07bf0f}{getScore} ()
+\item 
+int \hyperlink{classCell_a6fb5e28360b3a6e53400af8b950f6203}{getID} ()
 \end{DoxyCompactItemize}
 
 
@@ -32,12 +34,12 @@ void \hyperlink{classCell_aa36f550bfdb53c896ca1dd0be03eac70}{getScore} ()
 \hyperlink{classCell}{Cell} header file. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classCell_a394510643e8664cf12b5efaf5cb99f71}{
+\hypertarget{classCell_af85b728fb894b346b654eea910958180}{
 \index{Cell@{Cell}!Cell@{Cell}}
 \index{Cell@{Cell}!Cell@{Cell}}
-\subsubsection[{Cell}]{\setlength{\rightskip}{0pt plus 5cm}Cell::Cell ()}}
-\label{classCell_a394510643e8664cf12b5efaf5cb99f71}
-\hyperlink{classCell_a394510643e8664cf12b5efaf5cb99f71}{Cell::Cell()}
+\subsubsection[{Cell}]{\setlength{\rightskip}{0pt plus 5cm}Cell::Cell (int {\em max\_\-basic}, \/  int {\em max\_\-ptm}, \/  int {\em max\_\-comp}, \/  int {\em max\_\-promoter}, \/  float {\em min\_\-kinetic\_\-rate}, \/  float {\em max\_\-kinetic\_\-rate}, \/  float {\em rk\_\-time\_\-step}, \/  float {\em rk\_\-time\_\-limit}, \/  float {\em initial\_\-conc})}}
+\label{classCell_af85b728fb894b346b654eea910958180}
+\hyperlink{classCell_af85b728fb894b346b654eea910958180}{Cell::Cell()}
 
 \hyperlink{classCell}{Cell} default constructor.
 
@@ -47,7 +49,7 @@ Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=193pt]{classCell_a394510643e8664cf12b5efaf5cb99f71_cgraph}
+\includegraphics[width=224pt]{classCell_af85b728fb894b346b654eea910958180_cgraph}
 \end{center}
 \end{figure}
 \hypertarget{classCell_a9fa559f7a28e2b4336c6879ca09304d8}{
@@ -71,18 +73,23 @@ Here is the call graph for this function:\nopagebreak
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classCell_aa36f550bfdb53c896ca1dd0be03eac70}{
+\hypertarget{classCell_a6fb5e28360b3a6e53400af8b950f6203}{
+\index{Cell@{Cell}!getID@{getID}}
+\index{getID@{getID}!Cell@{Cell}}
+\subsubsection[{getID}]{\setlength{\rightskip}{0pt plus 5cm}int Cell::getID ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCell_a6fb5e28360b3a6e53400af8b950f6203}
+\hypertarget{classCell_a3fbb8b244cc5c516d0728a987d07bf0f}{
 \index{Cell@{Cell}!getScore@{getScore}}
 \index{getScore@{getScore}!Cell@{Cell}}
-\subsubsection[{getScore}]{\setlength{\rightskip}{0pt plus 5cm}void Cell::getScore ()}}
-\label{classCell_aa36f550bfdb53c896ca1dd0be03eac70}
+\subsubsection[{getScore}]{\setlength{\rightskip}{0pt plus 5cm}int Cell::getScore ()}}
+\label{classCell_a3fbb8b244cc5c516d0728a987d07bf0f}
 
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=326pt]{classCell_aa36f550bfdb53c896ca1dd0be03eac70_cgraph}
+\includegraphics[width=259pt]{classCell_a3fbb8b244cc5c516d0728a987d07bf0f_cgraph}
 \end{center}
 \end{figure}
 \hypertarget{classCell_a555fa98c5f1dc8d7c88c7a24f69994ff}{
@@ -96,7 +103,7 @@ Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=420pt]{classCell_a555fa98c5f1dc8d7c88c7a24f69994ff_cgraph}
+\includegraphics[width=273pt]{classCell_a555fa98c5f1dc8d7c88c7a24f69994ff_cgraph}
 \end{center}
 \end{figure}
 \hypertarget{classCell_a8e117526c56dda4d0d56d840d1558835}{

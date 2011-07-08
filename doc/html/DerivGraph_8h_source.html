@@ -52,7 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00009"></a>00009 <span class="preprocessor">#include &lt;sys/stat.h&gt;</span>
 <a name="l00010"></a>00010 <span class="preprocessor">#include &lt;sys/types.h&gt;</span>
 <a name="l00011"></a>00011 <span class="preprocessor">#include &lt;typeinfo&gt;</span>
-<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;<a class="code" href="MersenneTwister_8h.html">MersenneTwister.h</a>&quot;</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;MersenneTwister.h&quot;</span>
 <a name="l00013"></a>00013 
 <a name="l00014"></a>00014 <span class="preprocessor">#include &quot;<a class="code" href="Molecule_8h.html">Molecule.h</a>&quot;</span>
 <a name="l00015"></a>00015 <span class="preprocessor">#include &quot;<a class="code" href="Interaction_8h.html">Interaction.h</a>&quot;</span>
@@ -70,82 +70,94 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00027"></a>00027         <a class="code" href="classDerivGraph.html#af2a1f80b96b4657e7575748942d09947">DerivGraph</a>();
 <a name="l00028"></a>00028         <a class="code" href="classDerivGraph.html#a27b4fed56f8d2a745582622b7cb78b50">~DerivGraph</a>();
 <a name="l00029"></a>00029         
-<a name="l00030"></a><a class="code" href="classDerivGraph.html#a2d5931b4ca8a9c6e0c013a74a5cfbc7c">00030</a>         <a class="code" href="classMTRand.html">MTRand</a> <a class="code" href="classDerivGraph.html#a2d5931b4ca8a9c6e0c013a74a5cfbc7c">r</a>;
+<a name="l00030"></a><a class="code" href="classDerivGraph.html#a2d5931b4ca8a9c6e0c013a74a5cfbc7c">00030</a>         MTRand <a class="code" href="classDerivGraph.html#a2d5931b4ca8a9c6e0c013a74a5cfbc7c">r</a>;
 <a name="l00031"></a>00031         
 <a name="l00032"></a>00032         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#abf589f6aabe2c66bbe6f1aeb68ff4593">test</a>();
-<a name="l00033"></a>00033         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#a61f768c0b7b8828b0ab129146801f628">rungeKuttaEvaluate</a>(<span class="keywordtype">float</span>);
+<a name="l00033"></a>00033         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#aa0921b8a7407be67085e9a11750a7263">rungeKuttaEvaluate</a>(<span class="keywordtype">float</span>, <span class="keywordtype">float</span>);
 <a name="l00034"></a>00034         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#a2e2ed79e21c6896a859cc7800d950809">outputDotImage</a>(<span class="keywordtype">int</span>, <span class="keywordtype">int</span>);
 <a name="l00035"></a>00035         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#ae435e564c1fa8370453c952b1ea5e9ab">outputDataPlot</a>(<span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">float</span>);
 <a name="l00036"></a>00036         <a class="code" href="classMolecule.html">Molecule</a>* <a class="code" href="classDerivGraph.html#aaaa9598e55cbd8c55585a0488e940516">getBestMolecule</a>(<span class="keywordtype">int</span>);
 <a name="l00037"></a>00037 
-<a name="l00038"></a>00038         <span class="comment">//deprecated?</span>
-<a name="l00039"></a>00039         ListDigraph* <a class="code" href="classDerivGraph.html#ae657edb3b0bf358f75f498a2d56e0456">getListDigraph</a>();
-<a name="l00040"></a>00040         ListDigraph::NodeMap&lt;Molecule*&gt;* <a class="code" href="classDerivGraph.html#a41cea20de6fd631deeb82f036bc823f4">getNodeMap</a>();
-<a name="l00041"></a>00041         ListDigraph::ArcMap&lt;Interaction*&gt;* <a class="code" href="classDerivGraph.html#a5ff2dac34f1cdcc4b4abfc26f13da1ab">getArcMap</a>();
-<a name="l00042"></a>00042         
-<a name="l00043"></a>00043         <span class="comment">//mutation methods</span>
-<a name="l00044"></a>00044         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#a8862d4f9ebbd3eced9d56a81fe91c4fb">newBasic</a>();
-<a name="l00045"></a>00045         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#afbda567a3f51d05fad37eb46fc121a89">forwardRateChange</a>();
-<a name="l00046"></a>00046         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#aae8c58e1d6be852efbe1ed6593f31eca">reverseRateChange</a>();
-<a name="l00047"></a>00047         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#a038841806aa1fe80a9450f977baa1fd2">degradationRateChange</a>();
-<a name="l00048"></a>00048         <a class="code" href="classDNA.html">DNA</a>* <a class="code" href="classDerivGraph.html#ae39d9acba4901f668d8a85c88bfcc21a">histoneMod</a>();
-<a name="l00049"></a>00049         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#a4be722e989002430ca7c363dce500638">newComplex</a>();      
-<a name="l00050"></a>00050         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#aa55a36103c33d4f1bd57de797bcd45cb">newPromoter</a>();
-<a name="l00051"></a>00051         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#a83937a5c3ed427ebaad2bf23260c0352">newPTM</a>();  
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053 <span class="keyword">private</span>:
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055         <span class="keywordtype">float</span> max_rate;
-<a name="l00056"></a>00056         <span class="keywordtype">float</span> min_rate;
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058         <span class="keywordtype">int</span> maxComp;
-<a name="l00059"></a>00059         <span class="keywordtype">int</span> maxBasic;
-<a name="l00060"></a>00060         <span class="keywordtype">int</span> maxProm;
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062         <span class="comment">//graph structure</span>
-<a name="l00063"></a>00063         ListDigraph* derivs;
-<a name="l00064"></a>00064         ListDigraph::NodeMap&lt;Molecule*&gt;* molecules;
-<a name="l00065"></a>00065         ListDigraph::ArcMap&lt;Interaction*&gt;* interactions;
-<a name="l00066"></a>00066 
-<a name="l00067"></a>00067         <span class="comment">// molecule lists</span>
-<a name="l00068"></a>00068         vector&lt;Molecule*&gt;* MoleculeList;
-<a name="l00069"></a>00069         vector&lt;Protein*&gt;* ProteinList;
-<a name="l00070"></a>00070         vector&lt;mRNA*&gt;* mRNAList;
-<a name="l00071"></a>00071         vector&lt;DNA*&gt;* DNAList;
-<a name="l00072"></a>00072         vector&lt;Complex*&gt;* ComplexList;
-<a name="l00073"></a>00073         vector&lt;PTMProtein*&gt;* PTMList;
-<a name="l00074"></a>00074 
-<a name="l00075"></a>00075         <span class="comment">// interaction lists</span>
-<a name="l00076"></a>00076         vector&lt;Interaction*&gt;* InteractionList;
-<a name="l00077"></a>00077         vector&lt;Transcription*&gt;* TranscriptionList;
-<a name="l00078"></a>00078         vector&lt;Translation*&gt;* TranslationList;
-<a name="l00079"></a>00079         vector&lt;Degradation*&gt;* DegradationList;
-<a name="l00080"></a>00080         vector&lt;ForwardComplexation*&gt;* ForwardComplexationList;
-<a name="l00081"></a>00081         vector&lt;ReverseComplexation*&gt;* ReverseComplexationList;
-<a name="l00082"></a>00082         vector&lt;ForwardPTM*&gt;* ForwardPTMList;
-<a name="l00083"></a>00083         vector&lt;ReversePTM*&gt;* ReversePTMList;
-<a name="l00084"></a>00084         vector&lt;PromoterBind*&gt;* PromoterBindList;
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086         <span class="comment">//null node</span>
-<a name="l00087"></a>00087         ListDigraph::Node nullnode;
-<a name="l00088"></a>00088 
-<a name="l00089"></a>00089         <span class="comment">//helper method</span>
-<a name="l00090"></a>00090         <span class="keywordtype">float</span> getEffect(ListDigraph::Node, ListDigraph::Arc, <span class="keywordtype">int</span>, <span class="keywordtype">float</span>);
-<a name="l00091"></a>00091         <span class="comment">//utility method</span>
-<a name="l00092"></a>00092         ListDigraph::Node add(<a class="code" href="classMolecule.html">Molecule</a>*);
-<a name="l00093"></a>00093         ListDigraph::Arc add(<a class="code" href="classInteraction.html">Interaction</a>*, ListDigraph::Node, ListDigraph::Node);
-<a name="l00094"></a>00094         <span class="keywordtype">int</span> count;
-<a name="l00095"></a>00095 };
-<a name="l00096"></a>00096 
+<a name="l00038"></a>00038         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#a9bec1192a5ffc41a3ef4527caa9cdb8f">setLimits</a>(<span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>);
+<a name="l00039"></a>00039         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#a79249de71c4c870277abed71d484e2d5">setKineticRateLimits</a>(<span class="keywordtype">float</span>, <span class="keywordtype">float</span>);
+<a name="l00040"></a>00040         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#a03b18e0508b383e7e6b3b57fc9fa6e90">setRungeKuttaEval</a>(<span class="keywordtype">float</span>, <span class="keywordtype">float</span>);
+<a name="l00041"></a>00041         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#ab0a014cac7227943fe67f85f52d4e613">setDefaultInitialConc</a>(<span class="keywordtype">float</span>);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044         <span class="comment">//deprecated?</span>
+<a name="l00045"></a>00045         ListDigraph* <a class="code" href="classDerivGraph.html#ae657edb3b0bf358f75f498a2d56e0456">getListDigraph</a>();
+<a name="l00046"></a>00046         ListDigraph::NodeMap&lt;Molecule*&gt;* <a class="code" href="classDerivGraph.html#a41cea20de6fd631deeb82f036bc823f4">getNodeMap</a>();
+<a name="l00047"></a>00047         ListDigraph::ArcMap&lt;Interaction*&gt;* <a class="code" href="classDerivGraph.html#a5ff2dac34f1cdcc4b4abfc26f13da1ab">getArcMap</a>();
+<a name="l00048"></a>00048         
+<a name="l00049"></a>00049         <span class="comment">//mutation methods</span>
+<a name="l00050"></a>00050         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#a8862d4f9ebbd3eced9d56a81fe91c4fb">newBasic</a>();
+<a name="l00051"></a>00051         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#afbda567a3f51d05fad37eb46fc121a89">forwardRateChange</a>();
+<a name="l00052"></a>00052         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#aae8c58e1d6be852efbe1ed6593f31eca">reverseRateChange</a>();
+<a name="l00053"></a>00053         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#a038841806aa1fe80a9450f977baa1fd2">degradationRateChange</a>();
+<a name="l00054"></a>00054         <a class="code" href="classDNA.html">DNA</a>* <a class="code" href="classDerivGraph.html#ae39d9acba4901f668d8a85c88bfcc21a">histoneMod</a>();
+<a name="l00055"></a>00055         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#a4be722e989002430ca7c363dce500638">newComplex</a>();      
+<a name="l00056"></a>00056         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#aa55a36103c33d4f1bd57de797bcd45cb">newPromoter</a>();
+<a name="l00057"></a>00057         <span class="keywordtype">void</span> <a class="code" href="classDerivGraph.html#a83937a5c3ed427ebaad2bf23260c0352">newPTM</a>();  
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059 <span class="keyword">private</span>:
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061         <span class="keywordtype">float</span> minKineticRate;
+<a name="l00062"></a>00062         <span class="keywordtype">float</span> maxKineticRate;
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064         <span class="keywordtype">float</span> defaultInitialConcentration;
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066         <span class="keywordtype">int</span> maxComp;
+<a name="l00067"></a>00067         <span class="keywordtype">int</span> maxBasic;
+<a name="l00068"></a>00068         <span class="keywordtype">int</span> maxProm;
+<a name="l00069"></a>00069         <span class="keywordtype">int</span> maxPTM;
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071         <span class="keywordtype">float</span> rkTimeStep;
+<a name="l00072"></a>00072         <span class="keywordtype">float</span> rkTimeLimit;
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074         <span class="comment">//graph structure</span>
+<a name="l00075"></a>00075         ListDigraph* derivs;
+<a name="l00076"></a>00076         ListDigraph::NodeMap&lt;Molecule*&gt;* molecules;
+<a name="l00077"></a>00077         ListDigraph::ArcMap&lt;Interaction*&gt;* interactions;
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079         <span class="comment">// molecule lists</span>
+<a name="l00080"></a>00080         vector&lt;Molecule*&gt;* MoleculeList;
+<a name="l00081"></a>00081         vector&lt;Protein*&gt;* ProteinList;
+<a name="l00082"></a>00082         vector&lt;mRNA*&gt;* mRNAList;
+<a name="l00083"></a>00083         vector&lt;DNA*&gt;* DNAList;
+<a name="l00084"></a>00084         vector&lt;Complex*&gt;* ComplexList;
+<a name="l00085"></a>00085         vector&lt;PTMProtein*&gt;* PTMList;
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087         <span class="comment">// interaction lists</span>
+<a name="l00088"></a>00088         vector&lt;Interaction*&gt;* InteractionList;
+<a name="l00089"></a>00089         vector&lt;Transcription*&gt;* TranscriptionList;
+<a name="l00090"></a>00090         vector&lt;Translation*&gt;* TranslationList;
+<a name="l00091"></a>00091         vector&lt;Degradation*&gt;* DegradationList;
+<a name="l00092"></a>00092         vector&lt;ForwardComplexation*&gt;* ForwardComplexationList;
+<a name="l00093"></a>00093         vector&lt;ReverseComplexation*&gt;* ReverseComplexationList;
+<a name="l00094"></a>00094         vector&lt;ForwardPTM*&gt;* ForwardPTMList;
+<a name="l00095"></a>00095         vector&lt;ReversePTM*&gt;* ReversePTMList;
+<a name="l00096"></a>00096         vector&lt;PromoterBind*&gt;* PromoterBindList;
 <a name="l00097"></a>00097 
-<a name="l00098"></a>00098 <span class="preprocessor">#endif</span>
+<a name="l00098"></a>00098         <span class="comment">//null node</span>
+<a name="l00099"></a>00099         ListDigraph::Node nullnode;
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101         <span class="comment">//helper method</span>
+<a name="l00102"></a>00102         <span class="keywordtype">float</span> getEffect(ListDigraph::Node, ListDigraph::Arc, <span class="keywordtype">int</span>, <span class="keywordtype">float</span>);
+<a name="l00103"></a>00103         <span class="comment">//utility method</span>
+<a name="l00104"></a>00104         ListDigraph::Node add(<a class="code" href="classMolecule.html">Molecule</a>*);
+<a name="l00105"></a>00105         ListDigraph::Arc add(<a class="code" href="classInteraction.html">Interaction</a>*, ListDigraph::Node, ListDigraph::Node);
+<a name="l00106"></a>00106         <span class="keywordtype">int</span> count;
+<a name="l00107"></a>00107 };
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110 <span class="preprocessor">#endif</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

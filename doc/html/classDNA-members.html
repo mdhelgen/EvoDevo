@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <h1>DNA Member List</h1>This is the complete list of members for <a class="el" href="classDNA.html">DNA</a>, including all inherited members.<table>
   <tr class="memlist"><td><a class="el" href="classMolecule.html#a5b6f24dea7138830541e938e2eed707a">buf</a></td><td><a class="el" href="classMolecule.html">Molecule</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classMolecule.html#a4cd5591c0a8c07ceec922c4f2e8f295c">currentDir</a></td><td><a class="el" href="classMolecule.html">Molecule</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDNA.html#a3bad49a2b4f2afcc3a55f1d663e2d14e">DNA</a>()</td><td><a class="el" href="classDNA.html">DNA</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMolecule.html#a9a596dbbdced6d8cec10ad158d4a9f2a">getID</a>()</td><td><a class="el" href="classMolecule.html">Molecule</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMolecule.html#a6d3c3fd4827a62dacfd9d7a7d3a7f6ea">getLongName</a>()</td><td><a class="el" href="classMolecule.html">Molecule</a></td><td><code> [virtual]</code></td></tr>
@@ -62,7 +63,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <tr class="memlist"><td><a class="el" href="classMolecule.html#a563a9a295191833b51660f77749e3628">moleculeID</a></td><td><a class="el" href="classMolecule.html">Molecule</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classMolecule.html#af67c8a4dcbde3f500509ee1bd94ff4ef">nextPoint</a>(float)</td><td><a class="el" href="classMolecule.html">Molecule</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMolecule.html#a4eafa2831869e116f64c86987f1cac81">nodeID</a></td><td><a class="el" href="classMolecule.html">Molecule</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classMolecule.html#a526a58eb943156887bb75b24bdb2b8a0">numChanges</a></td><td><a class="el" href="classMolecule.html">Molecule</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classMolecule.html#ac6c78f4a49e270815d7e7dba311b7e14">outputRK</a>()</td><td><a class="el" href="classMolecule.html">Molecule</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classMolecule.html#acefb24656feeb161148e9594db6ada0b">prevDir</a></td><td><a class="el" href="classMolecule.html">Molecule</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDNA.html#a29696d77ea7eaabd48ee1d7eb9705b8e">promoterId</a></td><td><a class="el" href="classDNA.html">DNA</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMolecule.html#ae6aff39305dd77531ea5a213b6f2b1c5">PTMArray</a></td><td><a class="el" href="classMolecule.html">Molecule</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classMolecule.html#af036bbaa1f3ec537d3711ae3242d3074">r</a></td><td><a class="el" href="classMolecule.html">Molecule</a></td><td></td></tr>
@@ -83,7 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

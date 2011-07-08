@@ -53,13 +53,6 @@ Inheritance diagram for Molecule:</div>
 <map name="Molecule_inherit__map" id="Molecule_inherit__map">
 <area shape="rect" id="node3" href="classDNA.html" title="DNA" alt="" coords="5,83,56,112"/><area shape="rect" id="node5" href="classmRNA.html" title="mRNA" alt="" coords="80,83,144,112"/><area shape="rect" id="node7" href="classNullNode.html" title="NullNode" alt="" coords="168,83,248,112"/><area shape="rect" id="node9" href="classProtein.html" title="Protein" alt="" coords="272,83,341,112"/><area shape="rect" id="node13" href="classPTMProtein.html" title="PTMProtein" alt="" coords="365,83,464,112"/><area shape="rect" id="node11" href="classComplex.html" title="Complex" alt="" coords="267,160,347,189"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for Molecule:</div>
-<div class="dynsection">
-<div class="center"><img src="classMolecule__coll__graph.png" border="0" usemap="#Molecule_coll__map" alt="Collaboration graph"/></div>
-<map name="Molecule_coll__map" id="Molecule_coll__map">
-<area shape="rect" id="node2" href="classMTRand.html" title="MTRand" alt="" coords="9,5,84,35"/></map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classMolecule-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
@@ -86,8 +79,11 @@ Collaboration diagram for Molecule:</div>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMolecule.html#a4eafa2831869e116f64c86987f1cac81">nodeID</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMolecule.html#a134dd5ffa71953792912c7b0cca01405">wasPTM</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMolecule.html#ae6aff39305dd77531ea5a213b6f2b1c5">PTMArray</a> [4]</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMTRand.html">MTRand</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMolecule.html#af036bbaa1f3ec537d3711ae3242d3074">r</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">MTRand&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMolecule.html#af036bbaa1f3ec537d3711ae3242d3074">r</a></td></tr>
 <tr><td colspan="2"><h2>Protected Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMolecule.html#a526a58eb943156887bb75b24bdb2b8a0">numChanges</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMolecule.html#acefb24656feeb161148e9594db6ada0b">prevDir</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMolecule.html#a4cd5591c0a8c07ceec922c4f2e8f295c">currentDir</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMolecule.html#a5b6f24dea7138830541e938e2eed707a">buf</a> [200]</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMolecule.html#a4ac09eefeba07dcb455014acc1ad00c9">longName</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMolecule.html#ae79f60ef35ffcb500e91013f59563e03">shortName</a></td></tr>
@@ -289,15 +285,6 @@ Here is the call graph for this function:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dynsection">
-<div class="center"><img src="classMolecule_a125243e73faff1e5e482e65ba923ca3a_cgraph.png" border="0" usemap="#classMolecule_a125243e73faff1e5e482e65ba923ca3a_cgraph_map" alt=""></div>
-<map name="classMolecule_a125243e73faff1e5e482e65ba923ca3a_cgraph_map" id="classMolecule_a125243e73faff1e5e482e65ba923ca3a_cgraph">
-<area shape="rect" id="node3" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="209,5,313,35"/></map>
-</div>
-</p>
 
 </div>
 </div>
@@ -578,6 +565,19 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a class="anchor" id="a4cd5591c0a8c07ceec922c4f2e8f295c"></a><!-- doxytag: member="Molecule::currentDir" ref="a4cd5591c0a8c07ceec922c4f2e8f295c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classMolecule.html#a4cd5591c0a8c07ceec922c4f2e8f295c">Molecule::currentDir</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a4ac09eefeba07dcb455014acc1ad00c9"></a><!-- doxytag: member="Molecule::longName" ref="a4ac09eefeba07dcb455014acc1ad00c9" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -617,6 +617,32 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a class="anchor" id="a526a58eb943156887bb75b24bdb2b8a0"></a><!-- doxytag: member="Molecule::numChanges" ref="a526a58eb943156887bb75b24bdb2b8a0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classMolecule.html#a526a58eb943156887bb75b24bdb2b8a0">Molecule::numChanges</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acefb24656feeb161148e9594db6ada0b"></a><!-- doxytag: member="Molecule::prevDir" ref="acefb24656feeb161148e9594db6ada0b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classMolecule.html#acefb24656feeb161148e9594db6ada0b">Molecule::prevDir</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="ae6aff39305dd77531ea5a213b6f2b1c5"></a><!-- doxytag: member="Molecule::PTMArray" ref="ae6aff39305dd77531ea5a213b6f2b1c5" args="[4]" -->
 <div class="memitem">
 <div class="memproto">
@@ -635,7 +661,7 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classMTRand.html">MTRand</a> <a class="el" href="classMolecule.html#af036bbaa1f3ec537d3711ae3242d3074">Molecule::r</a></td>
+          <td class="memname">MTRand <a class="el" href="classMolecule.html#af036bbaa1f3ec537d3711ae3242d3074">Molecule::r</a></td>
         </tr>
       </table>
 </div>
@@ -692,7 +718,7 @@ Here is the call graph for this function:</div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

@@ -5,370 +5,319 @@
   \item {$\sim $Complex}
     \subitem {Complex}, \hyperpage{12}
   \item {$\sim $DNA}
-    \subitem {DNA}, \hyperpage{22}
+    \subitem {DNA}, \hyperpage{23}
   \item {$\sim $Degradation}
-    \subitem {Degradation}, \hyperpage{15}
+    \subitem {Degradation}, \hyperpage{14}
   \item {$\sim $DerivGraph}
-    \subitem {DerivGraph}, \hyperpage{17}
+    \subitem {DerivGraph}, \hyperpage{16}
   \item {$\sim $Experiment}
-    \subitem {Experiment}, \hyperpage{24}
+    \subitem {Experiment}, \hyperpage{25}
   \item {$\sim $ForwardComplexation}
-    \subitem {ForwardComplexation}, \hyperpage{26}
+    \subitem {ForwardComplexation}, \hyperpage{27}
   \item {$\sim $ForwardPTM}
-    \subitem {ForwardPTM}, \hyperpage{28}
+    \subitem {ForwardPTM}, \hyperpage{29}
   \item {$\sim $Interaction}
-    \subitem {Interaction}, \hyperpage{31}
+    \subitem {Interaction}, \hyperpage{32}
   \item {$\sim $Molecule}
-    \subitem {Molecule}, \hyperpage{34}
+    \subitem {Molecule}, \hyperpage{35}
   \item {$\sim $MoleculeType}
-    \subitem {MoleculeType}, \hyperpage{38}
+    \subitem {MoleculeType}, \hyperpage{40}
   \item {$\sim $NullNode}
-    \subitem {NullNode}, \hyperpage{50}
+    \subitem {NullNode}, \hyperpage{43}
   \item {$\sim $PTMProtein}
-    \subitem {PTMProtein}, \hyperpage{57}
+    \subitem {PTMProtein}, \hyperpage{51}
   \item {$\sim $PromoterBind}
-    \subitem {PromoterBind}, \hyperpage{52}
+    \subitem {PromoterBind}, \hyperpage{46}
   \item {$\sim $Protein}
-    \subitem {Protein}, \hyperpage{55}
+    \subitem {Protein}, \hyperpage{49}
   \item {$\sim $ReverseComplexation}
-    \subitem {ReverseComplexation}, \hyperpage{58}
+    \subitem {ReverseComplexation}, \hyperpage{52}
   \item {$\sim $ReversePTM}
-    \subitem {ReversePTM}, \hyperpage{60}
+    \subitem {ReversePTM}, \hyperpage{54}
   \item {$\sim $TestInt}
-    \subitem {TestInt}, \hyperpage{62}
+    \subitem {TestInt}, \hyperpage{56}
   \item {$\sim $Trace}
-    \subitem {Trace}, \hyperpage{64}
+    \subitem {Trace}, \hyperpage{58}
   \item {$\sim $Transcription}
-    \subitem {Transcription}, \hyperpage{67}
+    \subitem {Transcription}, \hyperpage{61}
   \item {$\sim $Translation}
-    \subitem {Translation}, \hyperpage{69}
+    \subitem {Translation}, \hyperpage{63}
   \item {$\sim $mRNA}
-    \subitem {mRNA}, \hyperpage{40}
+    \subitem {mRNA}, \hyperpage{41}
 
   \indexspace
 
   \item {addRandPTM}
-    \subitem {PTMProtein}, \hyperpage{57}
+    \subitem {PTMProtein}, \hyperpage{51}
   \item {addTraceType}
-    \subitem {Trace}, \hyperpage{64}
+    \subitem {Trace}, \hyperpage{58}
   \item {arcID}
-    \subitem {Interaction}, \hyperpage{32}
+    \subitem {Interaction}, \hyperpage{33}
 
   \indexspace
 
   \item {buf}
-    \subitem {Molecule}, \hyperpage{36}
+    \subitem {Molecule}, \hyperpage{39}
 
   \indexspace
 
   \item {Cell}, \hyperpage{7}
     \subitem {$\sim $Cell}, \hyperpage{8}
     \subitem {Cell}, \hyperpage{8}
-    \subitem {mutate}, \hyperpage{9}
+    \subitem {getScore}, \hyperpage{8}
+    \subitem {mutate}, \hyperpage{8}
     \subitem {outputDataPlot}, \hyperpage{9}
     \subitem {outputDotImage}, \hyperpage{9}
-  \item {Cell.cpp}, \hyperpage{71}
-  \item {Cell.h}, \hyperpage{72}
+  \item {Cell.cpp}, \hyperpage{65}
+  \item {Cell.h}, \hyperpage{66}
   \item {cmp\_\discretionary {-}{}{}str}, \hyperpage{10}
     \subitem {operator()}, \hyperpage{10}
   \item {Complex}, \hyperpage{11}
     \subitem {$\sim $Complex}, \hyperpage{12}
     \subitem {Complex}, \hyperpage{12}
-    \subitem {getComponentId}, \hyperpage{13}
-  \item {CustomInteractions.cpp}, \hyperpage{73}
-  \item {CustomInteractions.h}, \hyperpage{74}
-  \item {CustomMolecules.cpp}, \hyperpage{76}
-  \item {CustomMolecules.h}, \hyperpage{77}
+    \subitem {getComponentId}, \hyperpage{12}
+  \item {currentDir}
+    \subitem {Molecule}, \hyperpage{39}
+  \item {CustomInteractions.cpp}, \hyperpage{67}
+  \item {CustomInteractions.h}, \hyperpage{68}
+  \item {CustomMolecules.cpp}, \hyperpage{69}
+  \item {CustomMolecules.h}, \hyperpage{70}
 
   \indexspace
 
-  \item {Degradation}, \hyperpage{14}
-    \subitem {$\sim $Degradation}, \hyperpage{15}
-    \subitem {Degradation}, \hyperpage{15}
-    \subitem {getEffect}, \hyperpage{15}
+  \item {Degradation}, \hyperpage{13}
+    \subitem {$\sim $Degradation}, \hyperpage{14}
+    \subitem {Degradation}, \hyperpage{14}
+    \subitem {getEffect}, \hyperpage{14}
   \item {degradationRateChange}
-    \subitem {DerivGraph}, \hyperpage{17}
-  \item {DerivGraph}, \hyperpage{16}
-    \subitem {$\sim $DerivGraph}, \hyperpage{17}
-    \subitem {degradationRateChange}, \hyperpage{17}
     \subitem {DerivGraph}, \hyperpage{16}
-    \subitem {forwardRateChange}, \hyperpage{17}
-    \subitem {getArcMap}, \hyperpage{18}
-    \subitem {getListDigraph}, \hyperpage{18}
-    \subitem {getNodeMap}, \hyperpage{18}
-    \subitem {histoneMod}, \hyperpage{18}
-    \subitem {newBasic}, \hyperpage{18}
+  \item {DerivGraph}, \hyperpage{15}
+    \subitem {$\sim $DerivGraph}, \hyperpage{16}
+    \subitem {degradationRateChange}, \hyperpage{16}
+    \subitem {DerivGraph}, \hyperpage{15}
+    \subitem {forwardRateChange}, \hyperpage{16}
+    \subitem {getArcMap}, \hyperpage{17}
+    \subitem {getBestMolecule}, \hyperpage{17}
+    \subitem {getListDigraph}, \hyperpage{17}
+    \subitem {getNodeMap}, \hyperpage{17}
+    \subitem {histoneMod}, \hyperpage{17}
+    \subitem {newBasic}, \hyperpage{17}
     \subitem {newComplex}, \hyperpage{18}
-    \subitem {newPromoter}, \hyperpage{19}
-    \subitem {newPTM}, \hyperpage{19}
+    \subitem {newPromoter}, \hyperpage{18}
+    \subitem {newPTM}, \hyperpage{18}
     \subitem {outputDataPlot}, \hyperpage{19}
     \subitem {outputDotImage}, \hyperpage{19}
-    \subitem {r}, \hyperpage{20}
+    \subitem {r}, \hyperpage{21}
     \subitem {reverseRateChange}, \hyperpage{19}
     \subitem {rungeKuttaEvaluate}, \hyperpage{20}
-    \subitem {test}, \hyperpage{20}
-  \item {DerivGraph.cpp}, \hyperpage{78}
-  \item {DerivGraph.h}, \hyperpage{79}
+    \subitem {setDefaultInitialConc}, \hyperpage{20}
+    \subitem {setKineticRateLimits}, \hyperpage{20}
+    \subitem {setLimits}, \hyperpage{20}
+    \subitem {setRungeKuttaEval}, \hyperpage{21}
+    \subitem {test}, \hyperpage{21}
+  \item {DerivGraph.cpp}, \hyperpage{71}
+  \item {DerivGraph.h}, \hyperpage{72}
   \item {disableTraceType}
-    \subitem {Trace}, \hyperpage{65}
-  \item {DNA}, \hyperpage{21}
-    \subitem {$\sim $DNA}, \hyperpage{22}
+    \subitem {Trace}, \hyperpage{59}
+  \item {DNA}, \hyperpage{22}
+    \subitem {$\sim $DNA}, \hyperpage{23}
     \subitem {DNA}, \hyperpage{22}
-    \subitem {getValue}, \hyperpage{22}
-    \subitem {hill}, \hyperpage{23}
-    \subitem {promoterId}, \hyperpage{23}
-    \subitem {rkApprox}, \hyperpage{22}
-    \subitem {setHistoneModValue}, \hyperpage{22}
+    \subitem {getValue}, \hyperpage{23}
+    \subitem {hill}, \hyperpage{24}
+    \subitem {promoterId}, \hyperpage{24}
+    \subitem {rkApprox}, \hyperpage{23}
+    \subitem {setHistoneModValue}, \hyperpage{23}
 
   \indexspace
 
   \item {enableTraceType}
-    \subitem {Trace}, \hyperpage{65}
-  \item {Experiment}, \hyperpage{24}
-    \subitem {$\sim $Experiment}, \hyperpage{24}
-    \subitem {Experiment}, \hyperpage{24}
-    \subitem {ExperimentTests}, \hyperpage{25}
-    \subitem {start}, \hyperpage{24}
-  \item {Experiment.cpp}, \hyperpage{81}
-  \item {Experiment.h}, \hyperpage{82}
-  \item {ExperimentTests}
+    \subitem {Trace}, \hyperpage{59}
+  \item {Experiment}, \hyperpage{25}
+    \subitem {$\sim $Experiment}, \hyperpage{25}
     \subitem {Experiment}, \hyperpage{25}
-  \item {ExternTrace.h}, \hyperpage{83}
-    \subitem {t}, \hyperpage{83}
+    \subitem {setOutputOptions}, \hyperpage{26}
+    \subitem {start}, \hyperpage{26}
+  \item {Experiment.cpp}, \hyperpage{74}
+  \item {Experiment.h}, \hyperpage{75}
+  \item {ExternTrace.h}, \hyperpage{76}
+    \subitem {t}, \hyperpage{76}
 
   \indexspace
 
   \item {firstNodeID}
+    \subitem {ForwardComplexation}, \hyperpage{28}
+    \subitem {ReverseComplexation}, \hyperpage{53}
+  \item {ForwardComplexation}, \hyperpage{27}
+    \subitem {$\sim $ForwardComplexation}, \hyperpage{27}
+    \subitem {firstNodeID}, \hyperpage{28}
     \subitem {ForwardComplexation}, \hyperpage{27}
-    \subitem {ReverseComplexation}, \hyperpage{59}
-  \item {ForwardComplexation}, \hyperpage{26}
-    \subitem {$\sim $ForwardComplexation}, \hyperpage{26}
-    \subitem {firstNodeID}, \hyperpage{27}
-    \subitem {ForwardComplexation}, \hyperpage{26}
-    \subitem {getEffect}, \hyperpage{27}
-    \subitem {secondNodeID}, \hyperpage{27}
-  \item {ForwardPTM}, \hyperpage{28}
-    \subitem {$\sim $ForwardPTM}, \hyperpage{28}
-    \subitem {ForwardPTM}, \hyperpage{28}
+    \subitem {getEffect}, \hyperpage{28}
+    \subitem {secondNodeID}, \hyperpage{28}
+  \item {ForwardPTM}, \hyperpage{29}
+    \subitem {$\sim $ForwardPTM}, \hyperpage{29}
+    \subitem {ForwardPTM}, \hyperpage{29}
   \item {forwardRateChange}
-    \subitem {DerivGraph}, \hyperpage{17}
+    \subitem {DerivGraph}, \hyperpage{16}
 
   \indexspace
 
   \item {getArcMap}
-    \subitem {DerivGraph}, \hyperpage{18}
+    \subitem {DerivGraph}, \hyperpage{17}
+  \item {getBestMolecule}
+    \subitem {DerivGraph}, \hyperpage{17}
   \item {getComponentId}
-    \subitem {Complex}, \hyperpage{13}
+    \subitem {Complex}, \hyperpage{12}
   \item {getEffect}
-    \subitem {Degradation}, \hyperpage{15}
-    \subitem {ForwardComplexation}, \hyperpage{27}
-    \subitem {Interaction}, \hyperpage{31}
-    \subitem {PromoterBind}, \hyperpage{52}
-    \subitem {ReverseComplexation}, \hyperpage{59}
-    \subitem {TestInt}, \hyperpage{63}
-    \subitem {Transcription}, \hyperpage{68}
+    \subitem {Degradation}, \hyperpage{14}
+    \subitem {ForwardComplexation}, \hyperpage{28}
+    \subitem {Interaction}, \hyperpage{32}
+    \subitem {PromoterBind}, \hyperpage{46}
+    \subitem {ReverseComplexation}, \hyperpage{53}
+    \subitem {TestInt}, \hyperpage{57}
+    \subitem {Transcription}, \hyperpage{62}
   \item {getID}
-    \subitem {Molecule}, \hyperpage{34}
+    \subitem {Molecule}, \hyperpage{35}
   \item {getListDigraph}
-    \subitem {DerivGraph}, \hyperpage{18}
+    \subitem {DerivGraph}, \hyperpage{17}
   \item {getLongName}
-    \subitem {Molecule}, \hyperpage{34}
-    \subitem {PTMProtein}, \hyperpage{57}
+    \subitem {Molecule}, \hyperpage{35}
+    \subitem {PTMProtein}, \hyperpage{51}
   \item {getName}
-    \subitem {Interaction}, \hyperpage{32}
+    \subitem {Interaction}, \hyperpage{33}
   \item {getNodeMap}
-    \subitem {DerivGraph}, \hyperpage{18}
+    \subitem {DerivGraph}, \hyperpage{17}
   \item {getPTMCount}
-    \subitem {Molecule}, \hyperpage{34, 35}
+    \subitem {Molecule}, \hyperpage{36}
   \item {getRate}
-    \subitem {Interaction}, \hyperpage{32}
+    \subitem {Interaction}, \hyperpage{33}
   \item {getrkVal}
-    \subitem {Molecule}, \hyperpage{35}
+    \subitem {Molecule}, \hyperpage{36}
   \item {getRungeKuttaSolution}
-    \subitem {Molecule}, \hyperpage{35}
+    \subitem {Molecule}, \hyperpage{36}
   \item {getScore}
-    \subitem {Molecule}, \hyperpage{35}
+    \subitem {Cell}, \hyperpage{8}
+    \subitem {Molecule}, \hyperpage{36}
   \item {getShortName}
-    \subitem {Molecule}, \hyperpage{35}
+    \subitem {Molecule}, \hyperpage{36}
   \item {getTraceFile}
-    \subitem {Trace}, \hyperpage{65}
+    \subitem {Trace}, \hyperpage{59}
   \item {getValue}
-    \subitem {DNA}, \hyperpage{22}
-    \subitem {Molecule}, \hyperpage{35}
-    \subitem {NullNode}, \hyperpage{50}
-
-  \indexspace
-
-  \item {hash}
-    \subitem {MTRand}, \hyperpage{43}
-  \item {hiBit}
-    \subitem {MTRand}, \hyperpage{43}
-  \item {hill}
     \subitem {DNA}, \hyperpage{23}
-  \item {histoneMod}
-    \subitem {DerivGraph}, \hyperpage{18}
+    \subitem {Molecule}, \hyperpage{36}
+    \subitem {NullNode}, \hyperpage{44}
 
   \indexspace
 
-  \item {initialize}
-    \subitem {MTRand}, \hyperpage{43}
-  \item {Interaction}, \hyperpage{30}
-    \subitem {$\sim $Interaction}, \hyperpage{31}
-    \subitem {arcID}, \hyperpage{32}
-    \subitem {getEffect}, \hyperpage{31}
-    \subitem {getName}, \hyperpage{32}
-    \subitem {getRate}, \hyperpage{32}
-    \subitem {Interaction}, \hyperpage{31}
-    \subitem {name}, \hyperpage{32}
-    \subitem {rate}, \hyperpage{32}
-    \subitem {setRate}, \hyperpage{32}
-  \item {Interaction.cpp}, \hyperpage{84}
-  \item {Interaction.h}, \hyperpage{85}
+  \item {hill}
+    \subitem {DNA}, \hyperpage{24}
+  \item {histoneMod}
+    \subitem {DerivGraph}, \hyperpage{17}
+
+  \indexspace
+
+  \item {Interaction}, \hyperpage{31}
+    \subitem {$\sim $Interaction}, \hyperpage{32}
+    \subitem {arcID}, \hyperpage{33}
+    \subitem {getEffect}, \hyperpage{32}
+    \subitem {getName}, \hyperpage{33}
+    \subitem {getRate}, \hyperpage{33}
+    \subitem {Interaction}, \hyperpage{32}
+    \subitem {name}, \hyperpage{33}
+    \subitem {rate}, \hyperpage{33}
+    \subitem {setRate}, \hyperpage{33}
+  \item {Interaction.cpp}, \hyperpage{77}
+  \item {Interaction.h}, \hyperpage{78}
 
   \indexspace
 
   \item {kf}
-    \subitem {PromoterBind}, \hyperpage{52}
+    \subitem {PromoterBind}, \hyperpage{46}
   \item {kr}
-    \subitem {PromoterBind}, \hyperpage{52}
+    \subitem {PromoterBind}, \hyperpage{46}
 
   \indexspace
 
-  \item {left}
-    \subitem {MTRand}, \hyperpage{48}
-  \item {load}
-    \subitem {MTRand}, \hyperpage{43}
-  \item {loBit}
-    \subitem {MTRand}, \hyperpage{43}
-  \item {loBits}
-    \subitem {MTRand}, \hyperpage{43}
   \item {longName}
-    \subitem {Molecule}, \hyperpage{36}
+    \subitem {Molecule}, \hyperpage{39}
 
   \indexspace
 
-  \item {M}
-    \subitem {MTRand}, \hyperpage{42}
-  \item {magic}
-    \subitem {MTRand}, \hyperpage{43}
   \item {main}
-    \subitem {Main.cpp}, \hyperpage{86}
-  \item {Main.cpp}, \hyperpage{86}
-    \subitem {main}, \hyperpage{86}
-    \subitem {t}, \hyperpage{87}
-  \item {MersenneTwister.h}, \hyperpage{88}
-    \subitem {operator$<$$<$}, \hyperpage{89}
-    \subitem {operator$>$$>$}, \hyperpage{89}
-  \item {mixBits}
-    \subitem {MTRand}, \hyperpage{43}
-  \item {Molecule}, \hyperpage{33}
-    \subitem {$\sim $Molecule}, \hyperpage{34}
-    \subitem {buf}, \hyperpage{36}
-    \subitem {getID}, \hyperpage{34}
-    \subitem {getLongName}, \hyperpage{34}
-    \subitem {getPTMCount}, \hyperpage{34, 35}
-    \subitem {getrkVal}, \hyperpage{35}
-    \subitem {getRungeKuttaSolution}, \hyperpage{35}
-    \subitem {getScore}, \hyperpage{35}
-    \subitem {getShortName}, \hyperpage{35}
-    \subitem {getValue}, \hyperpage{35}
-    \subitem {longName}, \hyperpage{36}
-    \subitem {Molecule}, \hyperpage{34}
-    \subitem {moleculeID}, \hyperpage{36}
-    \subitem {nextPoint}, \hyperpage{35}
-    \subitem {nodeID}, \hyperpage{36}
-    \subitem {outputRK}, \hyperpage{35}
-    \subitem {PTMArray}, \hyperpage{36}
-    \subitem {r}, \hyperpage{36}
-    \subitem {reset}, \hyperpage{35}
-    \subitem {rkApprox}, \hyperpage{36}
-    \subitem {rungeKuttaSolution}, \hyperpage{36}
-    \subitem {setID}, \hyperpage{36}
-    \subitem {setValue}, \hyperpage{36}
-    \subitem {shortName}, \hyperpage{36}
-    \subitem {updateRkVal}, \hyperpage{36}
-    \subitem {wasPTM}, \hyperpage{36}
-  \item {Molecule.cpp}, \hyperpage{90}
-  \item {Molecule.h}, \hyperpage{91}
+    \subitem {Main.cpp}, \hyperpage{79}
+  \item {Main.cpp}, \hyperpage{79}
+    \subitem {main}, \hyperpage{79}
+    \subitem {t}, \hyperpage{80}
+  \item {Molecule}, \hyperpage{34}
+    \subitem {$\sim $Molecule}, \hyperpage{35}
+    \subitem {buf}, \hyperpage{39}
+    \subitem {currentDir}, \hyperpage{39}
+    \subitem {getID}, \hyperpage{35}
+    \subitem {getLongName}, \hyperpage{35}
+    \subitem {getPTMCount}, \hyperpage{36}
+    \subitem {getrkVal}, \hyperpage{36}
+    \subitem {getRungeKuttaSolution}, \hyperpage{36}
+    \subitem {getScore}, \hyperpage{36}
+    \subitem {getShortName}, \hyperpage{36}
+    \subitem {getValue}, \hyperpage{36}
+    \subitem {longName}, \hyperpage{39}
+    \subitem {Molecule}, \hyperpage{35}
+    \subitem {moleculeID}, \hyperpage{39}
+    \subitem {nextPoint}, \hyperpage{36}
+    \subitem {nodeID}, \hyperpage{39}
+    \subitem {numChanges}, \hyperpage{39}
+    \subitem {outputRK}, \hyperpage{37}
+    \subitem {prevDir}, \hyperpage{39}
+    \subitem {PTMArray}, \hyperpage{39}
+    \subitem {r}, \hyperpage{39}
+    \subitem {reset}, \hyperpage{37}
+    \subitem {rkApprox}, \hyperpage{37}
+    \subitem {rungeKuttaSolution}, \hyperpage{39}
+    \subitem {setID}, \hyperpage{38}
+    \subitem {setValue}, \hyperpage{38}
+    \subitem {shortName}, \hyperpage{39}
+    \subitem {updateRkVal}, \hyperpage{38}
+    \subitem {wasPTM}, \hyperpage{39}
+  \item {Molecule.cpp}, \hyperpage{81}
+  \item {Molecule.h}, \hyperpage{82}
   \item {moleculeID}
-    \subitem {Molecule}, \hyperpage{36}
-  \item {MoleculeType}, \hyperpage{38}
-    \subitem {$\sim $MoleculeType}, \hyperpage{38}
-    \subitem {MoleculeType}, \hyperpage{38}
-  \item {MoleculeType.h}, \hyperpage{92}
-  \item {mRNA}, \hyperpage{39}
-    \subitem {$\sim $mRNA}, \hyperpage{40}
-    \subitem {mRNA}, \hyperpage{40}
-  \item {MTRand}, \hyperpage{41}
-    \subitem {hash}, \hyperpage{43}
-    \subitem {hiBit}, \hyperpage{43}
-    \subitem {initialize}, \hyperpage{43}
-    \subitem {left}, \hyperpage{48}
-    \subitem {load}, \hyperpage{43}
-    \subitem {loBit}, \hyperpage{43}
-    \subitem {loBits}, \hyperpage{43}
-    \subitem {M}, \hyperpage{42}
-    \subitem {magic}, \hyperpage{43}
-    \subitem {mixBits}, \hyperpage{43}
-    \subitem {MTRand}, \hyperpage{42, 43}
-    \subitem {N}, \hyperpage{42}
-    \subitem {operator$<$$<$}, \hyperpage{48}
-    \subitem {operator$>$$>$}, \hyperpage{48}
-    \subitem {operator()}, \hyperpage{44}
-    \subitem {operator=}, \hyperpage{44}
-    \subitem {pNext}, \hyperpage{48}
-    \subitem {rand}, \hyperpage{44}
-    \subitem {rand53}, \hyperpage{44}
-    \subitem {randDblExc}, \hyperpage{44, 45}
-    \subitem {randExc}, \hyperpage{45}
-    \subitem {randInt}, \hyperpage{45, 46}
-    \subitem {randNorm}, \hyperpage{46}
-    \subitem {reload}, \hyperpage{46}
-    \subitem {SAVE}, \hyperpage{42}
-    \subitem {save}, \hyperpage{46}
-    \subitem {seed}, \hyperpage{47}
-    \subitem {state}, \hyperpage{48}
-    \subitem {twist}, \hyperpage{47}
-    \subitem {uint32}, \hyperpage{42}
+    \subitem {Molecule}, \hyperpage{39}
+  \item {MoleculeType}, \hyperpage{40}
+    \subitem {$\sim $MoleculeType}, \hyperpage{40}
+    \subitem {MoleculeType}, \hyperpage{40}
+  \item {MoleculeType.h}, \hyperpage{83}
+  \item {mRNA}, \hyperpage{41}
+    \subitem {$\sim $mRNA}, \hyperpage{41}
+    \subitem {mRNA}, \hyperpage{41}
   \item {mutate}
-    \subitem {Cell}, \hyperpage{9}
+    \subitem {Cell}, \hyperpage{8}
 
   \indexspace
 
-  \item {N}
-    \subitem {MTRand}, \hyperpage{42}
   \item {name}
-    \subitem {Interaction}, \hyperpage{32}
+    \subitem {Interaction}, \hyperpage{33}
   \item {newBasic}
-    \subitem {DerivGraph}, \hyperpage{18}
+    \subitem {DerivGraph}, \hyperpage{17}
   \item {newComplex}
     \subitem {DerivGraph}, \hyperpage{18}
   \item {newPromoter}
-    \subitem {DerivGraph}, \hyperpage{19}
+    \subitem {DerivGraph}, \hyperpage{18}
   \item {newPTM}
-    \subitem {DerivGraph}, \hyperpage{19}
+    \subitem {DerivGraph}, \hyperpage{18}
   \item {nextPoint}
-    \subitem {Molecule}, \hyperpage{35}
-  \item {nodeID}
     \subitem {Molecule}, \hyperpage{36}
-  \item {NullNode}, \hyperpage{49}
-    \subitem {$\sim $NullNode}, \hyperpage{50}
-    \subitem {getValue}, \hyperpage{50}
-    \subitem {NullNode}, \hyperpage{50}
+  \item {nodeID}
+    \subitem {Molecule}, \hyperpage{39}
+  \item {NullNode}, \hyperpage{43}
+    \subitem {$\sim $NullNode}, \hyperpage{43}
+    \subitem {getValue}, \hyperpage{44}
+    \subitem {NullNode}, \hyperpage{43}
+  \item {numChanges}
+    \subitem {Molecule}, \hyperpage{39}
 
   \indexspace
 
-  \item {operator$<$$<$}
-    \subitem {MersenneTwister.h}, \hyperpage{89}
-    \subitem {MTRand}, \hyperpage{48}
-  \item {operator$>$$>$}
-    \subitem {MersenneTwister.h}, \hyperpage{89}
-    \subitem {MTRand}, \hyperpage{48}
   \item {operator()}
     \subitem {cmp\_\discretionary {-}{}{}str}, \hyperpage{10}
-    \subitem {MTRand}, \hyperpage{44}
-  \item {operator=}
-    \subitem {MTRand}, \hyperpage{44}
   \item {outputDataPlot}
     \subitem {Cell}, \hyperpage{9}
     \subitem {DerivGraph}, \hyperpage{19}
@@ -376,154 +325,138 @@
     \subitem {Cell}, \hyperpage{9}
     \subitem {DerivGraph}, \hyperpage{19}
   \item {outputRK}
-    \subitem {Molecule}, \hyperpage{35}
+    \subitem {Molecule}, \hyperpage{37}
 
   \indexspace
 
-  \item {pNext}
-    \subitem {MTRand}, \hyperpage{48}
-  \item {PromoterBind}, \hyperpage{51}
-    \subitem {$\sim $PromoterBind}, \hyperpage{52}
-    \subitem {getEffect}, \hyperpage{52}
-    \subitem {kf}, \hyperpage{52}
-    \subitem {kr}, \hyperpage{52}
-    \subitem {PromoterBind}, \hyperpage{52}
+  \item {prevDir}
+    \subitem {Molecule}, \hyperpage{39}
+  \item {PromoterBind}, \hyperpage{45}
+    \subitem {$\sim $PromoterBind}, \hyperpage{46}
+    \subitem {getEffect}, \hyperpage{46}
+    \subitem {kf}, \hyperpage{46}
+    \subitem {kr}, \hyperpage{46}
+    \subitem {PromoterBind}, \hyperpage{46}
   \item {promoterId}
-    \subitem {DNA}, \hyperpage{23}
-  \item {Protein}, \hyperpage{54}
-    \subitem {$\sim $Protein}, \hyperpage{55}
-    \subitem {Protein}, \hyperpage{55}
+    \subitem {DNA}, \hyperpage{24}
+  \item {Protein}, \hyperpage{48}
+    \subitem {$\sim $Protein}, \hyperpage{49}
+    \subitem {Protein}, \hyperpage{49}
   \item {PTMArray}
-    \subitem {Molecule}, \hyperpage{36}
-  \item {PTMProtein}, \hyperpage{56}
-    \subitem {$\sim $PTMProtein}, \hyperpage{57}
-    \subitem {addRandPTM}, \hyperpage{57}
-    \subitem {getLongName}, \hyperpage{57}
-    \subitem {PTMProtein}, \hyperpage{57}
-    \subitem {setPTMCount}, \hyperpage{57}
+    \subitem {Molecule}, \hyperpage{39}
+  \item {PTMProtein}, \hyperpage{50}
+    \subitem {$\sim $PTMProtein}, \hyperpage{51}
+    \subitem {addRandPTM}, \hyperpage{51}
+    \subitem {getLongName}, \hyperpage{51}
+    \subitem {PTMProtein}, \hyperpage{50}
+    \subitem {setPTMCount}, \hyperpage{51}
 
   \indexspace
 
   \item {r}
-    \subitem {DerivGraph}, \hyperpage{20}
-    \subitem {Molecule}, \hyperpage{36}
-  \item {rand}
-    \subitem {MTRand}, \hyperpage{44}
-  \item {rand53}
-    \subitem {MTRand}, \hyperpage{44}
-  \item {randDblExc}
-    \subitem {MTRand}, \hyperpage{44, 45}
-  \item {randExc}
-    \subitem {MTRand}, \hyperpage{45}
-  \item {randInt}
-    \subitem {MTRand}, \hyperpage{45, 46}
-  \item {randNorm}
-    \subitem {MTRand}, \hyperpage{46}
+    \subitem {DerivGraph}, \hyperpage{21}
+    \subitem {Molecule}, \hyperpage{39}
   \item {rate}
-    \subitem {Interaction}, \hyperpage{32}
-  \item {reload}
-    \subitem {MTRand}, \hyperpage{46}
+    \subitem {Interaction}, \hyperpage{33}
   \item {reset}
-    \subitem {Molecule}, \hyperpage{35}
-  \item {ReverseComplexation}, \hyperpage{58}
-    \subitem {$\sim $ReverseComplexation}, \hyperpage{58}
-    \subitem {firstNodeID}, \hyperpage{59}
-    \subitem {getEffect}, \hyperpage{59}
-    \subitem {ReverseComplexation}, \hyperpage{58}
-    \subitem {secondNodeID}, \hyperpage{59}
-  \item {ReversePTM}, \hyperpage{60}
-    \subitem {$\sim $ReversePTM}, \hyperpage{60}
-    \subitem {ReversePTM}, \hyperpage{60}
+    \subitem {Molecule}, \hyperpage{37}
+  \item {ReverseComplexation}, \hyperpage{52}
+    \subitem {$\sim $ReverseComplexation}, \hyperpage{52}
+    \subitem {firstNodeID}, \hyperpage{53}
+    \subitem {getEffect}, \hyperpage{53}
+    \subitem {ReverseComplexation}, \hyperpage{52}
+    \subitem {secondNodeID}, \hyperpage{53}
+  \item {ReversePTM}, \hyperpage{54}
+    \subitem {$\sim $ReversePTM}, \hyperpage{54}
+    \subitem {ReversePTM}, \hyperpage{54}
   \item {reverseRateChange}
     \subitem {DerivGraph}, \hyperpage{19}
   \item {rkApprox}
-    \subitem {DNA}, \hyperpage{22}
-    \subitem {Molecule}, \hyperpage{36}
+    \subitem {DNA}, \hyperpage{23}
+    \subitem {Molecule}, \hyperpage{37}
   \item {rungeKuttaEvaluate}
     \subitem {DerivGraph}, \hyperpage{20}
   \item {rungeKuttaSolution}
-    \subitem {Molecule}, \hyperpage{36}
+    \subitem {Molecule}, \hyperpage{39}
 
   \indexspace
 
-  \item {SAVE}
-    \subitem {MTRand}, \hyperpage{42}
-  \item {save}
-    \subitem {MTRand}, \hyperpage{46}
   \item {secondNodeID}
-    \subitem {ForwardComplexation}, \hyperpage{27}
-    \subitem {ReverseComplexation}, \hyperpage{59}
-  \item {seed}
-    \subitem {MTRand}, \hyperpage{47}
+    \subitem {ForwardComplexation}, \hyperpage{28}
+    \subitem {ReverseComplexation}, \hyperpage{53}
+  \item {setDefaultInitialConc}
+    \subitem {DerivGraph}, \hyperpage{20}
   \item {setHistoneModValue}
-    \subitem {DNA}, \hyperpage{22}
+    \subitem {DNA}, \hyperpage{23}
   \item {setID}
-    \subitem {Molecule}, \hyperpage{36}
+    \subitem {Molecule}, \hyperpage{38}
+  \item {setKineticRateLimits}
+    \subitem {DerivGraph}, \hyperpage{20}
+  \item {setLimits}
+    \subitem {DerivGraph}, \hyperpage{20}
+  \item {setOutputOptions}
+    \subitem {Experiment}, \hyperpage{26}
   \item {setPTMCount}
-    \subitem {PTMProtein}, \hyperpage{57}
+    \subitem {PTMProtein}, \hyperpage{51}
   \item {setRate}
-    \subitem {Interaction}, \hyperpage{32}
+    \subitem {Interaction}, \hyperpage{33}
+  \item {setRungeKuttaEval}
+    \subitem {DerivGraph}, \hyperpage{21}
   \item {setTraceFile}
-    \subitem {Trace}, \hyperpage{65}
+    \subitem {Trace}, \hyperpage{59}
   \item {setValue}
-    \subitem {Molecule}, \hyperpage{36}
+    \subitem {Molecule}, \hyperpage{38}
   \item {shortName}
-    \subitem {Molecule}, \hyperpage{36}
+    \subitem {Molecule}, \hyperpage{39}
   \item {start}
-    \subitem {Experiment}, \hyperpage{24}
-  \item {state}
-    \subitem {MTRand}, \hyperpage{48}
+    \subitem {Experiment}, \hyperpage{26}
 
   \indexspace
 
   \item {t}
-    \subitem {ExternTrace.h}, \hyperpage{83}
-    \subitem {Main.cpp}, \hyperpage{87}
+    \subitem {ExternTrace.h}, \hyperpage{76}
+    \subitem {Main.cpp}, \hyperpage{80}
   \item {test}
-    \subitem {DerivGraph}, \hyperpage{20}
-  \item {TestInt}, \hyperpage{62}
-    \subitem {$\sim $TestInt}, \hyperpage{62}
-    \subitem {getEffect}, \hyperpage{63}
-    \subitem {TestInt}, \hyperpage{62}
-  \item {Trace}, \hyperpage{64}
-    \subitem {$\sim $Trace}, \hyperpage{64}
-    \subitem {addTraceType}, \hyperpage{64}
-    \subitem {disableTraceType}, \hyperpage{65}
-    \subitem {enableTraceType}, \hyperpage{65}
-    \subitem {getTraceFile}, \hyperpage{65}
-    \subitem {setTraceFile}, \hyperpage{65}
-    \subitem {Trace}, \hyperpage{64}
-    \subitem {trace}, \hyperpage{65}
-    \subitem {traceFile}, \hyperpage{66}
-    \subitem {traceTypes}, \hyperpage{66}
+    \subitem {DerivGraph}, \hyperpage{21}
+  \item {TestInt}, \hyperpage{56}
+    \subitem {$\sim $TestInt}, \hyperpage{56}
+    \subitem {getEffect}, \hyperpage{57}
+    \subitem {TestInt}, \hyperpage{56}
+  \item {Trace}, \hyperpage{58}
+    \subitem {$\sim $Trace}, \hyperpage{58}
+    \subitem {addTraceType}, \hyperpage{58}
+    \subitem {disableTraceType}, \hyperpage{59}
+    \subitem {enableTraceType}, \hyperpage{59}
+    \subitem {getTraceFile}, \hyperpage{59}
+    \subitem {setTraceFile}, \hyperpage{59}
+    \subitem {Trace}, \hyperpage{58}
+    \subitem {trace}, \hyperpage{59}
+    \subitem {traceFile}, \hyperpage{60}
+    \subitem {traceTypes}, \hyperpage{60}
   \item {trace}
-    \subitem {Trace}, \hyperpage{65}
-  \item {Trace.cpp}, \hyperpage{93}
-  \item {Trace.h}, \hyperpage{94}
+    \subitem {Trace}, \hyperpage{59}
+  \item {Trace.cpp}, \hyperpage{84}
+  \item {Trace.h}, \hyperpage{85}
   \item {traceFile}
-    \subitem {Trace}, \hyperpage{66}
+    \subitem {Trace}, \hyperpage{60}
   \item {traceTypes}
-    \subitem {Trace}, \hyperpage{66}
-  \item {Transcription}, \hyperpage{67}
-    \subitem {$\sim $Transcription}, \hyperpage{67}
-    \subitem {getEffect}, \hyperpage{68}
-    \subitem {Transcription}, \hyperpage{67}
-  \item {Translation}, \hyperpage{69}
-    \subitem {$\sim $Translation}, \hyperpage{69}
-    \subitem {Translation}, \hyperpage{69}
-  \item {twist}
-    \subitem {MTRand}, \hyperpage{47}
+    \subitem {Trace}, \hyperpage{60}
+  \item {Transcription}, \hyperpage{61}
+    \subitem {$\sim $Transcription}, \hyperpage{61}
+    \subitem {getEffect}, \hyperpage{62}
+    \subitem {Transcription}, \hyperpage{61}
+  \item {Translation}, \hyperpage{63}
+    \subitem {$\sim $Translation}, \hyperpage{63}
+    \subitem {Translation}, \hyperpage{63}
 
   \indexspace
 
-  \item {uint32}
-    \subitem {MTRand}, \hyperpage{42}
   \item {updateRkVal}
-    \subitem {Molecule}, \hyperpage{36}
+    \subitem {Molecule}, \hyperpage{38}
 
   \indexspace
 
   \item {wasPTM}
-    \subitem {Molecule}, \hyperpage{36}
+    \subitem {Molecule}, \hyperpage{39}
 
 \end{theindex}

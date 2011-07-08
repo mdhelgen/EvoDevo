@@ -50,12 +50,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p><a href="classExperiment-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExperiment.html#a512095983765afc4096aa91a157ede49">Experiment</a> (int ncells, int generations, int max_basic, int max_ptm, int max_comp, int max_prom, float min_kinetic_rate, float max_kinetic_rate)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExperiment.html#a600bd431197ce5df6c62f6647c561f7b">Experiment</a> (int ncells, int generations, int max_basic, int max_ptm, int max_comp, int max_prom, float min_kinetic_rate, float max_kinetic_rate, float rk_time_limit, float rk_time_step, float initial_conc)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExperiment.html#a96058d848040e45948bbb60623711da6">~Experiment</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExperiment.html#ab15fca04be9b7bcad65b264b23b4a499">start</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExperiment.html#a7597c63f9fe2f8dede62dbe79202bf61">setOutputOptions</a> (int, int, int, int)</td></tr>
 </table>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a512095983765afc4096aa91a157ede49"></a><!-- doxytag: member="Experiment::Experiment" ref="a512095983765afc4096aa91a157ede49" args="(int ncells, int generations, int max_basic, int max_ptm, int max_comp, int max_prom, float min_kinetic_rate, float max_kinetic_rate)" -->
+<a class="anchor" id="a600bd431197ce5df6c62f6647c561f7b"></a><!-- doxytag: member="Experiment::Experiment" ref="a600bd431197ce5df6c62f6647c561f7b" args="(int ncells, int generations, int max_basic, int max_ptm, int max_comp, int max_prom, float min_kinetic_rate, float max_kinetic_rate, float rk_time_limit, float rk_time_step, float initial_conc)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -105,7 +106,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&nbsp;</td>
-          <td class="paramname"> <em>max_kinetic_rate</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>max_kinetic_rate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>rk_time_limit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>rk_time_step</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>initial_conc</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -119,8 +138,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p><a class="el" href="classExperiment.html">Experiment</a> constructor.</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>of <a class="el" href="classCell.html">Cell</a> objects to be created. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>of Generations the <a class="el" href="classExperiment.html">Experiment</a> will run for. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ncells</em>&nbsp;</td><td>number of <a class="el" href="classCell.html">Cell</a> objects to be created. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>generations</em>&nbsp;</td><td>number of Generations the <a class="el" href="classExperiment.html">Experiment</a> will run for. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>max_basic</em>&nbsp;</td><td>maximum number of basic proteins allowed in each <a class="el" href="classCell.html">Cell</a> </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>max_ptm</em>&nbsp;</td><td>maximum number of PTM proteins allowed in each <a class="el" href="classCell.html">Cell</a> </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>max_comp</em>&nbsp;</td><td>maximum number of complexed proteins allowed in each <a class="el" href="classCell.html">Cell</a> </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>max_prom</em>&nbsp;</td><td>maximum number of protein-promoter interactions allowed in each cell </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>min_kinetic_rate</em>&nbsp;</td><td>the lower bound on randomly generated kinetic rates </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>max_kinetic_rate</em>&nbsp;</td><td>the upper bound on randomly generated kinetic rates </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rk_time_limit</em>&nbsp;</td><td>the stopping condition for runge-kutta iteration </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rk_time_step</em>&nbsp;</td><td>how much time to advance each iteration </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>initial_conc</em>&nbsp;</td><td>the initial concentration for molecules </td></tr>
   </table>
   </dd>
 </dl>
@@ -128,8 +156,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dynsection">
-<div class="center"><img src="classExperiment_a512095983765afc4096aa91a157ede49_cgraph.png" border="0" usemap="#classExperiment_a512095983765afc4096aa91a157ede49_cgraph_map" alt=""></div>
-<map name="classExperiment_a512095983765afc4096aa91a157ede49_cgraph_map" id="classExperiment_a512095983765afc4096aa91a157ede49_cgraph">
+<div class="center"><img src="classExperiment_a600bd431197ce5df6c62f6647c561f7b_cgraph.png" border="0" usemap="#classExperiment_a600bd431197ce5df6c62f6647c561f7b_cgraph_map" alt=""></div>
+<map name="classExperiment_a600bd431197ce5df6c62f6647c561f7b_cgraph_map" id="classExperiment_a600bd431197ce5df6c62f6647c561f7b_cgraph">
 <area shape="rect" id="node3" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="247,5,351,35"/></map>
 </div>
 </p>
@@ -166,6 +194,45 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a7597c63f9fe2f8dede62dbe79202bf61"></a><!-- doxytag: member="Experiment::setOutputOptions" ref="a7597c63f9fe2f8dede62dbe79202bf61" args="(int, int, int, int)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Experiment::setOutputOptions </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>gv_flag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>gp_flag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>eachgen_flag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>scoring_interval</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="ab15fca04be9b7bcad65b264b23b4a499"></a><!-- doxytag: member="Experiment::start" ref="ab15fca04be9b7bcad65b264b23b4a499" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -180,14 +247,13 @@ Here is the call graph for this function:</div>
       </table>
 </div>
 <div class="memdoc">
-<p>Deprecated </p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dynsection">
 <div class="center"><img src="classExperiment_ab15fca04be9b7bcad65b264b23b4a499_cgraph.png" border="0" usemap="#classExperiment_ab15fca04be9b7bcad65b264b23b4a499_cgraph_map" alt=""></div>
 <map name="classExperiment_ab15fca04be9b7bcad65b264b23b4a499_cgraph_map" id="classExperiment_ab15fca04be9b7bcad65b264b23b4a499_cgraph">
-<area shape="rect" id="node3" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="201,5,305,35"/></map>
+<area shape="rect" id="node3" href="classCell.html#a6fb5e28360b3a6e53400af8b950f6203" title="Cell::getID" alt="" coords="237,5,333,35"/><area shape="rect" id="node5" href="classCell.html#a3fbb8b244cc5c516d0728a987d07bf0f" title="Cell::getScore" alt="" coords="227,59,344,88"/><area shape="rect" id="node13" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="735,112,839,141"/><area shape="rect" id="node16" href="classCell.html#a8e117526c56dda4d0d56d840d1558835" title="Cell::outputDataPlot" alt="" coords="204,163,367,192"/><area shape="rect" id="node20" href="classCell.html#a535ddddc0471fa874a0b22a54bd38c1a" title="Cell::outputDotImage" alt="" coords="200,216,371,245"/><area shape="rect" id="node7" href="classDerivGraph.html#aaaa9598e55cbd8c55585a0488e940516" title="DerivGraph::getBestMolecule" alt="" coords="419,59,643,88"/><area shape="rect" id="node9" href="classMolecule.html#a125243e73faff1e5e482e65ba923ca3a" title="Molecule::getScore" alt="" coords="709,5,864,35"/><area shape="rect" id="node11" href="classMolecule.html#a6d8720e89d81c1297beced997ad62718" title="Molecule::getShortName" alt="" coords="691,59,883,88"/><area shape="rect" id="node18" href="classDerivGraph.html#ae435e564c1fa8370453c952b1ea5e9ab" title="DerivGraph::outputDataPlot" alt="" coords="424,163,637,192"/><area shape="rect" id="node22" href="classDerivGraph.html#a2e2ed79e21c6896a859cc7800d950809" title="DerivGraph::outputDotImage" alt="" coords="420,216,641,245"/></map>
 </div>
 </p>
 
@@ -203,7 +269,7 @@ Here is the call graph for this function:</div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

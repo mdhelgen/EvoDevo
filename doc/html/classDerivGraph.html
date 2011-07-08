@@ -46,13 +46,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <h1>DerivGraph Class Reference</h1><!-- doxytag: class="DerivGraph" -->
 <p><code>#include &lt;<a class="el" href="DerivGraph_8h_source.html">DerivGraph.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for DerivGraph:</div>
-<div class="dynsection">
-<div class="center"><img src="classDerivGraph__coll__graph.png" border="0" usemap="#DerivGraph_coll__map" alt="Collaboration graph"/></div>
-<map name="DerivGraph_coll__map" id="DerivGraph_coll__map">
-<area shape="rect" id="node2" href="classMTRand.html" title="MTRand" alt="" coords="16,5,91,35"/></map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classDerivGraph-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
@@ -60,10 +53,14 @@ Collaboration diagram for DerivGraph:</div>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#af2a1f80b96b4657e7575748942d09947">DerivGraph</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#a27b4fed56f8d2a745582622b7cb78b50">~DerivGraph</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#abf589f6aabe2c66bbe6f1aeb68ff4593">test</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#a61f768c0b7b8828b0ab129146801f628">rungeKuttaEvaluate</a> (float)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#aa0921b8a7407be67085e9a11750a7263">rungeKuttaEvaluate</a> (float, float)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#a2e2ed79e21c6896a859cc7800d950809">outputDotImage</a> (int, int)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#ae435e564c1fa8370453c952b1ea5e9ab">outputDataPlot</a> (int, int, float)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMolecule.html">Molecule</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#aaaa9598e55cbd8c55585a0488e940516">getBestMolecule</a> (int)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#a9bec1192a5ffc41a3ef4527caa9cdb8f">setLimits</a> (int, int, int, int)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#a79249de71c4c870277abed71d484e2d5">setKineticRateLimits</a> (float, float)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#a03b18e0508b383e7e6b3b57fc9fa6e90">setRungeKuttaEval</a> (float, float)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#ab0a014cac7227943fe67f85f52d4e613">setDefaultInitialConc</a> (float)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">ListDigraph *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#ae657edb3b0bf358f75f498a2d56e0456">getListDigraph</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">ListDigraph::NodeMap&lt; <a class="el" href="classMolecule.html">Molecule</a> * &gt; *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#a41cea20de6fd631deeb82f036bc823f4">getNodeMap</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">ListDigraph::ArcMap<br class="typebreak"/>
@@ -77,7 +74,7 @@ Collaboration diagram for DerivGraph:</div>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#aa55a36103c33d4f1bd57de797bcd45cb">newPromoter</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#a83937a5c3ed427ebaad2bf23260c0352">newPTM</a> ()</td></tr>
 <tr><td colspan="2"><h2>Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMTRand.html">MTRand</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#a2d5931b4ca8a9c6e0c013a74a5cfbc7c">r</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">MTRand&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDerivGraph.html#a2d5931b4ca8a9c6e0c013a74a5cfbc7c">r</a></td></tr>
 </table>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="af2a1f80b96b4657e7575748942d09947"></a><!-- doxytag: member="DerivGraph::DerivGraph" ref="af2a1f80b96b4657e7575748942d09947" args="()" -->
@@ -169,7 +166,7 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <div class="center"><img src="classDerivGraph_a038841806aa1fe80a9450f977baa1fd2_cgraph.png" border="0" usemap="#classDerivGraph_a038841806aa1fe80a9450f977baa1fd2_cgraph_map" alt=""></div>
 <map name="classDerivGraph_a038841806aa1fe80a9450f977baa1fd2_cgraph_map" id="classDerivGraph_a038841806aa1fe80a9450f977baa1fd2_cgraph">
-<area shape="rect" id="node3" href="classInteraction.html#a5ff512276a432b6aa172e719d4866131" title="Interaction::getRate" alt="" coords="339,5,504,35"/><area shape="rect" id="node5" href="classMolecule.html#a6d8720e89d81c1297beced997ad62718" title="Molecule::getShortName" alt="" coords="325,59,517,88"/><area shape="rect" id="node7" href="classMTRand.html#a76d129a2d850c24ff4a0613f299cf3a5" title="MTRand::rand" alt="" coords="364,112,479,141"/><area shape="rect" id="node9" href="classMTRand.html#ad1008efd4fe0e8aae30459c2c58cfe35" title="MTRand::randInt" alt="" coords="567,139,700,168"/><area shape="rect" id="node26" href="classInteraction.html#a82197452596f6bd849df062c5f9d9714" title="Interaction::setRate" alt="" coords="340,216,503,245"/><area shape="rect" id="node28" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="369,269,473,299"/><area shape="rect" id="node11" href="classMTRand.html#a1d5fcb69d83f4d2fd653883c8352f86c" title="MTRand::reload" alt="" coords="751,139,876,168"/><area shape="rect" id="node13" href="classMTRand.html#acf32530212717166e3d02dd3cc0b68c4" title="MTRand::twist" alt="" coords="927,139,1047,168"/><area shape="rect" id="node15" href="classMTRand.html#a8539a48116c85704c5101981cb0823e7" title="MTRand::magic" alt="" coords="1103,112,1228,141"/><area shape="rect" id="node19" href="classMTRand.html#abdd5587252ed1ac89cb274e4bf4881da" title="MTRand::mixBits" alt="" coords="1097,165,1233,195"/><area shape="rect" id="node17" href="classMTRand.html#a6f5a4a532e1c3acd42052046594205be" title="MTRand::loBit" alt="" coords="1287,112,1404,141"/><area shape="rect" id="node21" href="classMTRand.html#a45eea926a0602e4bb5c0b90b04779826" title="MTRand::hiBit" alt="" coords="1287,165,1404,195"/><area shape="rect" id="node23" href="classMTRand.html#ad846f81f7abfc1b20c51d1563b8e5d45" title="MTRand::loBits" alt="" coords="1284,219,1407,248"/></map>
+<area shape="rect" id="node3" href="classInteraction.html#a5ff512276a432b6aa172e719d4866131" title="Interaction::getRate" alt="" coords="339,5,504,35"/><area shape="rect" id="node5" href="classMolecule.html#a6d8720e89d81c1297beced997ad62718" title="Molecule::getShortName" alt="" coords="325,59,517,88"/><area shape="rect" id="node7" href="classInteraction.html#a82197452596f6bd849df062c5f9d9714" title="Interaction::setRate" alt="" coords="340,112,503,141"/><area shape="rect" id="node9" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="369,165,473,195"/></map>
 </div>
 </p>
 
@@ -199,7 +196,7 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <div class="center"><img src="classDerivGraph_afbda567a3f51d05fad37eb46fc121a89_cgraph.png" border="0" usemap="#classDerivGraph_afbda567a3f51d05fad37eb46fc121a89_cgraph_map" alt=""></div>
 <map name="classDerivGraph_afbda567a3f51d05fad37eb46fc121a89_cgraph_map" id="classDerivGraph_afbda567a3f51d05fad37eb46fc121a89_cgraph">
-<area shape="rect" id="node3" href="classInteraction.html#a5ff512276a432b6aa172e719d4866131" title="Interaction::getRate" alt="" coords="309,5,475,35"/><area shape="rect" id="node5" href="classMolecule.html#a6d8720e89d81c1297beced997ad62718" title="Molecule::getShortName" alt="" coords="296,59,488,88"/><area shape="rect" id="node7" href="classMTRand.html#a76d129a2d850c24ff4a0613f299cf3a5" title="MTRand::rand" alt="" coords="335,112,449,141"/><area shape="rect" id="node9" href="classMTRand.html#ad1008efd4fe0e8aae30459c2c58cfe35" title="MTRand::randInt" alt="" coords="537,139,671,168"/><area shape="rect" id="node26" href="classInteraction.html#a82197452596f6bd849df062c5f9d9714" title="Interaction::setRate" alt="" coords="311,216,473,245"/><area shape="rect" id="node28" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="340,269,444,299"/><area shape="rect" id="node11" href="classMTRand.html#a1d5fcb69d83f4d2fd653883c8352f86c" title="MTRand::reload" alt="" coords="721,139,847,168"/><area shape="rect" id="node13" href="classMTRand.html#acf32530212717166e3d02dd3cc0b68c4" title="MTRand::twist" alt="" coords="897,139,1017,168"/><area shape="rect" id="node15" href="classMTRand.html#a8539a48116c85704c5101981cb0823e7" title="MTRand::magic" alt="" coords="1073,112,1199,141"/><area shape="rect" id="node19" href="classMTRand.html#abdd5587252ed1ac89cb274e4bf4881da" title="MTRand::mixBits" alt="" coords="1068,165,1204,195"/><area shape="rect" id="node17" href="classMTRand.html#a6f5a4a532e1c3acd42052046594205be" title="MTRand::loBit" alt="" coords="1257,112,1375,141"/><area shape="rect" id="node21" href="classMTRand.html#a45eea926a0602e4bb5c0b90b04779826" title="MTRand::hiBit" alt="" coords="1257,165,1375,195"/><area shape="rect" id="node23" href="classMTRand.html#ad846f81f7abfc1b20c51d1563b8e5d45" title="MTRand::loBits" alt="" coords="1255,219,1377,248"/></map>
+<area shape="rect" id="node3" href="classInteraction.html#a5ff512276a432b6aa172e719d4866131" title="Interaction::getRate" alt="" coords="309,5,475,35"/><area shape="rect" id="node5" href="classMolecule.html#a6d8720e89d81c1297beced997ad62718" title="Molecule::getShortName" alt="" coords="296,59,488,88"/><area shape="rect" id="node7" href="classInteraction.html#a82197452596f6bd849df062c5f9d9714" title="Interaction::setRate" alt="" coords="311,112,473,141"/><area shape="rect" id="node9" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="340,165,444,195"/></map>
 </div>
 </p>
 
@@ -243,7 +240,7 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <div class="center"><img src="classDerivGraph_aaaa9598e55cbd8c55585a0488e940516_cgraph.png" border="0" usemap="#classDerivGraph_aaaa9598e55cbd8c55585a0488e940516_cgraph_map" alt=""></div>
 <map name="classDerivGraph_aaaa9598e55cbd8c55585a0488e940516_cgraph_map" id="classDerivGraph_aaaa9598e55cbd8c55585a0488e940516_cgraph">
-<area shape="rect" id="node3" href="classMolecule.html#a125243e73faff1e5e482e65ba923ca3a" title="Molecule::getScore" alt="" coords="296,5,451,35"/><area shape="rect" id="node5" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="519,32,623,61"/><area shape="rect" id="node7" href="classMolecule.html#a6d8720e89d81c1297beced997ad62718" title="Molecule::getShortName" alt="" coords="277,109,469,139"/></map>
+<area shape="rect" id="node3" href="classMolecule.html#a125243e73faff1e5e482e65ba923ca3a" title="Molecule::getScore" alt="" coords="296,5,451,35"/><area shape="rect" id="node5" href="classMolecule.html#a6d8720e89d81c1297beced997ad62718" title="Molecule::getShortName" alt="" coords="277,59,469,88"/><area shape="rect" id="node7" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="321,112,425,141"/></map>
 </div>
 </p>
 
@@ -307,7 +304,7 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <div class="center"><img src="classDerivGraph_ae39d9acba4901f668d8a85c88bfcc21a_cgraph.png" border="0" usemap="#classDerivGraph_ae39d9acba4901f668d8a85c88bfcc21a_cgraph_map" alt=""></div>
 <map name="classDerivGraph_ae39d9acba4901f668d8a85c88bfcc21a_cgraph_map" id="classDerivGraph_ae39d9acba4901f668d8a85c88bfcc21a_cgraph">
-<area shape="rect" id="node3" href="classMTRand.html#a76d129a2d850c24ff4a0613f299cf3a5" title="MTRand::rand" alt="" coords="240,5,355,35"/><area shape="rect" id="node5" href="classMTRand.html#ad1008efd4fe0e8aae30459c2c58cfe35" title="MTRand::randInt" alt="" coords="404,32,537,61"/><area shape="rect" id="node22" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="245,109,349,139"/><area shape="rect" id="node7" href="classMTRand.html#a1d5fcb69d83f4d2fd653883c8352f86c" title="MTRand::reload" alt="" coords="588,32,713,61"/><area shape="rect" id="node9" href="classMTRand.html#acf32530212717166e3d02dd3cc0b68c4" title="MTRand::twist" alt="" coords="764,32,884,61"/><area shape="rect" id="node11" href="classMTRand.html#a8539a48116c85704c5101981cb0823e7" title="MTRand::magic" alt="" coords="940,5,1065,35"/><area shape="rect" id="node15" href="classMTRand.html#abdd5587252ed1ac89cb274e4bf4881da" title="MTRand::mixBits" alt="" coords="935,59,1071,88"/><area shape="rect" id="node13" href="classMTRand.html#a6f5a4a532e1c3acd42052046594205be" title="MTRand::loBit" alt="" coords="1124,5,1241,35"/><area shape="rect" id="node17" href="classMTRand.html#a45eea926a0602e4bb5c0b90b04779826" title="MTRand::hiBit" alt="" coords="1124,59,1241,88"/><area shape="rect" id="node19" href="classMTRand.html#ad846f81f7abfc1b20c51d1563b8e5d45" title="MTRand::loBits" alt="" coords="1121,112,1244,141"/></map>
+<area shape="rect" id="node3" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="241,5,345,35"/></map>
 </div>
 </p>
 
@@ -367,7 +364,7 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <div class="center"><img src="classDerivGraph_a4be722e989002430ca7c363dce500638_cgraph.png" border="0" usemap="#classDerivGraph_a4be722e989002430ca7c363dce500638_cgraph_map" alt=""></div>
 <map name="classDerivGraph_a4be722e989002430ca7c363dce500638_cgraph_map" id="classDerivGraph_a4be722e989002430ca7c363dce500638_cgraph">
-<area shape="rect" id="node3" href="classMTRand.html#ad1008efd4fe0e8aae30459c2c58cfe35" title="MTRand::randInt" alt="" coords="249,32,383,61"/><area shape="rect" id="node19" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="264,85,368,115"/><area shape="rect" id="node5" href="classMTRand.html#a1d5fcb69d83f4d2fd653883c8352f86c" title="MTRand::reload" alt="" coords="433,32,559,61"/><area shape="rect" id="node7" href="classMTRand.html#acf32530212717166e3d02dd3cc0b68c4" title="MTRand::twist" alt="" coords="609,32,729,61"/><area shape="rect" id="node9" href="classMTRand.html#a8539a48116c85704c5101981cb0823e7" title="MTRand::magic" alt="" coords="785,5,911,35"/><area shape="rect" id="node13" href="classMTRand.html#abdd5587252ed1ac89cb274e4bf4881da" title="MTRand::mixBits" alt="" coords="780,59,916,88"/><area shape="rect" id="node11" href="classMTRand.html#a6f5a4a532e1c3acd42052046594205be" title="MTRand::loBit" alt="" coords="969,5,1087,35"/><area shape="rect" id="node15" href="classMTRand.html#a45eea926a0602e4bb5c0b90b04779826" title="MTRand::hiBit" alt="" coords="969,59,1087,88"/><area shape="rect" id="node17" href="classMTRand.html#ad846f81f7abfc1b20c51d1563b8e5d45" title="MTRand::loBits" alt="" coords="967,112,1089,141"/></map>
+<area shape="rect" id="node3" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="249,5,353,35"/></map>
 </div>
 </p>
 
@@ -396,7 +393,7 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <div class="center"><img src="classDerivGraph_aa55a36103c33d4f1bd57de797bcd45cb_cgraph.png" border="0" usemap="#classDerivGraph_aa55a36103c33d4f1bd57de797bcd45cb_cgraph_map" alt=""></div>
 <map name="classDerivGraph_aa55a36103c33d4f1bd57de797bcd45cb_cgraph_map" id="classDerivGraph_aa55a36103c33d4f1bd57de797bcd45cb_cgraph">
-<area shape="rect" id="node3" href="classMolecule.html#a6d8720e89d81c1297beced997ad62718" title="Molecule::getShortName" alt="" coords="253,5,445,35"/><area shape="rect" id="node5" href="classMTRand.html#a76d129a2d850c24ff4a0613f299cf3a5" title="MTRand::rand" alt="" coords="292,59,407,88"/><area shape="rect" id="node7" href="classMTRand.html#ad1008efd4fe0e8aae30459c2c58cfe35" title="MTRand::randInt" alt="" coords="495,85,628,115"/><area shape="rect" id="node24" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="297,163,401,192"/><area shape="rect" id="node9" href="classMTRand.html#a1d5fcb69d83f4d2fd653883c8352f86c" title="MTRand::reload" alt="" coords="679,85,804,115"/><area shape="rect" id="node11" href="classMTRand.html#acf32530212717166e3d02dd3cc0b68c4" title="MTRand::twist" alt="" coords="855,85,975,115"/><area shape="rect" id="node13" href="classMTRand.html#a8539a48116c85704c5101981cb0823e7" title="MTRand::magic" alt="" coords="1031,59,1156,88"/><area shape="rect" id="node17" href="classMTRand.html#abdd5587252ed1ac89cb274e4bf4881da" title="MTRand::mixBits" alt="" coords="1025,112,1161,141"/><area shape="rect" id="node15" href="classMTRand.html#a6f5a4a532e1c3acd42052046594205be" title="MTRand::loBit" alt="" coords="1215,59,1332,88"/><area shape="rect" id="node19" href="classMTRand.html#a45eea926a0602e4bb5c0b90b04779826" title="MTRand::hiBit" alt="" coords="1215,112,1332,141"/><area shape="rect" id="node21" href="classMTRand.html#ad846f81f7abfc1b20c51d1563b8e5d45" title="MTRand::loBits" alt="" coords="1212,165,1335,195"/></map>
+<area shape="rect" id="node3" href="classMolecule.html#a6d8720e89d81c1297beced997ad62718" title="Molecule::getShortName" alt="" coords="253,5,445,35"/><area shape="rect" id="node5" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="297,59,401,88"/></map>
 </div>
 </p>
 
@@ -425,7 +422,7 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <div class="center"><img src="classDerivGraph_a83937a5c3ed427ebaad2bf23260c0352_cgraph.png" border="0" usemap="#classDerivGraph_a83937a5c3ed427ebaad2bf23260c0352_cgraph_map" alt=""></div>
 <map name="classDerivGraph_a83937a5c3ed427ebaad2bf23260c0352_cgraph_map" id="classDerivGraph_a83937a5c3ed427ebaad2bf23260c0352_cgraph">
-<area shape="rect" id="node3" href="classMolecule.html#a6d3c3fd4827a62dacfd9d7a7d3a7f6ea" title="Molecule::getLongName" alt="" coords="220,5,407,35"/><area shape="rect" id="node5" href="classMolecule.html#ae946ae8bea91c5893ad9bf0fb66b6e0d" title="Molecule::getPTMCount" alt="" coords="220,59,407,88"/><area shape="rect" id="node7" href="classMTRand.html#ad1008efd4fe0e8aae30459c2c58cfe35" title="MTRand::randInt" alt="" coords="247,112,380,141"/><area shape="rect" id="node23" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="261,165,365,195"/><area shape="rect" id="node9" href="classMTRand.html#a1d5fcb69d83f4d2fd653883c8352f86c" title="MTRand::reload" alt="" coords="457,112,583,141"/><area shape="rect" id="node11" href="classMTRand.html#acf32530212717166e3d02dd3cc0b68c4" title="MTRand::twist" alt="" coords="633,112,753,141"/><area shape="rect" id="node13" href="classMTRand.html#a8539a48116c85704c5101981cb0823e7" title="MTRand::magic" alt="" coords="809,85,935,115"/><area shape="rect" id="node17" href="classMTRand.html#abdd5587252ed1ac89cb274e4bf4881da" title="MTRand::mixBits" alt="" coords="804,139,940,168"/><area shape="rect" id="node15" href="classMTRand.html#a6f5a4a532e1c3acd42052046594205be" title="MTRand::loBit" alt="" coords="993,85,1111,115"/><area shape="rect" id="node19" href="classMTRand.html#a45eea926a0602e4bb5c0b90b04779826" title="MTRand::hiBit" alt="" coords="993,139,1111,168"/><area shape="rect" id="node21" href="classMTRand.html#ad846f81f7abfc1b20c51d1563b8e5d45" title="MTRand::loBits" alt="" coords="991,192,1113,221"/></map>
+<area shape="rect" id="node3" href="classMolecule.html#a6d3c3fd4827a62dacfd9d7a7d3a7f6ea" title="Molecule::getLongName" alt="" coords="220,5,407,35"/><area shape="rect" id="node5" href="classMolecule.html#ae946ae8bea91c5893ad9bf0fb66b6e0d" title="Molecule::getPTMCount" alt="" coords="220,59,407,88"/><area shape="rect" id="node7" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="261,112,365,141"/></map>
 </div>
 </p>
 
@@ -535,13 +532,13 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <div class="center"><img src="classDerivGraph_aae8c58e1d6be852efbe1ed6593f31eca_cgraph.png" border="0" usemap="#classDerivGraph_aae8c58e1d6be852efbe1ed6593f31eca_cgraph_map" alt=""></div>
 <map name="classDerivGraph_aae8c58e1d6be852efbe1ed6593f31eca_cgraph_map" id="classDerivGraph_aae8c58e1d6be852efbe1ed6593f31eca_cgraph">
-<area shape="rect" id="node3" href="classInteraction.html#a5ff512276a432b6aa172e719d4866131" title="Interaction::getRate" alt="" coords="312,5,477,35"/><area shape="rect" id="node5" href="classMolecule.html#a6d8720e89d81c1297beced997ad62718" title="Molecule::getShortName" alt="" coords="299,59,491,88"/><area shape="rect" id="node7" href="classMTRand.html#a76d129a2d850c24ff4a0613f299cf3a5" title="MTRand::rand" alt="" coords="337,112,452,141"/><area shape="rect" id="node9" href="classMTRand.html#ad1008efd4fe0e8aae30459c2c58cfe35" title="MTRand::randInt" alt="" coords="540,139,673,168"/><area shape="rect" id="node26" href="classInteraction.html#a82197452596f6bd849df062c5f9d9714" title="Interaction::setRate" alt="" coords="313,216,476,245"/><area shape="rect" id="node28" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="343,269,447,299"/><area shape="rect" id="node11" href="classMTRand.html#a1d5fcb69d83f4d2fd653883c8352f86c" title="MTRand::reload" alt="" coords="724,139,849,168"/><area shape="rect" id="node13" href="classMTRand.html#acf32530212717166e3d02dd3cc0b68c4" title="MTRand::twist" alt="" coords="900,139,1020,168"/><area shape="rect" id="node15" href="classMTRand.html#a8539a48116c85704c5101981cb0823e7" title="MTRand::magic" alt="" coords="1076,112,1201,141"/><area shape="rect" id="node19" href="classMTRand.html#abdd5587252ed1ac89cb274e4bf4881da" title="MTRand::mixBits" alt="" coords="1071,165,1207,195"/><area shape="rect" id="node17" href="classMTRand.html#a6f5a4a532e1c3acd42052046594205be" title="MTRand::loBit" alt="" coords="1260,112,1377,141"/><area shape="rect" id="node21" href="classMTRand.html#a45eea926a0602e4bb5c0b90b04779826" title="MTRand::hiBit" alt="" coords="1260,165,1377,195"/><area shape="rect" id="node23" href="classMTRand.html#ad846f81f7abfc1b20c51d1563b8e5d45" title="MTRand::loBits" alt="" coords="1257,219,1380,248"/></map>
+<area shape="rect" id="node3" href="classInteraction.html#a5ff512276a432b6aa172e719d4866131" title="Interaction::getRate" alt="" coords="312,5,477,35"/><area shape="rect" id="node5" href="classMolecule.html#a6d8720e89d81c1297beced997ad62718" title="Molecule::getShortName" alt="" coords="299,59,491,88"/><area shape="rect" id="node7" href="classInteraction.html#a82197452596f6bd849df062c5f9d9714" title="Interaction::setRate" alt="" coords="313,112,476,141"/><area shape="rect" id="node9" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="343,165,447,195"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a61f768c0b7b8828b0ab129146801f628"></a><!-- doxytag: member="DerivGraph::rungeKuttaEvaluate" ref="a61f768c0b7b8828b0ab129146801f628" args="(float)" -->
+<a class="anchor" id="aa0921b8a7407be67085e9a11750a7263"></a><!-- doxytag: member="DerivGraph::rungeKuttaEvaluate" ref="aa0921b8a7407be67085e9a11750a7263" args="(float, float)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -549,9 +546,18 @@ Here is the call graph for this function:</div>
           <td class="memname">void DerivGraph::rungeKuttaEvaluate </td>
           <td>(</td>
           <td class="paramtype">float&nbsp;</td>
-          <td class="paramname"> <em>rkStep</em></td>
-          <td>&nbsp;)&nbsp;</td>
+          <td class="paramname"> <em>rkStep</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>rkLimit</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
         </tr>
       </table>
 </div>
@@ -561,6 +567,163 @@ Here is the call graph for this function:</div>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>rkStep</em>&nbsp;</td><td>the timestep (precision) between calculated points </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ab0a014cac7227943fe67f85f52d4e613"></a><!-- doxytag: member="DerivGraph::setDefaultInitialConc" ref="ab0a014cac7227943fe67f85f52d4e613" args="(float)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DerivGraph::setDefaultInitialConc </td>
+          <td>(</td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>initial_conc</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>DerivGraph::setDefaultInitialConcentration(float)</p>
+<p>Set the default initial concentration for molecules</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>initial_conc</em>&nbsp;</td><td>The initial concentration for new molecules </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a79249de71c4c870277abed71d484e2d5"></a><!-- doxytag: member="DerivGraph::setKineticRateLimits" ref="a79249de71c4c870277abed71d484e2d5" args="(float, float)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DerivGraph::setKineticRateLimits </td>
+          <td>(</td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>min_kinetic_rate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>max_kinetic_rate</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p><a class="el" href="classDerivGraph.html#a79249de71c4c870277abed71d484e2d5">DerivGraph::setKineticRateLimits(float, float)</a></p>
+<p>Assign lower and upper bounds to the randomly generated kinetic rates</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>min_kinetic_rate</em>&nbsp;</td><td>The lower bound on random kinetic rates </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>max_kinetic_rate</em>&nbsp;</td><td>The upper bound on random kinetic rates </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9bec1192a5ffc41a3ef4527caa9cdb8f"></a><!-- doxytag: member="DerivGraph::setLimits" ref="a9bec1192a5ffc41a3ef4527caa9cdb8f" args="(int, int, int, int)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DerivGraph::setLimits </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>max_basic</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>max_ptm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>max_comp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>max_promoter</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p><a class="el" href="classDerivGraph.html#a9bec1192a5ffc41a3ef4527caa9cdb8f">DerivGraph::setLimits(int, int, int, int)</a></p>
+<p>Set the occurrence limits for mutation types</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>max_basic</em>&nbsp;</td><td>Maximum basic proteins allowed </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>max_ptm</em>&nbsp;</td><td>Maximum number of post translationally modified proteins allowed </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>max_comp</em>&nbsp;</td><td>Maximum number of complexed proteins allowed </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>max_promoter</em>&nbsp;</td><td>Maximum number of protein-promoter interactions allowed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<div class="center"><img src="classDerivGraph_a9bec1192a5ffc41a3ef4527caa9cdb8f_cgraph.png" border="0" usemap="#classDerivGraph_a9bec1192a5ffc41a3ef4527caa9cdb8f_cgraph_map" alt=""></div>
+<map name="classDerivGraph_a9bec1192a5ffc41a3ef4527caa9cdb8f_cgraph_map" id="classDerivGraph_a9bec1192a5ffc41a3ef4527caa9cdb8f_cgraph">
+<area shape="rect" id="node3" href="classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="225,5,329,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a03b18e0508b383e7e6b3b57fc9fa6e90"></a><!-- doxytag: member="DerivGraph::setRungeKuttaEval" ref="a03b18e0508b383e7e6b3b57fc9fa6e90" args="(float, float)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DerivGraph::setRungeKuttaEval </td>
+          <td>(</td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>rk_time_step</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>rk_time_limit</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p><a class="el" href="classDerivGraph.html#a03b18e0508b383e7e6b3b57fc9fa6e90">DerivGraph::setRungeKuttaEval(float, float)</a></p>
+<p>Set the parameters for runge-kutta evalutation</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>rk_time_step</em>&nbsp;</td><td>The timestep between points (t, conc) calculated by Runge-Kutta </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rk_time_limit</em>&nbsp;</td><td>The upper time limit for Runge-Kutta calculation (time = x axis) </td></tr>
   </table>
   </dd>
 </dl>
@@ -587,7 +750,7 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <div class="center"><img src="classDerivGraph_abf589f6aabe2c66bbe6f1aeb68ff4593_cgraph.png" border="0" usemap="#classDerivGraph_abf589f6aabe2c66bbe6f1aeb68ff4593_cgraph_map" alt=""></div>
 <map name="classDerivGraph_abf589f6aabe2c66bbe6f1aeb68ff4593_cgraph_map" id="classDerivGraph_abf589f6aabe2c66bbe6f1aeb68ff4593_cgraph">
-<area shape="rect" id="node3" href="classDerivGraph.html#a61f768c0b7b8828b0ab129146801f628" title="DerivGraph::rungeKuttaEvaluate" alt="" coords="192,5,435,35"/></map>
+<area shape="rect" id="node3" href="classDerivGraph.html#aa0921b8a7407be67085e9a11750a7263" title="DerivGraph::rungeKuttaEvaluate" alt="" coords="192,5,435,35"/></map>
 </div>
 </p>
 
@@ -599,7 +762,7 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classMTRand.html">MTRand</a> <a class="el" href="classDerivGraph.html#a2d5931b4ca8a9c6e0c013a74a5cfbc7c">DerivGraph::r</a></td>
+          <td class="memname">MTRand <a class="el" href="classDerivGraph.html#a2d5931b4ca8a9c6e0c013a74a5cfbc7c">DerivGraph::r</a></td>
         </tr>
       </table>
 </div>
@@ -617,7 +780,7 @@ Here is the call graph for this function:</div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

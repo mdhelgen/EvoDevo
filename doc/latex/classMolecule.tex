@@ -11,13 +11,6 @@
 \includegraphics[width=388pt]{classMolecule__inherit__graph}
 \end{center}
 \end{figure}
-Collaboration diagram for Molecule:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=106pt]{classMolecule__coll__graph}
-\end{center}
-\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -66,10 +59,16 @@ int \hyperlink{classMolecule_a134dd5ffa71953792912c7b0cca01405}{wasPTM}
 \item 
 int \hyperlink{classMolecule_ae6aff39305dd77531ea5a213b6f2b1c5}{PTMArray} \mbox{[}4\mbox{]}
 \item 
-\hyperlink{classMTRand}{MTRand} \hyperlink{classMolecule_af036bbaa1f3ec537d3711ae3242d3074}{r}
+MTRand \hyperlink{classMolecule_af036bbaa1f3ec537d3711ae3242d3074}{r}
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classMolecule_a526a58eb943156887bb75b24bdb2b8a0}{numChanges}
+\item 
+int \hyperlink{classMolecule_acefb24656feeb161148e9594db6ada0b}{prevDir}
+\item 
+int \hyperlink{classMolecule_a4cd5591c0a8c07ceec922c4f2e8f295c}{currentDir}
 \item 
 char \hyperlink{classMolecule_a5b6f24dea7138830541e938e2eed707a}{buf} \mbox{[}200\mbox{]}
 \item 
@@ -173,15 +172,6 @@ The value of this molecules rkVal\mbox{[}k\mbox{]}
 \index{getScore@{getScore}!Molecule@{Molecule}}
 \subsubsection[{getScore}]{\setlength{\rightskip}{0pt plus 5cm}int Molecule::getScore ()}}
 \label{classMolecule_a125243e73faff1e5e482e65ba923ca3a}
-
-
-Here is the call graph for this function:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=138pt]{classMolecule_a125243e73faff1e5e482e65ba923ca3a_cgraph}
-\end{center}
-\end{figure}
 \hypertarget{classMolecule_a6d8720e89d81c1297beced997ad62718}{
 \index{Molecule@{Molecule}!getShortName@{getShortName}}
 \index{getShortName@{getShortName}!Molecule@{Molecule}}
@@ -325,6 +315,11 @@ Here is the call graph for this function:\nopagebreak
 \index{buf@{buf}!Molecule@{Molecule}}
 \subsubsection[{buf}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf Molecule::buf}\mbox{[}200\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
 \label{classMolecule_a5b6f24dea7138830541e938e2eed707a}
+\hypertarget{classMolecule_a4cd5591c0a8c07ceec922c4f2e8f295c}{
+\index{Molecule@{Molecule}!currentDir@{currentDir}}
+\index{currentDir@{currentDir}!Molecule@{Molecule}}
+\subsubsection[{currentDir}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Molecule::currentDir}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classMolecule_a4cd5591c0a8c07ceec922c4f2e8f295c}
 \hypertarget{classMolecule_a4ac09eefeba07dcb455014acc1ad00c9}{
 \index{Molecule@{Molecule}!longName@{longName}}
 \index{longName@{longName}!Molecule@{Molecule}}
@@ -340,6 +335,16 @@ Here is the call graph for this function:\nopagebreak
 \index{nodeID@{nodeID}!Molecule@{Molecule}}
 \subsubsection[{nodeID}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Molecule::nodeID}}}
 \label{classMolecule_a4eafa2831869e116f64c86987f1cac81}
+\hypertarget{classMolecule_a526a58eb943156887bb75b24bdb2b8a0}{
+\index{Molecule@{Molecule}!numChanges@{numChanges}}
+\index{numChanges@{numChanges}!Molecule@{Molecule}}
+\subsubsection[{numChanges}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Molecule::numChanges}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classMolecule_a526a58eb943156887bb75b24bdb2b8a0}
+\hypertarget{classMolecule_acefb24656feeb161148e9594db6ada0b}{
+\index{Molecule@{Molecule}!prevDir@{prevDir}}
+\index{prevDir@{prevDir}!Molecule@{Molecule}}
+\subsubsection[{prevDir}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Molecule::prevDir}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classMolecule_acefb24656feeb161148e9594db6ada0b}
 \hypertarget{classMolecule_ae6aff39305dd77531ea5a213b6f2b1c5}{
 \index{Molecule@{Molecule}!PTMArray@{PTMArray}}
 \index{PTMArray@{PTMArray}!Molecule@{Molecule}}
@@ -348,7 +353,7 @@ Here is the call graph for this function:\nopagebreak
 \hypertarget{classMolecule_af036bbaa1f3ec537d3711ae3242d3074}{
 \index{Molecule@{Molecule}!r@{r}}
 \index{r@{r}!Molecule@{Molecule}}
-\subsubsection[{r}]{\setlength{\rightskip}{0pt plus 5cm}{\bf MTRand} {\bf Molecule::r}}}
+\subsubsection[{r}]{\setlength{\rightskip}{0pt plus 5cm}MTRand {\bf Molecule::r}}}
 \label{classMolecule_af036bbaa1f3ec537d3711ae3242d3074}
 \hypertarget{classMolecule_a3e3be6cd7b1286e8d8d489642ab19641}{
 \index{Molecule@{Molecule}!rungeKuttaSolution@{rungeKuttaSolution}}

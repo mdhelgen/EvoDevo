@@ -7,34 +7,36 @@
 {\ttfamily \#include $<$Experiment.h$>$}\subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classExperiment_a512095983765afc4096aa91a157ede49}{Experiment} (int ncells, int generations, int max\_\-basic, int max\_\-ptm, int max\_\-comp, int max\_\-prom, float min\_\-kinetic\_\-rate, float max\_\-kinetic\_\-rate)
+\hyperlink{classExperiment_a600bd431197ce5df6c62f6647c561f7b}{Experiment} (int ncells, int generations, int max\_\-basic, int max\_\-ptm, int max\_\-comp, int max\_\-prom, float min\_\-kinetic\_\-rate, float max\_\-kinetic\_\-rate, float rk\_\-time\_\-limit, float rk\_\-time\_\-step, float initial\_\-conc)
 \item 
 \hyperlink{classExperiment_a96058d848040e45948bbb60623711da6}{$\sim$Experiment} ()
 \item 
 void \hyperlink{classExperiment_ab15fca04be9b7bcad65b264b23b4a499}{start} ()
+\item 
+void \hyperlink{classExperiment_a7597c63f9fe2f8dede62dbe79202bf61}{setOutputOptions} (int, int, int, int)
 \end{DoxyCompactItemize}
 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classExperiment_a512095983765afc4096aa91a157ede49}{
+\hypertarget{classExperiment_a600bd431197ce5df6c62f6647c561f7b}{
 \index{Experiment@{Experiment}!Experiment@{Experiment}}
 \index{Experiment@{Experiment}!Experiment@{Experiment}}
-\subsubsection[{Experiment}]{\setlength{\rightskip}{0pt plus 5cm}Experiment::Experiment (int {\em ncells}, \/  int {\em generations}, \/  int {\em max\_\-basic}, \/  int {\em max\_\-ptm}, \/  int {\em max\_\-comp}, \/  int {\em max\_\-prom}, \/  float {\em min\_\-kinetic\_\-rate}, \/  float {\em max\_\-kinetic\_\-rate})}}
-\label{classExperiment_a512095983765afc4096aa91a157ede49}
+\subsubsection[{Experiment}]{\setlength{\rightskip}{0pt plus 5cm}Experiment::Experiment (int {\em ncells}, \/  int {\em generations}, \/  int {\em max\_\-basic}, \/  int {\em max\_\-ptm}, \/  int {\em max\_\-comp}, \/  int {\em max\_\-prom}, \/  float {\em min\_\-kinetic\_\-rate}, \/  float {\em max\_\-kinetic\_\-rate}, \/  float {\em rk\_\-time\_\-limit}, \/  float {\em rk\_\-time\_\-step}, \/  float {\em initial\_\-conc})}}
+\label{classExperiment_a600bd431197ce5df6c62f6647c561f7b}
 Experiment::Experiment(int, int)
 
 \hyperlink{classExperiment}{Experiment} constructor.
 
 
 \begin{DoxyParams}{Parameters}
-\item[{\em number}]of \hyperlink{classCell}{Cell} objects to be created. \item[{\em number}]of Generations the \hyperlink{classExperiment}{Experiment} will run for. \end{DoxyParams}
+\item[{\em ncells}]number of \hyperlink{classCell}{Cell} objects to be created. \item[{\em generations}]number of Generations the \hyperlink{classExperiment}{Experiment} will run for. \item[{\em max\_\-basic}]maximum number of basic proteins allowed in each \hyperlink{classCell}{Cell} \item[{\em max\_\-ptm}]maximum number of PTM proteins allowed in each \hyperlink{classCell}{Cell} \item[{\em max\_\-comp}]maximum number of complexed proteins allowed in each \hyperlink{classCell}{Cell} \item[{\em max\_\-prom}]maximum number of protein-\/promoter interactions allowed in each cell \item[{\em min\_\-kinetic\_\-rate}]the lower bound on randomly generated kinetic rates \item[{\em max\_\-kinetic\_\-rate}]the upper bound on randomly generated kinetic rates \item[{\em rk\_\-time\_\-limit}]the stopping condition for runge-\/kutta iteration \item[{\em rk\_\-time\_\-step}]how much time to advance each iteration \item[{\em initial\_\-conc}]the initial concentration for molecules \end{DoxyParams}
 
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=152pt]{classExperiment_a512095983765afc4096aa91a157ede49_cgraph}
+\includegraphics[width=152pt]{classExperiment_a600bd431197ce5df6c62f6647c561f7b_cgraph}
 \end{center}
 \end{figure}
 \hypertarget{classExperiment_a96058d848040e45948bbb60623711da6}{
@@ -58,18 +60,23 @@ Here is the call graph for this function:\nopagebreak
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classExperiment_a7597c63f9fe2f8dede62dbe79202bf61}{
+\index{Experiment@{Experiment}!setOutputOptions@{setOutputOptions}}
+\index{setOutputOptions@{setOutputOptions}!Experiment@{Experiment}}
+\subsubsection[{setOutputOptions}]{\setlength{\rightskip}{0pt plus 5cm}void Experiment::setOutputOptions (int {\em gv\_\-flag}, \/  int {\em gp\_\-flag}, \/  int {\em eachgen\_\-flag}, \/  int {\em scoring\_\-interval})}}
+\label{classExperiment_a7597c63f9fe2f8dede62dbe79202bf61}
 \hypertarget{classExperiment_ab15fca04be9b7bcad65b264b23b4a499}{
 \index{Experiment@{Experiment}!start@{start}}
 \index{start@{start}!Experiment@{Experiment}}
 \subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}void Experiment::start ()}}
 \label{classExperiment_ab15fca04be9b7bcad65b264b23b4a499}
-Deprecated 
+
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=135pt]{classExperiment_ab15fca04be9b7bcad65b264b23b4a499_cgraph}
+\includegraphics[width=351pt]{classExperiment_ab15fca04be9b7bcad65b264b23b4a499_cgraph}
 \end{center}
 \end{figure}
 
