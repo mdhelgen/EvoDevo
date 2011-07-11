@@ -155,6 +155,8 @@ float Molecule::rkApprox(int rkIteration, float rkStepSize){
  */
 void Molecule::nextPoint(float step){
 
+	float oldConc = currentConcentration;
+
 	t.trace("rk-val","%s rkvals: %f %f %f %f\n",getShortName(), rkVal[0], rkVal[1], rkVal[2], rkVal[3]);
 	
 	//runge-kutta calculation of change in value during the current timestep
@@ -185,14 +187,17 @@ void Molecule::nextPoint(float step){
 	 * 
 	 * as points are added, check to see if the direction has changed from the previous direction
 	 */
-	if(delta == 0)
+	
+	float actualChange = currentConcentration-oldConc;
+	
+	if(actualChange <= .0001 && actualChange >= -0.0001)
 		return;
 
 	//the value just increased
-	if(delta > 0)
+	if(actualChange > 0)
 		currentDir = 1;
 	//the value just decreased
-	if(delta < 0)
+	if(actualChange < 0)
 		currentDir = -1;
 	
 	t.trace("score", "%s%d - (%f , %f), dir = %d, prev = %d\n",shortName, moleculeID,currentConcentration,delta  , currentDir, prevDir);

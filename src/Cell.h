@@ -20,6 +20,7 @@ public:
 	void outputDataPlot();
 	int getScore();
 	int getID(){ return CellID; };
+	void rkTest();
 private:
 	static int CellCounter;
 

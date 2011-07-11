@@ -24,7 +24,7 @@ DNA::DNA(){
 	t.trace("init","Molecule %u type:DNA\n", (unsigned int) this);	
 	promoterId = -1;
 	currentConcentration = 0;
-	hill = 2;
+	hill = 5;
 	histoneModValue = 1;
 	currentDir = 0;
 	prevDir = 0;

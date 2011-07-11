@@ -164,3 +164,18 @@ void Cell::outputDotImage(){
 void Cell::outputDataPlot(){
 	equations->outputDataPlot(CellID, currentGen, rkTimeStep);
 }
+
+
+void Cell::rkTest(){
+
+	float steps[] = {1, .75, .5, .25, .1, .05, .025, .01, .001};
+	for(int i = 0; i < 9 ; i++){
+		equations->setRungeKuttaEval(steps[i], 20);
+		equations->rungeKuttaEvaluate(steps[i], 20);
+		equations->outputDataPlot(i, currentGen, steps[i]);
+	}
+
+
+}
+
+

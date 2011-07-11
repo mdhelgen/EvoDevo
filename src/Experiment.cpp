@@ -141,6 +141,13 @@ void Experiment::start()
 			//mutate
 			cells[c]->mutate();
 			
+			//collect test data for runge kutta evaluation
+			if(2 == 0){
+				cells[c]->rkTest();	
+				cells[c]->outputDotImage();
+			}
+
+
 			//if scoring interval is 5, this runs every 5 generations
 			if(i % scoringInterval == 0)
 			{
