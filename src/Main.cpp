@@ -20,7 +20,6 @@ int main(int argc, char** argv){
   int gnuplot_flag = 0;
   int outputall_flag = 0;
 
-
   int c;
 
 
@@ -28,7 +27,7 @@ int main(int argc, char** argv){
   t.addTraceType("trce",0);
   
   //program arguments
-  t.addTraceType("args",1);
+  t.addTraceType("args",0);
  
   //object creation / construction
   t.addTraceType("init",0);
@@ -50,6 +49,8 @@ int main(int argc, char** argv){
 
   t.addTraceType("rk-val",0);
   t.addTraceType("rk-new",0);
+
+  t.addTraceType("hill",0);
 
   t.addTraceType("score",1);
   //mutation
@@ -167,13 +168,12 @@ if(verbose_flag)
 
 
 
-Experiment* e = new Experiment(numCells, numGenerations, maxBasic, maxPTM, maxComp, maxPromoter, minKineticRate, maxKineticRate, rkTimeLimit, rkTimeStep, initialConcentration);
-e->setOutputOptions(graphviz_flag, gnuplot_flag, outputall_flag, scoringInterval);
-e->start();
+Experiment e = Experiment(numCells, numGenerations, maxBasic, maxPTM, maxComp, maxPromoter, minKineticRate, maxKineticRate, rkTimeLimit, rkTimeStep, initialConcentration);
+e.setOutputOptions(graphviz_flag, gnuplot_flag, outputall_flag, scoringInterval);
+e.start();
 
 
-t.trace("free","Deleting Experiment object at location %d\n", e);
-delete e;
+//t.trace("free","Deleting Experiment object at location %d\n", e);
 
 return 0;
 

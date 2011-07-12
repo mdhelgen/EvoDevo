@@ -271,9 +271,9 @@ void DerivGraph::rungeKuttaEvaluate(float rkStep, float rkLimit){
 	}
 	
 	//test output, display the values calculated by runge kutta for each molecule to stdout
-	for(ListDigraph::NodeIt it(*derivs); it != INVALID; ++it){
-		(*molecules)[it]->outputRK();	
-	}
+//	for(ListDigraph::NodeIt it(*derivs); it != INVALID; ++it){
+//		(*molecules)[it]->outputRK();	
+//	}
 }
 
 /**
@@ -811,7 +811,7 @@ void DerivGraph::newPromoter(){
 Molecule* DerivGraph::getBestMolecule(int CellID){
 
 
-	rungeKuttaEvaluate(rkTimeStep, rkTimeLimit);
+	//rungeKuttaEvaluate(rkTimeStep, rkTimeLimit);
 
 	Molecule* bestMolecule = 0;
 	int maxScore = -1;
@@ -897,8 +897,9 @@ void DerivGraph::outputDataPlot(int cellNum, int gen, float step){
 
 	//FILE* gnuplot = fopen("test.txt","w");
 	for(unsigned int i =  0; i < MoleculeList->size(); i++){
-	
-		fprintf(gnuplot, "set term png\n");
+		if((*MoleculeList)[i]->getScore() < 3)
+			continue;
+		fprintf(gnuplot, "set term png size 2048,1536\n");
 		fflush(gnuplot);
 	
 		fprintf(gnuplot, "set xlabel \"time\"\n");

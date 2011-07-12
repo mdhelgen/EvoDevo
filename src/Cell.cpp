@@ -46,10 +46,10 @@ Cell::Cell(int max_basic, int max_ptm, int max_comp, int max_promoter,float min_
    
     CellID = CellCounter++;
 
-    //equations->test();
+    //equations->>test();
 
 	equations->newBasic();
-
+//	equations->newPromoter();
     t.trace("init", "New Cell created\n");
 
 
@@ -66,8 +66,8 @@ Cell::Cell(int max_basic, int max_ptm, int max_comp, int max_promoter,float min_
  */
 Cell::~Cell(){
 
-    t.trace("free", "Deleting DerivGraph object at location %d\n", &equations);    
-    delete equations;
+t.trace("free","Deleting DerivGraph object at %u\n",(unsigned int) equations);
+delete equations;
 
 }
 
@@ -178,4 +178,7 @@ void Cell::rkTest(){
 
 }
 
+void Cell::rk(){
+	equations->rungeKuttaEvaluate(rkTimeStep, rkTimeLimit);
+}
 

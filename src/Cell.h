@@ -21,13 +21,14 @@ public:
 	int getScore();
 	int getID(){ return CellID; };
 	void rkTest();
+	void rk();
 private:
 	static int CellCounter;
 
 	int CellID;
 	int currentGen;
 	MTRand r;
-	DerivGraph* equations;
+	DerivGraph * equations;
 	float rkTimeStep;
 	float rkTimeLimit;
 };

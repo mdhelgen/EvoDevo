@@ -42,7 +42,8 @@ float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* 
 		PromoterBind* pb = (PromoterBind*)(*i)[g->arcFromId(prom_id)];
 		float f = pb->kf;
 		float r = pb->kr;
-		int h = ((DNA*)oppositeMol)->hill;
+		float h = ((DNA*)oppositeMol)->hill;
+		t.trace("hill","f:%f r:%f h:%f value:%f\n",f,r,h,(1/(1+pow(f/r,h))));
 		return (1/(1+pow(f/r,h))) * oppositeMol->rkApprox(rkIter, rkStep) * rate;
 	}
 }

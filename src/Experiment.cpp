@@ -149,8 +149,13 @@ void Experiment::start()
 
 
 			//if scoring interval is 5, this runs every 5 generations
-			if(i % scoringInterval == 0)
-			{
+			if(i % scoringInterval == 0){
+				cells[c]->rk();
+				if(cells[c]->getScore() > 2){
+					cells[c]->outputDataPlot();
+					cells[c]->outputDotImage();
+				}	
+
 				//keep track of the cell with the highest score so far
 				if(cells[c]->getScore() > bestScore){
 					bestCell = cells[c];
