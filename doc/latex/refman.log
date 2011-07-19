@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.7.27)  7 JUL 2011 13:31
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.7.27)  11 JUL 2011 04:48
 entering extended mode
  %&-line parsing enabled.
 **refman.tex
@@ -779,7 +779,7 @@ LaTeX Font Info:    Try loading font information for T1+pcr on input line 7.
  (/usr/share/texmf/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-<classCell__coll__graph.pdf, id=1437, 94.3525pt x 102.3825pt>
+<classCell__coll__graph.pdf, id=1472, 94.3525pt x 102.3825pt>
 File: classCell__coll__graph.pdf Graphic file (type pdf)
 
 <use classCell__coll__graph.pdf>
@@ -790,85 +790,89 @@ LaTeX Font Info:    Try loading font information for TS1+ptm on input line 17.
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 38.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 42.
 
-Underfull \vbox (badness 1320) has occurred while \output is active []
-
- [7 <./classCell__coll__graph.pdf>]
-<classCell_af85b728fb894b346b654eea910958180_cgraph.pdf, id=1466, 413.545pt x 2
+[7 <./classCell__coll__graph.pdf>]
+<classCell_af85b728fb894b346b654eea910958180_cgraph.pdf, id=1505, 413.545pt x 2
 28.855pt>
 File: classCell_af85b728fb894b346b654eea910958180_cgraph.pdf Graphic file (type
  pdf)
  <use classCell_af85b728fb894b346b654eea910958180_cgraph.pdf>
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 56.
+(hyperref)                removing `math shift' on input line 60.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\sim' on input line 56.
+(hyperref)                removing `\sim' on input line 60.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 56.
+(hyperref)                removing `math shift' on input line 60.
 
 
-<classCell_a9fa559f7a28e2b4336c6879ca09304d8_cgraph.pdf, id=1469, 194.7275pt x 
+<classCell_a9fa559f7a28e2b4336c6879ca09304d8_cgraph.pdf, id=1508, 194.7275pt x 
 30.1125pt>
 File: classCell_a9fa559f7a28e2b4336c6879ca09304d8_cgraph.pdf Graphic file (type
  pdf)
  <use classCell_a9fa559f7a28e2b4336c6879ca09304d8_cgraph.pdf>
-<classCell_a3fbb8b244cc5c516d0728a987d07bf0f_cgraph.pdf, id=1470, 501.875pt x 1
-50.5625pt>
+LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10> not available
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 81.
+
+<classCell_a3fbb8b244cc5c516d0728a987d07bf0f_cgraph.pdf, id=1509, 521.95pt x 11
+0.4125pt>
 File: classCell_a3fbb8b244cc5c516d0728a987d07bf0f_cgraph.pdf Graphic file (type
  pdf)
  <use classCell_a3fbb8b244cc5c516d0728a987d07bf0f_cgraph.pdf>
-<classCell_a555fa98c5f1dc8d7c88c7a24f69994ff_cgraph.pdf, id=1471, 511.9125pt x 
-389.455pt>
+<classCell_a555fa98c5f1dc8d7c88c7a24f69994ff_cgraph.pdf, id=1510, 511.9125pt x 
+369.38pt>
 File: classCell_a555fa98c5f1dc8d7c88c7a24f69994ff_cgraph.pdf Graphic file (type
  pdf)
- <use classCell_a555fa98c5f1dc8d7c88c7a24f69994ff_cgraph.pdf>
-[8 <./classCell_af85b728fb894b346b654eea910958180_cgraph.pdf> <./classCell_a9fa
-559f7a28e2b4336c6879ca09304d8_cgraph.pdf> <./classCell_a3fbb8b244cc5c516d0728a9
-87d07bf0f_cgraph.pdf>]
-<classCell_a8e117526c56dda4d0d56d840d1558835_cgraph.pdf, id=1495, 331.2375pt x 
+ <use classCell_a555fa98c5f1dc8d7c88c7a24f69994ff_cgraph.pdf> [8 <./classCell_a
+f85b728fb894b346b654eea910958180_cgraph.pdf> <./classCell_a9fa559f7a28e2b4336c6
+879ca09304d8_cgraph.pdf> <./classCell_a3fbb8b244cc5c516d0728a987d07bf0f_cgraph.
+pdf>]
+<classCell_a8e117526c56dda4d0d56d840d1558835_cgraph.pdf, id=1535, 331.2375pt x 
 30.1125pt>
 File: classCell_a8e117526c56dda4d0d56d840d1558835_cgraph.pdf Graphic file (type
  pdf)
  <use classCell_a8e117526c56dda4d0d56d840d1558835_cgraph.pdf>
-<classCell_a535ddddc0471fa874a0b22a54bd38c1a_cgraph.pdf, id=1496, 339.2675pt x 
+<classCell_a535ddddc0471fa874a0b22a54bd38c1a_cgraph.pdf, id=1536, 339.2675pt x 
 30.1125pt>
 File: classCell_a535ddddc0471fa874a0b22a54bd38c1a_cgraph.pdf Graphic file (type
  pdf)
- <use classCell_a535ddddc0471fa874a0b22a54bd38c1a_cgraph.pdf>)
+ <use classCell_a535ddddc0471fa874a0b22a54bd38c1a_cgraph.pdf>
+<classCell_a23f164fa204f67b79256636bfdae1e75_cgraph.pdf, id=1537, 301.125pt x 1
+10.4125pt>
+File: classCell_a23f164fa204f67b79256636bfdae1e75_cgraph.pdf Graphic file (type
+ pdf)
+ <use classCell_a23f164fa204f67b79256636bfdae1e75_cgraph.pdf>
 [9 <./classCell_a555fa98c5f1dc8d7c88c7a24f69994ff_cgraph.pdf> <./classCell_a8e1
 17526c56dda4d0d56d840d1558835_cgraph.pdf> <./classCell_a535ddddc0471fa874a0b22a
-54bd38c1a_cgraph.pdf>]
+54bd38c1a_cgraph.pdf> <./classCell_a23f164fa204f67b79256636bfdae1e75_cgraph.pdf
+>]) [10]
 \openout2 = `structcmp__str.aux'.
 
- (./structcmp__str.tex
-LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 18.
-) [10
+ (./structcmp__str.tex) [11
 
 ]
 \openout2 = `classComplex.aux'.
 
  (./classComplex.tex
-<classComplex__inherit__graph.pdf, id=1531, 70.2625pt x 146.5475pt>
+<classComplex__inherit__graph.pdf, id=1581, 70.2625pt x 146.5475pt>
 File: classComplex__inherit__graph.pdf Graphic file (type pdf)
 
 <use classComplex__inherit__graph.pdf>
-<classComplex__coll__graph.pdf, id=1532, 70.2625pt x 146.5475pt>
+<classComplex__coll__graph.pdf, id=1582, 70.2625pt x 146.5475pt>
 File: classComplex__coll__graph.pdf Graphic file (type pdf)
 
 <use classComplex__coll__graph.pdf>
-<classComplex_ad551ee48d65fa588fdaea8d5dd3f565c_cgraph.pdf, id=1536, 389.455pt 
+<classComplex_ad551ee48d65fa588fdaea8d5dd3f565c_cgraph.pdf, id=1586, 389.455pt 
 x 50.1875pt>
 File: classComplex_ad551ee48d65fa588fdaea8d5dd3f565c_cgraph.pdf Graphic file (t
 ype pdf)
  <use classComplex_ad551ee48d65fa588fdaea8d5dd3f565c_cgraph.pdf>
-[11
+[12
 
 
  <./classComplex__inherit__graph.pdf> <./classComplex__coll__graph.pdf>]
@@ -884,16 +888,16 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 50.
 
-) [12 <./classComplex_ad551ee48d65fa588fdaea8d5dd3f565c_cgraph.pdf>]
+) [13 <./classComplex_ad551ee48d65fa588fdaea8d5dd3f565c_cgraph.pdf>]
 \openout2 = `classDegradation.aux'.
 
 
 (./classDegradation.tex
-<classDegradation__inherit__graph.pdf, id=1569, 86.3225pt x 88.33pt>
+<classDegradation__inherit__graph.pdf, id=1619, 86.3225pt x 88.33pt>
 File: classDegradation__inherit__graph.pdf Graphic file (type pdf)
 
 <use classDegradation__inherit__graph.pdf>
-<classDegradation__coll__graph.pdf, id=1570, 86.3225pt x 88.33pt>
+<classDegradation__coll__graph.pdf, id=1620, 86.3225pt x 88.33pt>
 File: classDegradation__coll__graph.pdf Graphic file (type pdf)
 
 <use classDegradation__coll__graph.pdf>
@@ -919,144 +923,144 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13
+ [14
 
 
  <./classDegradation__inherit__graph.pdf> <./classDegradation__coll__graph.pdf>
 ]
-<classDegradation_a3cad4fc84026c6f627306a7e35527f3c_cgraph.pdf, id=1598, 447.67
+<classDegradation_a3cad4fc84026c6f627306a7e35527f3c_cgraph.pdf, id=1648, 447.67
 25pt x 70.2625pt>
 File: classDegradation_a3cad4fc84026c6f627306a7e35527f3c_cgraph.pdf Graphic fil
 e (type pdf)
 
-<use classDegradation_a3cad4fc84026c6f627306a7e35527f3c_cgraph.pdf>) [14 <./cla
+<use classDegradation_a3cad4fc84026c6f627306a7e35527f3c_cgraph.pdf>) [15 <./cla
 ssDegradation_a3cad4fc84026c6f627306a7e35527f3c_cgraph.pdf>]
 \openout2 = `classDerivGraph.aux'.
 
 
-(./classDerivGraph.tex [15
-
-
-]
-<classDerivGraph_af2a1f80b96b4657e7575748942d09947_cgraph.pdf, id=1692, 262.982
+(./classDerivGraph.tex
+<classDerivGraph_af2a1f80b96b4657e7575748942d09947_cgraph.pdf, id=1694, 262.982
 5pt x 30.1125pt>
 File: classDerivGraph_af2a1f80b96b4657e7575748942d09947_cgraph.pdf Graphic file
  (type pdf)
 
-<use classDerivGraph_af2a1f80b96b4657e7575748942d09947_cgraph.pdf>
+<use classDerivGraph_af2a1f80b96b4657e7575748942d09947_cgraph.pdf> [16
+
+
+]
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 93.
+(hyperref)                removing `math shift' on input line 89.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\sim' on input line 93.
+(hyperref)                removing `\sim' on input line 89.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 93.
+(hyperref)                removing `math shift' on input line 89.
 
 
-<classDerivGraph_a27b4fed56f8d2a745582622b7cb78b50_cgraph.pdf, id=1697, 271.012
+<classDerivGraph_a27b4fed56f8d2a745582622b7cb78b50_cgraph.pdf, id=1728, 271.012
 5pt x 30.1125pt>
 File: classDerivGraph_a27b4fed56f8d2a745582622b7cb78b50_cgraph.pdf Graphic file
  (type pdf)
 
 <use classDerivGraph_a27b4fed56f8d2a745582622b7cb78b50_cgraph.pdf>
-<classDerivGraph_a038841806aa1fe80a9450f977baa1fd2_cgraph.pdf, id=1701, 393.47p
+<classDerivGraph_a038841806aa1fe80a9450f977baa1fd2_cgraph.pdf, id=1732, 393.47p
 t x 150.5625pt>
 File: classDerivGraph_a038841806aa1fe80a9450f977baa1fd2_cgraph.pdf Graphic file
  (type pdf)
 
 <use classDerivGraph_a038841806aa1fe80a9450f977baa1fd2_cgraph.pdf>
-<classDerivGraph_afbda567a3f51d05fad37eb46fc121a89_cgraph.pdf, id=1704, 371.387
+<classDerivGraph_afbda567a3f51d05fad37eb46fc121a89_cgraph.pdf, id=1735, 371.387
 5pt x 150.5625pt>
 File: classDerivGraph_afbda567a3f51d05fad37eb46fc121a89_cgraph.pdf Graphic file
  (type pdf)
 
-<use classDerivGraph_afbda567a3f51d05fad37eb46fc121a89_cgraph.pdf> [16 <./class
+<use classDerivGraph_afbda567a3f51d05fad37eb46fc121a89_cgraph.pdf> [17 <./class
 DerivGraph_af2a1f80b96b4657e7575748942d09947_cgraph.pdf> <./classDerivGraph_a27
 b4fed56f8d2a745582622b7cb78b50_cgraph.pdf> <./classDerivGraph_a038841806aa1fe80
 a9450f977baa1fd2_cgraph.pdf>]
-<classDerivGraph_aaaa9598e55cbd8c55585a0488e940516_cgraph.pdf, id=1728, 357.335
-pt x 110.4125pt>
+<classDerivGraph_aaaa9598e55cbd8c55585a0488e940516_cgraph.pdf, id=1758, 395.477
+5pt x 110.4125pt>
 File: classDerivGraph_aaaa9598e55cbd8c55585a0488e940516_cgraph.pdf Graphic file
  (type pdf)
 
 <use classDerivGraph_aaaa9598e55cbd8c55585a0488e940516_cgraph.pdf>
-<classDerivGraph_ae39d9acba4901f668d8a85c88bfcc21a_cgraph.pdf, id=1735, 264.99p
+<classDerivGraph_ae39d9acba4901f668d8a85c88bfcc21a_cgraph.pdf, id=1765, 264.99p
 t x 30.1125pt>
 File: classDerivGraph_ae39d9acba4901f668d8a85c88bfcc21a_cgraph.pdf Graphic file
  (type pdf)
 
-<use classDerivGraph_ae39d9acba4901f668d8a85c88bfcc21a_cgraph.pdf> [17 <./class
-DerivGraph_afbda567a3f51d05fad37eb46fc121a89_cgraph.pdf> <./classDerivGraph_aaa
-a9598e55cbd8c55585a0488e940516_cgraph.pdf> <./classDerivGraph_ae39d9acba4901f66
-8d8a85c88bfcc21a_cgraph.pdf>]
-<classDerivGraph_a8862d4f9ebbd3eced9d56a81fe91c4fb_cgraph.pdf, id=1764, 252.945
+<use classDerivGraph_ae39d9acba4901f668d8a85c88bfcc21a_cgraph.pdf>
+<classDerivGraph_a8862d4f9ebbd3eced9d56a81fe91c4fb_cgraph.pdf, id=1772, 252.945
 pt x 30.1125pt>
 File: classDerivGraph_a8862d4f9ebbd3eced9d56a81fe91c4fb_cgraph.pdf Graphic file
  (type pdf)
 
-<use classDerivGraph_a8862d4f9ebbd3eced9d56a81fe91c4fb_cgraph.pdf>
-<classDerivGraph_a4be722e989002430ca7c363dce500638_cgraph.pdf, id=1768, 271.012
+<use classDerivGraph_a8862d4f9ebbd3eced9d56a81fe91c4fb_cgraph.pdf> [18 <./class
+DerivGraph_afbda567a3f51d05fad37eb46fc121a89_cgraph.pdf> <./classDerivGraph_aaa
+a9598e55cbd8c55585a0488e940516_cgraph.pdf> <./classDerivGraph_ae39d9acba4901f66
+8d8a85c88bfcc21a_cgraph.pdf>]
+<classDerivGraph_a4be722e989002430ca7c363dce500638_cgraph.pdf, id=1798, 271.012
 5pt x 30.1125pt>
 File: classDerivGraph_a4be722e989002430ca7c363dce500638_cgraph.pdf Graphic file
  (type pdf)
 
 <use classDerivGraph_a4be722e989002430ca7c363dce500638_cgraph.pdf>
-<classDerivGraph_aa55a36103c33d4f1bd57de797bcd45cb_cgraph.pdf, id=1772, 339.267
+<classDerivGraph_aa55a36103c33d4f1bd57de797bcd45cb_cgraph.pdf, id=1802, 339.267
 5pt x 70.2625pt>
 File: classDerivGraph_aa55a36103c33d4f1bd57de797bcd45cb_cgraph.pdf Graphic file
  (type pdf)
 
 <use classDerivGraph_aa55a36103c33d4f1bd57de797bcd45cb_cgraph.pdf>
-<classDerivGraph_a83937a5c3ed427ebaad2bf23260c0352_cgraph.pdf, id=1776, 311.162
+<classDerivGraph_a83937a5c3ed427ebaad2bf23260c0352_cgraph.pdf, id=1806, 311.162
 5pt x 110.4125pt>
 File: classDerivGraph_a83937a5c3ed427ebaad2bf23260c0352_cgraph.pdf Graphic file
  (type pdf)
 
-<use classDerivGraph_a83937a5c3ed427ebaad2bf23260c0352_cgraph.pdf> [18 <./class
+<use classDerivGraph_a83937a5c3ed427ebaad2bf23260c0352_cgraph.pdf> [19 <./class
 DerivGraph_a8862d4f9ebbd3eced9d56a81fe91c4fb_cgraph.pdf> <./classDerivGraph_a4b
 e722e989002430ca7c363dce500638_cgraph.pdf> <./classDerivGraph_aa55a36103c33d4f1
 bd57de797bcd45cb_cgraph.pdf>]
-<classDerivGraph_aae8c58e1d6be852efbe1ed6593f31eca_cgraph.pdf, id=1806, 373.395
+<classDerivGraph_aae8c58e1d6be852efbe1ed6593f31eca_cgraph.pdf, id=1836, 373.395
 pt x 150.5625pt>
 File: classDerivGraph_aae8c58e1d6be852efbe1ed6593f31eca_cgraph.pdf Graphic file
  (type pdf)
 
-<use classDerivGraph_aae8c58e1d6be852efbe1ed6593f31eca_cgraph.pdf> [19 <./class
-DerivGraph_a83937a5c3ed427ebaad2bf23260c0352_cgraph.pdf>] [20 <./classDerivGrap
+<use classDerivGraph_aae8c58e1d6be852efbe1ed6593f31eca_cgraph.pdf> [20 <./class
+DerivGraph_a83937a5c3ed427ebaad2bf23260c0352_cgraph.pdf>] [21 <./classDerivGrap
 h_aae8c58e1d6be852efbe1ed6593f31eca_cgraph.pdf>]
-<classDerivGraph_a9bec1192a5ffc41a3ef4527caa9cdb8f_cgraph.pdf, id=1830, 252.945
+<classDerivGraph_a9bec1192a5ffc41a3ef4527caa9cdb8f_cgraph.pdf, id=1861, 252.945
 pt x 30.1125pt>
 File: classDerivGraph_a9bec1192a5ffc41a3ef4527caa9cdb8f_cgraph.pdf Graphic file
  (type pdf)
 
 <use classDerivGraph_a9bec1192a5ffc41a3ef4527caa9cdb8f_cgraph.pdf>
-<classDerivGraph_abf589f6aabe2c66bbe6f1aeb68ff4593_cgraph.pdf, id=1832, 331.237
+<classDerivGraph_abf589f6aabe2c66bbe6f1aeb68ff4593_cgraph.pdf, id=1863, 331.237
 5pt x 30.1125pt>
 File: classDerivGraph_abf589f6aabe2c66bbe6f1aeb68ff4593_cgraph.pdf Graphic file
  (type pdf)
 
-<use classDerivGraph_abf589f6aabe2c66bbe6f1aeb68ff4593_cgraph.pdf>) [21 <./clas
+<use classDerivGraph_abf589f6aabe2c66bbe6f1aeb68ff4593_cgraph.pdf>) [22 <./clas
 sDerivGraph_a9bec1192a5ffc41a3ef4527caa9cdb8f_cgraph.pdf> <./classDerivGraph_ab
 f589f6aabe2c66bbe6f1aeb68ff4593_cgraph.pdf>]
 \openout2 = `classDNA.aux'.
 
  (./classDNA.tex
-<classDNA__inherit__graph.pdf, id=1852, 70.2625pt x 88.33pt>
+<classDNA__inherit__graph.pdf, id=1882, 70.2625pt x 88.33pt>
 File: classDNA__inherit__graph.pdf Graphic file (type pdf)
 
 <use classDNA__inherit__graph.pdf>
-<classDNA__coll__graph.pdf, id=1853, 70.2625pt x 88.33pt>
+<classDNA__coll__graph.pdf, id=1883, 70.2625pt x 88.33pt>
 File: classDNA__coll__graph.pdf Graphic file (type pdf)
 
-<use classDNA__coll__graph.pdf> [22
+<use classDNA__coll__graph.pdf> [23
 
 
  <./classDNA__inherit__graph.pdf> <./classDNA__coll__graph.pdf>]
-<classDNA_a3bad49a2b4f2afcc3a55f1d663e2d14e_cgraph.pdf, id=1889, 345.29pt x 50.
+<classDNA_a3bad49a2b4f2afcc3a55f1d663e2d14e_cgraph.pdf, id=1919, 345.29pt x 50.
 1875pt>
 File: classDNA_a3bad49a2b4f2afcc3a55f1d663e2d14e_cgraph.pdf Graphic file (type 
 pdf)
@@ -1074,17 +1078,17 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 69.
 
 
-<classDNA_a10bec8cdc5922b2780887666c53891f1_cgraph.pdf, id=1897, 226.8475pt x 3
+<classDNA_a10bec8cdc5922b2780887666c53891f1_cgraph.pdf, id=1927, 226.8475pt x 3
 0.1125pt>
 File: classDNA_a10bec8cdc5922b2780887666c53891f1_cgraph.pdf Graphic file (type 
 pdf)
- <use classDNA_a10bec8cdc5922b2780887666c53891f1_cgraph.pdf> [23 <./classDNA_a3
+ <use classDNA_a10bec8cdc5922b2780887666c53891f1_cgraph.pdf> [24 <./classDNA_a3
 bad49a2b4f2afcc3a55f1d663e2d14e_cgraph.pdf> <./classDNA_a10bec8cdc5922b27808876
-66c53891f1_cgraph.pdf>]) [24]
+66c53891f1_cgraph.pdf>]) [25]
 \openout2 = `classExperiment.aux'.
 
  (./classExperiment.tex
-<classExperiment_a600bd431197ce5df6c62f6647c561f7b_cgraph.pdf, id=1931, 269.005
+<classExperiment_a600bd431197ce5df6c62f6647c561f7b_cgraph.pdf, id=1961, 269.005
 pt x 30.1125pt>
 File: classExperiment_a600bd431197ce5df6c62f6647c561f7b_cgraph.pdf Graphic file
  (type pdf)
@@ -1103,31 +1107,31 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 45.
 
 
-<classExperiment_a96058d848040e45948bbb60623711da6_cgraph.pdf, id=1934, 277.035
+<classExperiment_a96058d848040e45948bbb60623711da6_cgraph.pdf, id=1964, 277.035
 pt x 30.1125pt>
 File: classExperiment_a96058d848040e45948bbb60623711da6_cgraph.pdf Graphic file
  (type pdf)
 
-<use classExperiment_a96058d848040e45948bbb60623711da6_cgraph.pdf> [25
+<use classExperiment_a96058d848040e45948bbb60623711da6_cgraph.pdf> [26
 
 
  <./classExperiment_a600bd431197ce5df6c62f6647c561f7b_cgraph.pdf>]
-<classExperiment_ab15fca04be9b7bcad65b264b23b4a499_cgraph.pdf, id=1950, 234.877
-5pt x 30.1125pt>
+<classExperiment_ab15fca04be9b7bcad65b264b23b4a499_cgraph.pdf, id=1980, 706.64p
+t x 218.8175pt>
 File: classExperiment_ab15fca04be9b7bcad65b264b23b4a499_cgraph.pdf Graphic file
  (type pdf)
 
-<use classExperiment_ab15fca04be9b7bcad65b264b23b4a499_cgraph.pdf>) [26 <./clas
+<use classExperiment_ab15fca04be9b7bcad65b264b23b4a499_cgraph.pdf>) [27 <./clas
 sExperiment_a96058d848040e45948bbb60623711da6_cgraph.pdf> <./classExperiment_ab
 15fca04be9b7bcad65b264b23b4a499_cgraph.pdf>]
 \openout2 = `classForwardComplexation.aux'.
 
  (./classForwardComplexation.tex
-<classForwardComplexation__inherit__graph.pdf, id=1969, 134.5025pt x 88.33pt>
+<classForwardComplexation__inherit__graph.pdf, id=2000, 134.5025pt x 88.33pt>
 File: classForwardComplexation__inherit__graph.pdf Graphic file (type pdf)
 
 <use classForwardComplexation__inherit__graph.pdf>
-<classForwardComplexation__coll__graph.pdf, id=1970, 134.5025pt x 88.33pt>
+<classForwardComplexation__coll__graph.pdf, id=2001, 134.5025pt x 88.33pt>
 File: classForwardComplexation__coll__graph.pdf Graphic file (type pdf)
 
 <use classForwardComplexation__coll__graph.pdf>
@@ -1139,7 +1143,7 @@ m/n/10 Molecule[][] $\OMS/cmsy/m/n/10 ^^C$ $\OML/cmm/m/it/10 >$ $\OMS/cmsy/m/n/
  []
 
 
-<classForwardComplexation_a0ab16d0c2ad4bef757d811d4b7fd9682_cgraph.pdf, id=1978
+<classForwardComplexation_a0ab16d0c2ad4bef757d811d4b7fd9682_cgraph.pdf, id=2009
 , 369.38pt x 30.1125pt>
 File: classForwardComplexation_a0ab16d0c2ad4bef757d811d4b7fd9682_cgraph.pdf Gra
 phic file (type pdf)
@@ -1157,32 +1161,32 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 57.
 
-[27
+[28
 
 
  <./classForwardComplexation__inherit__graph.pdf> <./classForwardComplexation__
 coll__graph.pdf> <./classForwardComplexation_a0ab16d0c2ad4bef757d811d4b7fd9682_
 cgraph.pdf>]
-<classForwardComplexation_a8f7f867b98b484ed0f09192ebd280e1a_cgraph.pdf, id=2011
+<classForwardComplexation_a8f7f867b98b484ed0f09192ebd280e1a_cgraph.pdf, id=2041
 , 493.845pt x 70.2625pt>
 File: classForwardComplexation_a8f7f867b98b484ed0f09192ebd280e1a_cgraph.pdf Gra
 phic file (type pdf)
 
 <use classForwardComplexation_a8f7f867b98b484ed0f09192ebd280e1a_cgraph.pdf>)
-[28 <./classForwardComplexation_a8f7f867b98b484ed0f09192ebd280e1a_cgraph.pdf>]
+[29 <./classForwardComplexation_a8f7f867b98b484ed0f09192ebd280e1a_cgraph.pdf>]
 \openout2 = `classForwardPTM.aux'.
 
 
 (./classForwardPTM.tex
-<classForwardPTM__inherit__graph.pdf, id=2024, 86.3225pt x 88.33pt>
+<classForwardPTM__inherit__graph.pdf, id=2054, 86.3225pt x 88.33pt>
 File: classForwardPTM__inherit__graph.pdf Graphic file (type pdf)
 
 <use classForwardPTM__inherit__graph.pdf>
-<classForwardPTM__coll__graph.pdf, id=2025, 86.3225pt x 88.33pt>
+<classForwardPTM__coll__graph.pdf, id=2055, 86.3225pt x 88.33pt>
 File: classForwardPTM__coll__graph.pdf Graphic file (type pdf)
 
 <use classForwardPTM__coll__graph.pdf>
-<classForwardPTM_a42913d0481561a489b8664cd22cf7b0c_cgraph.pdf, id=2028, 273.02p
+<classForwardPTM_a42913d0481561a489b8664cd22cf7b0c_cgraph.pdf, id=2058, 273.02p
 t x 30.1125pt>
 File: classForwardPTM_a42913d0481561a489b8664cd22cf7b0c_cgraph.pdf Graphic file
  (type pdf)
@@ -1200,16 +1204,16 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 48.
 
-[29
+[30
 
 
  <./classForwardPTM__inherit__graph.pdf> <./classForwardPTM__coll__graph.pdf> <
-./classForwardPTM_a42913d0481561a489b8664cd22cf7b0c_cgraph.pdf>]) [30]
+./classForwardPTM_a42913d0481561a489b8664cd22cf7b0c_cgraph.pdf>]) [31]
 \openout2 = `classInteraction.aux'.
 
 
 (./classInteraction.tex
-<classInteraction__inherit__graph.pdf, id=2060, 246.9225pt x 351.3125pt>
+<classInteraction__inherit__graph.pdf, id=2090, 246.9225pt x 351.3125pt>
 File: classInteraction__inherit__graph.pdf Graphic file (type pdf)
 
 <use classInteraction__inherit__graph.pdf>
@@ -1220,11 +1224,11 @@ m/n/10 Molecule[][] $\OMS/cmsy/m/n/10 ^^C$ $\OML/cmm/m/it/10 >$ $\OMS/cmsy/m/n/
 10 ^^C$\T1/ptm/m/n/10 ,
  []
 
-[31
+[32
 
 
  <./classInteraction__inherit__graph.pdf>]
-<classInteraction_aadfd0e254296043c26508d47090ace76_cgraph.pdf, id=2093, 262.98
+<classInteraction_aadfd0e254296043c26508d47090ace76_cgraph.pdf, id=2123, 262.98
 25pt x 30.1125pt>
 File: classInteraction_aadfd0e254296043c26508d47090ace76_cgraph.pdf Graphic fil
 e (type pdf)
@@ -1243,33 +1247,33 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 63.
 
 
-<classInteraction_a6610199fedc7fae617003cb2f397c825_cgraph.pdf, id=2096, 271.01
+<classInteraction_a6610199fedc7fae617003cb2f397c825_cgraph.pdf, id=2126, 271.01
 25pt x 30.1125pt>
 File: classInteraction_a6610199fedc7fae617003cb2f397c825_cgraph.pdf Graphic fil
 e (type pdf)
 
-<use classInteraction_a6610199fedc7fae617003cb2f397c825_cgraph.pdf> [32 <./clas
+<use classInteraction_a6610199fedc7fae617003cb2f397c825_cgraph.pdf> [33 <./clas
 sInteraction_aadfd0e254296043c26508d47090ace76_cgraph.pdf> <./classInteraction_
 a6610199fedc7fae617003cb2f397c825_cgraph.pdf>]
-<classInteraction_a6328831e714adf9c8177f6052d2e017f_cgraph.pdf, id=2123, 441.65
+<classInteraction_a6328831e714adf9c8177f6052d2e017f_cgraph.pdf, id=2155, 441.65
 pt x 70.2625pt>
 File: classInteraction_a6328831e714adf9c8177f6052d2e017f_cgraph.pdf Graphic fil
 e (type pdf)
 
-<use classInteraction_a6328831e714adf9c8177f6052d2e017f_cgraph.pdf>) [33 <./cla
+<use classInteraction_a6328831e714adf9c8177f6052d2e017f_cgraph.pdf>) [34 <./cla
 ssInteraction_a6328831e714adf9c8177f6052d2e017f_cgraph.pdf>]
 \openout2 = `classMolecule.aux'.
 
 
 (./classMolecule.tex
-<classMolecule__inherit__graph.pdf, id=2143, 353.32pt x 146.5475pt>
+<classMolecule__inherit__graph.pdf, id=2176, 353.32pt x 146.5475pt>
 File: classMolecule__inherit__graph.pdf Graphic file (type pdf)
 
-<use classMolecule__inherit__graph.pdf> [34
+<use classMolecule__inherit__graph.pdf> [35
 
 
  <./classMolecule__inherit__graph.pdf>]
-<classMolecule_a7e7d290ae641518ad4c4d5303b519d0f_cgraph.pdf, id=2207, 238.8925p
+<classMolecule_a7e7d290ae641518ad4c4d5303b519d0f_cgraph.pdf, id=2243, 238.8925p
 t x 30.1125pt>
 File: classMolecule_a7e7d290ae641518ad4c4d5303b519d0f_cgraph.pdf Graphic file (
 type pdf)
@@ -1277,44 +1281,44 @@ type pdf)
 <use classMolecule_a7e7d290ae641518ad4c4d5303b519d0f_cgraph.pdf>
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 105.
+(hyperref)                removing `math shift' on input line 111.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\sim' on input line 105.
+(hyperref)                removing `\sim' on input line 111.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 105.
+(hyperref)                removing `math shift' on input line 111.
 
-[35 <./classMolecule_a7e7d290ae641518ad4c4d5303b519d0f_cgraph.pdf>] [36]
-<classMolecule_af67c8a4dcbde3f500509ee1bd94ff4ef_cgraph.pdf, id=2246, 309.155pt
+[36 <./classMolecule_a7e7d290ae641518ad4c4d5303b519d0f_cgraph.pdf>] [37]
+<classMolecule_af67c8a4dcbde3f500509ee1bd94ff4ef_cgraph.pdf, id=2285, 309.155pt
  x 70.2625pt>
 File: classMolecule_af67c8a4dcbde3f500509ee1bd94ff4ef_cgraph.pdf Graphic file (
 type pdf)
  <use classMolecule_af67c8a4dcbde3f500509ee1bd94ff4ef_cgraph.pdf>
-<classMolecule_ac6c78f4a49e270815d7e7dba311b7e14_cgraph.pdf, id=2248, 307.1475p
+<classMolecule_ac6c78f4a49e270815d7e7dba311b7e14_cgraph.pdf, id=2287, 307.1475p
 t x 70.2625pt>
 File: classMolecule_ac6c78f4a49e270815d7e7dba311b7e14_cgraph.pdf Graphic file (
 type pdf)
 
 <use classMolecule_ac6c78f4a49e270815d7e7dba311b7e14_cgraph.pdf>
-<classMolecule_adabb58a65655a7f55dae0d82b65d04ba_cgraph.pdf, id=2253, 273.02pt 
+<classMolecule_adabb58a65655a7f55dae0d82b65d04ba_cgraph.pdf, id=2292, 273.02pt 
 x 30.1125pt>
 File: classMolecule_adabb58a65655a7f55dae0d82b65d04ba_cgraph.pdf Graphic file (
 type pdf)
  <use classMolecule_adabb58a65655a7f55dae0d82b65d04ba_cgraph.pdf>
-[37 <./classMolecule_af67c8a4dcbde3f500509ee1bd94ff4ef_cgraph.pdf> <./classMole
+[38 <./classMolecule_af67c8a4dcbde3f500509ee1bd94ff4ef_cgraph.pdf> <./classMole
 cule_ac6c78f4a49e270815d7e7dba311b7e14_cgraph.pdf>]
-<classMolecule_ab1dd1cb050ddb53a5ce4d9635e3ae03b_cgraph.pdf, id=2273, 321.2pt x
+<classMolecule_ab1dd1cb050ddb53a5ce4d9635e3ae03b_cgraph.pdf, id=2312, 321.2pt x
  70.2625pt>
 File: classMolecule_ab1dd1cb050ddb53a5ce4d9635e3ae03b_cgraph.pdf Graphic file (
 type pdf)
  <use classMolecule_ab1dd1cb050ddb53a5ce4d9635e3ae03b_cgraph.pdf>
 Underfull \vbox (badness 5939) has occurred while \output is active []
 
- [38 <./classMolecule_adabb58a65655a7f55dae0d82b65d04ba_cgraph.pdf> <./classMol
-ecule_ab1dd1cb050ddb53a5ce4d9635e3ae03b_cgraph.pdf>]) [39]
+ [39 <./classMolecule_adabb58a65655a7f55dae0d82b65d04ba_cgraph.pdf> <./classMol
+ecule_ab1dd1cb050ddb53a5ce4d9635e3ae03b_cgraph.pdf>]) [40]
 \openout2 = `classMoleculeType.aux'.
 
  (./classMoleculeType.tex
@@ -1330,22 +1334,22 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 30.
 
-) [40
+) [41
 
 
 ]
 \openout2 = `classmRNA.aux'.
 
  (./classmRNA.tex
-<classmRNA__inherit__graph.pdf, id=2309, 70.2625pt x 88.33pt>
+<classmRNA__inherit__graph.pdf, id=2348, 70.2625pt x 88.33pt>
 File: classmRNA__inherit__graph.pdf Graphic file (type pdf)
 
 <use classmRNA__inherit__graph.pdf>
-<classmRNA__coll__graph.pdf, id=2310, 70.2625pt x 88.33pt>
+<classmRNA__coll__graph.pdf, id=2349, 70.2625pt x 88.33pt>
 File: classmRNA__coll__graph.pdf Graphic file (type pdf)
 
 <use classmRNA__coll__graph.pdf>
-<classmRNA_add6fc6ce355527cdab338afb3c9a118f_cgraph.pdf, id=2313, 363.3575pt x 
+<classmRNA_add6fc6ce355527cdab338afb3c9a118f_cgraph.pdf, id=2352, 363.3575pt x 
 50.1875pt>
 File: classmRNA_add6fc6ce355527cdab338afb3c9a118f_cgraph.pdf Graphic file (type
  pdf)
@@ -1362,23 +1366,23 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 48.
 
-[41
+[42
 
 
  <./classmRNA__inherit__graph.pdf> <./classmRNA__coll__graph.pdf> <./classmRNA_
-add6fc6ce355527cdab338afb3c9a118f_cgraph.pdf>]) [42]
+add6fc6ce355527cdab338afb3c9a118f_cgraph.pdf>]) [43]
 \openout2 = `classNullNode.aux'.
 
  (./classNullNode.tex
-<classNullNode__inherit__graph.pdf, id=2345, 70.2625pt x 88.33pt>
+<classNullNode__inherit__graph.pdf, id=2384, 70.2625pt x 88.33pt>
 File: classNullNode__inherit__graph.pdf Graphic file (type pdf)
 
 <use classNullNode__inherit__graph.pdf>
-<classNullNode__coll__graph.pdf, id=2346, 70.2625pt x 88.33pt>
+<classNullNode__coll__graph.pdf, id=2385, 70.2625pt x 88.33pt>
 File: classNullNode__coll__graph.pdf Graphic file (type pdf)
 
 <use classNullNode__coll__graph.pdf>
-<classNullNode_ac6fefccfedcc2be3ac11cf4f33a6c113_cgraph.pdf, id=2350, 389.455pt
+<classNullNode_ac6fefccfedcc2be3ac11cf4f33a6c113_cgraph.pdf, id=2389, 389.455pt
  x 50.1875pt>
 File: classNullNode_ac6fefccfedcc2be3ac11cf4f33a6c113_cgraph.pdf Graphic file (
 type pdf)
@@ -1395,20 +1399,20 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 50.
 
-[43
+[44
 
 
  <./classNullNode__inherit__graph.pdf> <./classNullNode__coll__graph.pdf> <./cl
-assNullNode_ac6fefccfedcc2be3ac11cf4f33a6c113_cgraph.pdf>]) [44]
+assNullNode_ac6fefccfedcc2be3ac11cf4f33a6c113_cgraph.pdf>]) [45]
 \openout2 = `classPromoterBind.aux'.
 
 
 (./classPromoterBind.tex
-<classPromoterBind__inherit__graph.pdf, id=2384, 94.3525pt x 88.33pt>
+<classPromoterBind__inherit__graph.pdf, id=2424, 94.3525pt x 88.33pt>
 File: classPromoterBind__inherit__graph.pdf Graphic file (type pdf)
 
 <use classPromoterBind__inherit__graph.pdf>
-<classPromoterBind__coll__graph.pdf, id=2385, 94.3525pt x 88.33pt>
+<classPromoterBind__coll__graph.pdf, id=2425, 94.3525pt x 88.33pt>
 File: classPromoterBind__coll__graph.pdf Graphic file (type pdf)
 
 <use classPromoterBind__coll__graph.pdf>
@@ -1434,38 +1438,38 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 
 Underfull \vbox (badness 7981) has occurred while \output is active []
 
- [45
+ [46
 
 
  <./classPromoterBind__inherit__graph.pdf> <./classPromoterBind__coll__graph.pd
 f>]
-<classPromoterBind_afadb621f9976cc52d83caec0e8613244_cgraph.pdf, id=2418, 453.6
+<classPromoterBind_afadb621f9976cc52d83caec0e8613244_cgraph.pdf, id=2457, 453.6
 95pt x 70.2625pt>
 File: classPromoterBind_afadb621f9976cc52d83caec0e8613244_cgraph.pdf Graphic fi
 le (type pdf)
 
-<use classPromoterBind_afadb621f9976cc52d83caec0e8613244_cgraph.pdf>) [46 <./cl
-assPromoterBind_afadb621f9976cc52d83caec0e8613244_cgraph.pdf>] [47]
+<use classPromoterBind_afadb621f9976cc52d83caec0e8613244_cgraph.pdf>) [47 <./cl
+assPromoterBind_afadb621f9976cc52d83caec0e8613244_cgraph.pdf>] [48]
 \openout2 = `classProtein.aux'.
 
 
 (./classProtein.tex
-<classProtein__inherit__graph.pdf, id=2435, 70.2625pt x 146.5475pt>
+<classProtein__inherit__graph.pdf, id=2474, 70.2625pt x 146.5475pt>
 File: classProtein__inherit__graph.pdf Graphic file (type pdf)
 
 <use classProtein__inherit__graph.pdf>
-<classProtein__coll__graph.pdf, id=2436, 70.2625pt x 88.33pt>
+<classProtein__coll__graph.pdf, id=2475, 70.2625pt x 88.33pt>
 File: classProtein__coll__graph.pdf Graphic file (type pdf)
 
 <use classProtein__coll__graph.pdf>
-<classProtein_a4610c6369d2f7e4bd31481d53e5001a1_cgraph.pdf, id=2439, 373.395pt 
+<classProtein_a4610c6369d2f7e4bd31481d53e5001a1_cgraph.pdf, id=2478, 373.395pt 
 x 50.1875pt>
 File: classProtein_a4610c6369d2f7e4bd31481d53e5001a1_cgraph.pdf Graphic file (t
 ype pdf)
  <use classProtein_a4610c6369d2f7e4bd31481d53e5001a1_cgraph.pdf>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [48
+ [49
 
 
  <./classProtein__inherit__graph.pdf> <./classProtein__coll__graph.pdf>]
@@ -1481,20 +1485,20 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 48.
 
-) [49 <./classProtein_a4610c6369d2f7e4bd31481d53e5001a1_cgraph.pdf>]
+) [50 <./classProtein_a4610c6369d2f7e4bd31481d53e5001a1_cgraph.pdf>]
 \openout2 = `classPTMProtein.aux'.
 
 
 (./classPTMProtein.tex
-<classPTMProtein__inherit__graph.pdf, id=2471, 82.3075pt x 88.33pt>
+<classPTMProtein__inherit__graph.pdf, id=2510, 82.3075pt x 88.33pt>
 File: classPTMProtein__inherit__graph.pdf Graphic file (type pdf)
 
 <use classPTMProtein__inherit__graph.pdf>
-<classPTMProtein__coll__graph.pdf, id=2472, 82.3075pt x 88.33pt>
+<classPTMProtein__coll__graph.pdf, id=2511, 82.3075pt x 88.33pt>
 File: classPTMProtein__coll__graph.pdf Graphic file (type pdf)
 
 <use classPTMProtein__coll__graph.pdf>
-<classPTMProtein_ad7f9e5f107659b4c8a0c675f2aeb7b8b_cgraph.pdf, id=2480, 266.997
+<classPTMProtein_ad7f9e5f107659b4c8a0c675f2aeb7b8b_cgraph.pdf, id=2519, 266.997
 5pt x 30.1125pt>
 File: classPTMProtein_ad7f9e5f107659b4c8a0c675f2aeb7b8b_cgraph.pdf Graphic file
  (type pdf)
@@ -1512,20 +1516,20 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 61.
 
-[50
+[51
 
 
  <./classPTMProtein__inherit__graph.pdf> <./classPTMProtein__coll__graph.pdf> <
-./classPTMProtein_ad7f9e5f107659b4c8a0c675f2aeb7b8b_cgraph.pdf>]) [51]
+./classPTMProtein_ad7f9e5f107659b4c8a0c675f2aeb7b8b_cgraph.pdf>]) [52]
 \openout2 = `classReverseComplexation.aux'.
 
 
 (./classReverseComplexation.tex
-<classReverseComplexation__inherit__graph.pdf, id=2521, 136.51pt x 88.33pt>
+<classReverseComplexation__inherit__graph.pdf, id=2560, 136.51pt x 88.33pt>
 File: classReverseComplexation__inherit__graph.pdf Graphic file (type pdf)
 
 <use classReverseComplexation__inherit__graph.pdf>
-<classReverseComplexation__coll__graph.pdf, id=2522, 136.51pt x 88.33pt>
+<classReverseComplexation__coll__graph.pdf, id=2561, 136.51pt x 88.33pt>
 File: classReverseComplexation__coll__graph.pdf Graphic file (type pdf)
 
 <use classReverseComplexation__coll__graph.pdf>
@@ -1537,7 +1541,7 @@ m/n/10 Molecule[][] $\OMS/cmsy/m/n/10 ^^C$ $\OML/cmm/m/it/10 >$ $\OMS/cmsy/m/n/
  []
 
 
-<classReverseComplexation_a12c42d3947dcd67f5cff0e9dd218a4c6_cgraph.pdf, id=2530
+<classReverseComplexation_a12c42d3947dcd67f5cff0e9dd218a4c6_cgraph.pdf, id=2569
 , 373.395pt x 30.1125pt>
 File: classReverseComplexation_a12c42d3947dcd67f5cff0e9dd218a4c6_cgraph.pdf Gra
 phic file (type pdf)
@@ -1555,32 +1559,32 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 57.
 
-[52
+[53
 
 
  <./classReverseComplexation__inherit__graph.pdf> <./classReverseComplexation__
 coll__graph.pdf> <./classReverseComplexation_a12c42d3947dcd67f5cff0e9dd218a4c6_
 cgraph.pdf>]
-<classReverseComplexation_a9dceec2b67efbe7c14a7e53c959263f5_cgraph.pdf, id=2561
+<classReverseComplexation_a9dceec2b67efbe7c14a7e53c959263f5_cgraph.pdf, id=2600
 , 495.8525pt x 70.2625pt>
 File: classReverseComplexation_a9dceec2b67efbe7c14a7e53c959263f5_cgraph.pdf Gra
 phic file (type pdf)
 
 <use classReverseComplexation_a9dceec2b67efbe7c14a7e53c959263f5_cgraph.pdf>)
-[53 <./classReverseComplexation_a9dceec2b67efbe7c14a7e53c959263f5_cgraph.pdf>]
+[54 <./classReverseComplexation_a9dceec2b67efbe7c14a7e53c959263f5_cgraph.pdf>]
 \openout2 = `classReversePTM.aux'.
 
 
 (./classReversePTM.tex
-<classReversePTM__inherit__graph.pdf, id=2574, 88.33pt x 88.33pt>
+<classReversePTM__inherit__graph.pdf, id=2613, 88.33pt x 88.33pt>
 File: classReversePTM__inherit__graph.pdf Graphic file (type pdf)
 
 <use classReversePTM__inherit__graph.pdf>
-<classReversePTM__coll__graph.pdf, id=2575, 88.33pt x 88.33pt>
+<classReversePTM__coll__graph.pdf, id=2614, 88.33pt x 88.33pt>
 File: classReversePTM__coll__graph.pdf Graphic file (type pdf)
 
 <use classReversePTM__coll__graph.pdf>
-<classReversePTM_a300458e98e0701ca87cf608eca89b3b3_cgraph.pdf, id=2578, 277.035
+<classReversePTM_a300458e98e0701ca87cf608eca89b3b3_cgraph.pdf, id=2617, 277.035
 pt x 30.1125pt>
 File: classReversePTM_a300458e98e0701ca87cf608eca89b3b3_cgraph.pdf Graphic file
  (type pdf)
@@ -1598,20 +1602,20 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 48.
 
-[54
+[55
 
 
  <./classReversePTM__inherit__graph.pdf> <./classReversePTM__coll__graph.pdf> <
-./classReversePTM_a300458e98e0701ca87cf608eca89b3b3_cgraph.pdf>]) [55]
+./classReversePTM_a300458e98e0701ca87cf608eca89b3b3_cgraph.pdf>]) [56]
 \openout2 = `classTestInt.aux'.
 
 
 (./classTestInt.tex
-<classTestInt__inherit__graph.pdf, id=2610, 80.3pt x 88.33pt>
+<classTestInt__inherit__graph.pdf, id=2649, 80.3pt x 88.33pt>
 File: classTestInt__inherit__graph.pdf Graphic file (type pdf)
 
 <use classTestInt__inherit__graph.pdf>
-<classTestInt__coll__graph.pdf, id=2611, 80.3pt x 88.33pt>
+<classTestInt__coll__graph.pdf, id=2650, 80.3pt x 88.33pt>
 File: classTestInt__coll__graph.pdf Graphic file (type pdf)
 
 <use classTestInt__coll__graph.pdf>
@@ -1623,7 +1627,7 @@ m/n/10 Molecule[][] $\OMS/cmsy/m/n/10 ^^C$ $\OML/cmm/m/it/10 >$ $\OMS/cmsy/m/n/
  []
 
 
-<classTestInt_ae60099905c20a07851e869710024f416_cgraph.pdf, id=2617, 220.825pt 
+<classTestInt_ae60099905c20a07851e869710024f416_cgraph.pdf, id=2656, 220.825pt 
 x 30.1125pt>
 File: classTestInt_ae60099905c20a07851e869710024f416_cgraph.pdf Graphic file (t
 ype pdf)
@@ -1640,17 +1644,17 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 50.
 
-[56
+[57
 
 
  <./classTestInt__inherit__graph.pdf> <./classTestInt__coll__graph.pdf> <./clas
 sTestInt_ae60099905c20a07851e869710024f416_cgraph.pdf>]
-<classTestInt_a7e6d8e60a2ebc357052a7776244893d7_cgraph.pdf, id=2645, 419.5675pt
+<classTestInt_a7e6d8e60a2ebc357052a7776244893d7_cgraph.pdf, id=2685, 419.5675pt
  x 70.2625pt>
 File: classTestInt_a7e6d8e60a2ebc357052a7776244893d7_cgraph.pdf Graphic file (t
 ype pdf)
  <use classTestInt_a7e6d8e60a2ebc357052a7776244893d7_cgraph.pdf>)
-[57 <./classTestInt_a7e6d8e60a2ebc357052a7776244893d7_cgraph.pdf>]
+[58 <./classTestInt_a7e6d8e60a2ebc357052a7776244893d7_cgraph.pdf>]
 \openout2 = `classTrace.aux'.
 
 
@@ -1667,36 +1671,36 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 (hyperref)                removing `math shift' on input line 59.
 
-[58
+[59
 
 
 ]
-<classTrace_a307942e3b0179af28fb7a7a0868fe4b1_cgraph.pdf, id=2695, 417.56pt x 7
+<classTrace_a307942e3b0179af28fb7a7a0868fe4b1_cgraph.pdf, id=2734, 417.56pt x 7
 0.2625pt>
 File: classTrace_a307942e3b0179af28fb7a7a0868fe4b1_cgraph.pdf Graphic file (typ
 e pdf)
  <use classTrace_a307942e3b0179af28fb7a7a0868fe4b1_cgraph.pdf>
-<classTrace_ace78e6fb4da6fc7cb85ec4ee5421c148_cgraph.pdf, id=2697, 260.975pt x 
+<classTrace_ace78e6fb4da6fc7cb85ec4ee5421c148_cgraph.pdf, id=2736, 260.975pt x 
 30.1125pt>
 File: classTrace_ace78e6fb4da6fc7cb85ec4ee5421c148_cgraph.pdf Graphic file (typ
 e pdf)
  <use classTrace_ace78e6fb4da6fc7cb85ec4ee5421c148_cgraph.pdf>
-<classTrace_aba8fd6ff6e39496ca25050ae01800523_cgraph.pdf, id=2699, 260.975pt x 
+<classTrace_aba8fd6ff6e39496ca25050ae01800523_cgraph.pdf, id=2738, 260.975pt x 
 30.1125pt>
 File: classTrace_aba8fd6ff6e39496ca25050ae01800523_cgraph.pdf Graphic file (typ
 e pdf)
  <use classTrace_aba8fd6ff6e39496ca25050ae01800523_cgraph.pdf>
-[59 <./classTrace_a307942e3b0179af28fb7a7a0868fe4b1_cgraph.pdf> <./classTrace_a
+[60 <./classTrace_a307942e3b0179af28fb7a7a0868fe4b1_cgraph.pdf> <./classTrace_a
 ce78e6fb4da6fc7cb85ec4ee5421c148_cgraph.pdf> <./classTrace_aba8fd6ff6e39496ca25
-050ae01800523_cgraph.pdf>]) [60]
+050ae01800523_cgraph.pdf>]) [61]
 \openout2 = `classTranscription.aux'.
 
  (./classTranscription.tex
-<classTranscription__inherit__graph.pdf, id=2730, 88.33pt x 88.33pt>
+<classTranscription__inherit__graph.pdf, id=2769, 88.33pt x 88.33pt>
 File: classTranscription__inherit__graph.pdf Graphic file (type pdf)
 
 <use classTranscription__inherit__graph.pdf>
-<classTranscription__coll__graph.pdf, id=2731, 88.33pt x 88.33pt>
+<classTranscription__coll__graph.pdf, id=2770, 88.33pt x 88.33pt>
 File: classTranscription__coll__graph.pdf Graphic file (type pdf)
 
 <use classTranscription__coll__graph.pdf>
@@ -1722,31 +1726,39 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 
 Underfull \vbox (badness 3965) has occurred while \output is active []
 
- [61
+ [62
 
 
  <./classTranscription__inherit__graph.pdf> <./classTranscription__coll__graph.
 pdf>]
-<classTranscription_a73f9e09dac4b601a297fd4d59c92cea5_cgraph.pdf, id=2759, 447.
+<classTranscription_a73f9e09dac4b601a297fd4d59c92cea5_cgraph.pdf, id=2798, 447.
 6725pt x 70.2625pt>
 File: classTranscription_a73f9e09dac4b601a297fd4d59c92cea5_cgraph.pdf Graphic f
 ile (type pdf)
 
-<use classTranscription_a73f9e09dac4b601a297fd4d59c92cea5_cgraph.pdf>) [62 <./c
+<use classTranscription_a73f9e09dac4b601a297fd4d59c92cea5_cgraph.pdf>) [63 <./c
 lassTranscription_a73f9e09dac4b601a297fd4d59c92cea5_cgraph.pdf>]
 \openout2 = `classTranslation.aux'.
 
 
 (./classTranslation.tex
-<classTranslation__inherit__graph.pdf, id=2772, 80.3pt x 88.33pt>
+<classTranslation__inherit__graph.pdf, id=2812, 80.3pt x 88.33pt>
 File: classTranslation__inherit__graph.pdf Graphic file (type pdf)
 
 <use classTranslation__inherit__graph.pdf>
-<classTranslation__coll__graph.pdf, id=2773, 80.3pt x 88.33pt>
+<classTranslation__coll__graph.pdf, id=2813, 80.3pt x 88.33pt>
 File: classTranslation__coll__graph.pdf Graphic file (type pdf)
 
 <use classTranslation__coll__graph.pdf>
-<classTranslation_a19a6742a807888b66b0a402469bbf588_cgraph.pdf, id=2776, 256.96
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+[]\T1/ptm/m/n/10 virtual float [][]get-Ef-fect[][] (List-Di-graph $\OMS/cmsy/m/
+n/10 ^^C$\T1/ptm/m/n/10 , ListDigraph::NodeMap$\OML/cmm/m/it/10 <$ [][]\T1/ptm/
+m/n/10 Molecule[][] $\OMS/cmsy/m/n/10 ^^C$ $\OML/cmm/m/it/10 >$ $\OMS/cmsy/m/n/
+10 ^^C$\T1/ptm/m/n/10 ,
+ []
+
+
+<classTranslation_a19a6742a807888b66b0a402469bbf588_cgraph.pdf, id=2819, 256.96
 pt x 30.1125pt>
 File: classTranslation_a19a6742a807888b66b0a402469bbf588_cgraph.pdf Graphic fil
 e (type pdf)
@@ -1754,73 +1766,79 @@ e (type pdf)
 <use classTranslation_a19a6742a807888b66b0a402469bbf588_cgraph.pdf>
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 48.
+(hyperref)                removing `math shift' on input line 50.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\sim' on input line 48.
+(hyperref)                removing `\sim' on input line 50.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 48.
+(hyperref)                removing `math shift' on input line 50.
 
-[63
+[64
 
 
  <./classTranslation__inherit__graph.pdf> <./classTranslation__coll__graph.pdf>
- <./classTranslation_a19a6742a807888b66b0a402469bbf588_cgraph.pdf>])
-[64]
+ <./classTranslation_a19a6742a807888b66b0a402469bbf588_cgraph.pdf>]
+<classTranslation_a6599a0f28a58b5adf122d8b8c6206061_cgraph.pdf, id=2847, 437.63
+5pt x 70.2625pt>
+File: classTranslation_a6599a0f28a58b5adf122d8b8c6206061_cgraph.pdf Graphic fil
+e (type pdf)
+
+<use classTranslation_a6599a0f28a58b5adf122d8b8c6206061_cgraph.pdf>) [65 <./cla
+ssTranslation_a6599a0f28a58b5adf122d8b8c6206061_cgraph.pdf>] [66
+
+
+]
 Chapter 5.
-(./Cell_8cpp.tex <Cell_8cpp__incl.pdf, id=2809, 1119.18124pt x 437.635pt>
+(./Cell_8cpp.tex <Cell_8cpp__incl.pdf, id=2864, 1119.18124pt x 437.635pt>
 File: Cell_8cpp__incl.pdf Graphic file (type pdf)
 
-<use Cell_8cpp__incl.pdf>) [65
-
-
- <./Cell_8cpp__incl.pdf>]
+<use Cell_8cpp__incl.pdf>) [67 <./Cell_8cpp__incl.pdf>]
 \openout2 = `Cell_8h.aux'.
 
  (./Cell_8h.tex
-<Cell_8h__incl.pdf, id=2820, 995.72pt x 379.4175pt>
+<Cell_8h__incl.pdf, id=2875, 995.72pt x 379.4175pt>
 File: Cell_8h__incl.pdf Graphic file (type pdf)
  <use Cell_8h__incl.pdf>
-<Cell_8h__dep__incl.pdf, id=2821, 202.7575pt x 146.5475pt>
+<Cell_8h__dep__incl.pdf, id=2876, 202.7575pt x 146.5475pt>
 File: Cell_8h__dep__incl.pdf Graphic file (type pdf)
 
-<use Cell_8h__dep__incl.pdf>) [66
+<use Cell_8h__dep__incl.pdf>) [68
 
  <./Cell_8h__incl.pdf> <./Cell_8h__dep__incl.pdf>]
 \openout2 = `CustomInteractions_8cpp.aux'.
 
  (./CustomInteractions_8cpp.tex
-<CustomInteractions_8cpp__incl.pdf, id=2840, 602.25pt x 321.2pt>
+<CustomInteractions_8cpp__incl.pdf, id=2895, 602.25pt x 321.2pt>
 File: CustomInteractions_8cpp__incl.pdf Graphic file (type pdf)
 
-<use CustomInteractions_8cpp__incl.pdf>) [67
+<use CustomInteractions_8cpp__incl.pdf>) [69
 
 
  <./CustomInteractions_8cpp__incl.pdf>]
 \openout2 = `CustomInteractions_8h.aux'.
 
  (./CustomInteractions_8h.tex
-<CustomInteractions_8h__incl.pdf, id=2851, 395.4775pt x 262.9825pt>
+<CustomInteractions_8h__incl.pdf, id=2907, 395.4775pt x 262.9825pt>
 File: CustomInteractions_8h__incl.pdf Graphic file (type pdf)
 
 <use CustomInteractions_8h__incl.pdf>
-<CustomInteractions_8h__dep__incl.pdf, id=2852, 321.2pt x 262.9825pt>
+<CustomInteractions_8h__dep__incl.pdf, id=2908, 321.2pt x 262.9825pt>
 File: CustomInteractions_8h__dep__incl.pdf Graphic file (type pdf)
 
-<use CustomInteractions_8h__dep__incl.pdf>) [68
+<use CustomInteractions_8h__dep__incl.pdf>) [70
 
 
  <./CustomInteractions_8h__incl.pdf> <./CustomInteractions_8h__dep__incl.pdf>]
 \openout2 = `CustomMolecules_8cpp.aux'.
 
  (./CustomMolecules_8cpp.tex
-<CustomMolecules_8cpp__incl.pdf, id=2879, 678.535pt x 204.765pt>
+<CustomMolecules_8cpp__incl.pdf, id=2935, 678.535pt x 204.765pt>
 File: CustomMolecules_8cpp__incl.pdf Graphic file (type pdf)
 
-<use CustomMolecules_8cpp__incl.pdf>) [69
+<use CustomMolecules_8cpp__incl.pdf>) [71
 
 
  <./CustomMolecules_8cpp__incl.pdf>]
@@ -1828,90 +1846,90 @@ File: CustomMolecules_8cpp__incl.pdf Graphic file (type pdf)
 
 
 (./CustomMolecules_8h.tex
-<CustomMolecules_8h__incl.pdf, id=2891, 395.4775pt x 146.5475pt>
+<CustomMolecules_8h__incl.pdf, id=2946, 395.4775pt x 146.5475pt>
 File: CustomMolecules_8h__incl.pdf Graphic file (type pdf)
 
 <use CustomMolecules_8h__incl.pdf>
-<CustomMolecules_8h__dep__incl.pdf, id=2892, 475.7775pt x 379.4175pt>
+<CustomMolecules_8h__dep__incl.pdf, id=2947, 475.7775pt x 379.4175pt>
 File: CustomMolecules_8h__dep__incl.pdf Graphic file (type pdf)
 
-<use CustomMolecules_8h__dep__incl.pdf>) [70
+<use CustomMolecules_8h__dep__incl.pdf>) [72
 
 
  <./CustomMolecules_8h__incl.pdf> <./CustomMolecules_8h__dep__incl.pdf>]
 \openout2 = `DerivGraph_8cpp.aux'.
 
  (./DerivGraph_8cpp.tex
-<DerivGraph_8cpp__incl.pdf, id=2916, 1106.1325pt x 379.4175pt>
+<DerivGraph_8cpp__incl.pdf, id=2971, 1106.1325pt x 379.4175pt>
 File: DerivGraph_8cpp__incl.pdf Graphic file (type pdf)
 
-<use DerivGraph_8cpp__incl.pdf>) [71
+<use DerivGraph_8cpp__incl.pdf>) [73
 
 
  <./DerivGraph_8cpp__incl.pdf>]
 \openout2 = `DerivGraph_8h.aux'.
 
 
-(./DerivGraph_8h.tex <DerivGraph_8h__incl.pdf, id=2927, 949.5475pt x 321.2pt>
+(./DerivGraph_8h.tex <DerivGraph_8h__incl.pdf, id=2982, 949.5475pt x 321.2pt>
 File: DerivGraph_8h__incl.pdf Graphic file (type pdf)
 
 <use DerivGraph_8h__incl.pdf>
-<DerivGraph_8h__dep__incl.pdf, id=2928, 214.8025pt x 204.765pt>
+<DerivGraph_8h__dep__incl.pdf, id=2983, 214.8025pt x 204.765pt>
 File: DerivGraph_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use DerivGraph_8h__dep__incl.pdf>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [72
+ [74
 
 
- <./DerivGraph_8h__incl.pdf> <./DerivGraph_8h__dep__incl.pdf>]) [73]
+ <./DerivGraph_8h__incl.pdf> <./DerivGraph_8h__dep__incl.pdf>]) [75]
 \openout2 = `Experiment_8cpp.aux'.
 
 
 (./Experiment_8cpp.tex
-<Experiment_8cpp__incl.pdf, id=2951, 1286.8075pt x 495.8525pt>
+<Experiment_8cpp__incl.pdf, id=3007, 1286.8075pt x 495.8525pt>
 File: Experiment_8cpp__incl.pdf Graphic file (type pdf)
 
-<use Experiment_8cpp__incl.pdf>) [74
+<use Experiment_8cpp__incl.pdf>) [76
 
 
  <./Experiment_8cpp__incl.pdf>]
 \openout2 = `Experiment_8h.aux'.
 
 
-(./Experiment_8h.tex <Experiment_8h__incl.pdf, id=2962, 1019.81pt x 437.635pt>
+(./Experiment_8h.tex <Experiment_8h__incl.pdf, id=3018, 1019.81pt x 437.635pt>
 File: Experiment_8h__incl.pdf Graphic file (type pdf)
 
 <use Experiment_8h__incl.pdf>
-<Experiment_8h__dep__incl.pdf, id=2963, 182.6825pt x 88.33pt>
+<Experiment_8h__dep__incl.pdf, id=3019, 182.6825pt x 88.33pt>
 File: Experiment_8h__dep__incl.pdf Graphic file (type pdf)
 
-<use Experiment_8h__dep__incl.pdf>) [75
+<use Experiment_8h__dep__incl.pdf>) [77
 
 
  <./Experiment_8h__incl.pdf> <./Experiment_8h__dep__incl.pdf>]
 \openout2 = `ExternTrace_8h.aux'.
 
  (./ExternTrace_8h.tex
-<ExternTrace_8h__incl.pdf, id=2983, 341.275pt x 146.5475pt>
+<ExternTrace_8h__incl.pdf, id=3038, 341.275pt x 146.5475pt>
 File: ExternTrace_8h__incl.pdf Graphic file (type pdf)
 
 <use ExternTrace_8h__incl.pdf>
-<ExternTrace_8h__dep__incl.pdf, id=2984, 807.015pt x 88.33pt>
+<ExternTrace_8h__dep__incl.pdf, id=3039, 807.015pt x 88.33pt>
 File: ExternTrace_8h__dep__incl.pdf Graphic file (type pdf)
 
-<use ExternTrace_8h__dep__incl.pdf>) [76
+<use ExternTrace_8h__dep__incl.pdf>) [78
 
 
  <./ExternTrace_8h__incl.pdf> <./ExternTrace_8h__dep__incl.pdf>]
 \openout2 = `Interaction_8cpp.aux'.
 
  (./Interaction_8cpp.tex
-<Interaction_8cpp__incl.pdf, id=3005, 607.26875pt x 262.9825pt>
+<Interaction_8cpp__incl.pdf, id=3060, 607.26875pt x 262.9825pt>
 File: Interaction_8cpp__incl.pdf Graphic file (type pdf)
 
-<use Interaction_8cpp__incl.pdf>) [77
+<use Interaction_8cpp__incl.pdf>) [79
 
 
  <./Interaction_8cpp__incl.pdf>]
@@ -1919,90 +1937,92 @@ File: Interaction_8cpp__incl.pdf Graphic file (type pdf)
 
 
 (./Interaction_8h.tex
-<Interaction_8h__incl.pdf, id=3016, 434.62375pt x 204.765pt>
+<Interaction_8h__incl.pdf, id=3071, 434.62375pt x 204.765pt>
 File: Interaction_8h__incl.pdf Graphic file (type pdf)
 
 <use Interaction_8h__incl.pdf>
-<Interaction_8h__dep__incl.pdf, id=3017, 390.45876pt x 321.2pt>
+<Interaction_8h__dep__incl.pdf, id=3072, 390.45876pt x 321.2pt>
 File: Interaction_8h__dep__incl.pdf Graphic file (type pdf)
 
-<use Interaction_8h__dep__incl.pdf>) [78
+<use Interaction_8h__dep__incl.pdf>) [80
 
 
  <./Interaction_8h__incl.pdf> <./Interaction_8h__dep__incl.pdf>]
 \openout2 = `Main_8cpp.aux'.
 
  (./Main_8cpp.tex
-<Main_8cpp__incl.pdf, id=3036, 1322.9425pt x 495.8525pt>
+<Main_8cpp__incl.pdf, id=3091, 1322.9425pt x 495.8525pt>
 File: Main_8cpp__incl.pdf Graphic file (type pdf)
 
 <use Main_8cpp__incl.pdf>
-<Main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph.pdf, id=3040, 552.0625pt x 
-173.64874pt>
+<Main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph.pdf, id=3095, 851.18pt x 26
+9.005pt>
 File: Main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph.pdf Graphic file (type
  pdf)
- <use Main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph.pdf>)
-[79
+ <use Main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph.pdf>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [81
 
 
- <./Main_8cpp__incl.pdf> <./Main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph.
-pdf>] [80]
+ <./Main_8cpp__incl.pdf>]) [82 <./Main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_c
+graph.pdf>]
 \openout2 = `Molecule_8cpp.aux'.
 
  (./Molecule_8cpp.tex
-<Molecule_8cpp__incl.pdf, id=3065, 571.13374pt x 204.765pt>
+<Molecule_8cpp__incl.pdf, id=3121, 571.13374pt x 204.765pt>
 File: Molecule_8cpp__incl.pdf Graphic file (type pdf)
 
-<use Molecule_8cpp__incl.pdf>) [81
+<use Molecule_8cpp__incl.pdf>) [83
 
 
  <./Molecule_8cpp__incl.pdf>]
 \openout2 = `Molecule_8h.aux'.
 
 
-(./Molecule_8h.tex <Molecule_8h__incl.pdf, id=3077, 395.4775pt x 88.33pt>
+(./Molecule_8h.tex <Molecule_8h__incl.pdf, id=3132, 395.4775pt x 88.33pt>
 File: Molecule_8h__incl.pdf Graphic file (type pdf)
 
 <use Molecule_8h__incl.pdf>
-<Molecule_8h__dep__incl.pdf, id=3078, 488.82625pt x 437.635pt>
+<Molecule_8h__dep__incl.pdf, id=3133, 488.82625pt x 437.635pt>
 File: Molecule_8h__dep__incl.pdf Graphic file (type pdf)
 
-<use Molecule_8h__dep__incl.pdf>) [82
+<use Molecule_8h__dep__incl.pdf>) [84
 
 
  <./Molecule_8h__incl.pdf> <./Molecule_8h__dep__incl.pdf>]
 \openout2 = `MoleculeType_8h.aux'.
 
- (./MoleculeType_8h.tex) [83
+ (./MoleculeType_8h.tex) [85
 
 
 ]
 \openout2 = `Trace_8cpp.aux'.
 
  (./Trace_8cpp.tex
-<Trace_8cpp__incl.pdf, id=3103, 341.275pt x 146.5475pt>
+<Trace_8cpp__incl.pdf, id=3158, 341.275pt x 146.5475pt>
 File: Trace_8cpp__incl.pdf Graphic file (type pdf)
 
-<use Trace_8cpp__incl.pdf>) [84
+<use Trace_8cpp__incl.pdf>) [86
 
 
  <./Trace_8cpp__incl.pdf>]
 \openout2 = `Trace_8h.aux'.
 
  (./Trace_8h.tex
-<Trace_8h__incl.pdf, id=3114, 341.275pt x 88.33pt>
+<Trace_8h__incl.pdf, id=3169, 341.275pt x 88.33pt>
 File: Trace_8h__incl.pdf Graphic file (type pdf)
  <use Trace_8h__incl.pdf>
-<Trace_8h__dep__incl.pdf, id=3115, 807.015pt x 146.5475pt>
+<Trace_8h__dep__incl.pdf, id=3170, 807.015pt x 146.5475pt>
 File: Trace_8h__dep__incl.pdf Graphic file (type pdf)
 
-<use Trace_8h__dep__incl.pdf>) [85
+<use Trace_8h__dep__incl.pdf>) [87
 
 
- <./Trace_8h__incl.pdf> <./Trace_8h__dep__incl.pdf>] (./refman.ind [86
+ <./Trace_8h__incl.pdf> <./Trace_8h__dep__incl.pdf>] (./refman.ind [88
 
 
-] [87] [88] [89] [90
+] [89] [90] [91] [92
 
 ]) (./refman.aux
 (./structcmp__str.aux) (./classComplex.aux) (./classDegradation.aux)
@@ -2020,22 +2040,22 @@ File: Trace_8h__dep__incl.pdf Graphic file (type pdf)
 (./Main_8cpp.aux) (./Molecule_8cpp.aux) (./Molecule_8h.aux)
 (./MoleculeType_8h.aux) (./Trace_8cpp.aux) (./Trace_8h.aux)) ) 
 Here is how much of TeX's memory you used:
- 8145 strings out of 256216
- 140361 string characters out of 1917072
- 166791 words of memory out of 1500000
- 10351 multiletter control sequences out of 10000+200000
+ 8183 strings out of 256216
+ 141868 string characters out of 1917072
+ 167128 words of memory out of 1500000
+ 10372 multiletter control sequences out of 10000+200000
  39721 words of font info for 44 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
- 38i,12n,58p,1459b,454s stack positions out of 5000i,500n,6000p,200000b,15000s
+ 38i,12n,58p,1053b,456s stack positions out of 5000i,500n,6000p,200000b,15000s
 {/usr/share/texmf
 /fonts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/bluesky/cm/cmmi10.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/t
 ype1/urw/courier/ucrb8a.pfb></usr/share/texmf/fonts/type1/urw/courier/ucrr8a.pf
 b></usr/share/texmf/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf/fonts/ty
 pe1/urw/times/utmbi8a.pfb></usr/share/texmf/fonts/type1/urw/times/utmr8a.pfb>
-Output written on refman.pdf (100 pages, 1006175 bytes).
+Output written on refman.pdf (102 pages, 1028217 bytes).
 PDF statistics:
- 3598 PDF objects out of 4296 (max. 8388607)
- 565 named destinations out of 1000 (max. 131072)
- 2534 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3668 PDF objects out of 4296 (max. 8388607)
+ 580 named destinations out of 1000 (max. 131072)
+ 2600 words of extra memory for PDF output out of 10000 (max. 10000000)
 

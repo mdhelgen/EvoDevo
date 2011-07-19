@@ -11,234 +11,241 @@
 \contentsline {subsubsection}{\numberline {4.1.2.1}Cell}{8}{subsubsection.4.1.2.1}
 \contentsline {subsubsection}{\numberline {4.1.2.2}$\sim $Cell}{8}{subsubsection.4.1.2.2}
 \contentsline {subsection}{\numberline {4.1.3}Member Function Documentation}{8}{subsection.4.1.3}
-\contentsline {subsubsection}{\numberline {4.1.3.1}getScore}{8}{subsubsection.4.1.3.1}
-\contentsline {subsubsection}{\numberline {4.1.3.2}mutate}{9}{subsubsection.4.1.3.2}
-\contentsline {subsubsection}{\numberline {4.1.3.3}outputDataPlot}{9}{subsubsection.4.1.3.3}
-\contentsline {subsubsection}{\numberline {4.1.3.4}outputDotImage}{9}{subsubsection.4.1.3.4}
-\contentsline {section}{\numberline {4.2}cmp\_\discretionary {-}{}{}str Struct Reference}{10}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Member Function Documentation}{10}{subsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.1.1}operator()}{10}{subsubsection.4.2.1.1}
-\contentsline {section}{\numberline {4.3}Complex Class Reference}{11}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Constructor \& Destructor Documentation}{12}{subsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.1.1}Complex}{12}{subsubsection.4.3.1.1}
-\contentsline {subsubsection}{\numberline {4.3.1.2}$\sim $Complex}{12}{subsubsection.4.3.1.2}
-\contentsline {subsection}{\numberline {4.3.2}Member Function Documentation}{12}{subsection.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.2.1}getComponentId}{12}{subsubsection.4.3.2.1}
-\contentsline {section}{\numberline {4.4}Degradation Class Reference}{13}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Constructor \& Destructor Documentation}{14}{subsection.4.4.1}
-\contentsline {subsubsection}{\numberline {4.4.1.1}Degradation}{14}{subsubsection.4.4.1.1}
-\contentsline {subsubsection}{\numberline {4.4.1.2}$\sim $Degradation}{14}{subsubsection.4.4.1.2}
-\contentsline {subsection}{\numberline {4.4.2}Member Function Documentation}{14}{subsection.4.4.2}
-\contentsline {subsubsection}{\numberline {4.4.2.1}getEffect}{14}{subsubsection.4.4.2.1}
-\contentsline {section}{\numberline {4.5}DerivGraph Class Reference}{15}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Constructor \& Destructor Documentation}{15}{subsection.4.5.1}
-\contentsline {subsubsection}{\numberline {4.5.1.1}DerivGraph}{15}{subsubsection.4.5.1.1}
-\contentsline {subsubsection}{\numberline {4.5.1.2}$\sim $DerivGraph}{16}{subsubsection.4.5.1.2}
-\contentsline {subsection}{\numberline {4.5.2}Member Function Documentation}{16}{subsection.4.5.2}
-\contentsline {subsubsection}{\numberline {4.5.2.1}degradationRateChange}{16}{subsubsection.4.5.2.1}
-\contentsline {subsubsection}{\numberline {4.5.2.2}forwardRateChange}{16}{subsubsection.4.5.2.2}
-\contentsline {subsubsection}{\numberline {4.5.2.3}getArcMap}{17}{subsubsection.4.5.2.3}
-\contentsline {subsubsection}{\numberline {4.5.2.4}getBestMolecule}{17}{subsubsection.4.5.2.4}
-\contentsline {subsubsection}{\numberline {4.5.2.5}getListDigraph}{17}{subsubsection.4.5.2.5}
-\contentsline {subsubsection}{\numberline {4.5.2.6}getNodeMap}{17}{subsubsection.4.5.2.6}
-\contentsline {subsubsection}{\numberline {4.5.2.7}histoneMod}{17}{subsubsection.4.5.2.7}
-\contentsline {subsubsection}{\numberline {4.5.2.8}newBasic}{17}{subsubsection.4.5.2.8}
-\contentsline {subsubsection}{\numberline {4.5.2.9}newComplex}{18}{subsubsection.4.5.2.9}
-\contentsline {subsubsection}{\numberline {4.5.2.10}newPromoter}{18}{subsubsection.4.5.2.10}
-\contentsline {subsubsection}{\numberline {4.5.2.11}newPTM}{18}{subsubsection.4.5.2.11}
-\contentsline {subsubsection}{\numberline {4.5.2.12}outputDataPlot}{19}{subsubsection.4.5.2.12}
-\contentsline {subsubsection}{\numberline {4.5.2.13}outputDotImage}{19}{subsubsection.4.5.2.13}
-\contentsline {subsubsection}{\numberline {4.5.2.14}reverseRateChange}{19}{subsubsection.4.5.2.14}
-\contentsline {subsubsection}{\numberline {4.5.2.15}rungeKuttaEvaluate}{20}{subsubsection.4.5.2.15}
-\contentsline {subsubsection}{\numberline {4.5.2.16}setDefaultInitialConc}{20}{subsubsection.4.5.2.16}
-\contentsline {subsubsection}{\numberline {4.5.2.17}setKineticRateLimits}{20}{subsubsection.4.5.2.17}
-\contentsline {subsubsection}{\numberline {4.5.2.18}setLimits}{20}{subsubsection.4.5.2.18}
-\contentsline {subsubsection}{\numberline {4.5.2.19}setRungeKuttaEval}{21}{subsubsection.4.5.2.19}
-\contentsline {subsubsection}{\numberline {4.5.2.20}test}{21}{subsubsection.4.5.2.20}
-\contentsline {subsection}{\numberline {4.5.3}Member Data Documentation}{21}{subsection.4.5.3}
-\contentsline {subsubsection}{\numberline {4.5.3.1}r}{21}{subsubsection.4.5.3.1}
-\contentsline {section}{\numberline {4.6}DNA Class Reference}{22}{section.4.6}
-\contentsline {subsection}{\numberline {4.6.1}Constructor \& Destructor Documentation}{22}{subsection.4.6.1}
-\contentsline {subsubsection}{\numberline {4.6.1.1}DNA}{22}{subsubsection.4.6.1.1}
-\contentsline {subsubsection}{\numberline {4.6.1.2}$\sim $DNA}{23}{subsubsection.4.6.1.2}
-\contentsline {subsection}{\numberline {4.6.2}Member Function Documentation}{23}{subsection.4.6.2}
-\contentsline {subsubsection}{\numberline {4.6.2.1}getValue}{23}{subsubsection.4.6.2.1}
-\contentsline {subsubsection}{\numberline {4.6.2.2}rkApprox}{23}{subsubsection.4.6.2.2}
-\contentsline {subsubsection}{\numberline {4.6.2.3}setHistoneModValue}{24}{subsubsection.4.6.2.3}
-\contentsline {subsection}{\numberline {4.6.3}Member Data Documentation}{24}{subsection.4.6.3}
-\contentsline {subsubsection}{\numberline {4.6.3.1}hill}{24}{subsubsection.4.6.3.1}
-\contentsline {subsubsection}{\numberline {4.6.3.2}promoterId}{24}{subsubsection.4.6.3.2}
-\contentsline {section}{\numberline {4.7}Experiment Class Reference}{25}{section.4.7}
-\contentsline {subsection}{\numberline {4.7.1}Constructor \& Destructor Documentation}{25}{subsection.4.7.1}
-\contentsline {subsubsection}{\numberline {4.7.1.1}Experiment}{25}{subsubsection.4.7.1.1}
-\contentsline {subsubsection}{\numberline {4.7.1.2}$\sim $Experiment}{25}{subsubsection.4.7.1.2}
-\contentsline {subsection}{\numberline {4.7.2}Member Function Documentation}{26}{subsection.4.7.2}
-\contentsline {subsubsection}{\numberline {4.7.2.1}setOutputOptions}{26}{subsubsection.4.7.2.1}
-\contentsline {subsubsection}{\numberline {4.7.2.2}start}{26}{subsubsection.4.7.2.2}
-\contentsline {section}{\numberline {4.8}ForwardComplexation Class Reference}{27}{section.4.8}
-\contentsline {subsection}{\numberline {4.8.1}Constructor \& Destructor Documentation}{27}{subsection.4.8.1}
-\contentsline {subsubsection}{\numberline {4.8.1.1}ForwardComplexation}{27}{subsubsection.4.8.1.1}
-\contentsline {subsubsection}{\numberline {4.8.1.2}$\sim $ForwardComplexation}{28}{subsubsection.4.8.1.2}
-\contentsline {subsection}{\numberline {4.8.2}Member Function Documentation}{28}{subsection.4.8.2}
-\contentsline {subsubsection}{\numberline {4.8.2.1}getEffect}{28}{subsubsection.4.8.2.1}
-\contentsline {subsection}{\numberline {4.8.3}Member Data Documentation}{28}{subsection.4.8.3}
-\contentsline {subsubsection}{\numberline {4.8.3.1}firstNodeID}{28}{subsubsection.4.8.3.1}
-\contentsline {subsubsection}{\numberline {4.8.3.2}secondNodeID}{28}{subsubsection.4.8.3.2}
-\contentsline {section}{\numberline {4.9}ForwardPTM Class Reference}{29}{section.4.9}
-\contentsline {subsection}{\numberline {4.9.1}Constructor \& Destructor Documentation}{29}{subsection.4.9.1}
-\contentsline {subsubsection}{\numberline {4.9.1.1}ForwardPTM}{29}{subsubsection.4.9.1.1}
-\contentsline {subsubsection}{\numberline {4.9.1.2}$\sim $ForwardPTM}{29}{subsubsection.4.9.1.2}
-\contentsline {section}{\numberline {4.10}Interaction Class Reference}{31}{section.4.10}
-\contentsline {subsection}{\numberline {4.10.1}Constructor \& Destructor Documentation}{32}{subsection.4.10.1}
-\contentsline {subsubsection}{\numberline {4.10.1.1}Interaction}{32}{subsubsection.4.10.1.1}
-\contentsline {subsubsection}{\numberline {4.10.1.2}$\sim $Interaction}{32}{subsubsection.4.10.1.2}
-\contentsline {subsection}{\numberline {4.10.2}Member Function Documentation}{32}{subsection.4.10.2}
-\contentsline {subsubsection}{\numberline {4.10.2.1}getEffect}{32}{subsubsection.4.10.2.1}
-\contentsline {subsubsection}{\numberline {4.10.2.2}getName}{33}{subsubsection.4.10.2.2}
-\contentsline {subsubsection}{\numberline {4.10.2.3}getRate}{33}{subsubsection.4.10.2.3}
-\contentsline {subsubsection}{\numberline {4.10.2.4}setRate}{33}{subsubsection.4.10.2.4}
-\contentsline {subsection}{\numberline {4.10.3}Member Data Documentation}{33}{subsection.4.10.3}
-\contentsline {subsubsection}{\numberline {4.10.3.1}arcID}{33}{subsubsection.4.10.3.1}
-\contentsline {subsubsection}{\numberline {4.10.3.2}name}{33}{subsubsection.4.10.3.2}
-\contentsline {subsubsection}{\numberline {4.10.3.3}rate}{33}{subsubsection.4.10.3.3}
-\contentsline {section}{\numberline {4.11}Molecule Class Reference}{34}{section.4.11}
-\contentsline {subsection}{\numberline {4.11.1}Constructor \& Destructor Documentation}{35}{subsection.4.11.1}
-\contentsline {subsubsection}{\numberline {4.11.1.1}Molecule}{35}{subsubsection.4.11.1.1}
-\contentsline {subsubsection}{\numberline {4.11.1.2}$\sim $Molecule}{35}{subsubsection.4.11.1.2}
-\contentsline {subsection}{\numberline {4.11.2}Member Function Documentation}{35}{subsection.4.11.2}
-\contentsline {subsubsection}{\numberline {4.11.2.1}getID}{35}{subsubsection.4.11.2.1}
-\contentsline {subsubsection}{\numberline {4.11.2.2}getLongName}{35}{subsubsection.4.11.2.2}
-\contentsline {subsubsection}{\numberline {4.11.2.3}getPTMCount}{36}{subsubsection.4.11.2.3}
-\contentsline {subsubsection}{\numberline {4.11.2.4}getPTMCount}{36}{subsubsection.4.11.2.4}
-\contentsline {subsubsection}{\numberline {4.11.2.5}getrkVal}{36}{subsubsection.4.11.2.5}
-\contentsline {subsubsection}{\numberline {4.11.2.6}getRungeKuttaSolution}{36}{subsubsection.4.11.2.6}
-\contentsline {subsubsection}{\numberline {4.11.2.7}getScore}{36}{subsubsection.4.11.2.7}
-\contentsline {subsubsection}{\numberline {4.11.2.8}getShortName}{36}{subsubsection.4.11.2.8}
-\contentsline {subsubsection}{\numberline {4.11.2.9}getValue}{36}{subsubsection.4.11.2.9}
-\contentsline {subsubsection}{\numberline {4.11.2.10}nextPoint}{37}{subsubsection.4.11.2.10}
-\contentsline {subsubsection}{\numberline {4.11.2.11}outputRK}{37}{subsubsection.4.11.2.11}
-\contentsline {subsubsection}{\numberline {4.11.2.12}reset}{37}{subsubsection.4.11.2.12}
-\contentsline {subsubsection}{\numberline {4.11.2.13}rkApprox}{37}{subsubsection.4.11.2.13}
-\contentsline {subsubsection}{\numberline {4.11.2.14}setID}{38}{subsubsection.4.11.2.14}
-\contentsline {subsubsection}{\numberline {4.11.2.15}setValue}{38}{subsubsection.4.11.2.15}
-\contentsline {subsubsection}{\numberline {4.11.2.16}updateRkVal}{38}{subsubsection.4.11.2.16}
-\contentsline {subsection}{\numberline {4.11.3}Member Data Documentation}{39}{subsection.4.11.3}
-\contentsline {subsubsection}{\numberline {4.11.3.1}buf}{39}{subsubsection.4.11.3.1}
-\contentsline {subsubsection}{\numberline {4.11.3.2}currentDir}{39}{subsubsection.4.11.3.2}
-\contentsline {subsubsection}{\numberline {4.11.3.3}longName}{39}{subsubsection.4.11.3.3}
-\contentsline {subsubsection}{\numberline {4.11.3.4}moleculeID}{39}{subsubsection.4.11.3.4}
-\contentsline {subsubsection}{\numberline {4.11.3.5}nodeID}{39}{subsubsection.4.11.3.5}
-\contentsline {subsubsection}{\numberline {4.11.3.6}numChanges}{39}{subsubsection.4.11.3.6}
-\contentsline {subsubsection}{\numberline {4.11.3.7}prevDir}{39}{subsubsection.4.11.3.7}
-\contentsline {subsubsection}{\numberline {4.11.3.8}PTMArray}{39}{subsubsection.4.11.3.8}
-\contentsline {subsubsection}{\numberline {4.11.3.9}r}{39}{subsubsection.4.11.3.9}
-\contentsline {subsubsection}{\numberline {4.11.3.10}rungeKuttaSolution}{39}{subsubsection.4.11.3.10}
-\contentsline {subsubsection}{\numberline {4.11.3.11}shortName}{39}{subsubsection.4.11.3.11}
-\contentsline {subsubsection}{\numberline {4.11.3.12}wasPTM}{39}{subsubsection.4.11.3.12}
-\contentsline {section}{\numberline {4.12}MoleculeType Class Reference}{40}{section.4.12}
-\contentsline {subsection}{\numberline {4.12.1}Detailed Description}{40}{subsection.4.12.1}
-\contentsline {subsection}{\numberline {4.12.2}Constructor \& Destructor Documentation}{40}{subsection.4.12.2}
-\contentsline {subsubsection}{\numberline {4.12.2.1}MoleculeType}{40}{subsubsection.4.12.2.1}
-\contentsline {subsubsection}{\numberline {4.12.2.2}$\sim $MoleculeType}{40}{subsubsection.4.12.2.2}
-\contentsline {section}{\numberline {4.13}mRNA Class Reference}{41}{section.4.13}
-\contentsline {subsection}{\numberline {4.13.1}Constructor \& Destructor Documentation}{41}{subsection.4.13.1}
-\contentsline {subsubsection}{\numberline {4.13.1.1}mRNA}{41}{subsubsection.4.13.1.1}
-\contentsline {subsubsection}{\numberline {4.13.1.2}$\sim $mRNA}{41}{subsubsection.4.13.1.2}
-\contentsline {section}{\numberline {4.14}NullNode Class Reference}{43}{section.4.14}
-\contentsline {subsection}{\numberline {4.14.1}Constructor \& Destructor Documentation}{43}{subsection.4.14.1}
-\contentsline {subsubsection}{\numberline {4.14.1.1}NullNode}{43}{subsubsection.4.14.1.1}
-\contentsline {subsubsection}{\numberline {4.14.1.2}$\sim $NullNode}{44}{subsubsection.4.14.1.2}
-\contentsline {subsection}{\numberline {4.14.2}Member Function Documentation}{44}{subsection.4.14.2}
-\contentsline {subsubsection}{\numberline {4.14.2.1}getValue}{44}{subsubsection.4.14.2.1}
-\contentsline {section}{\numberline {4.15}PromoterBind Class Reference}{45}{section.4.15}
-\contentsline {subsection}{\numberline {4.15.1}Constructor \& Destructor Documentation}{46}{subsection.4.15.1}
-\contentsline {subsubsection}{\numberline {4.15.1.1}PromoterBind}{46}{subsubsection.4.15.1.1}
-\contentsline {subsubsection}{\numberline {4.15.1.2}$\sim $PromoterBind}{46}{subsubsection.4.15.1.2}
-\contentsline {subsection}{\numberline {4.15.2}Member Function Documentation}{46}{subsection.4.15.2}
-\contentsline {subsubsection}{\numberline {4.15.2.1}getEffect}{46}{subsubsection.4.15.2.1}
-\contentsline {subsection}{\numberline {4.15.3}Member Data Documentation}{46}{subsection.4.15.3}
-\contentsline {subsubsection}{\numberline {4.15.3.1}kf}{46}{subsubsection.4.15.3.1}
-\contentsline {subsubsection}{\numberline {4.15.3.2}kr}{46}{subsubsection.4.15.3.2}
-\contentsline {section}{\numberline {4.16}Protein Class Reference}{48}{section.4.16}
-\contentsline {subsection}{\numberline {4.16.1}Constructor \& Destructor Documentation}{49}{subsection.4.16.1}
-\contentsline {subsubsection}{\numberline {4.16.1.1}Protein}{49}{subsubsection.4.16.1.1}
-\contentsline {subsubsection}{\numberline {4.16.1.2}$\sim $Protein}{49}{subsubsection.4.16.1.2}
-\contentsline {section}{\numberline {4.17}PTMProtein Class Reference}{50}{section.4.17}
-\contentsline {subsection}{\numberline {4.17.1}Constructor \& Destructor Documentation}{50}{subsection.4.17.1}
-\contentsline {subsubsection}{\numberline {4.17.1.1}PTMProtein}{50}{subsubsection.4.17.1.1}
-\contentsline {subsubsection}{\numberline {4.17.1.2}PTMProtein}{51}{subsubsection.4.17.1.2}
-\contentsline {subsubsection}{\numberline {4.17.1.3}$\sim $PTMProtein}{51}{subsubsection.4.17.1.3}
-\contentsline {subsection}{\numberline {4.17.2}Member Function Documentation}{51}{subsection.4.17.2}
-\contentsline {subsubsection}{\numberline {4.17.2.1}addRandPTM}{51}{subsubsection.4.17.2.1}
-\contentsline {subsubsection}{\numberline {4.17.2.2}getLongName}{51}{subsubsection.4.17.2.2}
-\contentsline {subsubsection}{\numberline {4.17.2.3}setPTMCount}{51}{subsubsection.4.17.2.3}
-\contentsline {section}{\numberline {4.18}ReverseComplexation Class Reference}{52}{section.4.18}
-\contentsline {subsection}{\numberline {4.18.1}Constructor \& Destructor Documentation}{52}{subsection.4.18.1}
-\contentsline {subsubsection}{\numberline {4.18.1.1}ReverseComplexation}{52}{subsubsection.4.18.1.1}
-\contentsline {subsubsection}{\numberline {4.18.1.2}$\sim $ReverseComplexation}{53}{subsubsection.4.18.1.2}
-\contentsline {subsection}{\numberline {4.18.2}Member Function Documentation}{53}{subsection.4.18.2}
-\contentsline {subsubsection}{\numberline {4.18.2.1}getEffect}{53}{subsubsection.4.18.2.1}
-\contentsline {subsection}{\numberline {4.18.3}Member Data Documentation}{53}{subsection.4.18.3}
-\contentsline {subsubsection}{\numberline {4.18.3.1}firstNodeID}{53}{subsubsection.4.18.3.1}
-\contentsline {subsubsection}{\numberline {4.18.3.2}secondNodeID}{53}{subsubsection.4.18.3.2}
-\contentsline {section}{\numberline {4.19}ReversePTM Class Reference}{54}{section.4.19}
-\contentsline {subsection}{\numberline {4.19.1}Constructor \& Destructor Documentation}{54}{subsection.4.19.1}
-\contentsline {subsubsection}{\numberline {4.19.1.1}ReversePTM}{54}{subsubsection.4.19.1.1}
-\contentsline {subsubsection}{\numberline {4.19.1.2}$\sim $ReversePTM}{54}{subsubsection.4.19.1.2}
-\contentsline {section}{\numberline {4.20}TestInt Class Reference}{56}{section.4.20}
-\contentsline {subsection}{\numberline {4.20.1}Constructor \& Destructor Documentation}{56}{subsection.4.20.1}
-\contentsline {subsubsection}{\numberline {4.20.1.1}TestInt}{56}{subsubsection.4.20.1.1}
-\contentsline {subsubsection}{\numberline {4.20.1.2}$\sim $TestInt}{57}{subsubsection.4.20.1.2}
-\contentsline {subsection}{\numberline {4.20.2}Member Function Documentation}{57}{subsection.4.20.2}
-\contentsline {subsubsection}{\numberline {4.20.2.1}getEffect}{57}{subsubsection.4.20.2.1}
-\contentsline {section}{\numberline {4.21}Trace Class Reference}{58}{section.4.21}
-\contentsline {subsection}{\numberline {4.21.1}Constructor \& Destructor Documentation}{58}{subsection.4.21.1}
-\contentsline {subsubsection}{\numberline {4.21.1.1}Trace}{58}{subsubsection.4.21.1.1}
-\contentsline {subsubsection}{\numberline {4.21.1.2}Trace}{58}{subsubsection.4.21.1.2}
-\contentsline {subsubsection}{\numberline {4.21.1.3}$\sim $Trace}{58}{subsubsection.4.21.1.3}
-\contentsline {subsection}{\numberline {4.21.2}Member Function Documentation}{58}{subsection.4.21.2}
-\contentsline {subsubsection}{\numberline {4.21.2.1}addTraceType}{58}{subsubsection.4.21.2.1}
-\contentsline {subsubsection}{\numberline {4.21.2.2}disableTraceType}{59}{subsubsection.4.21.2.2}
-\contentsline {subsubsection}{\numberline {4.21.2.3}enableTraceType}{59}{subsubsection.4.21.2.3}
-\contentsline {subsubsection}{\numberline {4.21.2.4}getTraceFile}{59}{subsubsection.4.21.2.4}
-\contentsline {subsubsection}{\numberline {4.21.2.5}setTraceFile}{59}{subsubsection.4.21.2.5}
-\contentsline {subsubsection}{\numberline {4.21.2.6}trace}{59}{subsubsection.4.21.2.6}
-\contentsline {subsection}{\numberline {4.21.3}Member Data Documentation}{60}{subsection.4.21.3}
-\contentsline {subsubsection}{\numberline {4.21.3.1}traceFile}{60}{subsubsection.4.21.3.1}
-\contentsline {subsubsection}{\numberline {4.21.3.2}traceTypes}{60}{subsubsection.4.21.3.2}
-\contentsline {section}{\numberline {4.22}Transcription Class Reference}{61}{section.4.22}
-\contentsline {subsection}{\numberline {4.22.1}Constructor \& Destructor Documentation}{61}{subsection.4.22.1}
-\contentsline {subsubsection}{\numberline {4.22.1.1}Transcription}{61}{subsubsection.4.22.1.1}
-\contentsline {subsubsection}{\numberline {4.22.1.2}$\sim $Transcription}{62}{subsubsection.4.22.1.2}
-\contentsline {subsection}{\numberline {4.22.2}Member Function Documentation}{62}{subsection.4.22.2}
-\contentsline {subsubsection}{\numberline {4.22.2.1}getEffect}{62}{subsubsection.4.22.2.1}
-\contentsline {section}{\numberline {4.23}Translation Class Reference}{63}{section.4.23}
-\contentsline {subsection}{\numberline {4.23.1}Constructor \& Destructor Documentation}{63}{subsection.4.23.1}
-\contentsline {subsubsection}{\numberline {4.23.1.1}Translation}{63}{subsubsection.4.23.1.1}
-\contentsline {subsubsection}{\numberline {4.23.1.2}$\sim $Translation}{63}{subsubsection.4.23.1.2}
-\contentsline {chapter}{\numberline {5}File Documentation}{65}{chapter.5}
-\contentsline {section}{\numberline {5.1}Cell.cpp File Reference}{65}{section.5.1}
-\contentsline {section}{\numberline {5.2}Cell.h File Reference}{66}{section.5.2}
-\contentsline {section}{\numberline {5.3}CustomInteractions.cpp File Reference}{67}{section.5.3}
-\contentsline {section}{\numberline {5.4}CustomInteractions.h File Reference}{68}{section.5.4}
-\contentsline {section}{\numberline {5.5}CustomMolecules.cpp File Reference}{69}{section.5.5}
-\contentsline {section}{\numberline {5.6}CustomMolecules.h File Reference}{70}{section.5.6}
-\contentsline {section}{\numberline {5.7}DerivGraph.cpp File Reference}{71}{section.5.7}
-\contentsline {section}{\numberline {5.8}DerivGraph.h File Reference}{72}{section.5.8}
-\contentsline {section}{\numberline {5.9}Experiment.cpp File Reference}{74}{section.5.9}
-\contentsline {section}{\numberline {5.10}Experiment.h File Reference}{75}{section.5.10}
-\contentsline {section}{\numberline {5.11}ExternTrace.h File Reference}{76}{section.5.11}
-\contentsline {subsection}{\numberline {5.11.1}Variable Documentation}{76}{subsection.5.11.1}
-\contentsline {subsubsection}{\numberline {5.11.1.1}t}{76}{subsubsection.5.11.1.1}
-\contentsline {section}{\numberline {5.12}Interaction.cpp File Reference}{77}{section.5.12}
-\contentsline {section}{\numberline {5.13}Interaction.h File Reference}{78}{section.5.13}
-\contentsline {section}{\numberline {5.14}Main.cpp File Reference}{79}{section.5.14}
-\contentsline {subsection}{\numberline {5.14.1}Function Documentation}{79}{subsection.5.14.1}
-\contentsline {subsubsection}{\numberline {5.14.1.1}main}{79}{subsubsection.5.14.1.1}
-\contentsline {subsection}{\numberline {5.14.2}Variable Documentation}{80}{subsection.5.14.2}
-\contentsline {subsubsection}{\numberline {5.14.2.1}t}{80}{subsubsection.5.14.2.1}
-\contentsline {section}{\numberline {5.15}Molecule.cpp File Reference}{81}{section.5.15}
-\contentsline {section}{\numberline {5.16}Molecule.h File Reference}{82}{section.5.16}
-\contentsline {section}{\numberline {5.17}MoleculeType.h File Reference}{83}{section.5.17}
-\contentsline {section}{\numberline {5.18}Trace.cpp File Reference}{84}{section.5.18}
-\contentsline {section}{\numberline {5.19}Trace.h File Reference}{85}{section.5.19}
+\contentsline {subsubsection}{\numberline {4.1.3.1}getID}{8}{subsubsection.4.1.3.1}
+\contentsline {subsubsection}{\numberline {4.1.3.2}getScore}{8}{subsubsection.4.1.3.2}
+\contentsline {subsubsection}{\numberline {4.1.3.3}mutate}{9}{subsubsection.4.1.3.3}
+\contentsline {subsubsection}{\numberline {4.1.3.4}outputDataPlot}{9}{subsubsection.4.1.3.4}
+\contentsline {subsubsection}{\numberline {4.1.3.5}outputDotImage}{9}{subsubsection.4.1.3.5}
+\contentsline {subsubsection}{\numberline {4.1.3.6}rkTest}{9}{subsubsection.4.1.3.6}
+\contentsline {section}{\numberline {4.2}cmp\_\discretionary {-}{}{}str Struct Reference}{11}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Member Function Documentation}{11}{subsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.1.1}operator()}{11}{subsubsection.4.2.1.1}
+\contentsline {section}{\numberline {4.3}Complex Class Reference}{12}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Constructor \& Destructor Documentation}{13}{subsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.1.1}Complex}{13}{subsubsection.4.3.1.1}
+\contentsline {subsubsection}{\numberline {4.3.1.2}$\sim $Complex}{13}{subsubsection.4.3.1.2}
+\contentsline {subsection}{\numberline {4.3.2}Member Function Documentation}{13}{subsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.2.1}getComponentId}{13}{subsubsection.4.3.2.1}
+\contentsline {section}{\numberline {4.4}Degradation Class Reference}{14}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Constructor \& Destructor Documentation}{15}{subsection.4.4.1}
+\contentsline {subsubsection}{\numberline {4.4.1.1}Degradation}{15}{subsubsection.4.4.1.1}
+\contentsline {subsubsection}{\numberline {4.4.1.2}$\sim $Degradation}{15}{subsubsection.4.4.1.2}
+\contentsline {subsection}{\numberline {4.4.2}Member Function Documentation}{15}{subsection.4.4.2}
+\contentsline {subsubsection}{\numberline {4.4.2.1}getEffect}{15}{subsubsection.4.4.2.1}
+\contentsline {section}{\numberline {4.5}DerivGraph Class Reference}{16}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Constructor \& Destructor Documentation}{16}{subsection.4.5.1}
+\contentsline {subsubsection}{\numberline {4.5.1.1}DerivGraph}{16}{subsubsection.4.5.1.1}
+\contentsline {subsubsection}{\numberline {4.5.1.2}$\sim $DerivGraph}{17}{subsubsection.4.5.1.2}
+\contentsline {subsection}{\numberline {4.5.2}Member Function Documentation}{17}{subsection.4.5.2}
+\contentsline {subsubsection}{\numberline {4.5.2.1}degradationRateChange}{17}{subsubsection.4.5.2.1}
+\contentsline {subsubsection}{\numberline {4.5.2.2}forwardRateChange}{17}{subsubsection.4.5.2.2}
+\contentsline {subsubsection}{\numberline {4.5.2.3}getArcMap}{18}{subsubsection.4.5.2.3}
+\contentsline {subsubsection}{\numberline {4.5.2.4}getBestMolecule}{18}{subsubsection.4.5.2.4}
+\contentsline {subsubsection}{\numberline {4.5.2.5}getListDigraph}{18}{subsubsection.4.5.2.5}
+\contentsline {subsubsection}{\numberline {4.5.2.6}getNodeMap}{18}{subsubsection.4.5.2.6}
+\contentsline {subsubsection}{\numberline {4.5.2.7}histoneMod}{18}{subsubsection.4.5.2.7}
+\contentsline {subsubsection}{\numberline {4.5.2.8}newBasic}{18}{subsubsection.4.5.2.8}
+\contentsline {subsubsection}{\numberline {4.5.2.9}newComplex}{19}{subsubsection.4.5.2.9}
+\contentsline {subsubsection}{\numberline {4.5.2.10}newPromoter}{19}{subsubsection.4.5.2.10}
+\contentsline {subsubsection}{\numberline {4.5.2.11}newPTM}{19}{subsubsection.4.5.2.11}
+\contentsline {subsubsection}{\numberline {4.5.2.12}outputDataPlot}{20}{subsubsection.4.5.2.12}
+\contentsline {subsubsection}{\numberline {4.5.2.13}outputDotImage}{20}{subsubsection.4.5.2.13}
+\contentsline {subsubsection}{\numberline {4.5.2.14}reverseRateChange}{20}{subsubsection.4.5.2.14}
+\contentsline {subsubsection}{\numberline {4.5.2.15}rungeKuttaEvaluate}{21}{subsubsection.4.5.2.15}
+\contentsline {subsubsection}{\numberline {4.5.2.16}setDefaultInitialConc}{21}{subsubsection.4.5.2.16}
+\contentsline {subsubsection}{\numberline {4.5.2.17}setKineticRateLimits}{21}{subsubsection.4.5.2.17}
+\contentsline {subsubsection}{\numberline {4.5.2.18}setLimits}{21}{subsubsection.4.5.2.18}
+\contentsline {subsubsection}{\numberline {4.5.2.19}setRungeKuttaEval}{22}{subsubsection.4.5.2.19}
+\contentsline {subsubsection}{\numberline {4.5.2.20}test}{22}{subsubsection.4.5.2.20}
+\contentsline {subsection}{\numberline {4.5.3}Member Data Documentation}{22}{subsection.4.5.3}
+\contentsline {subsubsection}{\numberline {4.5.3.1}r}{22}{subsubsection.4.5.3.1}
+\contentsline {section}{\numberline {4.6}DNA Class Reference}{23}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Constructor \& Destructor Documentation}{23}{subsection.4.6.1}
+\contentsline {subsubsection}{\numberline {4.6.1.1}DNA}{23}{subsubsection.4.6.1.1}
+\contentsline {subsubsection}{\numberline {4.6.1.2}$\sim $DNA}{24}{subsubsection.4.6.1.2}
+\contentsline {subsection}{\numberline {4.6.2}Member Function Documentation}{24}{subsection.4.6.2}
+\contentsline {subsubsection}{\numberline {4.6.2.1}getValue}{24}{subsubsection.4.6.2.1}
+\contentsline {subsubsection}{\numberline {4.6.2.2}rkApprox}{24}{subsubsection.4.6.2.2}
+\contentsline {subsubsection}{\numberline {4.6.2.3}setHistoneModValue}{25}{subsubsection.4.6.2.3}
+\contentsline {subsection}{\numberline {4.6.3}Member Data Documentation}{25}{subsection.4.6.3}
+\contentsline {subsubsection}{\numberline {4.6.3.1}hill}{25}{subsubsection.4.6.3.1}
+\contentsline {subsubsection}{\numberline {4.6.3.2}promoterId}{25}{subsubsection.4.6.3.2}
+\contentsline {section}{\numberline {4.7}Experiment Class Reference}{26}{section.4.7}
+\contentsline {subsection}{\numberline {4.7.1}Constructor \& Destructor Documentation}{26}{subsection.4.7.1}
+\contentsline {subsubsection}{\numberline {4.7.1.1}Experiment}{26}{subsubsection.4.7.1.1}
+\contentsline {subsubsection}{\numberline {4.7.1.2}$\sim $Experiment}{26}{subsubsection.4.7.1.2}
+\contentsline {subsection}{\numberline {4.7.2}Member Function Documentation}{27}{subsection.4.7.2}
+\contentsline {subsubsection}{\numberline {4.7.2.1}setOutputOptions}{27}{subsubsection.4.7.2.1}
+\contentsline {subsubsection}{\numberline {4.7.2.2}start}{27}{subsubsection.4.7.2.2}
+\contentsline {section}{\numberline {4.8}ForwardComplexation Class Reference}{28}{section.4.8}
+\contentsline {subsection}{\numberline {4.8.1}Constructor \& Destructor Documentation}{28}{subsection.4.8.1}
+\contentsline {subsubsection}{\numberline {4.8.1.1}ForwardComplexation}{28}{subsubsection.4.8.1.1}
+\contentsline {subsubsection}{\numberline {4.8.1.2}$\sim $ForwardComplexation}{29}{subsubsection.4.8.1.2}
+\contentsline {subsection}{\numberline {4.8.2}Member Function Documentation}{29}{subsection.4.8.2}
+\contentsline {subsubsection}{\numberline {4.8.2.1}getEffect}{29}{subsubsection.4.8.2.1}
+\contentsline {subsection}{\numberline {4.8.3}Member Data Documentation}{29}{subsection.4.8.3}
+\contentsline {subsubsection}{\numberline {4.8.3.1}firstNodeID}{29}{subsubsection.4.8.3.1}
+\contentsline {subsubsection}{\numberline {4.8.3.2}secondNodeID}{29}{subsubsection.4.8.3.2}
+\contentsline {section}{\numberline {4.9}ForwardPTM Class Reference}{30}{section.4.9}
+\contentsline {subsection}{\numberline {4.9.1}Constructor \& Destructor Documentation}{30}{subsection.4.9.1}
+\contentsline {subsubsection}{\numberline {4.9.1.1}ForwardPTM}{30}{subsubsection.4.9.1.1}
+\contentsline {subsubsection}{\numberline {4.9.1.2}$\sim $ForwardPTM}{30}{subsubsection.4.9.1.2}
+\contentsline {section}{\numberline {4.10}Interaction Class Reference}{32}{section.4.10}
+\contentsline {subsection}{\numberline {4.10.1}Constructor \& Destructor Documentation}{33}{subsection.4.10.1}
+\contentsline {subsubsection}{\numberline {4.10.1.1}Interaction}{33}{subsubsection.4.10.1.1}
+\contentsline {subsubsection}{\numberline {4.10.1.2}$\sim $Interaction}{33}{subsubsection.4.10.1.2}
+\contentsline {subsection}{\numberline {4.10.2}Member Function Documentation}{33}{subsection.4.10.2}
+\contentsline {subsubsection}{\numberline {4.10.2.1}getEffect}{33}{subsubsection.4.10.2.1}
+\contentsline {subsubsection}{\numberline {4.10.2.2}getName}{34}{subsubsection.4.10.2.2}
+\contentsline {subsubsection}{\numberline {4.10.2.3}getRate}{34}{subsubsection.4.10.2.3}
+\contentsline {subsubsection}{\numberline {4.10.2.4}setRate}{34}{subsubsection.4.10.2.4}
+\contentsline {subsection}{\numberline {4.10.3}Member Data Documentation}{34}{subsection.4.10.3}
+\contentsline {subsubsection}{\numberline {4.10.3.1}arcID}{34}{subsubsection.4.10.3.1}
+\contentsline {subsubsection}{\numberline {4.10.3.2}name}{34}{subsubsection.4.10.3.2}
+\contentsline {subsubsection}{\numberline {4.10.3.3}rate}{34}{subsubsection.4.10.3.3}
+\contentsline {section}{\numberline {4.11}Molecule Class Reference}{35}{section.4.11}
+\contentsline {subsection}{\numberline {4.11.1}Constructor \& Destructor Documentation}{36}{subsection.4.11.1}
+\contentsline {subsubsection}{\numberline {4.11.1.1}Molecule}{36}{subsubsection.4.11.1.1}
+\contentsline {subsubsection}{\numberline {4.11.1.2}$\sim $Molecule}{36}{subsubsection.4.11.1.2}
+\contentsline {subsection}{\numberline {4.11.2}Member Function Documentation}{36}{subsection.4.11.2}
+\contentsline {subsubsection}{\numberline {4.11.2.1}getID}{36}{subsubsection.4.11.2.1}
+\contentsline {subsubsection}{\numberline {4.11.2.2}getLongName}{36}{subsubsection.4.11.2.2}
+\contentsline {subsubsection}{\numberline {4.11.2.3}getPTMCount}{37}{subsubsection.4.11.2.3}
+\contentsline {subsubsection}{\numberline {4.11.2.4}getPTMCount}{37}{subsubsection.4.11.2.4}
+\contentsline {subsubsection}{\numberline {4.11.2.5}getrkVal}{37}{subsubsection.4.11.2.5}
+\contentsline {subsubsection}{\numberline {4.11.2.6}getRungeKuttaSolution}{37}{subsubsection.4.11.2.6}
+\contentsline {subsubsection}{\numberline {4.11.2.7}getScore}{37}{subsubsection.4.11.2.7}
+\contentsline {subsubsection}{\numberline {4.11.2.8}getShortName}{37}{subsubsection.4.11.2.8}
+\contentsline {subsubsection}{\numberline {4.11.2.9}getValue}{37}{subsubsection.4.11.2.9}
+\contentsline {subsubsection}{\numberline {4.11.2.10}nextPoint}{38}{subsubsection.4.11.2.10}
+\contentsline {subsubsection}{\numberline {4.11.2.11}outputRK}{38}{subsubsection.4.11.2.11}
+\contentsline {subsubsection}{\numberline {4.11.2.12}reset}{38}{subsubsection.4.11.2.12}
+\contentsline {subsubsection}{\numberline {4.11.2.13}rkApprox}{38}{subsubsection.4.11.2.13}
+\contentsline {subsubsection}{\numberline {4.11.2.14}setID}{39}{subsubsection.4.11.2.14}
+\contentsline {subsubsection}{\numberline {4.11.2.15}setValue}{39}{subsubsection.4.11.2.15}
+\contentsline {subsubsection}{\numberline {4.11.2.16}updateRkVal}{39}{subsubsection.4.11.2.16}
+\contentsline {subsection}{\numberline {4.11.3}Member Data Documentation}{40}{subsection.4.11.3}
+\contentsline {subsubsection}{\numberline {4.11.3.1}buf}{40}{subsubsection.4.11.3.1}
+\contentsline {subsubsection}{\numberline {4.11.3.2}currentConcentration}{40}{subsubsection.4.11.3.2}
+\contentsline {subsubsection}{\numberline {4.11.3.3}currentDir}{40}{subsubsection.4.11.3.3}
+\contentsline {subsubsection}{\numberline {4.11.3.4}initialConcentration}{40}{subsubsection.4.11.3.4}
+\contentsline {subsubsection}{\numberline {4.11.3.5}longName}{40}{subsubsection.4.11.3.5}
+\contentsline {subsubsection}{\numberline {4.11.3.6}moleculeID}{40}{subsubsection.4.11.3.6}
+\contentsline {subsubsection}{\numberline {4.11.3.7}nodeID}{40}{subsubsection.4.11.3.7}
+\contentsline {subsubsection}{\numberline {4.11.3.8}numChanges}{40}{subsubsection.4.11.3.8}
+\contentsline {subsubsection}{\numberline {4.11.3.9}prevDir}{40}{subsubsection.4.11.3.9}
+\contentsline {subsubsection}{\numberline {4.11.3.10}PTMArray}{40}{subsubsection.4.11.3.10}
+\contentsline {subsubsection}{\numberline {4.11.3.11}r}{40}{subsubsection.4.11.3.11}
+\contentsline {subsubsection}{\numberline {4.11.3.12}rkVal}{40}{subsubsection.4.11.3.12}
+\contentsline {subsubsection}{\numberline {4.11.3.13}rungeKuttaSolution}{40}{subsubsection.4.11.3.13}
+\contentsline {subsubsection}{\numberline {4.11.3.14}shortName}{40}{subsubsection.4.11.3.14}
+\contentsline {subsubsection}{\numberline {4.11.3.15}wasPTM}{40}{subsubsection.4.11.3.15}
+\contentsline {section}{\numberline {4.12}MoleculeType Class Reference}{41}{section.4.12}
+\contentsline {subsection}{\numberline {4.12.1}Detailed Description}{41}{subsection.4.12.1}
+\contentsline {subsection}{\numberline {4.12.2}Constructor \& Destructor Documentation}{41}{subsection.4.12.2}
+\contentsline {subsubsection}{\numberline {4.12.2.1}MoleculeType}{41}{subsubsection.4.12.2.1}
+\contentsline {subsubsection}{\numberline {4.12.2.2}$\sim $MoleculeType}{41}{subsubsection.4.12.2.2}
+\contentsline {section}{\numberline {4.13}mRNA Class Reference}{42}{section.4.13}
+\contentsline {subsection}{\numberline {4.13.1}Constructor \& Destructor Documentation}{42}{subsection.4.13.1}
+\contentsline {subsubsection}{\numberline {4.13.1.1}mRNA}{42}{subsubsection.4.13.1.1}
+\contentsline {subsubsection}{\numberline {4.13.1.2}$\sim $mRNA}{42}{subsubsection.4.13.1.2}
+\contentsline {section}{\numberline {4.14}NullNode Class Reference}{44}{section.4.14}
+\contentsline {subsection}{\numberline {4.14.1}Constructor \& Destructor Documentation}{44}{subsection.4.14.1}
+\contentsline {subsubsection}{\numberline {4.14.1.1}NullNode}{44}{subsubsection.4.14.1.1}
+\contentsline {subsubsection}{\numberline {4.14.1.2}$\sim $NullNode}{45}{subsubsection.4.14.1.2}
+\contentsline {subsection}{\numberline {4.14.2}Member Function Documentation}{45}{subsection.4.14.2}
+\contentsline {subsubsection}{\numberline {4.14.2.1}getValue}{45}{subsubsection.4.14.2.1}
+\contentsline {section}{\numberline {4.15}PromoterBind Class Reference}{46}{section.4.15}
+\contentsline {subsection}{\numberline {4.15.1}Constructor \& Destructor Documentation}{47}{subsection.4.15.1}
+\contentsline {subsubsection}{\numberline {4.15.1.1}PromoterBind}{47}{subsubsection.4.15.1.1}
+\contentsline {subsubsection}{\numberline {4.15.1.2}$\sim $PromoterBind}{47}{subsubsection.4.15.1.2}
+\contentsline {subsection}{\numberline {4.15.2}Member Function Documentation}{47}{subsection.4.15.2}
+\contentsline {subsubsection}{\numberline {4.15.2.1}getEffect}{47}{subsubsection.4.15.2.1}
+\contentsline {subsection}{\numberline {4.15.3}Member Data Documentation}{47}{subsection.4.15.3}
+\contentsline {subsubsection}{\numberline {4.15.3.1}kf}{47}{subsubsection.4.15.3.1}
+\contentsline {subsubsection}{\numberline {4.15.3.2}kr}{47}{subsubsection.4.15.3.2}
+\contentsline {section}{\numberline {4.16}Protein Class Reference}{49}{section.4.16}
+\contentsline {subsection}{\numberline {4.16.1}Constructor \& Destructor Documentation}{50}{subsection.4.16.1}
+\contentsline {subsubsection}{\numberline {4.16.1.1}Protein}{50}{subsubsection.4.16.1.1}
+\contentsline {subsubsection}{\numberline {4.16.1.2}$\sim $Protein}{50}{subsubsection.4.16.1.2}
+\contentsline {section}{\numberline {4.17}PTMProtein Class Reference}{51}{section.4.17}
+\contentsline {subsection}{\numberline {4.17.1}Constructor \& Destructor Documentation}{51}{subsection.4.17.1}
+\contentsline {subsubsection}{\numberline {4.17.1.1}PTMProtein}{51}{subsubsection.4.17.1.1}
+\contentsline {subsubsection}{\numberline {4.17.1.2}PTMProtein}{52}{subsubsection.4.17.1.2}
+\contentsline {subsubsection}{\numberline {4.17.1.3}$\sim $PTMProtein}{52}{subsubsection.4.17.1.3}
+\contentsline {subsection}{\numberline {4.17.2}Member Function Documentation}{52}{subsection.4.17.2}
+\contentsline {subsubsection}{\numberline {4.17.2.1}addRandPTM}{52}{subsubsection.4.17.2.1}
+\contentsline {subsubsection}{\numberline {4.17.2.2}getLongName}{52}{subsubsection.4.17.2.2}
+\contentsline {subsubsection}{\numberline {4.17.2.3}setPTMCount}{52}{subsubsection.4.17.2.3}
+\contentsline {section}{\numberline {4.18}ReverseComplexation Class Reference}{53}{section.4.18}
+\contentsline {subsection}{\numberline {4.18.1}Constructor \& Destructor Documentation}{53}{subsection.4.18.1}
+\contentsline {subsubsection}{\numberline {4.18.1.1}ReverseComplexation}{53}{subsubsection.4.18.1.1}
+\contentsline {subsubsection}{\numberline {4.18.1.2}$\sim $ReverseComplexation}{54}{subsubsection.4.18.1.2}
+\contentsline {subsection}{\numberline {4.18.2}Member Function Documentation}{54}{subsection.4.18.2}
+\contentsline {subsubsection}{\numberline {4.18.2.1}getEffect}{54}{subsubsection.4.18.2.1}
+\contentsline {subsection}{\numberline {4.18.3}Member Data Documentation}{54}{subsection.4.18.3}
+\contentsline {subsubsection}{\numberline {4.18.3.1}firstNodeID}{54}{subsubsection.4.18.3.1}
+\contentsline {subsubsection}{\numberline {4.18.3.2}secondNodeID}{54}{subsubsection.4.18.3.2}
+\contentsline {section}{\numberline {4.19}ReversePTM Class Reference}{55}{section.4.19}
+\contentsline {subsection}{\numberline {4.19.1}Constructor \& Destructor Documentation}{55}{subsection.4.19.1}
+\contentsline {subsubsection}{\numberline {4.19.1.1}ReversePTM}{55}{subsubsection.4.19.1.1}
+\contentsline {subsubsection}{\numberline {4.19.1.2}$\sim $ReversePTM}{55}{subsubsection.4.19.1.2}
+\contentsline {section}{\numberline {4.20}TestInt Class Reference}{57}{section.4.20}
+\contentsline {subsection}{\numberline {4.20.1}Constructor \& Destructor Documentation}{57}{subsection.4.20.1}
+\contentsline {subsubsection}{\numberline {4.20.1.1}TestInt}{57}{subsubsection.4.20.1.1}
+\contentsline {subsubsection}{\numberline {4.20.1.2}$\sim $TestInt}{58}{subsubsection.4.20.1.2}
+\contentsline {subsection}{\numberline {4.20.2}Member Function Documentation}{58}{subsection.4.20.2}
+\contentsline {subsubsection}{\numberline {4.20.2.1}getEffect}{58}{subsubsection.4.20.2.1}
+\contentsline {section}{\numberline {4.21}Trace Class Reference}{59}{section.4.21}
+\contentsline {subsection}{\numberline {4.21.1}Constructor \& Destructor Documentation}{59}{subsection.4.21.1}
+\contentsline {subsubsection}{\numberline {4.21.1.1}Trace}{59}{subsubsection.4.21.1.1}
+\contentsline {subsubsection}{\numberline {4.21.1.2}Trace}{59}{subsubsection.4.21.1.2}
+\contentsline {subsubsection}{\numberline {4.21.1.3}$\sim $Trace}{59}{subsubsection.4.21.1.3}
+\contentsline {subsection}{\numberline {4.21.2}Member Function Documentation}{59}{subsection.4.21.2}
+\contentsline {subsubsection}{\numberline {4.21.2.1}addTraceType}{59}{subsubsection.4.21.2.1}
+\contentsline {subsubsection}{\numberline {4.21.2.2}disableTraceType}{60}{subsubsection.4.21.2.2}
+\contentsline {subsubsection}{\numberline {4.21.2.3}enableTraceType}{60}{subsubsection.4.21.2.3}
+\contentsline {subsubsection}{\numberline {4.21.2.4}getTraceFile}{60}{subsubsection.4.21.2.4}
+\contentsline {subsubsection}{\numberline {4.21.2.5}setTraceFile}{60}{subsubsection.4.21.2.5}
+\contentsline {subsubsection}{\numberline {4.21.2.6}trace}{60}{subsubsection.4.21.2.6}
+\contentsline {subsection}{\numberline {4.21.3}Member Data Documentation}{61}{subsection.4.21.3}
+\contentsline {subsubsection}{\numberline {4.21.3.1}traceFile}{61}{subsubsection.4.21.3.1}
+\contentsline {subsubsection}{\numberline {4.21.3.2}traceTypes}{61}{subsubsection.4.21.3.2}
+\contentsline {section}{\numberline {4.22}Transcription Class Reference}{62}{section.4.22}
+\contentsline {subsection}{\numberline {4.22.1}Constructor \& Destructor Documentation}{62}{subsection.4.22.1}
+\contentsline {subsubsection}{\numberline {4.22.1.1}Transcription}{62}{subsubsection.4.22.1.1}
+\contentsline {subsubsection}{\numberline {4.22.1.2}$\sim $Transcription}{63}{subsubsection.4.22.1.2}
+\contentsline {subsection}{\numberline {4.22.2}Member Function Documentation}{63}{subsection.4.22.2}
+\contentsline {subsubsection}{\numberline {4.22.2.1}getEffect}{63}{subsubsection.4.22.2.1}
+\contentsline {section}{\numberline {4.23}Translation Class Reference}{64}{section.4.23}
+\contentsline {subsection}{\numberline {4.23.1}Constructor \& Destructor Documentation}{64}{subsection.4.23.1}
+\contentsline {subsubsection}{\numberline {4.23.1.1}Translation}{64}{subsubsection.4.23.1.1}
+\contentsline {subsubsection}{\numberline {4.23.1.2}$\sim $Translation}{65}{subsubsection.4.23.1.2}
+\contentsline {subsection}{\numberline {4.23.2}Member Function Documentation}{65}{subsection.4.23.2}
+\contentsline {subsubsection}{\numberline {4.23.2.1}getEffect}{65}{subsubsection.4.23.2.1}
+\contentsline {chapter}{\numberline {5}File Documentation}{67}{chapter.5}
+\contentsline {section}{\numberline {5.1}Cell.cpp File Reference}{67}{section.5.1}
+\contentsline {section}{\numberline {5.2}Cell.h File Reference}{68}{section.5.2}
+\contentsline {section}{\numberline {5.3}CustomInteractions.cpp File Reference}{69}{section.5.3}
+\contentsline {section}{\numberline {5.4}CustomInteractions.h File Reference}{70}{section.5.4}
+\contentsline {section}{\numberline {5.5}CustomMolecules.cpp File Reference}{71}{section.5.5}
+\contentsline {section}{\numberline {5.6}CustomMolecules.h File Reference}{72}{section.5.6}
+\contentsline {section}{\numberline {5.7}DerivGraph.cpp File Reference}{73}{section.5.7}
+\contentsline {section}{\numberline {5.8}DerivGraph.h File Reference}{74}{section.5.8}
+\contentsline {section}{\numberline {5.9}Experiment.cpp File Reference}{76}{section.5.9}
+\contentsline {section}{\numberline {5.10}Experiment.h File Reference}{77}{section.5.10}
+\contentsline {section}{\numberline {5.11}ExternTrace.h File Reference}{78}{section.5.11}
+\contentsline {subsection}{\numberline {5.11.1}Variable Documentation}{78}{subsection.5.11.1}
+\contentsline {subsubsection}{\numberline {5.11.1.1}t}{78}{subsubsection.5.11.1.1}
+\contentsline {section}{\numberline {5.12}Interaction.cpp File Reference}{79}{section.5.12}
+\contentsline {section}{\numberline {5.13}Interaction.h File Reference}{80}{section.5.13}
+\contentsline {section}{\numberline {5.14}Main.cpp File Reference}{81}{section.5.14}
+\contentsline {subsection}{\numberline {5.14.1}Function Documentation}{82}{subsection.5.14.1}
+\contentsline {subsubsection}{\numberline {5.14.1.1}main}{82}{subsubsection.5.14.1.1}
+\contentsline {subsection}{\numberline {5.14.2}Variable Documentation}{82}{subsection.5.14.2}
+\contentsline {subsubsection}{\numberline {5.14.2.1}t}{82}{subsubsection.5.14.2.1}
+\contentsline {section}{\numberline {5.15}Molecule.cpp File Reference}{83}{section.5.15}
+\contentsline {section}{\numberline {5.16}Molecule.h File Reference}{84}{section.5.16}
+\contentsline {section}{\numberline {5.17}MoleculeType.h File Reference}{85}{section.5.17}
+\contentsline {section}{\numberline {5.18}Trace.cpp File Reference}{86}{section.5.18}
+\contentsline {section}{\numberline {5.19}Trace.h File Reference}{87}{section.5.19}
