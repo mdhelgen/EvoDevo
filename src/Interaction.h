@@ -28,7 +28,7 @@ public:
 	virtual	float getRate();
 	const char* name;
 	int arcID;
-
+	int isSourceNode(ListDigraph*, ListDigraph::Node, ListDigraph::Arc);
 
 protected:
 	float rate;

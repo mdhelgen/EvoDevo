@@ -139,7 +139,7 @@ void Experiment::start()
 		{
 			t.trace("mutate","Gen %-3d Cell loc %u\n", i, (unsigned int) cells[c]);
 			//mutate
-			cells[c]->mutate();
+//			cells[c]->mutate();
 			
 			//collect test data for runge kutta evaluation
 			if(2 == 0){

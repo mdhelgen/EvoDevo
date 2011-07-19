@@ -353,7 +353,7 @@ int Molecule::getScore(){
 		if((currentDir == 1 && prevDir == -1) ||
 		   (currentDir == -1 && prevDir == 1)){
 			numChanges += 1;
-		   	t.trace("score", "%s%d changes: %d\n", shortName, moleculeID, numChanges);
+		   	//t.trace("score", "%s%d changes: %d\n", shortName, moleculeID, numChanges);
 		}
 		// save the new slope direction	
 		prevDir = currentDir;

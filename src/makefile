@@ -1,5 +1,5 @@
 CC	= g++
-CFLAGS	= -g -O2 -Wall -Wno-unused-variable 
+CFLAGS	= -g -O2 -Wall -Wno-unused-variable -DNOTRACING
 IFLAGS = -I"../include"
 LFLAGS = -L"../lib"
 VPATH = "../src/

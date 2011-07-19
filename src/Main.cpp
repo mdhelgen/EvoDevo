@@ -42,7 +42,7 @@ int main(int argc, char** argv){
   t.addTraceType("efct",0);
 
   //generational messages
-  t.addTraceType("gens",1);
+  t.addTraceType("gens",0);
 
   //runge kutta
   t.addTraceType("rk-4",0);
@@ -52,7 +52,7 @@ int main(int argc, char** argv){
 
   t.addTraceType("hill",0);
 
-  t.addTraceType("score",1);
+  t.addTraceType("score",0);
   //mutation
   t.addTraceType("mutate",0);
 

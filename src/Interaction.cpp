@@ -69,6 +69,30 @@ float Interaction::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m,
 		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
 }
 
+/*
+ * int Interaction::isSourceNode(ListDigraph*, ListDigraph::Node, ListDigraph::Arc)
+ *
+ * Helper method to determine whether a particular node is the source or target node in a
+ * particular arc.
+ *
+ * @param g
+ * @param n
+ * @param a
+ *
+ * @return 1 if the node is the source, -1 if it is the target, and 0 otherwise.
+ */
+int Interaction::isSourceNode(ListDigraph* g, ListDigraph::Node n, ListDigraph::Arc a){
+
+	if(g->source(a) == n)
+		return 1;
+	else if(g->target(a) == n)
+		return -1;
+	else
+		return 0;
+
+}
+
+
 /**
  * void Interaction::setRate(float)
  *
