@@ -139,7 +139,7 @@ void Experiment::start()
 		{
 			t.trace("mutate","Gen %-3d Cell loc %u\n", i, (unsigned int) cells[c]);
 			//mutate
-//			cells[c]->mutate();
+			cells[c]->mutate();
 			
 			//collect test data for runge kutta evaluation
 			if(2 == 0){
@@ -151,7 +151,7 @@ void Experiment::start()
 			//if scoring interval is 5, this runs every 5 generations
 			if(i % scoringInterval == 0){
 				cells[c]->rk();
-				if(cells[c]->getScore() > 2){
+				if(cells[c]->getScore() < -1  ){
 					cells[c]->outputDataPlot();
 					cells[c]->outputDotImage();
 				}	
