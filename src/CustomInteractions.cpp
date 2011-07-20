@@ -40,12 +40,13 @@ float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* 
 		if(prom_id == -1)
 			return oppositeMol->rkApprox(rkIter, rkStep) * rate;
 		PromoterBind* pb = (PromoterBind*)(*i)[g->arcFromId(prom_id)];
-		
+		Molecule* repressor = (*m)[g->source(g->arcFromId(prom_id))];
+
 		float f = pb->kf;
 		float r = pb->kr;
 		float h = ((DNA*)oppositeMol)->hill;
 		t.trace("hill","f:%f r:%f h:%f value:%f\n",f,r,h,(1/(1+pow(f/r,h))));
-		return (1/(1+pow(f/r,h))) * oppositeMol->rkApprox(rkIter, rkStep) * rate;
+		return (1/(1+(f/r)*pow(repressor->rkApprox(rkIter,rkStep),h))) * oppositeMol->rkApprox(rkIter, rkStep) * rate;
 	}
 }
 
@@ -92,14 +93,19 @@ float Translation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m,
 	t.trace("efct","Interaction Rate: %f\n", rate);
 	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
 	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue());
-
+	t.trace("efct","isSourceNode() == %d\n", isSourceNode(g,a,g->arcFromId(arcID)));
 	Molecule* thisMol = (*m)[a];
 	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
 
-	if(g->source(g->arcFromId(arcID)) == a)
+	//if the effect is being calculated for the source node
+	if(isSourceNode(g, a, g->arcFromId(arcID)) == 1)
 		return 0;
-	else
+	//effect is being calculated for the target node
+	else if (isSourceNode(g, a, g->arcFromId(arcID)) == -1)
 		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
+	else
+		t.trace("efct","ERROR: %s not a part of the interaction\n", (*m)[a]->getShortName());
+		return 0;
 
 }
 

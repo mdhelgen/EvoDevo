@@ -39,13 +39,13 @@ int main(int argc, char** argv){
   t.addTraceType("free",0);
 
   //calculated effect of interactions
-  t.addTraceType("efct",0);
+  t.addTraceType("efct",1);
 
   //generational messages
   t.addTraceType("gens",0);
 
   //runge kutta
-  t.addTraceType("rk-4",0);
+  t.addTraceType("rk-4",1);
 
   t.addTraceType("rk-val",0);
   t.addTraceType("rk-new",0);

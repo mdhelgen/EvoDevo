@@ -49,7 +49,7 @@ Cell::Cell(int max_basic, int max_ptm, int max_comp, int max_promoter,float min_
     //equations->>test();
 
 	equations->newBasic();
-	equations->newPromoter();
+	//equations->newPromoter();
     t.trace("init", "New Cell created\n");
 
 

@@ -64,6 +64,7 @@ float DNA::getValue(){
 }
 float DNA::rkApprox(int rkstep, float step)
 {
+	printf("DNA RKAPPROX\n");
 	return DNA::getValue();
 }
 void DNA::setHistoneModValue(float newVal){
