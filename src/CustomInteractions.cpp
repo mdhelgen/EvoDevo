@@ -31,7 +31,6 @@ float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* 
 	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
 
 	
-
 	if(g->source(g->arcFromId(arcID)) == a)
 		return 0;
 	else

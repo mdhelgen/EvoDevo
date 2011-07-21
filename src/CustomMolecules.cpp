@@ -17,6 +17,8 @@
  *
  *
  */
+
+extern int hillParam;
 DNA::DNA(){
 
 	t.trace("init","\n");
@@ -24,7 +26,7 @@ DNA::DNA(){
 	t.trace("init","Molecule %u type:DNA\n", (unsigned int) this);	
 	promoterId = -1;
 	currentConcentration = 0;
-	hill = 10;
+	hill = hillParam;
 	histoneModValue = 1;
 	currentDir = 0;
 	prevDir = 0;

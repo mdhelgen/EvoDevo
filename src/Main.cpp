@@ -13,6 +13,8 @@ using namespace std;
 
 Trace t;
 
+int hillParam = 1;
+
 int main(int argc, char** argv){
 
   int verbose_flag = 0;
@@ -98,6 +100,7 @@ int main(int argc, char** argv){
       {"rklim", required_argument, 0, 'j'},
       {"rkstep", required_argument, 0, 'k'},
       {"interval", required_argument, 0, 'l'},
+      {"hill", required_argument, 0, 'm'},
 
       {0,0,0,0}
      };
@@ -154,6 +157,9 @@ int main(int argc, char** argv){
 		break;
 	case 'l':
 		scoringInterval = atoi(optarg);
+		break;
+	case 'm':
+		hillParam = atoi(optarg);
 		break;
 	case '?':
 		break;

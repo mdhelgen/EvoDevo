@@ -28,7 +28,7 @@ public:
 	float rkApprox(int, float);
 	void setHistoneModValue(float);
 	int promoterId;
-	float hill;
+	int hill;
 private:
 	float histoneModValue;
 };
