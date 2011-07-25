@@ -21,7 +21,7 @@
 Trace::Trace()
 {
  
- printf("Tracing loaded. (location %u)\n",(unsigned int) this);
+ //printf("Tracing loaded. (location %u)\n",(unsigned int) this);
  traceFile = stdout;
 
 }

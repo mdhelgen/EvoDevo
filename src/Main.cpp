@@ -54,7 +54,7 @@ int main(int argc, char** argv){
 
   t.addTraceType("hill",0);
 
-  t.addTraceType("score",1);
+  t.addTraceType("score",0);
   //mutation
   t.addTraceType("mutate",0);
 

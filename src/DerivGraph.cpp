@@ -759,6 +759,7 @@ void DerivGraph::newComplex(){
 
 
 }
+
 /**
  * void DerivGraph::newPromoter()
  *
@@ -785,8 +786,8 @@ void DerivGraph::newPromoter(){
 	DNA* d = (*DNAList)[selectionIndex];
 
 	
-	int selectionIndex2 = r.randInt(ProteinList->size() -1);
-	Protein* p = (*ProteinList)[selectionIndex2];
+	int selectionIndex2 = r.randInt(PTMList->size() -1);
+	PTMProtein* p = (*PTMList)[selectionIndex2];
 	
 	ListDigraph::Node nd = derivs->nodeFromId(d->nodeID);
 	ListDigraph::Node np = derivs->nodeFromId(p->nodeID);
@@ -897,8 +898,8 @@ void DerivGraph::outputDataPlot(int cellNum, int gen, float step){
 
 	//FILE* gnuplot = fopen("test.txt","w");
 	for(unsigned int i =  0; i < MoleculeList->size(); i++){
-		//if((*MoleculeList)[i]->getScore() < 3)
-		//	continue;
+		if((*MoleculeList)[i]->getScore() < 3)
+			continue;
 		fprintf(gnuplot, "set term png size 2048,1536\n");
 		fflush(gnuplot);
 	
@@ -924,6 +925,11 @@ void DerivGraph::outputDataPlot(int cellNum, int gen, float step){
 		t = 0;
 		for(unsigned int j = 0; j < (*MoleculeList)[i]->getRungeKuttaSolution()->size(); j++)
 		{	
+		
+		if(j % 10 != 0){
+			t+=step;
+			continue;
+		}
 			float k = (*MoleculeList)[i]->getRungeKuttaSolution()->at(j);
 			fprintf(gnuplot, "%d %f %f\n",i, t, k);
 			fflush(gnuplot);

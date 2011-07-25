@@ -48,10 +48,10 @@ Cell::Cell(int max_basic, int max_ptm, int max_comp, int max_promoter,float min_
 
     //equations->>test();
 
-	equations->newBasic();
-	//equations->newPromoter();
+    equations->newBasic();
+    equations->newPTM();
+    equations->newPromoter();
     t.trace("init", "New Cell created\n");
-
 
 }
 
@@ -72,7 +72,7 @@ delete equations;
 }
 
 int Cell::mutate(){
-	
+	return 0;	
 	currentGen++;
 	double mutationCategory = r.rand(1);
 	double mutationType = r.rand(1);

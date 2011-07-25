@@ -189,7 +189,6 @@ void Experiment::start()
 	
 	return;
 
-
 	//generate output at the end of the experiment
 	for(unsigned int c = 0; c < cells.size(); c++){
 		if(graphviz_enabled)
