@@ -468,6 +468,10 @@ void DerivGraph::forwardRateChange(){
 
 	Interaction* selectedInteraction;
 	
+	//if a forwardComplexationInteraction is chosen, its pair reaction must be changed too
+	int complexInteractionPairID = 0;
+
+	
 	//select a random integer between 0 and the total number of forward interactions
 	unsigned int randIndex = r.randInt(totalSize - 1);
 	t.trace("mutate","randIndex = %d\n", randIndex);
@@ -483,6 +487,7 @@ void DerivGraph::forwardRateChange(){
 	{
 		t.trace("mutate","ForwardComplexation[%d]\n",randIndex - TranslationList->size());
 		selectedInteraction = (*ForwardComplexationList)[randIndex - TranslationList->size()];
+		complexInteractionPairID = ((ForwardComplexation*) selectedInteraction)->pairArcID;
 	}
 	//index falls within the ForwardPTMList
 	else if(randIndex >= TranslationList->size() + ForwardComplexationList->size() && randIndex < TranslationList->size() + ForwardComplexationList->size() + ForwardPTMList->size())
@@ -504,6 +509,13 @@ void DerivGraph::forwardRateChange(){
 
 	//set the chosen interaction rate to the newly generated rate
 	selectedInteraction->setRate(newRate);
+
+	//if the selectedInteraction was a forward Complex, change the pair interaction so the rates remain the same	
+	if(complexInteractionPairID){
+		(*interactions)[derivs->arcFromId(complexInteractionPairID)]->setRate(newRate);
+
+		t.trace("mutate","%s -> %s pair interaction also changed\n", (*molecules)[derivs->source(derivs->arcFromId(complexInteractionPairID))]->getShortName(), (*molecules)[derivs->target(derivs->arcFromId(complexInteractionPairID))]->getShortName());
+	}
 
 }
 /**
@@ -532,6 +544,8 @@ void DerivGraph::reverseRateChange(){
 
 	Interaction* selectedInteraction;
 
+	int complexInteractionPairID = 0;
+
 	//get a random number between 1 and the total number of reverse reactions
 	unsigned int randIndex = r.randInt(totalSize - 1);
 	t.trace("mutate","randIndex = %d\n", randIndex);
@@ -541,6 +555,7 @@ void DerivGraph::reverseRateChange(){
 	{
 		t.trace("mutate","ReverseComplexationList[%d]\n", randIndex);
 		selectedInteraction = (*ReverseComplexationList)[randIndex];
+		complexInteractionPairID = ((ForwardComplexation*) selectedInteraction)->pairArcID;
 	}
 	//if the index falls within the ReversePTMList
 	else if(randIndex >= ReverseComplexationList->size() && randIndex < ReverseComplexationList->size() + ReversePTMList->size())
@@ -561,6 +576,14 @@ void DerivGraph::reverseRateChange(){
 	
 	//set the chosen interaction to the new rate
 	selectedInteraction->setRate(newRate);
+	
+	//if the selectedInteraction was a reverse Complex, change the pair interaction so the rates remain the same	
+	if(complexInteractionPairID){
+		(*interactions)[derivs->arcFromId(complexInteractionPairID)]->setRate(newRate);
+
+		t.trace("mutate","%s -> %s pair interaction also changed\n", (*molecules)[derivs->source(derivs->arcFromId(complexInteractionPairID))]->getShortName(), (*molecules)[derivs->target(derivs->arcFromId(complexInteractionPairID))]->getShortName());
+	}
+
 }
 /**
  * void DerivGraph::degradationRateChange()
@@ -784,8 +807,8 @@ void DerivGraph::newComplex(){
 	((ForwardComplexation*)(*interactions)[f1])->setPairArcID(derivs->id(f2));
 	((ForwardComplexation*)(*interactions)[f2])->setPairArcID(derivs->id(f1));
 	
-	t.trace("mutate","test-- f1 arc id: %d, f2 arc id: %d\n", derivs->id(f1), derivs->id(f2));
-	t.trace("mutate","test-- f1 pair arc: %d, f2 pair arc: %d\n", ((ForwardComplexation*)(*interactions)[f1])->pairArcID, ((ForwardComplexation*)(*interactions)[f2])->pairArcID);
+	t.trace("mutate","f1 arc id: %d, f2 arc id: %d\n", derivs->id(f1), derivs->id(f2));
+	t.trace("mutate","f1 pair arc: %d, f2 pair arc: %d\n", ((ForwardComplexation*)(*interactions)[f1])->pairArcID, ((ForwardComplexation*)(*interactions)[f2])->pairArcID);
 
 	//create the pair of reverse complexation interactions
 	ListDigraph::Arc r1 = add(new ReverseComplexation(id1, id2), comp, n1); 
@@ -795,8 +818,8 @@ void DerivGraph::newComplex(){
 	((ReverseComplexation*)(*interactions)[r1])->setPairArcID(derivs->id(r2));
 	((ReverseComplexation*)(*interactions)[r2])->setPairArcID(derivs->id(r1));
 	
-	t.trace("mutate","test-- r1 arc id: %d, r2 arc id: %d\n", derivs->id(r1), derivs->id(r2));
-	t.trace("mutate","test-- r1 pair arc: %d, r2 pair arc: %d\n", ((ReverseComplexation*)(*interactions)[r1])->pairArcID, ((ReverseComplexation*)(*interactions)[r2])->pairArcID);
+	t.trace("mutate","r1 arc id: %d, r2 arc id: %d\n", derivs->id(r1), derivs->id(r2));
+	t.trace("mutate","r1 pair arc: %d, r2 pair arc: %d\n", ((ReverseComplexation*)(*interactions)[r1])->pairArcID, ((ReverseComplexation*)(*interactions)[r2])->pairArcID);
 
 	
 	ListDigraph::Arc deg = add(new Degradation(), comp, nullnode);	
