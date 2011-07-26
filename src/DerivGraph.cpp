@@ -40,19 +40,19 @@ DerivGraph::DerivGraph(){
     
     t.trace("init","Creating new DerivGraph\n");
     
-    t.trace("mloc","DerivGraph location at %u\n",(unsigned int) this);
+    t.trace("mloc","DerivGraph location at %p\n",  this);
 
     //create the directed graph
     derivs = new ListDigraph();
-    t.trace("mloc","DerivGraph %u ListDigraph location at %u\n", (unsigned int) this, (unsigned int) derivs);
+    t.trace("mloc","DerivGraph %p ListDigraph location at %p\n",   this,   derivs);
 
     //map molecules onto the nodes
     molecules = new ListDigraph::NodeMap<Molecule*>(*derivs);
-    t.trace("mloc","DerivGraph %u NodeMap location at %u\n", (unsigned int) this, (unsigned int) molecules);
+    t.trace("mloc","DerivGraph %p NodeMap location at %p\n",   this,   molecules);
     
     //map interactions onto the arcs
     interactions = new ListDigraph::ArcMap<Interaction*>(*derivs);
-    t.trace("mloc","DerivGraph %u ArcMap location at %u\n", (unsigned int) this, (unsigned int) interactions);
+    t.trace("mloc","DerivGraph %p ArcMap location at %p\n",   this,   interactions);
   
   /*
    * Set up the list vectors.
@@ -70,51 +70,51 @@ DerivGraph::DerivGraph(){
 
     //all molecules are added to this list
     MoleculeList = new vector<Molecule*>();
-    t.trace("mloc","DerivGraph %u MoleculeList vector at %u\n", (unsigned int) this, (unsigned int) MoleculeList);
+    t.trace("mloc","DerivGraph %p MoleculeList vector at %p\n",   this,   MoleculeList);
     
     //basic proteins are added to this list
     ProteinList = new vector<Protein*>();
-    t.trace("mloc","DerivGraph %u ProteinList vector at %u\n", (unsigned int) this, (unsigned int) ProteinList);
+    t.trace("mloc","DerivGraph %p ProteinList vector at %p\n",   this,   ProteinList);
     
     //mRNAs are added to this list
     mRNAList = new vector<mRNA*>();
-    t.trace("mloc","DerivGraph %u mRNAList vector at %u\n", (unsigned int) this, (unsigned int) mRNAList);
+    t.trace("mloc","DerivGraph %p mRNAList vector at %p\n",   this,   mRNAList);
     
     DNAList = new vector<DNA*>();
-    t.trace("mloc","DerivGraph %u DNAList vector at %u\n", (unsigned int) this, (unsigned int) DNAList);
+    t.trace("mloc","DerivGraph %p DNAList vector at %p\n",   this,   DNAList);
     
     ComplexList = new vector<Complex*>();
-    t.trace("mloc","DerivGraph %u ComplexList vector at %u\n", (unsigned int) this, (unsigned int) ComplexList);
+    t.trace("mloc","DerivGraph %p ComplexList vector at %p\n",   this,   ComplexList);
 
     PTMList = new vector<PTMProtein*>();
-    t.trace("mloc","DerivGraph %u PTMList vector at %u\n", (unsigned int) this, (unsigned int) PTMList);
+    t.trace("mloc","DerivGraph %p PTMList vector at %p\n",   this,   PTMList);
 
     InteractionList = new vector<Interaction*>();
-    t.trace("mloc","DerivGraph %u InteractionList vector at %u\n", (unsigned int) this, (unsigned int) InteractionList);
+    t.trace("mloc","DerivGraph %p InteractionList vector at %p\n",   this,   InteractionList);
     
     TranscriptionList = new vector<Transcription*>();
-    t.trace("mloc","DerivGraph %u TranscriptionList vector at %u\n", (unsigned int) this, (unsigned int) TranscriptionList);
+    t.trace("mloc","DerivGraph %p TranscriptionList vector at %p\n",   this,   TranscriptionList);
     
     TranslationList = new vector<Translation*>();
-    t.trace("mloc","DerivGraph %u TranslationList vector at %u\n", (unsigned int) this, (unsigned int) TranslationList);
+    t.trace("mloc","DerivGraph %p TranslationList vector at %p\n",   this,   TranslationList);
     
     DegradationList = new vector<Degradation*>();
-    t.trace("mloc","DerivGraph %u DegradationList vector at %u\n", (unsigned int) this, (unsigned int) DegradationList);
+    t.trace("mloc","DerivGraph %p DegradationList vector at %p\n",   this,   DegradationList);
     
     ForwardComplexationList = new vector<ForwardComplexation*>();
-    t.trace("mloc","DerivGraph %u ForwardComplexationList vector at %u\n", (unsigned int) this, (unsigned int) ForwardComplexationList);
+    t.trace("mloc","DerivGraph %p ForwardComplexationList vector at %p\n",   this,   ForwardComplexationList);
     
     ReverseComplexationList = new vector<ReverseComplexation*>();
-    t.trace("mloc","DerivGraph %u ReverseComplexationList vector at %u\n", (unsigned int) this, (unsigned int) ReverseComplexationList);
+    t.trace("mloc","DerivGraph %p ReverseComplexationList vector at %p\n",   this,   ReverseComplexationList);
 
     ForwardPTMList = new vector<ForwardPTM*>();
-    t.trace("mloc","DerivGraph %u ForwardPTMList vector at %u\n", (unsigned int) this, (unsigned int) ForwardPTMList);
+    t.trace("mloc","DerivGraph %p ForwardPTMList vector at %p\n",   this,   ForwardPTMList);
 
     ReversePTMList = new vector<ReversePTM*>();
-    t.trace("mloc","DerivGraph %u ReversePTMList vector at %u\n", (unsigned int) this, (unsigned int) ReversePTMList);
+    t.trace("mloc","DerivGraph %p ReversePTMList vector at %p\n",   this,   ReversePTMList);
 
     PromoterBindList = new vector<PromoterBind*>();
-    t.trace("mloc","DerivGraph %u PromoterBindList vector at %u\n", (unsigned int) this, (unsigned int) PromoterBindList);
+    t.trace("mloc","DerivGraph %p PromoterBindList vector at %p\n",   this,   PromoterBindList);
 
 
     t.trace("init","New DerivGraph created\n");
@@ -165,10 +165,10 @@ DerivGraph::~DerivGraph(){
 
 
    //delete all Molecule objects mapped by Nodes
-   t.trace("free","Deleting members of NodeMap at location %u\n",(unsigned int) molecules);
+   t.trace("free","Deleting members of NodeMap at location %p\n",  molecules);
    for(ListDigraph::NodeIt it(*derivs); it !=INVALID; ++it){
 	
-	t.trace("free","Deleting NodeMap member at location %u\n",(unsigned int) (*molecules)[it]);
+	t.trace("free","Deleting NodeMap member at location %p\n",  (*molecules)[it]);
 	
 	//output some information about the molecule being deleted
 	t.trace("free","longnname: %s\n", (*molecules)[it]->getLongName());
@@ -178,11 +178,11 @@ DerivGraph::~DerivGraph(){
    }
   
    //delete the Molecule NodeMap
-   t.trace("free","Deleting NodeMap object at location %u\n",molecules);
+   t.trace("free","Deleting NodeMap object at location %p\n",molecules);
    delete molecules;
 
    //delete all Interaction objects mapped by Arcs
-   t.trace("free","Deleting members of ArcMap at location %u\n", interactions);
+   t.trace("free","Deleting members of ArcMap at location %p\n", interactions);
    for(ListDigraph::ArcIt it(*derivs); it !=INVALID; ++it){
    	
 	t.trace("free","Deleting ArcMap member at location %d\n", (*interactions)[it]);
@@ -371,7 +371,7 @@ ListDigraph::Arc DerivGraph::add(Interaction * newInteraction, ListDigraph::Node
  */
 void DerivGraph::newBasic(){
 
-	t.trace("mutate","DerivGraph %u, new Basic Protein\n",(unsigned int)this);
+	t.trace("mutate","DerivGraph %p, new Basic Protein\n", this);
 	if ((int)DNAList->size() >= maxBasic)
 	{
 		t.trace("mutate","Basic Protein count is at limit\n");
@@ -786,8 +786,8 @@ void DerivGraph::newPromoter(){
 	DNA* d = (*DNAList)[selectionIndex];
 
 	
-	int selectionIndex2 = r.randInt(PTMList->size() -1);
-	PTMProtein* p = (*PTMList)[selectionIndex2];
+	int selectionIndex2 = r.randInt(ProteinList->size() -1);
+	Protein* p = (*ProteinList)[selectionIndex2];
 	
 	ListDigraph::Node nd = derivs->nodeFromId(d->nodeID);
 	ListDigraph::Node np = derivs->nodeFromId(p->nodeID);

@@ -21,9 +21,7 @@
 extern int hillParam;
 DNA::DNA(){
 
-	t.trace("init","\n");
-	Molecule::Molecule();
-	t.trace("init","Molecule %u type:DNA\n", (unsigned int) this);	
+	t.trace("init","Molecule %p type:DNA\n", this);	
 	promoterId = -1;
 	currentConcentration = 0;
 	hill = hillParam;
@@ -73,9 +71,8 @@ void DNA::setHistoneModValue(float newVal){
 }
 
 NullNode::NullNode(){
-	Molecule::Molecule();
 	
-	t.trace("init","Molecule %u type:NulNode\n", (unsigned int) this);	
+	t.trace("init","Molecule %p type:NulNode\n", this);	
 	longName = "NullNode";
 	shortName = "n";
 	currentDir = 0;
@@ -88,9 +85,8 @@ float NullNode::getValue(){
 }
 
 mRNA::mRNA(){
-	t.trace("init","\n");
-	Molecule::Molecule();
-	t.trace("init","Molecule %u type:mRNA\n", (unsigned int) this);	
+	
+	t.trace("init","Molecule %p type:mRNA\n", this);	
 	longName = "mRNA";
 	shortName = "m";
 	currentDir = 0;
@@ -102,9 +98,8 @@ mRNA::~mRNA(){
 }
 
 Protein::Protein(){
-	t.trace("init","\n");
-	Molecule::Molecule();
-	t.trace("init","Molecule %u type:Protein\n", (unsigned int) this);	
+
+	t.trace("init","Molecule %p type:Protein\n", this);	
 	longName = "Protein";
 	shortName = "p";
 	currentDir = 0;
@@ -116,9 +111,7 @@ Protein::~Protein(){}
 
 Complex::Complex(int n1, int n2){
 
-	t.trace("init","\n");
-	Molecule::Molecule();
-	t.trace("init","Molecule %u type:Complex\n", (unsigned int) this);	
+	t.trace("init","Molecule %p type:Complex\n", this);	
 	
 	currentDir = 0;
 	prevDir = 0;
@@ -146,7 +139,7 @@ int Complex::getComponentId(int i){
 
 PTMProtein::PTMProtein(){
 
-	t.trace("init","Molecule %u type:PTM\n", (unsigned int) this);
+	t.trace("init","Molecule %p type:PTM\n",  this);
 
 	longName = "PTM";
 	shortName = "ptm";

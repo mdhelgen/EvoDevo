@@ -44,7 +44,7 @@ Experiment::Experiment(int ncells, int generations, int max_basic, int max_ptm, 
 	
 	t.trace("init","Creating new Experiment\n");
 	
-	t.trace("mloc","Experiment location at %u\n",(unsigned int) this);
+	t.trace("mloc","Experiment location at %p\n", this);
 
 	t.trace("args","%d Cells\n",ncells);
 	t.trace("args","%d Generations\n", generations);
@@ -99,7 +99,7 @@ Experiment::~Experiment() {
 
 	//call the destructor for each cell in the vector
 	for(unsigned i = 0; i < cells.size(); i++){
-		t.trace("free","Deleting Cells[%d] at location %d\n",i,&(cells[i]));	
+		t.trace("free","Deleting Cells[%d] at location %p\n",i,&(cells[i]));	
 		delete cells[i];
 	}
 
@@ -137,7 +137,7 @@ void Experiment::start()
 		t.trace("gens","Generation %d started (max %d)\n",i, maxGenerations);
 		for(unsigned int c = 0; c < cells.size(); c++)
 		{
-			t.trace("mutate","Gen %-3d Cell loc %u\n", i, (unsigned int) cells[c]);
+			t.trace("mutate","Gen %-3d Cell loc %p\n", i, cells[c]);
 			//mutate
 			cells[c]->mutate();
 			

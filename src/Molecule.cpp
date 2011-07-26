@@ -11,7 +11,7 @@
 Molecule::Molecule(){
 
 	t.trace("init", "Creating new Molecule\n");
-	t.trace("mloc", "Molecule location at %u\n", (unsigned int) this);
+	t.trace("mloc", "Molecule location at %p\n", this);
 
 	//set default concentration
 	currentConcentration = 5;

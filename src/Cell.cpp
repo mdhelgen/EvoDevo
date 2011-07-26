@@ -23,7 +23,7 @@ int Cell::CellCounter = 0;
 Cell::Cell(int max_basic, int max_ptm, int max_comp, int max_promoter,float min_kinetic_rate, float max_kinetic_rate, float rk_time_step, float rk_time_limit, float initial_conc){
 
     t.trace("init", "Creating new Cell\n");
-    t.trace("mloc", "Cell location at %u\n", (unsigned int) this);
+    t.trace("mloc", "Cell location at %p\n", this);
     equations = new DerivGraph();
     
     //set the limits of mutation occurrences
@@ -45,11 +45,9 @@ Cell::Cell(int max_basic, int max_ptm, int max_comp, int max_promoter,float min_
    
     CellID = CellCounter++;
 
-    //equations->>test();
 
     equations->newBasic();
-    equations->newPTM();
-    equations->newPromoter();
+
     t.trace("init", "New Cell created\n");
 
 }
@@ -65,13 +63,12 @@ Cell::Cell(int max_basic, int max_ptm, int max_comp, int max_promoter,float min_
  */
 Cell::~Cell(){
 
-t.trace("free","Deleting DerivGraph object at %u\n",(unsigned int) equations);
+t.trace("free","Deleting DerivGraph object at %p\n", equations);
 delete equations;
 
 }
 
 int Cell::mutate(){
-	return 0;	
 	currentGen++;
 	double mutationCategory = r.rand(1);
 	double mutationType = r.rand(1);

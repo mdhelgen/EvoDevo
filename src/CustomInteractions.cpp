@@ -77,7 +77,7 @@ Translation::Translation(){
 
 	t.trace("init","Creating new Interaction\n");
 	t.trace("cust","Custom Interaction type Translation\n");
-	t.trace("mloc","Interaction at location %u\n", (unsigned int)this);
+	t.trace("mloc","Interaction at location %p\n", this);
 	
 	name="tsln";	
 
@@ -111,7 +111,7 @@ float Translation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m,
 ForwardComplexation::ForwardComplexation(int n1, int n2){
 	t.trace("init","Creating new Interaction\n");
 	t.trace("cust","Custom Interaction type Complexation\n");
-	t.trace("mloc","Interaction at location %u\n", (unsigned int) this);
+	t.trace("mloc","Interaction at location %p\n", this);
 	name="f_cmplx";
 
 	firstNodeID = n1;
@@ -149,7 +149,7 @@ float ForwardComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 ReverseComplexation::ReverseComplexation(int n1, int n2){
 	t.trace("init","Creating new Interaction\n");
 	t.trace("cust","Custom Interaction type Complexation\n");
-	t.trace("mloc","Interaction at location %u\n", (unsigned int) this);
+	t.trace("mloc","Interaction at location %p\n", this);
 
 	name="r_cmplx";
 	firstNodeID = n1;
@@ -188,7 +188,7 @@ ForwardPTM::ForwardPTM(){
 
 	t.trace("init","Creating new Interaction\n");
 	t.trace("cust","Custom Interaction type ForwardPTM\n");
-	t.trace("mloc","Interaction at location %u\n", (unsigned int)this);
+	t.trace("mloc","Interaction at location %p\n", this);
 	
 	name="f_ptm";	
 
@@ -200,7 +200,7 @@ ReversePTM::ReversePTM(){
 
 	t.trace("init","Creating new Interaction\n");
 	t.trace("cust","Custom Interaction type ReversePTM\n");
-	t.trace("mloc","Interaction at location %u\n", (unsigned int)this);
+	t.trace("mloc","Interaction at location %p\n", this);
 	
 	name="r_ptm";	
 
@@ -213,7 +213,7 @@ TestInt::TestInt(){
 
 	t.trace("init","Creating new Interaction\n");
 	t.trace("cust","Custom Interaction type TestInt\n");
-	t.trace("mloc","Interaction at location %u\n", (unsigned int)this);
+	t.trace("mloc","Interaction at location %p\n", this);
 	
 	name="test";	
 	t.trace("init","New Interaction created\n");
