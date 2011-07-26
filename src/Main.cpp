@@ -56,7 +56,7 @@ int main(int argc, char** argv){
 
   t.addTraceType("score",0);
   //mutation
-  t.addTraceType("mutate",0);
+  t.addTraceType("mutate",1);
 
   //polymorphic comparisons
   t.addTraceType("typeid",0);

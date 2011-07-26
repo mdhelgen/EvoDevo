@@ -20,7 +20,6 @@ public:
 	TestInt();
 	~TestInt();
 	
-//	virtual float getEffect(DerivGraph*, ListDigraph::Node, int, float);
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 
 
@@ -35,7 +34,6 @@ class Transcription : public Interaction{
 public:
 	Transcription();
 	~Transcription();
-	//virtual float getEffect(DerivGraph*, ListDigraph::Node, int, float);
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 };
 
@@ -43,7 +41,6 @@ class Degradation : public Interaction{
 public:
 	Degradation();
 	~Degradation();
-	//virtual float getEffect(DerivGraph*, ListDigraph::Node, int, float);
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 };
 
@@ -62,6 +59,8 @@ public:
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 	int firstNodeID;
 	int secondNodeID;
+	void setPairArcID(int);
+	int pairArcID;
 };
 class ReverseComplexation : public Interaction{
 public:
@@ -70,6 +69,9 @@ public:
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 	int firstNodeID;
 	int secondNodeID;
+	void setPairArcID(int);
+	int pairArcID;
+
 };
 
 class ForwardPTM : public Interaction{

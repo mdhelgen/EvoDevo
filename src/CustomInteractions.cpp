@@ -146,6 +146,10 @@ float ForwardComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 
 }
 
+void ForwardComplexation::setPairArcID(int i){
+	pairArcID = i;
+}
+
 ReverseComplexation::ReverseComplexation(int n1, int n2){
 	t.trace("init","Creating new Interaction\n");
 	t.trace("cust","Custom Interaction type Complexation\n");
@@ -182,6 +186,10 @@ float ReverseComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 	else
 		return  rate * oppositeMol->rkApprox(rkIter, rkStep); 
 
+}
+
+void ReverseComplexation::setPairArcID(int i){
+	pairArcID = i;
 }
 
 ForwardPTM::ForwardPTM(){
