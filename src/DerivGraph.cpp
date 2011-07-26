@@ -465,28 +465,35 @@ void DerivGraph::forwardRateChange(){
 	int totalSize = 0;
 	totalSize += TranslationList->size();
 	totalSize += ForwardComplexationList->size();
-	//totalSize += ForwardPTMList->size();
+	totalSize += ForwardPTMList->size();
 	
 	t.trace("mutate","size = %d (%d + %d + %d)\n", totalSize-1, TranslationList->size(), ForwardComplexationList->size(), ForwardPTMList->size());
 
 	Interaction* selectedInteraction;
 	
 	//select a random integer between 0 and the total number of forward interactions
-	unsigned int selectedIndex = r.randInt(totalSize - 1);
-	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
+	unsigned int randInd = r.randInt(totalSize - 1);
+	t.trace("mutate","randInd = %d\n", randInd);
 
-	//get the interaction that corresponds to the selected Index
-	if(selectedIndex >= 0 && selectedIndex < TranslationList->size())
+	//index falls within the TranslationList
+	if(randInd >= 0 && randInd < TranslationList->size())
 	{
-		t.trace("mutate","TranslationList[%d]\n", selectedIndex);
-		selectedInteraction = (*TranslationList)[selectedIndex];
+		t.trace("mutate","TranslationList[%d]\n", randInd);
+		selectedInteraction = (*TranslationList)[randInd];
 	}
-	else if(selectedIndex >= TranslationList->size())
+	//index falls within the ForwardComplexationList
+	else if(randInd >= TranslationList->size() && randInd < TranslationList->size() + ForwardComplexationList->size())
 	{
-		t.trace("mutate","ForwardComplexation[%d]\n",selectedIndex);
-		selectedInteraction = (*ForwardComplexationList)[selectedIndex];
+		t.trace("mutate","ForwardComplexation[%d]\n",randInd - TranslationList->size());
+		selectedInteraction = (*ForwardComplexationList)[randInd - TranslationList->size()];
 	}
-
+	//index falls within the ForwardPTMList
+	else if(randInd >= TranslationList->size() + ForwardComplexationList->size() && randInd < TranslationList->size() + ForwardComplexationList->size() + ForwardPTMList->size())
+	{
+		t.trace("mutate","ForwardPTM[%d]\n",randInd - TranslationList->size() - ForwardComplexationList->size());
+		selectedInteraction = (*ForwardPTMList)[randInd - TranslationList->size() - ForwardComplexationList->size()];
+	}
+		
 	//get the arc which holds the interaction
 	ListDigraph::Arc selectedArc= derivs->arcFromId(selectedInteraction->arcID);
 
