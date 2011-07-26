@@ -455,9 +455,6 @@ void DerivGraph::newBasic(){
  *     (yes) Select Arr3[number - Arr1.size - Arr2.size]
  *
  * Can extend to any number of arrays 
-
-
- * TODO: add ForwardPTMs
  */
 void DerivGraph::forwardRateChange(){
 
@@ -535,28 +532,34 @@ void DerivGraph::reverseRateChange(){
 
 	Interaction* selectedInteraction;
 
-	unsigned int selectedIndex = r.randInt(totalSize - 1);
-	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
+	//get a random number between 1 and the total number of reverse reactions
+	unsigned int randIndex = r.randInt(totalSize - 1);
+	t.trace("mutate","randIndex = %d\n", randIndex);
+
+	//if the index falls within the ReverseComplexationList	
+	if(randIndex >= 0 && randIndex < ReverseComplexationList->size())
+	{
+		t.trace("mutate","ReverseComplexationList[%d]\n", randIndex);
+		selectedInteraction = (*ReverseComplexationList)[randIndex];
+	}
+	//if the index falls within the ReversePTMList
+	else if(randIndex >= ReverseComplexationList->size() && randIndex < ReverseComplexationList->size() + ReversePTMList->size())
+	{
+		t.trace("mutate","ReversePTM[%d]\n",randIndex - ReverseComplexationList->size());
+		selectedInteraction = (*ReversePTMList)[randIndex - ReverseComplexationList->size()];
+	}
 	
-	if(selectedIndex < ReverseComplexationList->size())
-	{
-		t.trace("mutate","ReverseComplexationList[%d]\n", selectedIndex);
-		selectedInteraction = (*ReverseComplexationList)[selectedIndex];
-	}
-	else if(selectedIndex >= ReverseComplexationList->size())
-	{
-		selectedIndex -= ReverseComplexationList->size();
-		t.trace("mutate","ReversePTM[%d]\n",selectedIndex);
-		selectedInteraction = (*ReversePTMList)[selectedIndex];
-	}
-
+	//get the Arc holding the interaction
 	ListDigraph::Arc selectedArc= derivs->arcFromId(selectedInteraction->arcID);
-
+	//get the source and target molecules
 	Molecule* source = (*molecules)[derivs->source(selectedArc)];
 	Molecule* target = (*molecules)[derivs->target(selectedArc)];
+	
+	//select a random rate between the minimum and maxium values
 	float newRate = minKineticRate + r.rand(maxKineticRate - minKineticRate);
 	t.trace("mutate","%s -> %s new rate: %f (old rate: %f)\n",source->getShortName(), target->getShortName(), newRate, selectedInteraction->getRate());
-
+	
+	//set the chosen interaction to the new rate
 	selectedInteraction->setRate(newRate);
 }
 /**
