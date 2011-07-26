@@ -146,6 +146,9 @@ float ForwardComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 
 }
 
+void ForwardComplexation::setPairArcID(int i){
+	pairArcID = i;
+}
 
 ReverseComplexation::ReverseComplexation(int n1, int n2){
 	t.trace("init","Creating new Interaction\n");

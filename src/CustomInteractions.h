@@ -59,7 +59,7 @@ public:
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 	int firstNodeID;
 	int secondNodeID;
-	void setPairArcId(int)
+	void setPairArcID(int);
 	int pairArcID;
 };
 class ReverseComplexation : public Interaction{
@@ -69,7 +69,7 @@ public:
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 	int firstNodeID;
 	int secondNodeID;
-	void setPairArcId(int);
+	void setPairArcID(int);
 	int pairArcID;
 
 };

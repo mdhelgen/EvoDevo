@@ -778,6 +778,12 @@ void DerivGraph::newComplex(){
 
 	ListDigraph::Arc f1 = add(new ForwardComplexation(id1, id2), n1, comp); 
 	ListDigraph::Arc f2 = add(new ForwardComplexation(id1, id2), n2, comp); 
+	((ForwardComplexation*)(*interactions)[f1])->setPairArcID(derivs->id(f2));
+	((ForwardComplexation*)(*interactions)[f2])->setPairArcID(derivs->id(f1));
+	
+	t.trace("mutate","test-- f1 arc id: %d, f2 arc id: %d\n", derivs->id(f1), derivs->id(f2));
+	t.trace("mutate","test-- f1 pair arc: %d, f2 pair arc: %d\n", ((ForwardComplexation*)(*interactions)[f1])->pairArcID, ((ForwardComplexation*)(*interactions)[f2])->pairArcID);
+
 	ListDigraph::Arc r1 = add(new ReverseComplexation(id1, id2), comp, n1); 
 	ListDigraph::Arc r2 = add(new ReverseComplexation(id1, id2), comp, n2); 
 	ListDigraph::Arc deg = add(new Degradation(), comp, nullnode);	
