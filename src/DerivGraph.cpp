@@ -432,6 +432,31 @@ void DerivGraph::newBasic(){
  * 
  * Forward interactions are of type Translation, ForwardComplex
  * 
+ *
+ * Random Selection across multiple arrays logic:
+ * Arr1: [0 1 2 3] (size = 4)
+ * Arr2: [0 1 2]   (size = 3)
+ * Arr3: [0 1]     (size = 2)
+ *
+ * Implicitly: [0 1 2 3|0 1 2|0 1] (totalSize = 9)
+ *(subscripts)  0 1 2 3 4 5 6 7 8
+ *
+ * 1. Select random number between 0 and totalSize-1
+ *
+ * 2. Is number >= 0 and < Arr1.size? 
+ *     (yes) Select Arr1[number]
+ *     (no) continue
+ *
+ * 3. Is number >= Arr1.size and < Arr1.size + Arr2.size?
+ *     (yes) Select Arr2[number - Arr1.size]
+ *     (no) continue
+ *
+ * 4. Is number >= Arr1.size + Arr2.size and < Arr1.size + Arr2.size + Arr3.size?
+ *     (yes) Select Arr3[number - Arr1.size - Arr2.size]
+ *
+ * Can extend to any number of arrays 
+
+
  * TODO: add ForwardPTMs
  */
 void DerivGraph::forwardRateChange(){
@@ -442,7 +467,7 @@ void DerivGraph::forwardRateChange(){
 	totalSize += ForwardComplexationList->size();
 	//totalSize += ForwardPTMList->size();
 	
-	t.trace("mutate","size = %d (%d + %d)\n", totalSize-1, TranslationList->size(), ForwardComplexationList->size());
+	t.trace("mutate","size = %d (%d + %d + %d)\n", totalSize-1, TranslationList->size(), ForwardComplexationList->size(), ForwardPTMList->size());
 
 	Interaction* selectedInteraction;
 	
@@ -451,14 +476,13 @@ void DerivGraph::forwardRateChange(){
 	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
 
 	//get the interaction that corresponds to the selected Index
-	if(selectedIndex < TranslationList->size())
+	if(selectedIndex >= 0 && selectedIndex < TranslationList->size())
 	{
 		t.trace("mutate","TranslationList[%d]\n", selectedIndex);
 		selectedInteraction = (*TranslationList)[selectedIndex];
 	}
 	else if(selectedIndex >= TranslationList->size())
 	{
-		selectedIndex -= TranslationList->size();
 		t.trace("mutate","ForwardComplexation[%d]\n",selectedIndex);
 		selectedInteraction = (*ForwardComplexationList)[selectedIndex];
 	}
