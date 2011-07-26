@@ -432,7 +432,29 @@ void DerivGraph::newBasic(){
  * 
  * Forward interactions are of type Translation, ForwardComplex
  * 
- * TODO: add ForwardPTMs
+ *
+ * Random Selection across multiple arrays logic:
+ * Arr1: [0 1 2 3] (size = 4)
+ * Arr2: [0 1 2]   (size = 3)
+ * Arr3: [0 1]     (size = 2)
+ *
+ * Implicitly: [0 1 2 3|0 1 2|0 1] (totalSize = 9)
+ *(subscripts)  0 1 2 3 4 5 6 7 8
+ *
+ * 1. Select random number between 0 and totalSize-1
+ *
+ * 2. Is number >= 0 and < Arr1.size? 
+ *     (yes) Select Arr1[number]
+ *     (no) continue
+ *
+ * 3. Is number >= Arr1.size and < Arr1.size + Arr2.size?
+ *     (yes) Select Arr2[number - Arr1.size]
+ *     (no) continue
+ *
+ * 4. Is number >= Arr1.size + Arr2.size and < Arr1.size + Arr2.size + Arr3.size?
+ *     (yes) Select Arr3[number - Arr1.size - Arr2.size]
+ *
+ * Can extend to any number of arrays 
  */
 void DerivGraph::forwardRateChange(){
 
@@ -440,29 +462,35 @@ void DerivGraph::forwardRateChange(){
 	int totalSize = 0;
 	totalSize += TranslationList->size();
 	totalSize += ForwardComplexationList->size();
-	//totalSize += ForwardPTMList->size();
+	totalSize += ForwardPTMList->size();
 	
-	t.trace("mutate","size = %d (%d + %d)\n", totalSize-1, TranslationList->size(), ForwardComplexationList->size());
+	t.trace("mutate","size = %d (%d + %d + %d)\n", totalSize-1, TranslationList->size(), ForwardComplexationList->size(), ForwardPTMList->size());
 
 	Interaction* selectedInteraction;
 	
 	//select a random integer between 0 and the total number of forward interactions
-	unsigned int selectedIndex = r.randInt(totalSize - 1);
-	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
+	unsigned int randIndex = r.randInt(totalSize - 1);
+	t.trace("mutate","randIndex = %d\n", randIndex);
 
-	//get the interaction that corresponds to the selected Index
-	if(selectedIndex < TranslationList->size())
+	//index falls within the TranslationList
+	if(randIndex >= 0 && randIndex < TranslationList->size())
 	{
-		t.trace("mutate","TranslationList[%d]\n", selectedIndex);
-		selectedInteraction = (*TranslationList)[selectedIndex];
+		t.trace("mutate","TranslationList[%d]\n", randIndex);
+		selectedInteraction = (*TranslationList)[randIndex];
 	}
-	else if(selectedIndex >= TranslationList->size())
+	//index falls within the ForwardComplexationList
+	else if(randIndex >= TranslationList->size() && randIndex < TranslationList->size() + ForwardComplexationList->size())
 	{
-		selectedIndex -= TranslationList->size();
-		t.trace("mutate","ForwardComplexation[%d]\n",selectedIndex);
-		selectedInteraction = (*ForwardComplexationList)[selectedIndex];
+		t.trace("mutate","ForwardComplexation[%d]\n",randIndex - TranslationList->size());
+		selectedInteraction = (*ForwardComplexationList)[randIndex - TranslationList->size()];
 	}
-
+	//index falls within the ForwardPTMList
+	else if(randIndex >= TranslationList->size() + ForwardComplexationList->size() && randIndex < TranslationList->size() + ForwardComplexationList->size() + ForwardPTMList->size())
+	{
+		t.trace("mutate","ForwardPTM[%d]\n",randIndex - TranslationList->size() - ForwardComplexationList->size());
+		selectedInteraction = (*ForwardPTMList)[randIndex - TranslationList->size() - ForwardComplexationList->size()];
+	}
+		
 	//get the arc which holds the interaction
 	ListDigraph::Arc selectedArc= derivs->arcFromId(selectedInteraction->arcID);
 
@@ -485,6 +513,7 @@ void DerivGraph::forwardRateChange(){
  *
  * Reverse interactions are of type ReverseComplexation, ReversePTM
  * 
+ * See DerivGraph::forwardRateChange() for detailed explaination of how the rate is randomly selected 
  */
 void DerivGraph::reverseRateChange(){
 
@@ -492,6 +521,7 @@ void DerivGraph::reverseRateChange(){
 	totalSize += ReverseComplexationList->size();
 	totalSize += ReversePTMList->size();
 	
+	//it is possible that no rates exist at this point
 	if(totalSize < 1)
 	{
 		t.trace("mutate","Reverse rate change failure: no reverse rates\n");
@@ -502,28 +532,34 @@ void DerivGraph::reverseRateChange(){
 
 	Interaction* selectedInteraction;
 
-	unsigned int selectedIndex = r.randInt(totalSize - 1);
-	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
+	//get a random number between 1 and the total number of reverse reactions
+	unsigned int randIndex = r.randInt(totalSize - 1);
+	t.trace("mutate","randIndex = %d\n", randIndex);
+
+	//if the index falls within the ReverseComplexationList	
+	if(randIndex >= 0 && randIndex < ReverseComplexationList->size())
+	{
+		t.trace("mutate","ReverseComplexationList[%d]\n", randIndex);
+		selectedInteraction = (*ReverseComplexationList)[randIndex];
+	}
+	//if the index falls within the ReversePTMList
+	else if(randIndex >= ReverseComplexationList->size() && randIndex < ReverseComplexationList->size() + ReversePTMList->size())
+	{
+		t.trace("mutate","ReversePTM[%d]\n",randIndex - ReverseComplexationList->size());
+		selectedInteraction = (*ReversePTMList)[randIndex - ReverseComplexationList->size()];
+	}
 	
-	if(selectedIndex < ReverseComplexationList->size())
-	{
-		t.trace("mutate","ReverseComplexationList[%d]\n", selectedIndex);
-		selectedInteraction = (*ReverseComplexationList)[selectedIndex];
-	}
-	else if(selectedIndex >= ReverseComplexationList->size())
-	{
-		selectedIndex -= ReverseComplexationList->size();
-		t.trace("mutate","ReversePTM[%d]\n",selectedIndex);
-		selectedInteraction = (*ReversePTMList)[selectedIndex];
-	}
-
+	//get the Arc holding the interaction
 	ListDigraph::Arc selectedArc= derivs->arcFromId(selectedInteraction->arcID);
-
+	//get the source and target molecules
 	Molecule* source = (*molecules)[derivs->source(selectedArc)];
 	Molecule* target = (*molecules)[derivs->target(selectedArc)];
+	
+	//select a random rate between the minimum and maxium values
 	float newRate = minKineticRate + r.rand(maxKineticRate - minKineticRate);
 	t.trace("mutate","%s -> %s new rate: %f (old rate: %f)\n",source->getShortName(), target->getShortName(), newRate, selectedInteraction->getRate());
-
+	
+	//set the chosen interaction to the new rate
 	selectedInteraction->setRate(newRate);
 }
 /**
