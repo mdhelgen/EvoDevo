@@ -1,7 +1,6 @@
 /**
  * Cell implementation file.
  *
- *
  */
 #include <iostream>
 #include "Cell.h"
