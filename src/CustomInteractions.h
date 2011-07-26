@@ -62,6 +62,9 @@ public:
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 	int firstNodeID;
 	int secondNodeID;
+	void setRate(float);
+	void setPairArcId(int)
+	int pairArcID;
 };
 class ReverseComplexation : public Interaction{
 public:
@@ -70,6 +73,10 @@ public:
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 	int firstNodeID;
 	int secondNodeID;
+	void setRate(float);
+	void setPairArcId(int);
+	int pairArcID;
+
 };
 
 class ForwardPTM : public Interaction{
