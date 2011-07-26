@@ -146,10 +146,6 @@ float ForwardComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 
 }
 
-void ForwardComplexation::setRate(float rate){
-
-}
-
 
 ReverseComplexation::ReverseComplexation(int n1, int n2){
 	t.trace("init","Creating new Interaction\n");
@@ -186,10 +182,6 @@ float ReverseComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 	//effect on target node
 	else
 		return  rate * oppositeMol->rkApprox(rkIter, rkStep); 
-
-}
-
-void ReverseComplexation::setRate(float rate){
 
 }
 
