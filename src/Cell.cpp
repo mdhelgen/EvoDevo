@@ -154,24 +154,11 @@ int Cell::getScore(){
 
 void Cell::outputDotImage(const char* prefix, int pid){
 //	printf("dot\n");
-	equations->outputDotImage(CellID, currentGen);
+	equations->outputDotImage(prefix, pid, CellID, currentGen);
 }
 
 void Cell::outputDataPlot(const char* prefix, int pid){
-	equations->outputDataPlot(CellID, currentGen, rkTimeStep);
-}
-
-
-void Cell::rkTest(){
-
-	float steps[] = {1, .75, .5, .25, .1, .05, .025, .01, .001};
-	for(int i = 0; i < 9 ; i++){
-		equations->setRungeKuttaEval(steps[i], 20);
-		equations->rungeKuttaEvaluate(steps[i], 20);
-		equations->outputDataPlot(i, currentGen, steps[i]);
-	}
-
-
+	equations->outputDataPlot(prefix, pid, CellID, currentGen, rkTimeStep);
 }
 
 void Cell::rk(){
