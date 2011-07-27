@@ -799,9 +799,18 @@ void DerivGraph::newComplex(){
 	ListDigraph::Node comp = add(new Complex(id1, id2));
 	(*molecules)[comp]->setID(count++);
 
+	//create rates for the forward and reverse interactions
+	float k_fwd = minKineticRate + r.rand(maxKineticRate - minKineticRate);
+        float k_rev = minKineticRate + r.rand(maxKineticRate - minKineticRate);
+
 	//create the pair forward complexation interactions
 	ListDigraph::Arc f1 = add(new ForwardComplexation(id1, id2), n1, comp); 
 	ListDigraph::Arc f2 = add(new ForwardComplexation(id1, id2), n2, comp); 
+
+	//set the same rate for the forward interactions
+        (*interactions)[f1]->setRate(k_fwd);
+        (*interactions)[f2]->setRate(k_fwd);
+        t.trace("mutate","f1 and f2 created with rate %f\n",k_fwd);	
 	
 	//set each interactions pairArcID, so changes to one can easily be made to the other
 	((ForwardComplexation*)(*interactions)[f1])->setPairArcID(derivs->id(f2));
@@ -813,6 +822,11 @@ void DerivGraph::newComplex(){
 	//create the pair of reverse complexation interactions
 	ListDigraph::Arc r1 = add(new ReverseComplexation(id1, id2), comp, n1); 
 	ListDigraph::Arc r2 = add(new ReverseComplexation(id1, id2), comp, n2); 
+
+	//set the same rate for the reverse interactions
+        (*interactions)[r1]->setRate(k_rev);
+        (*interactions)[r2]->setRate(k_rev);
+        t.trace("mutate","r1 and r2 created with rate %f\n",k_rev);
 	
 	//set each interaction's pairArcID, so changes to one c an easily be made to the other
 	((ReverseComplexation*)(*interactions)[r1])->setPairArcID(derivs->id(r2));
@@ -999,12 +1013,11 @@ void DerivGraph::outputDataPlot(const char* prefix, int pid, int cellNum, int ge
 		fprintf(gnuplot, "\"-\" using 2:($1==%d ? $3 : 1/0) t \"%s\" pt 1 with linespoints\n",i,(*MoleculeList)[i]->getLongName());
 		fflush(gnuplot);
 	
-		float t;
-		t = 0;
+		float t = 0;
 		for(unsigned int j = 0; j < (*MoleculeList)[i]->getRungeKuttaSolution()->size(); j++)
 		{	
 		
-		if(j % 10 != 0){
+		if(j % 5 != 0){
 			t+=step;
 			continue;
 		}
@@ -1019,6 +1032,45 @@ void DerivGraph::outputDataPlot(const char* prefix, int pid, int cellNum, int ge
 	}
 	pclose(gnuplot);
 }
+
+void DerivGraph::outputDataCsv(const char* prefix, int pid, int cellNum, int gen, float step){
+
+	FILE * outFile;
+	char buf[500];
+	for(unsigned int i =  0; i < MoleculeList->size(); i++){
+		
+		sprintf(buf, "%s/%d/cell%d/csv/%sc%dg%d.csv", prefix, pid, cellNum, (*MoleculeList)[i]->getShortName(), cellNum, gen);	
+		outFile = fopen(buf,"w");
+		float t = 0;
+		for(unsigned int j = 0; j < (*MoleculeList)[i]->getRungeKuttaSolution()->size(); j++){
+
+			if(j % 5 != 0){
+				t+=step;
+				continue;
+			}
+				float k = (*MoleculeList)[i]->getRungeKuttaSolution()->at(j);
+				fprintf(outFile, "%f, %f\n", t, k);
+				fflush(outFile);
+				t+=step;
+		}
+		fclose(outFile);
+	}
+}
+
+void DerivGraph::outputInteractionCsv(const char* prefix, int pid, int cellNum, int gen){
+
+	FILE * outFile;
+	char buf[200];
+	sprintf(buf, "%s/%d/cell%d/csv/Cell%dGen%d.csv", prefix, pid, cellNum, cellNum, gen);
+	outFile = fopen(buf, "w");
+	for(ListDigraph::ArcIt it(*derivs); it != INVALID; ++it){
+		fprintf(outFile, "%s, %s, %s, %f\n", (*interactions)[it]->getName(), (*molecules)[derivs->source(it)]->getShortName(), (*molecules)[derivs->target(it)]->getShortName(), (*interactions)[it]->getRate());
+
+	}	
+	fclose(outFile);
+
+}
+
 /**
  * DerivGraph::setLimits(int, int, int, int)
  *
