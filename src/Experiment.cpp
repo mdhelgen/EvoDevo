@@ -165,13 +165,14 @@ void Experiment::start()
 			}	
 
 
+			else{
 			//if the flag is set, generate output every generation
 			if(output_each_gen && graphviz_enabled)
 				cells[c]->outputDotImage();
 			if(output_each_gen && gnuplot_enabled)
 				cells[c]->outputDataPlot();
 		}
-
+}
 		//if the scoring interval is 5, this runs every 5 generations
 		if(i % scoringInterval == 0){
 			

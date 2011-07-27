@@ -30,6 +30,9 @@ int main(int argc, char** argv){
   
   //program arguments
   t.addTraceType("args",0);
+
+  //error messages
+  t.addTraceType("error",1);
  
   //object creation / construction
   t.addTraceType("init",0);
