@@ -999,12 +999,11 @@ void DerivGraph::outputDataPlot(const char* prefix, int pid, int cellNum, int ge
 		fprintf(gnuplot, "\"-\" using 2:($1==%d ? $3 : 1/0) t \"%s\" pt 1 with linespoints\n",i,(*MoleculeList)[i]->getLongName());
 		fflush(gnuplot);
 	
-		float t;
-		t = 0;
+		float t = 0;
 		for(unsigned int j = 0; j < (*MoleculeList)[i]->getRungeKuttaSolution()->size(); j++)
 		{	
 		
-		if(j % 10 != 0){
+		if(j % 5 != 0){
 			t+=step;
 			continue;
 		}
@@ -1020,10 +1019,28 @@ void DerivGraph::outputDataPlot(const char* prefix, int pid, int cellNum, int ge
 	pclose(gnuplot);
 }
 
-void DerivGraph::outputDataCsv(const char* prefix, int pid, int CellID, int currentGen, float rkTimeStep){
+void DerivGraph::outputDataCsv(const char* prefix, int pid, int cellNum, int gen, float step){
 
+	FILE * outFile;
+	char buf[200];
+	for(unsigned int i =  0; i < MoleculeList->size(); i++){
+		
+		sprintf(buf, "%s/%d/cell%d/%sc%dg%d.csv", prefix, pid, cellNum, (*MoleculeList)[i]->getShortName(), cellNum, gen);	
+		outFile = fopen(buf,"w");
+		float t = 0;
+		for(unsigned int j = 0; j < (*MoleculeList)[i]->getRungeKuttaSolution()->size(); j++){
 
-
+			if(j % 5 != 0){
+				t+=step;
+				continue;
+			}
+				float k = (*MoleculeList)[i]->getRungeKuttaSolution()->at(j);
+				fprintf(outFile, "%f, %f\n", t, k);
+				fflush(outFile);
+				t+=step;
+		}
+		fclose(outFile);
+	}
 }
 
 /**
