@@ -28,7 +28,7 @@ public:
 
 	void start();
 
-	void setOutputOptions(int, int, int, int);
+	void setOutputOptions(int, int, int, int, int, int);
 private:
 	vector<Cell*> cells;
 
@@ -53,7 +53,8 @@ private:
 	int graphviz_enabled;
 	int gnuplot_enabled;
         int output_each_gen;
-
+	int output_csv_interactions;
+	int output_csv_data;
 
 	int scoringInterval;
 	int numHighScores;

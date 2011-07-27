@@ -137,8 +137,6 @@ int Cell::mutate(){
 
 	}//end null mutation
 	
-	//equations->rungeKuttaEvaluate(rkTimeStep, rkTimeLimit);
-//	equations->outputDotImage(CellID,currentGen );
 	
 	return -1;
 }
@@ -160,6 +158,15 @@ void Cell::outputDotImage(const char* prefix, int pid){
 void Cell::outputDataPlot(const char* prefix, int pid){
 	equations->outputDataPlot(prefix, pid, CellID, currentGen, rkTimeStep);
 }
+
+void Cell::outputDataCsv(const char* prefix, int pid){
+	equations->outputDataCsv(prefix, pid, CellID, currentGen, rkTimeStep);
+}
+
+void Cell::outputInteractionCsv(const char* prefix, int pid){
+	equations->outputInteractionCsv(prefix, pid, CellID, currentGen);
+}
+
 
 void Cell::rk(){
 	equations->rungeKuttaEvaluate(rkTimeStep, rkTimeLimit);

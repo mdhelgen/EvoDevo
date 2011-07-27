@@ -64,25 +64,13 @@ Experiment::Experiment(int ncells, int generations, int max_basic, int max_ptm, 
 	for (int i = 0; i < ncells; i++){
 		t.trace("init","Creating Cell (%d)\n",i);
 		cells.push_back(new Cell(maxBasic, maxPTM, maxComp, maxProm,minKineticRate,maxKineticRate, rkTimeStep, rkTimeLimit, initialConc));
+		
 		sprintf(buf, "%s/%d/cell%d", prefix, pid, cells.back()->getID());
+		mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO); 
+		sprintf(buf, "%s/%d/cell%d/csv", prefix, pid, cells.back()->getID());
 		mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO); 
 	}
 
-/*
-	sprintf(buf, "%s/%d/trace.txt", prefix, pid);
-	FILE* tracef = fopen(buf, "a+");
-	fprintf(tracef, "test\n");
-
-	t.setTraceFile(tracef);
-
-	sprintf(buf, "%s/%d/cell/genXstd.csv", prefix, pid);
-	FILE* stdfile = fopen(buf, "a+");
-	fprintf(stdfile, "test\n");
-
-	sprintf(buf, "%s/%d/cell/genXprec.csv", prefix, pid);
-	FILE* precfile = fopen(buf, "a+");
-	fprintf(precfile, "test\n");
-*/
 	t.trace("init","New Experiment created\n");
 }
 
@@ -110,12 +98,16 @@ Experiment::~Experiment() {
 }
 
 
-void Experiment::setOutputOptions(int gv_flag, int gp_flag, int eachgen_flag, int scoring_interval){
+void Experiment::setOutputOptions(int gv_flag, int gp_flag, int eachgen_flag, int csv_cell, int csv_data, int scoring_interval){
 
 	graphviz_enabled = gv_flag;
 	gnuplot_enabled = gp_flag;
 	output_each_gen = eachgen_flag;
+        output_csv_interactions = csv_cell;
+	output_csv_data = csv_data;	
+
 	scoringInterval = scoring_interval;
+	
 }
 
 void Experiment::start()
@@ -163,6 +155,10 @@ void Experiment::start()
 				cells[c]->outputDotImage(prefix, pid);
 			if(output_each_gen && gnuplot_enabled)
 				cells[c]->outputDataPlot(prefix, pid);
+			if(output_each_gen && output_csv_data)
+				cells[c]->outputDataCsv(prefix, pid);
+			if(output_each_gen && output_csv_interactions)
+				cells[c]->outputInteractionCsv(prefix, pid);
 		}
 }
 		//if the scoring interval is 5, this runs every 5 generations
@@ -176,6 +172,10 @@ void Experiment::start()
 				bestCell->outputDotImage(prefix, pid);
 			if(gnuplot_enabled)
 				bestCell->outputDataPlot(prefix, pid);
+			if(output_csv_data)	
+				bestCell->outputDataCsv(prefix, pid);
+			if(output_csv_interactions)
+				bestCell->outputInteractionCsv(prefix, pid);
 		}
 		t.trace("gens","Generation %d finished (max %d)\n",i, maxGenerations);
 	}

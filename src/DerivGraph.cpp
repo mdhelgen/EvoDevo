@@ -999,12 +999,11 @@ void DerivGraph::outputDataPlot(const char* prefix, int pid, int cellNum, int ge
 		fprintf(gnuplot, "\"-\" using 2:($1==%d ? $3 : 1/0) t \"%s\" pt 1 with linespoints\n",i,(*MoleculeList)[i]->getLongName());
 		fflush(gnuplot);
 	
-		float t;
-		t = 0;
+		float t = 0;
 		for(unsigned int j = 0; j < (*MoleculeList)[i]->getRungeKuttaSolution()->size(); j++)
 		{	
 		
-		if(j % 10 != 0){
+		if(j % 5 != 0){
 			t+=step;
 			continue;
 		}
@@ -1019,6 +1018,45 @@ void DerivGraph::outputDataPlot(const char* prefix, int pid, int cellNum, int ge
 	}
 	pclose(gnuplot);
 }
+
+void DerivGraph::outputDataCsv(const char* prefix, int pid, int cellNum, int gen, float step){
+
+	FILE * outFile;
+	char buf[500];
+	for(unsigned int i =  0; i < MoleculeList->size(); i++){
+		
+		sprintf(buf, "%s/%d/cell%d/csv/%sc%dg%d.csv", prefix, pid, cellNum, (*MoleculeList)[i]->getShortName(), cellNum, gen);	
+		outFile = fopen(buf,"w");
+		float t = 0;
+		for(unsigned int j = 0; j < (*MoleculeList)[i]->getRungeKuttaSolution()->size(); j++){
+
+			if(j % 5 != 0){
+				t+=step;
+				continue;
+			}
+				float k = (*MoleculeList)[i]->getRungeKuttaSolution()->at(j);
+				fprintf(outFile, "%f, %f\n", t, k);
+				fflush(outFile);
+				t+=step;
+		}
+		fclose(outFile);
+	}
+}
+
+void DerivGraph::outputInteractionCsv(const char* prefix, int pid, int cellNum, int gen){
+
+	FILE * outFile;
+	char buf[200];
+	sprintf(buf, "%s/%d/cell%d/csv/Cell%dGen%d.csv", prefix, pid, cellNum, cellNum, gen);
+	outFile = fopen(buf, "w");
+	for(ListDigraph::ArcIt it(*derivs); it != INVALID; ++it){
+		fprintf(outFile, "%s, %s, %s, %f\n", (*interactions)[it]->getName(), (*molecules)[derivs->source(it)]->getShortName(), (*molecules)[derivs->target(it)]->getShortName(), (*interactions)[it]->getRate());
+
+	}	
+	fclose(outFile);
+
+}
+
 /**
  * DerivGraph::setLimits(int, int, int, int)
  *
