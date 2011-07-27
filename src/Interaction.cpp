@@ -85,8 +85,6 @@ int Interaction::isSourceNode(ListDigraph* g, ListDigraph::Node n, ListDigraph::
 
 	if(g->source(a) == n)
 		return 1;
-	else if(g->target(a) == n)
-		return -1;
 	else
 		return 0;
 
@@ -109,8 +107,6 @@ int Interaction::isTargetNode(ListDigraph* g, ListDigraph::Node n, ListDigraph::
 
 	if(g->target(a) == n)
 		return 1;
-	else if(g->source(a) == n)
-		return -1;
 	else
 		return 0;
 
