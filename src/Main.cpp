@@ -21,6 +21,8 @@ int main(int argc, char** argv){
   int graphviz_flag = 0;
   int gnuplot_flag = 0;
   int outputall_flag = 0;
+  int csvCell_flag = 0;
+  int csvData_flag = 0;
 
   int c;
 
@@ -90,6 +92,8 @@ int main(int argc, char** argv){
       {"graphviz", no_argument, &graphviz_flag, 1},
       {"gnuplot",   no_argument, &gnuplot_flag, 1},
       {"outputall", no_argument, &outputall_flag, 1},
+      {"csvCell", no_argument, &csvCell_flag, 1}, 
+      {"csvData", no_argument, &csvData_flag, 1},
 
       {"cells",  required_argument, 0, 'c'},
       {"gens",  required_argument, 0, 'g'},
@@ -178,7 +182,7 @@ if(verbose_flag)
 
 
 Experiment e = Experiment(numCells, numGenerations, maxBasic, maxPTM, maxComp, maxPromoter, minKineticRate, maxKineticRate, rkTimeLimit, rkTimeStep, initialConcentration);
-e.setOutputOptions(graphviz_flag, gnuplot_flag, outputall_flag, scoringInterval);
+e.setOutputOptions(graphviz_flag, gnuplot_flag, outputall_flag, csvCell_flag, csvData_flag, scoringInterval);
 e.start();
 
 
