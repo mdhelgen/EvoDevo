@@ -1,4 +1,3 @@
-//TEST BRANCH MERGE
 #include <stdlib.h>
 #include <stdio.h>
 #include <getopt.h>
@@ -13,10 +12,14 @@ using namespace std;
 
 Trace t;
 
+//global variable for hill parameter
+//much easier than passing this through 4 class constructors to get to the DNA object
+// consider moving all command line parameter values here
 int hillParam = 1;
 
 int main(int argc, char** argv){
-
+  
+  //flags set by command line options
   int verbose_flag = 0;
   int graphviz_flag = 0;
   int gnuplot_flag = 0;
@@ -24,6 +27,7 @@ int main(int argc, char** argv){
   int csvCell_flag = 0;
   int csvData_flag = 0;
 
+  // used by command line parser
   int c;
 
 
@@ -51,19 +55,25 @@ int main(int argc, char** argv){
   //generational messages
   t.addTraceType("gens",0);
 
-  //runge kutta
+  // runge kutta (data / general messages)
   t.addTraceType("rk-4",0);
-
+  
+  // runge kutta (rk vals)
   t.addTraceType("rk-val",0);
+  
+  // runge kutta (calculation of next points) 
   t.addTraceType("rk-new",0);
 
+  // hill / goodwin term calculation (transcription::getEffect)
   t.addTraceType("hill",0);
 
+  // molecule scoring
   t.addTraceType("score",0);
-  //mutation
+  
+  // mutation
   t.addTraceType("mutate",1);
 
-  //polymorphic comparisons
+  // polymorphic comparisons (not used?)
   t.addTraceType("typeid",0);
 
 
@@ -86,7 +96,10 @@ int main(int argc, char** argv){
   float rkTimeStep = .05;
 
 
+  // this loop parses the command line options. it was mostly adapted from online examples
   while(1){
+
+  //define the command line options and their usage
     static struct option long_options[] =
      {
       {"graphviz", no_argument, &graphviz_flag, 1},
@@ -114,11 +127,13 @@ int main(int argc, char** argv){
 
  int option_index = 0;
 
-
+ // which argument is currently seen?
  c = getopt_long (argc, argv, "a:b:c:d:e:f:g:h:i:j:k:l:", long_options, &option_index);
 
  if (c == -1)
  	break;
+
+// what effect does that argument have
  switch(c)
  {
 	case 0:
@@ -175,18 +190,15 @@ int main(int argc, char** argv){
 }	
 }
 
-if(verbose_flag)
-	printf("verbose flag set\n");
-	
-
-
-
+// create our experiment with the options from the command line
 Experiment e = Experiment(numCells, numGenerations, maxBasic, maxPTM, maxComp, maxPromoter, minKineticRate, maxKineticRate, rkTimeLimit, rkTimeStep, initialConcentration);
+
+//set options related to output
 e.setOutputOptions(graphviz_flag, gnuplot_flag, outputall_flag, csvCell_flag, csvData_flag, scoringInterval);
+
+//start the experiment
 e.start();
 
-
-//t.trace("free","Deleting Experiment object at location %d\n", e);
 
 return 0;
 

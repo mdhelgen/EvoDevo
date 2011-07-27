@@ -1,6 +1,7 @@
 /**
  * Cell header file.
- *
+ * 
+ * The Cell class mainly interfaces with the DerivGraph class which it contains.
  */
 
 #ifndef CELL_H_
@@ -16,28 +17,34 @@ public:
 	Cell(int, int, int, int,float,float, float, float, float);
 	~Cell();
 	int mutate();
+	
+	//output functions
 	void outputDotImage(const char*, int);
 	void outputDataPlot(const char*, int);
 	void outputDataCsv(const char*, int);
 	void outputInteractionCsv(const char*, int);
-
-	int getScore();
-	int getID(){ return CellID; };
-	void rkTest();
+	
+	// runge kutta functions
 	void rk();
+	int getScore();
+	
+	int getID(){ return CellID; };
 private:
+	
+	// cell properties
 	static int CellCounter;
-
 	int CellID;
 	int currentGen;
+
+	// random generator
 	MTRand r;
+
+	// molecules/interactions class
 	DerivGraph * equations;
+
+	// runge kutta values
 	float rkTimeStep;
 	float rkTimeLimit;
 };
-
-
-
-
 
 #endif
