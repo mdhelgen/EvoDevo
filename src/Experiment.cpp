@@ -51,39 +51,38 @@ Experiment::Experiment(int ncells, int generations, int max_basic, int max_ptm, 
 
 	maxGenerations = generations;
 
+	char buf[200];
+	pid = getpid();
+	
+	prefix = "../output";
+	mkdir(prefix , S_IRWXU | S_IRWXG | S_IRWXO);
+	
+	sprintf(buf, "%s/%d", prefix, pid);
+	mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO);
+
 	//create the cell objects and add them to our cells vector
 	for (int i = 0; i < ncells; i++){
 		t.trace("init","Creating Cell (%d)\n",i);
 		cells.push_back(new Cell(maxBasic, maxPTM, maxComp, maxProm,minKineticRate,maxKineticRate, rkTimeStep, rkTimeLimit, initialConc));
+		sprintf(buf, "%s/%d/cell%d", prefix, pid, cells.back()->getID());
+		mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO); 
 	}
 
-/*	
-	char buf[200];
-	
-	const char* prefix = "../output";
-	mkdir(prefix , S_IRWXU | S_IRWXG | S_IRWXO);
-	
-	sprintf(buf, "%s/%d", prefix, getpid());
-	mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO);
-
-	sprintf(buf, "%s/%d/cell", prefix, getpid());
-	mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO);
-
-	sprintf(buf, "%s/%d/trace.txt", prefix, getpid());
+/*
+	sprintf(buf, "%s/%d/trace.txt", prefix, pid);
 	FILE* tracef = fopen(buf, "a+");
 	fprintf(tracef, "test\n");
 
 	t.setTraceFile(tracef);
 
-	sprintf(buf, "%s/%d/cell/genXstd.csv", prefix, getpid());
+	sprintf(buf, "%s/%d/cell/genXstd.csv", prefix, pid);
 	FILE* stdfile = fopen(buf, "a+");
 	fprintf(stdfile, "test\n");
 
-	sprintf(buf, "%s/%d/cell/genXprec.csv", prefix, getpid());
+	sprintf(buf, "%s/%d/cell/genXprec.csv", prefix, pid);
 	FILE* precfile = fopen(buf, "a+");
 	fprintf(precfile, "test\n");
 */
-
 	t.trace("init","New Experiment created\n");
 }
 
@@ -141,19 +140,12 @@ void Experiment::start()
 			//mutate
 			cells[c]->mutate();
 			
-			//collect test data for runge kutta evaluation
-			if(2 == 0){
-				cells[c]->rkTest();	
-				cells[c]->outputDotImage();
-			}
-
-
 			//if scoring interval is 5, this runs every 5 generations
 			if(i % scoringInterval == 0){
 				cells[c]->rk();
 				if(cells[c]->getScore() < -1  ){
-					cells[c]->outputDataPlot();
-					cells[c]->outputDotImage();
+					cells[c]->outputDataPlot(prefix, pid);
+					cells[c]->outputDotImage(prefix, pid);
 				}	
 
 				//keep track of the cell with the highest score so far
@@ -168,9 +160,9 @@ void Experiment::start()
 			else{
 			//if the flag is set, generate output every generation
 			if(output_each_gen && graphviz_enabled)
-				cells[c]->outputDotImage();
+				cells[c]->outputDotImage(prefix, pid);
 			if(output_each_gen && gnuplot_enabled)
-				cells[c]->outputDataPlot();
+				cells[c]->outputDataPlot(prefix, pid);
 		}
 }
 		//if the scoring interval is 5, this runs every 5 generations
@@ -181,9 +173,9 @@ void Experiment::start()
 			
 			//output the cell
 			if(graphviz_enabled)
-				bestCell->outputDotImage();
+				bestCell->outputDotImage(prefix, pid);
 			if(gnuplot_enabled)
-				bestCell->outputDataPlot();
+				bestCell->outputDataPlot(prefix, pid);
 		}
 		t.trace("gens","Generation %d finished (max %d)\n",i, maxGenerations);
 	}
@@ -193,9 +185,9 @@ void Experiment::start()
 	//generate output at the end of the experiment
 	for(unsigned int c = 0; c < cells.size(); c++){
 		if(graphviz_enabled)
-			cells[c]->outputDotImage();
+			cells[c]->outputDotImage(prefix, pid);
 		if(gnuplot_enabled)
-			cells[c]->outputDataPlot();
+			cells[c]->outputDataPlot(prefix, pid);
 	}
 
 }

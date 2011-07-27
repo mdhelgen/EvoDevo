@@ -269,11 +269,11 @@ void DerivGraph::rungeKuttaEvaluate(float rkStep, float rkLimit){
 			(*molecules)[it]->nextPoint(rkStep);
 		}
 	}
-	
+
 	//test output, display the values calculated by runge kutta for each molecule to stdout
-	for(ListDigraph::NodeIt it(*derivs); it != INVALID; ++it){
-		(*molecules)[it]->outputRK();	
-	}
+	//for(ListDigraph::NodeIt it(*derivs); it != INVALID; ++it){
+	//	(*molecules)[it]->outputRK();	
+	//}
 }
 
 /**
@@ -922,10 +922,10 @@ Molecule* DerivGraph::getBestMolecule(int CellID){
  * @param gen the generation number to put in the filename
  *
  */
-void DerivGraph::outputDotImage(int cellNum, int gen){
+void DerivGraph::outputDotImage(const char* prefix, int pid, int cellNum, int gen){
 	
 	char buf[200];
-	sprintf(buf, "dot -Gsize=\"20,20\" -Tpng -o../output/Cell%dGen%d.png",cellNum, gen);
+	sprintf(buf, "dot -Gsize=\"20,20\" -Tpng -o%s/%d/cell%d/Cell%dGen%d.png",prefix, pid, cellNum, cellNum, gen);
 
 	//popen forks and execs and returns a pipe to the new process stdin
 	FILE* dot = popen(buf,"w");
@@ -970,11 +970,11 @@ void DerivGraph::outputDotImage(int cellNum, int gen){
  * @param gen the generation number to put in the filename
  * @param step the stepSize used between the rungeKuttaSolution data points
  */
-void DerivGraph::outputDataPlot(int cellNum, int gen, float step){
+void DerivGraph::outputDataPlot(const char* prefix, int pid, int cellNum, int gen, float step){
 	
 	FILE* gnuplot = popen("gnuplot > /dev/null 2>&1","w");
 
-	//FILE* gnuplot = fopen("test.txt","w");
+//	FILE* test = fopen("test.txt","w");
 	for(unsigned int i =  0; i < MoleculeList->size(); i++){
 		if((*MoleculeList)[i]->getScore() < 3)
 			continue;
@@ -990,7 +990,7 @@ void DerivGraph::outputDataPlot(int cellNum, int gen, float step){
 		fprintf(gnuplot, "set format x \"%c03.2f\"\n",'%');
 		fflush(gnuplot);
 
-		fprintf(gnuplot, "set output \"../output/%sc%dg%d.plot.png\"\n",(*MoleculeList)[i]->getShortName(),cellNum, gen);
+		fprintf(gnuplot, "set output \"%s/%d/cell%d/%sc%dg%d.plot.png\"\n",prefix, pid, cellNum,(*MoleculeList)[i]->getShortName(),cellNum, gen);
 		fflush(gnuplot);
 	
 		fprintf(gnuplot, "plot \\\n");
