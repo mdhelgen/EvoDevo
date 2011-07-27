@@ -1,4 +1,5 @@
 /**
+/a
  * Implementation file for Custom Interactions.
  *
  * Interactions may overload the virtual method getEffect() to create a custom effect between Molecules
@@ -19,19 +20,19 @@ Transcription::~Transcription(){
 
 
 
-float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
+float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node n, int rkIter, float rkStep){	
 
 
-	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
+	t.trace("efct","Original Node value: %f\n", (*m)[n]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
-	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
-	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue());
+	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == n) ? "outgoing" : "incoming");
+	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(n, g->arcFromId(arcID))]->getValue());
 
-	Molecule* thisMol = (*m)[a];
-	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
+	Molecule* thisMol = (*m)[n];
+	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
 
 	
-	if(g->source(g->arcFromId(arcID)) == a)
+	if(g->source(g->arcFromId(arcID)) == n)
 		return 0;
 	else
 	{
@@ -56,17 +57,17 @@ Degradation::Degradation(){
 Degradation::~Degradation(){}
 
 
-float Degradation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
+float Degradation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node n, int rkIter, float rkStep){	
 	
-	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
+	t.trace("efct","Original Node value: %f\n", (*m)[n]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
-	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
-	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue());
+	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == n) ? "outgoing" : "incoming");
+	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(n, g->arcFromId(arcID))]->getValue());
 
-	Molecule* thisMol = (*m)[a];
-	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
+	Molecule* thisMol = (*m)[n];
+	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
 
-	if(g->source(g->arcFromId(arcID)) == a)
+	if(g->source(g->arcFromId(arcID)) == n)
 		return -1 * thisMol->rkApprox(rkIter, rkStep) * rate;
 	else
 		return 0;
@@ -86,26 +87,26 @@ Translation::Translation(){
 
 Translation::~Translation(){}
 
-float Translation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
+float Translation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node n, int rkIter, float rkStep){	
 	
-	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
+	t.trace("efct","Original Node value: %f\n", (*m)[n]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
-	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
-	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue());
-	t.trace("efct","isSourceNode() == %d\n", isSourceNode(g,a,g->arcFromId(arcID)));
-	Molecule* thisMol = (*m)[a];
-	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
+	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == n) ? "outgoing" : "incoming");
+	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(n, g->arcFromId(arcID))]->getValue());
+	t.trace("efct","isSourceNode() == %d\n", isSourceNode(g,n,g->arcFromId(arcID)));
+	Molecule* thisMol = (*m)[n];
+	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
 
 	//if the effect is being calculated for the source node
-	if(isSourceNode(g, a, g->arcFromId(arcID)) == 1)
+	if(isSourceNode(g, n, g->arcFromId(arcID)) == 1)
 		return 0;
 	//effect is being calculated for the target node
-	else if (isSourceNode(g, a, g->arcFromId(arcID)) == -1)
+	else if(isTargetNode(g, n, g->arcFromId(arcID)) == 1)
 		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
-	else
-		t.trace("efct","ERROR: %s not a part of the interaction\n", (*m)[a]->getShortName());
-		return 0;
 
+	else 
+		t.trace("error", "Translation getEffect reached error case, not source or target\n");
+		return -1;
 }
 
 ForwardComplexation::ForwardComplexation(int n1, int n2){
@@ -123,22 +124,22 @@ ForwardComplexation::ForwardComplexation(int n1, int n2){
 }
 ForwardComplexation::~ForwardComplexation(){}
 
-float ForwardComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
+float ForwardComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node n, int rkIter, float rkStep){	
 	
-	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
+	t.trace("efct","Original Node value: %f\n", (*m)[n]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
-	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
-	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue());
+	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == n) ? "outgoing" : "incoming");
+	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(n, g->arcFromId(arcID))]->getValue());
 
-	Molecule* thisMol = (*m)[a];
-	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
+	Molecule* thisMol = (*m)[n];
+	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
 
 	Molecule* compMol1 = (*m)[g->nodeFromId(firstNodeID)];
 	Molecule* compMol2 = (*m)[g->nodeFromId(secondNodeID)];
 
 
 	//effect on source node
-	if(g->source(g->arcFromId(arcID)) == a)
+	if(g->source(g->arcFromId(arcID)) == n)
 		return -1 * rate * compMol1->rkApprox(rkIter, rkStep) * compMol2->rkApprox(rkIter, rkStep);
 	//effect on target node
 	else
@@ -165,23 +166,23 @@ ReverseComplexation::ReverseComplexation(int n1, int n2){
 }
 ReverseComplexation::~ReverseComplexation(){}
 
-float ReverseComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
+float ReverseComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node n, int rkIter, float rkStep){	
 	
-	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
+	t.trace("efct","Original Node value: %f\n", (*m)[n]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
-	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
-	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue());
+	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == n) ? "outgoing" : "incoming");
+	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(n, g->arcFromId(arcID))]->getValue());
 
 	
-	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
+	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
 
 	Molecule* compMol1 = (*m)[g->nodeFromId(firstNodeID)];
 	Molecule* compMol2 = (*m)[g->nodeFromId(secondNodeID)];
 
 
 	//effect on source node
-	if(g->source(g->arcFromId(arcID)) == a)
-		return -1 * .5 * rate * (*m)[a]->rkApprox(rkIter, rkStep);
+	if(g->source(g->arcFromId(arcID)) == n)
+		return -1 * .5 * rate * (*m)[n]->rkApprox(rkIter, rkStep);
 	//effect on target node
 	else
 		return  rate * oppositeMol->rkApprox(rkIter, rkStep); 
@@ -233,18 +234,18 @@ TestInt::~TestInt(){
 }
 
 
-float TestInt::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
+float TestInt::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node n, int rkIter, float rkStep){	
 	
 	
-	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
+	t.trace("efct","Original Node value: %f\n", (*m)[n]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
-	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
-	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue());
+	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == n) ? "outgoing" : "incoming");
+	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(n, g->arcFromId(arcID))]->getValue());
 
 
-	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
+	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
 
-	if(g->source(g->arcFromId(arcID)) == a)
+	if(g->source(g->arcFromId(arcID)) == n)
 		return 0;
 	else
 		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
@@ -261,17 +262,17 @@ PromoterBind::PromoterBind(float fwdRate, float revRate){
 PromoterBind::~PromoterBind(){}
 
 
-float PromoterBind::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
+float PromoterBind::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node n, int rkIter, float rkStep){	
 	
-	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
+	t.trace("efct","Original Node value: %f\n", (*m)[n]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
-	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
-	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue());
+	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == n) ? "outgoing" : "incoming");
+	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(n, g->arcFromId(arcID))]->getValue());
 
-	Molecule* thisMol = (*m)[a];
-	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
+	Molecule* thisMol = (*m)[n];
+	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
 
-	if(g->source(g->arcFromId(arcID)) == a)
+	if(g->source(g->arcFromId(arcID)) == n)
 		return -1 * oppositeMol->rkApprox(rkIter, rkStep) * (kf-kr);
 	else
 		return 0;
