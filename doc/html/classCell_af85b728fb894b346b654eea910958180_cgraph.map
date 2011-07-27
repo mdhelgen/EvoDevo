@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classDerivGraph.html#a8862d4f9ebbd3eced9d56a81fe91c4fb" title="DerivGraph::newBasic" alt="" coords="177,5,348,35"/>
-<area shape="rect" id="node5" href="$classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="439,57,543,87"/>
-<area shape="rect" id="node7" href="$classDerivGraph.html#ab0a014cac7227943fe67f85f52d4e613" title="DerivGraph::setDefaultInitialConc" alt="" coords="137,109,388,139"/>
-<area shape="rect" id="node9" href="$classDerivGraph.html#a79249de71c4c870277abed71d484e2d5" title="DerivGraph::setKineticRateLimits" alt="" coords="137,163,388,192"/>
-<area shape="rect" id="node11" href="$classDerivGraph.html#a9bec1192a5ffc41a3ef4527caa9cdb8f" title="DerivGraph::setLimits" alt="" coords="177,216,348,245"/>
-<area shape="rect" id="node14" href="$classDerivGraph.html#a03b18e0508b383e7e6b3b57fc9fa6e90" title="DerivGraph::setRungeKuttaEval" alt="" coords="144,269,381,299"/>
-</map>
