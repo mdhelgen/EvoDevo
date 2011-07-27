@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classInteraction.html#a5ff512276a432b6aa172e719d4866131" title="Interaction::getRate" alt="" coords="339,5,504,35"/>
-<area shape="rect" id="node5" href="$classMolecule.html#a6d8720e89d81c1297beced997ad62718" title="Molecule::getShortName" alt="" coords="325,59,517,88"/>
-<area shape="rect" id="node7" href="$classInteraction.html#a82197452596f6bd849df062c5f9d9714" title="Interaction::setRate" alt="" coords="340,112,503,141"/>
-<area shape="rect" id="node9" href="$classTrace.html#a17c20d8abd43a042ac5a75e82d45047b" title="Trace::trace" alt="" coords="369,165,473,195"/>
-</map>

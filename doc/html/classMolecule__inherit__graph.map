@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classDNA.html" title="DNA" alt="" coords="5,83,56,112"/>
-<area shape="rect" id="node5" href="$classmRNA.html" title="mRNA" alt="" coords="80,83,144,112"/>
-<area shape="rect" id="node7" href="$classNullNode.html" title="NullNode" alt="" coords="168,83,248,112"/>
-<area shape="rect" id="node9" href="$classProtein.html" title="Protein" alt="" coords="272,83,341,112"/>
-<area shape="rect" id="node13" href="$classPTMProtein.html" title="PTMProtein" alt="" coords="365,83,464,112"/>
-<area shape="rect" id="node11" href="$classComplex.html" title="Complex" alt="" coords="267,160,347,189"/>
-</map>

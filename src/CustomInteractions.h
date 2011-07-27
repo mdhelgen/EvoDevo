@@ -16,14 +16,12 @@ using namespace lemon;
 
 class TestInt : public Interaction{
 
-public:
+ public:
 	TestInt();
 	~TestInt();
-	
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 
-
-private:
+ private:
 	float kf;
 	float kr;
 	int hill;
@@ -31,14 +29,14 @@ private:
 };
 
 class Transcription : public Interaction{
-public:
+ public:
 	Transcription();
 	~Transcription();
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 };
 
 class Degradation : public Interaction{
-public:
+ public:
 	Degradation();
 	~Degradation();
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
@@ -46,14 +44,14 @@ public:
 
 
 class Translation : public Interaction{
-public:
+ public:
 	Translation();
 	~Translation();
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 };
 
 class ForwardComplexation : public Interaction{
-public:
+ public:
 	ForwardComplexation(int, int);
 	~ForwardComplexation();
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
@@ -63,7 +61,7 @@ public:
 	int pairArcID;
 };
 class ReverseComplexation : public Interaction{
-public:
+ public:
 	ReverseComplexation(int, int);
 	~ReverseComplexation();
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
@@ -75,20 +73,20 @@ public:
 };
 
 class ForwardPTM : public Interaction{
-public:
+ public:
 	ForwardPTM();
 	~ForwardPTM();
 };
 
 class ReversePTM : public Interaction{
-public:
+ public:
 	ReversePTM();
 	~ReversePTM();
 
 };
 
 class PromoterBind : public Interaction{
-public:
+ public:
 	PromoterBind(float, float);
 	~PromoterBind();
 	float kf;
