@@ -1022,7 +1022,7 @@ void DerivGraph::outputDataPlot(const char* prefix, int pid, int cellNum, int ge
 void DerivGraph::outputDataCsv(const char* prefix, int pid, int cellNum, int gen, float step){
 
 	FILE * outFile;
-	char buf[200];
+	char buf[500];
 	for(unsigned int i =  0; i < MoleculeList->size(); i++){
 		
 		sprintf(buf, "%s/%d/cell%d/csv/%sc%dg%d.csv", prefix, pid, cellNum, (*MoleculeList)[i]->getShortName(), cellNum, gen);	
@@ -1045,6 +1045,15 @@ void DerivGraph::outputDataCsv(const char* prefix, int pid, int cellNum, int gen
 
 void DerivGraph::outputInteractionCsv(const char* prefix, int pid, int cellNum, int gen){
 
+	FILE * outFile;
+	char buf[200];
+	sprintf(buf, "%s/%d/cell%d/csv/Cell%dGen%d.csv", prefix, pid, cellNum, cellNum, gen);
+	outFile = fopen(buf, "w");
+	for(ListDigraph::ArcIt it(*derivs); it != INVALID; ++it){
+		fprintf(outFile, "%s, %s, %s, %f\n", (*interactions)[it]->getName(), (*molecules)[derivs->source(it)]->getShortName(), (*molecules)[derivs->target(it)]->getShortName(), (*interactions)[it]->getRate());
+
+	}	
+	fclose(outFile);
 
 }
 
