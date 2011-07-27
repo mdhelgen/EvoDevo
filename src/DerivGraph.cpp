@@ -1043,6 +1043,11 @@ void DerivGraph::outputDataCsv(const char* prefix, int pid, int cellNum, int gen
 	}
 }
 
+void DerivGraph::outputInteractionCsv(const char* prefix, int pid, int cellNum, int gen){
+
+
+}
+
 /**
  * DerivGraph::setLimits(int, int, int, int)
  *
