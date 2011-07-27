@@ -27,27 +27,36 @@ public:
 	~Experiment();
 
 	void start();
-
+	
+	//set commandline output options
 	void setOutputOptions(int, int, int, int, int, int);
 private:
 	vector<Cell*> cells;
 
+	// default cell properties
 	int maxGenerations;
 	int numCells;
 	int maxBasic;
 	int maxPTM;
 	int maxComp;
 	int maxProm;
+	
+	// default interaction properties
 	float minKineticRate;
 	float maxKineticRate;
 
+	// default molecule properties
+	float initialConc;
+
+	// output directory prefix (prefix/pid/<outputgoeshere>)
 	const char* prefix;
 	int pid;
 
+	// runge kutta options
 	float rkTimeLimit;
 	float rkTimeStep;
+	int scoringInterval;
 
-	float initialConc;
 
 	// output flags
 	int graphviz_enabled;
@@ -56,7 +65,7 @@ private:
 	int output_csv_interactions;
 	int output_csv_data;
 
-	int scoringInterval;
+	// unused ?
 	int numHighScores;
 };
 
