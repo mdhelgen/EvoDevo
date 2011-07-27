@@ -81,9 +81,9 @@ float Interaction::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m,
  *
  * @return 1 if the node is the source, -1 if it is the target, and 0 otherwise.
  */
-int Interaction::isSourceNode(ListDigraph* g, ListDigraph::Node n, ListDigraph::Arc a){
+int Interaction::isSourceNode(ListDigraph* g, ListDigraph::Node n){
 
-	if(g->source(a) == n)
+	if(g->source(g->arcFromId(arcID)) == n)
 		return 1;
 	else
 		return 0;
@@ -103,9 +103,9 @@ int Interaction::isSourceNode(ListDigraph* g, ListDigraph::Node n, ListDigraph::
  *
  * @return 1 if the node is the target, -1 if it is the source, and 0 otherwise.
  */
-int Interaction::isTargetNode(ListDigraph* g, ListDigraph::Node n, ListDigraph::Arc a){
+int Interaction::isTargetNode(ListDigraph* g, ListDigraph::Node n){
 
-	if(g->target(a) == n)
+	if(g->target(g->arcFromId(arcID)) == n)
 		return 1;
 	else
 		return 0;

@@ -28,8 +28,8 @@ public:
 	virtual	float getRate();
 	const char* name;
 	int arcID;
-	int isSourceNode(ListDigraph*, ListDigraph::Node, ListDigraph::Arc);
-	int isTargetNode(ListDigraph*, ListDigraph::Node, ListDigraph::Arc);
+	int isSourceNode(ListDigraph*, ListDigraph::Node);
+	int isTargetNode(ListDigraph*, ListDigraph::Node);
 
 protected:
 	float rate;
