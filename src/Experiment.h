@@ -45,18 +45,17 @@ private:
 	float minKineticRate;
 	float maxKineticRate;
 
+	// runge kutta options
+	float rkTimeLimit;
+	float rkTimeStep;
+	int scoringInterval;
+
 	// default molecule properties
 	float initialConc;
 
 	// output directory prefix (prefix/pid/<outputgoeshere>)
 	const char* prefix;
 	int pid;
-
-	// runge kutta options
-	float rkTimeLimit;
-	float rkTimeStep;
-	int scoringInterval;
-
 
 	// output flags
 	int graphviz_enabled;
