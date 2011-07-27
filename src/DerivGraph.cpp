@@ -269,11 +269,11 @@ void DerivGraph::rungeKuttaEvaluate(float rkStep, float rkLimit){
 			(*molecules)[it]->nextPoint(rkStep);
 		}
 	}
-	
+
 	//test output, display the values calculated by runge kutta for each molecule to stdout
-	for(ListDigraph::NodeIt it(*derivs); it != INVALID; ++it){
-		(*molecules)[it]->outputRK();	
-	}
+	//for(ListDigraph::NodeIt it(*derivs); it != INVALID; ++it){
+	//	(*molecules)[it]->outputRK();	
+	//}
 }
 
 /**
@@ -974,7 +974,7 @@ void DerivGraph::outputDataPlot(int cellNum, int gen, float step){
 	
 	FILE* gnuplot = popen("gnuplot > /dev/null 2>&1","w");
 
-	//FILE* gnuplot = fopen("test.txt","w");
+	FILE* test = fopen("test.txt","w");
 	for(unsigned int i =  0; i < MoleculeList->size(); i++){
 		if((*MoleculeList)[i]->getScore() < 3)
 			continue;

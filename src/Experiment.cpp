@@ -51,39 +51,38 @@ Experiment::Experiment(int ncells, int generations, int max_basic, int max_ptm, 
 
 	maxGenerations = generations;
 
-	//create the cell objects and add them to our cells vector
-	for (int i = 0; i < ncells; i++){
-		t.trace("init","Creating Cell (%d)\n",i);
-		cells.push_back(new Cell(maxBasic, maxPTM, maxComp, maxProm,minKineticRate,maxKineticRate, rkTimeStep, rkTimeLimit, initialConc));
-	}
-
-/*	
 	char buf[200];
+	int pid = getpid();
 	
 	const char* prefix = "../output";
 	mkdir(prefix , S_IRWXU | S_IRWXG | S_IRWXO);
 	
-	sprintf(buf, "%s/%d", prefix, getpid());
+	sprintf(buf, "%s/%d", prefix, pid);
 	mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO);
 
-	sprintf(buf, "%s/%d/cell", prefix, getpid());
-	mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO);
+	//create the cell objects and add them to our cells vector
+	for (int i = 0; i < ncells; i++){
+		t.trace("init","Creating Cell (%d)\n",i);
+		sprintf(buf, "%s/%d/cell%d", prefix, pid, i);
+		mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO); 
+		cells.push_back(new Cell(maxBasic, maxPTM, maxComp, maxProm,minKineticRate,maxKineticRate, rkTimeStep, rkTimeLimit, initialConc));
+	}
 
-	sprintf(buf, "%s/%d/trace.txt", prefix, getpid());
+/*
+	sprintf(buf, "%s/%d/trace.txt", prefix, pid);
 	FILE* tracef = fopen(buf, "a+");
 	fprintf(tracef, "test\n");
 
 	t.setTraceFile(tracef);
 
-	sprintf(buf, "%s/%d/cell/genXstd.csv", prefix, getpid());
+	sprintf(buf, "%s/%d/cell/genXstd.csv", prefix, pid);
 	FILE* stdfile = fopen(buf, "a+");
 	fprintf(stdfile, "test\n");
 
-	sprintf(buf, "%s/%d/cell/genXprec.csv", prefix, getpid());
+	sprintf(buf, "%s/%d/cell/genXprec.csv", prefix, pid);
 	FILE* precfile = fopen(buf, "a+");
 	fprintf(precfile, "test\n");
 */
-
 	t.trace("init","New Experiment created\n");
 }
 
