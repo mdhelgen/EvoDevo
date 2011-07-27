@@ -161,6 +161,10 @@ void Cell::outputDataPlot(const char* prefix, int pid){
 	equations->outputDataPlot(prefix, pid, CellID, currentGen, rkTimeStep);
 }
 
+void Cell::outputDataCsv(const char* prefix, int pid){
+	equations->outputDataCsv(prefix, pid, CellID, currentGen, rkTimeStep);
+}
+
 void Cell::rk(){
 	equations->rungeKuttaEvaluate(rkTimeStep, rkTimeLimit);
 }

@@ -163,6 +163,8 @@ void Experiment::start()
 				cells[c]->outputDotImage(prefix, pid);
 			if(output_each_gen && gnuplot_enabled)
 				cells[c]->outputDataPlot(prefix, pid);
+			if(output_each_gen)
+				cells[c]->outputDataCsv(prefix, pid);
 		}
 }
 		//if the scoring interval is 5, this runs every 5 generations
@@ -176,6 +178,8 @@ void Experiment::start()
 				bestCell->outputDotImage(prefix, pid);
 			if(gnuplot_enabled)
 				bestCell->outputDataPlot(prefix, pid);
+			
+			bestCell->outputDataCsv(prefix, pid);
 		}
 		t.trace("gens","Generation %d finished (max %d)\n",i, maxGenerations);
 	}

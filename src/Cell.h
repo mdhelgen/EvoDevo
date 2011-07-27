@@ -18,6 +18,7 @@ public:
 	int mutate();
 	void outputDotImage(const char*, int);
 	void outputDataPlot(const char*, int);
+	void outputDataCsv(const char*, int);
 	int getScore();
 	int getID(){ return CellID; };
 	void rkTest();

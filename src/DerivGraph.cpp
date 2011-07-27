@@ -1019,6 +1019,13 @@ void DerivGraph::outputDataPlot(const char* prefix, int pid, int cellNum, int ge
 	}
 	pclose(gnuplot);
 }
+
+void DerivGraph::outputDataCsv(const char* prefix, int pid, int CellID, int currentGen, float rkTimeStep){
+
+
+
+}
+
 /**
  * DerivGraph::setLimits(int, int, int, int)
  *
