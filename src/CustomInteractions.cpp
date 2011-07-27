@@ -32,9 +32,9 @@ float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* 
 	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
 
 	
-	if(g->source(g->arcFromId(arcID)) == n)
+	if(isSourceNode(g, n) == 1)
 		return 0;
-	else
+	else if(isTargetNode(g, n) == 1)
 	{
 		int prom_id = ((DNA*)oppositeMol)->promoterId;
 		if(prom_id == -1)
@@ -48,6 +48,11 @@ float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* 
 		t.trace("hill","f:%f r:%f h:%d value:%f\n",f,r,h,(1/(1+pow(f/r,h))));
 		return (1/(1+(f/r)*pow(repressor->rkApprox(rkIter,rkStep),h))) * oppositeMol->rkApprox(rkIter, rkStep) * rate;
 	}
+	else{
+		t.trace("error", "%s getEffect reached error case, not source or target (%p)\n", name, this);
+		return 0;
+	}	
+	
 }
 
 
@@ -67,11 +72,14 @@ float Degradation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m,
 	Molecule* thisMol = (*m)[n];
 	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
 
-	if(g->source(g->arcFromId(arcID)) == n)
+	if(isSourceNode(g, n) == 1)	
 		return -1 * thisMol->rkApprox(rkIter, rkStep) * rate;
-	else
+	else if(isTargetNode(g, n) == 1)
 		return 0;
-
+	else{
+		t.trace("error", "%s getEffect reached error case, not source or target (%p)\n", name, this);
+		return 0;
+	}	
 }
 
 Translation::Translation(){
@@ -104,9 +112,10 @@ float Translation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m,
 	else if(isTargetNode(g, n) == 1)
 		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
 
-	else 
-		t.trace("error", "Translation getEffect reached error case, not source or target\n");
-		return -1;
+	else{ 
+		t.trace("error", "%s getEffect reached error case, not source or target (%p)\n", name, this);
+		return 0;
+	}
 }
 
 ForwardComplexation::ForwardComplexation(int n1, int n2){
@@ -139,11 +148,15 @@ float ForwardComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 
 
 	//effect on source node
-	if(g->source(g->arcFromId(arcID)) == n)
+	if(isSourceNode(g, n) == 1)
 		return -1 * rate * compMol1->rkApprox(rkIter, rkStep) * compMol2->rkApprox(rkIter, rkStep);
 	//effect on target node
-	else
+	else if(isTargetNode(g, n) == 1)
 		return .5 * rate * compMol1->rkApprox(rkIter, rkStep) * compMol2->rkApprox(rkIter, rkStep);
+	else{
+		t.trace("error", "%s getEffect reached error case, not source or target (%p)\n", name, this);
+		return 0;	
+	}
 
 }
 
@@ -181,11 +194,15 @@ float ReverseComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 
 
 	//effect on source node
-	if(g->source(g->arcFromId(arcID)) == n)
+	if(isSourceNode(g, n) == 1)
 		return -1 * .5 * rate * (*m)[n]->rkApprox(rkIter, rkStep);
 	//effect on target node
-	else
+	else if(isTargetNode(g, n) == 1)
 		return  rate * oppositeMol->rkApprox(rkIter, rkStep); 
+	else{
+		t.trace("error", "%s getEffect reached error case, not source or target (%p)\n", name, this);
+		return 0;	
+	}
 
 }
 
@@ -245,11 +262,14 @@ float TestInt::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, Lis
 
 	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
 
-	if(g->source(g->arcFromId(arcID)) == n)
+	if(isSourceNode(g, n) == 1)
 		return 0;
-	else
+	else if(isTargetNode(g, n) == 1)
 		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
-
+	else{
+		t.trace("error", "%s getEffect reached error case, not source or target (%p)\n", name, this);
+		return 0;	
+	}
 
 }
 
@@ -272,9 +292,13 @@ float PromoterBind::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m
 	Molecule* thisMol = (*m)[n];
 	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
 
-	if(g->source(g->arcFromId(arcID)) == n)
+	if(isSourceNode(g, n) == 1)
 		return -1 * oppositeMol->rkApprox(rkIter, rkStep) * (kf-kr);
-	else
+	else if(isTargetNode(g, n) == 1)
 		return 0;
+	else{
+		t.trace("error", "%s getEffect reached error case, not source or target (%p)\n", name, this);
+		return 0;
+	}	
 
 }
