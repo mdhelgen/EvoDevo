@@ -93,15 +93,15 @@ float Translation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m,
 	t.trace("efct","Interaction Rate: %f\n", rate);
 	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == n) ? "outgoing" : "incoming");
 	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(n, g->arcFromId(arcID))]->getValue());
-	t.trace("efct","isSourceNode() == %d\n", isSourceNode(g,n,g->arcFromId(arcID)));
+	t.trace("efct","isSourceNode() == %d\n", isSourceNode(g,n));
 	Molecule* thisMol = (*m)[n];
 	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
 
 	//if the effect is being calculated for the source node
-	if(isSourceNode(g, n, g->arcFromId(arcID)) == 1)
+	if(isSourceNode(g, n) == 1)
 		return 0;
 	//effect is being calculated for the target node
-	else if(isTargetNode(g, n, g->arcFromId(arcID)) == 1)
+	else if(isTargetNode(g, n) == 1)
 		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
 
 	else 
