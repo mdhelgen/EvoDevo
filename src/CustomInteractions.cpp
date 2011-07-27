@@ -22,9 +22,7 @@ Transcription::Transcription(){
 	name="txn";
 }
 
-Transcription::~Transcription(){
-
-}
+Transcription::~Transcription(){}
 
 /**
  * float Transcription::getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float)
@@ -38,6 +36,7 @@ Transcription::~Transcription(){
  * @param rkIter The current iteration of Runge-Kutta evaluation.
  * @param rkStep The stepsize of the Runge-Kutta evaluation.
  *
+ * @return The effect (change) of this interaction has on the concentration of node n at the current iteration of runge-kutta
  */
 float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node n, int rkIter, float rkStep){	
 
@@ -80,7 +79,20 @@ Degradation::Degradation(){
 }
 Degradation::~Degradation(){}
 
-
+/**
+ * float Degradation::getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float)
+ * 
+ * Overload of virtual method Interaction::getEffect
+ *
+ * @param g Reference to the Digraph object. Can be used to make complex effects based on local configuration around the current node
+ * @param m Reference to the NodeMap object. Can be used to get the Molecule objects from the graph contaniers.
+ * @param i Reference to the ArcMap object. Can be used to get the Interaction objects from the graph containers.
+ * @param n The Node being affected by the interaction. Note that this can be the source or target.
+ * @param rkIter The current iteration of Runge-Kutta evaluation.
+ * @param rkStep The stepsize of the Runge-Kutta evaluation.
+ *
+ * @return The effect (change) of this interaction has on the concentration of node n at the current iteration of runge-kutta
+ */
 float Degradation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node n, int rkIter, float rkStep){	
 	
 	t.trace("efct","Original Node value: %f\n", (*m)[n]->getValue());
@@ -114,6 +126,20 @@ Translation::Translation(){
 
 Translation::~Translation(){}
 
+/**
+ * float Translation::getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float)
+ * 
+ * Overload of virtual method Interaction::getEffect
+ *
+ * @param g Reference to the Digraph object. Can be used to make complex effects based on local configuration around the current node
+ * @param m Reference to the NodeMap object. Can be used to get the Molecule objects from the graph contaniers.
+ * @param i Reference to the ArcMap object. Can be used to get the Interaction objects from the graph containers.
+ * @param n The Node being affected by the interaction. Note that this can be the source or target.
+ * @param rkIter The current iteration of Runge-Kutta evaluation.
+ * @param rkStep The stepsize of the Runge-Kutta evaluation.
+ *
+ * @return The effect (change) of this interaction has on the concentration of node n at the current iteration of runge-kutta
+ */
 float Translation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node n, int rkIter, float rkStep){	
 	
 	t.trace("efct","Original Node value: %f\n", (*m)[n]->getValue());
@@ -152,6 +178,20 @@ ForwardComplexation::ForwardComplexation(int n1, int n2){
 }
 ForwardComplexation::~ForwardComplexation(){}
 
+/**
+ * float ForwardComplexation::getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float)
+ * 
+ * Overload of virtual method Interaction::getEffect
+ *
+ * @param g Reference to the Digraph object. Can be used to make complex effects based on local configuration around the current node
+ * @param m Reference to the NodeMap object. Can be used to get the Molecule objects from the graph contaniers.
+ * @param i Reference to the ArcMap object. Can be used to get the Interaction objects from the graph containers.
+ * @param n The Node being affected by the interaction. Note that this can be the source or target.
+ * @param rkIter The current iteration of Runge-Kutta evaluation.
+ * @param rkStep The stepsize of the Runge-Kutta evaluation.
+ *
+ * @return The effect (change) of this interaction has on the concentration of node n at the current iteration of runge-kutta
+ */
 float ForwardComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node n, int rkIter, float rkStep){	
 	
 	t.trace("efct","Original Node value: %f\n", (*m)[n]->getValue());
@@ -198,6 +238,20 @@ ReverseComplexation::ReverseComplexation(int n1, int n2){
 }
 ReverseComplexation::~ReverseComplexation(){}
 
+/**
+ * float ReverseComplexation::getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float)
+ * 
+ * Overload of virtual method Interaction::getEffect
+ *
+ * @param g Reference to the Digraph object. Can be used to make complex effects based on local configuration around the current node
+ * @param m Reference to the NodeMap object. Can be used to get the Molecule objects from the graph contaniers.
+ * @param i Reference to the ArcMap object. Can be used to get the Interaction objects from the graph containers.
+ * @param n The Node being affected by the interaction. Note that this can be the source or target.
+ * @param rkIter The current iteration of Runge-Kutta evaluation.
+ * @param rkStep The stepsize of the Runge-Kutta evaluation.
+ *
+ * @return The effect (change) of this interaction has on the concentration of node n at the current iteration of runge-kutta
+ */
 float ReverseComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node n, int rkIter, float rkStep){	
 	
 	t.trace("efct","Original Node value: %f\n", (*m)[n]->getValue());
@@ -300,7 +354,20 @@ PromoterBind::PromoterBind(float fwdRate, float revRate){
 }
 PromoterBind::~PromoterBind(){}
 
-
+/**
+ * float PromoterBind::getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float)
+ * 
+ * Overload of virtual method Interaction::getEffect
+ *
+ * @param g Reference to the Digraph object. Can be used to make complex effects based on local configuration around the current node
+ * @param m Reference to the NodeMap object. Can be used to get the Molecule objects from the graph contaniers.
+ * @param i Reference to the ArcMap object. Can be used to get the Interaction objects from the graph containers.
+ * @param n The Node being affected by the interaction. Note that this can be the source or target.
+ * @param rkIter The current iteration of Runge-Kutta evaluation.
+ * @param rkStep The stepsize of the Runge-Kutta evaluation.
+ *
+ * @return The effect (change) of this interaction has on the concentration of node n at the current iteration of runge-kutta
+ */
 float PromoterBind::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node n, int rkIter, float rkStep){	
 	
 	t.trace("efct","Original Node value: %f\n", (*m)[n]->getValue());
