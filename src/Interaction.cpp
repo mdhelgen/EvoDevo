@@ -93,6 +93,30 @@ int Interaction::isSourceNode(ListDigraph* g, ListDigraph::Node n, ListDigraph::
 }
 
 
+/*
+ * int Interaction::isTargetNode(ListDigraph*, ListDigraph::Node, ListDigraph::Arc)
+ *
+ * Helper method to determine whether a particular node is the target or source node in a
+ * particular arc.
+ *
+ * @param g
+ * @param n
+ * @param a
+ *
+ * @return 1 if the node is the target, -1 if it is the source, and 0 otherwise.
+ */
+int Interaction::isTargetNode(ListDigraph* g, ListDigraph::Node n, ListDigraph::Arc a){
+
+	if(g->target(a) == n)
+		return 1;
+	else if(g->source(a) == n)
+		return -1;
+	else
+		return 0;
+
+}
+
+
 /**
  * void Interaction::setRate(float)
  *

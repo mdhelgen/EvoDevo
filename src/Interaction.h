@@ -29,6 +29,7 @@ public:
 	const char* name;
 	int arcID;
 	int isSourceNode(ListDigraph*, ListDigraph::Node, ListDigraph::Arc);
+	int isTargetNode(ListDigraph*, ListDigraph::Node, ListDigraph::Arc);
 
 protected:
 	float rate;
