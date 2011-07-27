@@ -152,12 +152,12 @@ int Cell::getScore(){
 		
 }
 
-void Cell::outputDotImage(){
+void Cell::outputDotImage(const char* prefix, int pid){
 //	printf("dot\n");
 	equations->outputDotImage(CellID, currentGen);
 }
 
-void Cell::outputDataPlot(){
+void Cell::outputDataPlot(const char* prefix, int pid){
 	equations->outputDataPlot(CellID, currentGen, rkTimeStep);
 }
 

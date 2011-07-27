@@ -41,6 +41,8 @@ private:
 	float minKineticRate;
 	float maxKineticRate;
 
+	const char* prefix;
+	int pid;
 
 	float rkTimeLimit;
 	float rkTimeStep;

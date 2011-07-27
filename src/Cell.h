@@ -16,8 +16,8 @@ public:
 	Cell(int, int, int, int,float,float, float, float, float);
 	~Cell();
 	int mutate();
-	void outputDotImage();
-	void outputDataPlot();
+	void outputDotImage(const char*, int);
+	void outputDataPlot(const char*, int);
 	int getScore();
 	int getID(){ return CellID; };
 	void rkTest();
