@@ -30,6 +30,9 @@ int main(int argc, char** argv){
   
   //program arguments
   t.addTraceType("args",0);
+
+  //error messages
+  t.addTraceType("error",1);
  
   //object creation / construction
   t.addTraceType("init",0);
@@ -56,7 +59,7 @@ int main(int argc, char** argv){
 
   t.addTraceType("score",0);
   //mutation
-  t.addTraceType("mutate",0);
+  t.addTraceType("mutate",1);
 
   //polymorphic comparisons
   t.addTraceType("typeid",0);
