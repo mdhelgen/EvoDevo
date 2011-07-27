@@ -1025,7 +1025,7 @@ void DerivGraph::outputDataCsv(const char* prefix, int pid, int cellNum, int gen
 	char buf[200];
 	for(unsigned int i =  0; i < MoleculeList->size(); i++){
 		
-		sprintf(buf, "%s/%d/cell%d/%sc%dg%d.csv", prefix, pid, cellNum, (*MoleculeList)[i]->getShortName(), cellNum, gen);	
+		sprintf(buf, "%s/%d/cell%d/csv/%sc%dg%d.csv", prefix, pid, cellNum, (*MoleculeList)[i]->getShortName(), cellNum, gen);	
 		outFile = fopen(buf,"w");
 		float t = 0;
 		for(unsigned int j = 0; j < (*MoleculeList)[i]->getRungeKuttaSolution()->size(); j++){
