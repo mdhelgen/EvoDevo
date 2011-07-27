@@ -64,7 +64,10 @@ Experiment::Experiment(int ncells, int generations, int max_basic, int max_ptm, 
 	for (int i = 0; i < ncells; i++){
 		t.trace("init","Creating Cell (%d)\n",i);
 		cells.push_back(new Cell(maxBasic, maxPTM, maxComp, maxProm,minKineticRate,maxKineticRate, rkTimeStep, rkTimeLimit, initialConc));
+		
 		sprintf(buf, "%s/%d/cell%d", prefix, pid, cells.back()->getID());
+		mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO); 
+		sprintf(buf, "%s/%d/cell%d/csv", prefix, pid, cells.back()->getID());
 		mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO); 
 	}
 
