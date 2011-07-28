@@ -51,38 +51,26 @@ Experiment::Experiment(int ncells, int generations, int max_basic, int max_ptm, 
 
 	maxGenerations = generations;
 
+	char buf[200];
+	pid = getpid();
+	
+	prefix = "../output";
+	mkdir(prefix , S_IRWXU | S_IRWXG | S_IRWXO);
+	
+	sprintf(buf, "%s/%d", prefix, pid);
+	mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO);
+
 	//create the cell objects and add them to our cells vector
 	for (int i = 0; i < ncells; i++){
 		t.trace("init","Creating Cell (%d)\n",i);
 		cells.push_back(new Cell(maxBasic, maxPTM, maxComp, maxProm,minKineticRate,maxKineticRate, rkTimeStep, rkTimeLimit, initialConc));
+		
+		//set up directory for the new cell in output folder		
+		sprintf(buf, "%s/%d/cell%d", prefix, pid, cells.back()->getID());
+		mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO); 
+		sprintf(buf, "%s/%d/cell%d/csv", prefix, pid, cells.back()->getID());
+		mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO); 
 	}
-
-/*	
-	char buf[200];
-	
-	const char* prefix = "../output";
-	mkdir(prefix , S_IRWXU | S_IRWXG | S_IRWXO);
-	
-	sprintf(buf, "%s/%d", prefix, getpid());
-	mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO);
-
-	sprintf(buf, "%s/%d/cell", prefix, getpid());
-	mkdir(buf, S_IRWXU | S_IRWXG | S_IRWXO);
-
-	sprintf(buf, "%s/%d/trace.txt", prefix, getpid());
-	FILE* tracef = fopen(buf, "a+");
-	fprintf(tracef, "test\n");
-
-	t.setTraceFile(tracef);
-
-	sprintf(buf, "%s/%d/cell/genXstd.csv", prefix, getpid());
-	FILE* stdfile = fopen(buf, "a+");
-	fprintf(stdfile, "test\n");
-
-	sprintf(buf, "%s/%d/cell/genXprec.csv", prefix, getpid());
-	FILE* precfile = fopen(buf, "a+");
-	fprintf(precfile, "test\n");
-*/
 
 	t.trace("init","New Experiment created\n");
 }
@@ -110,15 +98,38 @@ Experiment::~Experiment() {
 
 }
 
-
-void Experiment::setOutputOptions(int gv_flag, int gp_flag, int eachgen_flag, int scoring_interval){
+/**
+ * Experiment::setOutputOptions(int, int, int, int, int, int)
+ * 
+ * Set options received from the command line parameters which deal with output files or formats
+ * A value of 1 enables the option, and 0 disables it. 
+ *
+ * @param gv_flag Triggers GraphViz output of png files which display the directed graph representation of the cell 
+ * @param gp_flag Triggers Gnuplot output of png files which display the concentration of molecules over time at a given generation
+ * @param eachgen_flag Triggers output of files for every generation, not only generations on the scoring interval
+ * @param csv_cell Triggers output of csv files which contain the interactions and rates within a cell
+ * @param csv_data Triggers output of csv files which contain concentration data of molecules over time at a given generation
+ * @param scoring_interval How many generations should occur between scoring and output
+ *
+ */
+void Experiment::setOutputOptions(int gv_flag, int gp_flag, int eachgen_flag, int csv_cell, int csv_data, int scoring_interval){
 
 	graphviz_enabled = gv_flag;
 	gnuplot_enabled = gp_flag;
 	output_each_gen = eachgen_flag;
+        output_csv_interactions = csv_cell;
+	output_csv_data = csv_data;	
 	scoringInterval = scoring_interval;
+	
 }
-
+/**
+ * Experiment::start()
+ *
+ * The main experiment loop for the simulation. For each generation, every cell is mutated. Depending on the current generation number, and the value
+ * of scoringInterval, The cells may also be evaluated by runge-kutta, and output the files related to the best cell.
+ *
+ * The experiment terminates once the generations reach the generation limit.
+*/
 void Experiment::start()
 {
 
@@ -141,19 +152,13 @@ void Experiment::start()
 			//mutate
 			cells[c]->mutate();
 			
-			//collect test data for runge kutta evaluation
-			if(2 == 0){
-				cells[c]->rkTest();	
-				cells[c]->outputDotImage();
-			}
-
-
+			//find the best cell
 			//if scoring interval is 5, this runs every 5 generations
 			if(i % scoringInterval == 0){
 				cells[c]->rk();
 				if(cells[c]->getScore() < -1  ){
-					cells[c]->outputDataPlot();
-					cells[c]->outputDotImage();
+					cells[c]->outputDataPlot(prefix, pid);
+					cells[c]->outputDotImage(prefix, pid);
 				}	
 
 				//keep track of the cell with the highest score so far
@@ -164,38 +169,50 @@ void Experiment::start()
 				}		
 			}	
 
-
-			else{
-			//if the flag is set, generate output every generation
-			if(output_each_gen && graphviz_enabled)
-				cells[c]->outputDotImage();
-			if(output_each_gen && gnuplot_enabled)
-				cells[c]->outputDataPlot();
+			//if the flag is set, generate output for every cell during every generation
+			//this will significantly increase the runtime of the simulation
+			if(output_each_gen){
+				//if the flag is set, generate output every generation
+				cells[c]->rk();
+				if(graphviz_enabled)
+					cells[c]->outputDotImage(prefix, pid);
+				if(gnuplot_enabled)
+					cells[c]->outputDataPlot(prefix, pid);
+				if(output_csv_data)
+					cells[c]->outputDataCsv(prefix, pid);
+				if(output_csv_interactions)
+					cells[c]->outputInteractionCsv(prefix, pid);
+			}
 		}
-}
 		//if the scoring interval is 5, this runs every 5 generations
 		if(i % scoringInterval == 0){
 			
 			//all cells have been checked, so the bestCell variable holds the cell with the highest score
 			t.trace("score","Best cell at end of Generation %d is cell %d with score %d\n", i, bestCell->getID(), bestCell->getScore());
 			
-			//output the cell
+			//output the best cell
 			if(graphviz_enabled)
-				bestCell->outputDotImage();
+				bestCell->outputDotImage(prefix, pid);
 			if(gnuplot_enabled)
-				bestCell->outputDataPlot();
+				bestCell->outputDataPlot(prefix, pid);
+			if(output_csv_data)	
+				bestCell->outputDataCsv(prefix, pid);
+			if(output_csv_interactions)
+				bestCell->outputInteractionCsv(prefix, pid);
 		}
 		t.trace("gens","Generation %d finished (max %d)\n",i, maxGenerations);
 	}
 	
 	return;
 
+	//this can probably be removed
+
 	//generate output at the end of the experiment
 	for(unsigned int c = 0; c < cells.size(); c++){
 		if(graphviz_enabled)
-			cells[c]->outputDotImage();
+			cells[c]->outputDotImage(prefix, pid);
 		if(gnuplot_enabled)
-			cells[c]->outputDataPlot();
+			cells[c]->outputDataPlot(prefix, pid);
 	}
 
 }

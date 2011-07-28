@@ -31,8 +31,12 @@ public:
 	
 	void test();
 	void rungeKuttaEvaluate(float, float);
-	void outputDotImage(int, int);
-	void outputDataPlot(int, int, float);
+
+	void outputDotImage(const char*, int, int, int);
+	void outputDataPlot(const char*, int, int, int, float);
+        void outputDataCsv(const char*, int , int, int, float);
+	void outputInteractionCsv(const char*, int, int, int);
+
 	Molecule* getBestMolecule(int);
 
 	void setLimits(int, int, int, int);

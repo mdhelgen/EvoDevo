@@ -14,31 +14,16 @@ class DerivGraph;
 using namespace lemon;
 
 
-class TestInt : public Interaction{
-
-public:
-	TestInt();
-	~TestInt();
-	
-	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
-
-
-private:
-	float kf;
-	float kr;
-	int hill;
-
-};
 
 class Transcription : public Interaction{
-public:
+ public:
 	Transcription();
 	~Transcription();
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 };
 
 class Degradation : public Interaction{
-public:
+ public:
 	Degradation();
 	~Degradation();
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
@@ -46,49 +31,45 @@ public:
 
 
 class Translation : public Interaction{
-public:
+ public:
 	Translation();
 	~Translation();
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 };
 
 class ForwardComplexation : public Interaction{
-public:
-	ForwardComplexation(int, int);
+ public:
+	ForwardComplexation();
 	~ForwardComplexation();
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
-	int firstNodeID;
-	int secondNodeID;
 	void setPairArcID(int);
 	int pairArcID;
 };
 class ReverseComplexation : public Interaction{
-public:
-	ReverseComplexation(int, int);
+ public:
+	ReverseComplexation();
 	~ReverseComplexation();
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
-	int firstNodeID;
-	int secondNodeID;
 	void setPairArcID(int);
 	int pairArcID;
 
 };
 
 class ForwardPTM : public Interaction{
-public:
+ public:
 	ForwardPTM();
 	~ForwardPTM();
 };
 
 class ReversePTM : public Interaction{
-public:
+ public:
 	ReversePTM();
 	~ReversePTM();
 
 };
 
 class PromoterBind : public Interaction{
-public:
+ public:
 	PromoterBind(float, float);
 	~PromoterBind();
 	float kf;
