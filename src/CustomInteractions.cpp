@@ -198,8 +198,6 @@ float Translation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m,
  *                                 Complex
  * P2 >==(ForwardComplexation)==> 
  *
- * @param n1 The NodeID of the first protein 
- * @param n2 The NodeID of the second protein
  */
 ForwardComplexation::ForwardComplexation(){
 	t.trace("init","Creating new Interaction\n");
