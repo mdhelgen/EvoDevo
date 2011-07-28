@@ -804,8 +804,8 @@ void DerivGraph::newComplex(){
         float k_rev = minKineticRate + r.rand(maxKineticRate - minKineticRate);
 
 	//create the pair forward complexation interactions
-	ListDigraph::Arc f1 = add(new ForwardComplexation(id1, id2), n1, comp); 
-	ListDigraph::Arc f2 = add(new ForwardComplexation(id1, id2), n2, comp); 
+	ListDigraph::Arc f1 = add(new ForwardComplexation(), n1, comp); 
+	ListDigraph::Arc f2 = add(new ForwardComplexation(), n2, comp); 
 
 	//set the same rate for the forward interactions
         (*interactions)[f1]->setRate(k_fwd);
@@ -820,8 +820,8 @@ void DerivGraph::newComplex(){
 	t.trace("mutate","f1 pair arc: %d, f2 pair arc: %d\n", ((ForwardComplexation*)(*interactions)[f1])->pairArcID, ((ForwardComplexation*)(*interactions)[f2])->pairArcID);
 
 	//create the pair of reverse complexation interactions
-	ListDigraph::Arc r1 = add(new ReverseComplexation(id1, id2), comp, n1); 
-	ListDigraph::Arc r2 = add(new ReverseComplexation(id1, id2), comp, n2); 
+	ListDigraph::Arc r1 = add(new ReverseComplexation(), comp, n1); 
+	ListDigraph::Arc r2 = add(new ReverseComplexation(), comp, n2); 
 
 	//set the same rate for the reverse interactions
         (*interactions)[r1]->setRate(k_rev);

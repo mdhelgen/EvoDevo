@@ -14,19 +14,6 @@ class DerivGraph;
 using namespace lemon;
 
 
-class TestInt : public Interaction{
-
- public:
-	TestInt();
-	~TestInt();
-	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
-
- private:
-	float kf;
-	float kr;
-	int hill;
-
-};
 
 class Transcription : public Interaction{
  public:
@@ -52,21 +39,17 @@ class Translation : public Interaction{
 
 class ForwardComplexation : public Interaction{
  public:
-	ForwardComplexation(int, int);
+	ForwardComplexation();
 	~ForwardComplexation();
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
-	int firstNodeID;
-	int secondNodeID;
 	void setPairArcID(int);
 	int pairArcID;
 };
 class ReverseComplexation : public Interaction{
  public:
-	ReverseComplexation(int, int);
+	ReverseComplexation();
 	~ReverseComplexation();
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
-	int firstNodeID;
-	int secondNodeID;
 	void setPairArcID(int);
 	int pairArcID;
 

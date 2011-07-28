@@ -12,7 +12,7 @@
 /**
  * Transcription::Transcription()
  *
- * Overloaded constructor for Transcription Interactions
+ * Derived Interaction class for Transcription Interactions
  *
  * DNA >==(Transcription)==> mRNA
  *
@@ -28,6 +28,9 @@ Transcription::~Transcription(){}
  * float Transcription::getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float)
  * 
  * Overload of virtual method Interaction::getEffect
+ *
+ * Transcription has a DNA source and an mRNA target. DNA is not removed as mRNA is created. The amount of mRNA created may be repressed
+ *  by a protein which is "bound" to the DNA.
  *
  * @param g Reference to the Digraph object. Can be used to make complex effects based on local configuration around the current node
  * @param m Reference to the NodeMap object. Can be used to get the Molecule objects from the graph contaniers.
@@ -73,7 +76,15 @@ float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* 
 	
 }
 
-
+/**
+ * Degradation::Degradation() 
+ * 
+ * Derived Interaction class for Degradation Interactions
+ * 
+ * [any molecule] >==(degradation)==> NullNode
+ *
+ * The null node always has a concentration of 0. 
+ */
 Degradation::Degradation(){
 	name="deg";
 }
@@ -113,6 +124,15 @@ float Degradation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m,
 	}	
 }
 
+/**
+ * Translation::Translation()
+ *
+ * Derived class for Translation Interactions.
+ *
+ * mRNA >==(Translation)==> Protein
+ *
+ * mRNA is not consumed in this process
+ */
 Translation::Translation(){
 
 	t.trace("init","Creating new Interaction\n");
@@ -163,14 +183,28 @@ float Translation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m,
 	}
 }
 
-ForwardComplexation::ForwardComplexation(int n1, int n2){
+/**
+ * ForwardComplexation::ForwardComplexation(int, int)
+ * 
+ * Derived Interaction class for ForwardComplexation Interactions.
+ *
+ * A Protein-Protein Complex is made up of two sub-proteins. A ForwardComplexation interaction exists between each protein and the complex.
+ *
+ * The NodeID's of the two proteins involved are saved in each ForwardComplexation interaction, because the effect of the interaction is based
+ *  on the concentration of both proteins, and each interaction should have the same effect. The NodeID's allow a simple way to retreive these 
+ *  proteins during ForwardComplexation::getEffect() 
+ *
+ * P1 >==(ForwardComplexation)==> 
+ *                                 Complex
+ * P2 >==(ForwardComplexation)==> 
+ *
+ */
+ForwardComplexation::ForwardComplexation(){
 	t.trace("init","Creating new Interaction\n");
 	t.trace("cust","Custom Interaction type Complexation\n");
 	t.trace("mloc","Interaction at location %p\n", this);
 	name="f_cmplx";
 
-	firstNodeID = n1;
-	secondNodeID = n2;
 	
 	t.trace("init","New Interaction created\n");
 
@@ -201,17 +235,15 @@ float ForwardComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 
 	Molecule* thisMol = (*m)[n];
 	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
-
-	Molecule* compMol1 = (*m)[g->nodeFromId(firstNodeID)];
-	Molecule* compMol2 = (*m)[g->nodeFromId(secondNodeID)];
+	Molecule* pairMol = (*m)[g->source(g->arcFromId(pairArcID))];
 
 
 	//effect on source node
 	if(isSourceNode(g, n) == 1)
-		return -1 * rate * compMol1->rkApprox(rkIter, rkStep) * compMol2->rkApprox(rkIter, rkStep);
+		return -1 * rate * thisMol->rkApprox(rkIter, rkStep) * pairMol->rkApprox(rkIter, rkStep);
 	//effect on target node
 	else if(isTargetNode(g, n) == 1)
-		return .5 * rate * compMol1->rkApprox(rkIter, rkStep) * compMol2->rkApprox(rkIter, rkStep);
+		return .5 * rate * oppositeMol->rkApprox(rkIter, rkStep) * pairMol->rkApprox(rkIter, rkStep);
 	else{
 		t.trace("error", "%s getEffect reached error case, not source or target (%p)\n", name, this);
 		return 0;	
@@ -219,18 +251,41 @@ float ForwardComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 
 }
 
+/**
+ * void ForwardComplexation::setPairArcID(int i)
+ *
+ * Save the Lemon Graph library's arcID corresponding the other ForwardComplexation in the pair. (see the constructor)
+ *
+ * @param i the arcID of the arc holding the other interaction 
+ *
+ */
 void ForwardComplexation::setPairArcID(int i){
 	pairArcID = i;
 }
 
-ReverseComplexation::ReverseComplexation(int n1, int n2){
+
+/**
+ * ReverseComplexation::ReverseComplexation(int, int)
+ * 
+ * Derived Interaction class for ReverseComplexation Interactions.
+ *
+ * A Protein-Protein Complex is made up of two sub-proteins. A ReverseComplexation interaction exists between the complex and each protein.
+ *
+ * The NodeID's of the two proteins involved are saved in each ReverseComplexation interaction, because the effect of the interaction is based
+ *  on the concentration of both proteins, and each interaction should have the same effect. The NodeID's allow a simple way to retreive these 
+ *  proteins during ReverseComplexation::getEffect() 
+ *
+ *       >==(ReverseComplexation)==> P1
+ *  Complex                          
+ *       >==(ReverseComplexation)==> P2
+ *
+ */
+ReverseComplexation::ReverseComplexation(){
 	t.trace("init","Creating new Interaction\n");
 	t.trace("cust","Custom Interaction type Complexation\n");
 	t.trace("mloc","Interaction at location %p\n", this);
 
 	name="r_cmplx";
-	firstNodeID = n1;
-	secondNodeID = n2;
 	
 	t.trace("init","New Interaction created\n");
 
@@ -261,10 +316,7 @@ float ReverseComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 
 	
 	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
-
-	Molecule* compMol1 = (*m)[g->nodeFromId(firstNodeID)];
-	Molecule* compMol2 = (*m)[g->nodeFromId(secondNodeID)];
-
+	Molecule* pairMol = (*m)[g->source(g->arcFromId(pairArcID))];
 
 	//effect on source node
 	if(isSourceNode(g, n) == 1)
@@ -279,10 +331,27 @@ float ReverseComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 
 }
 
+/**
+ * void ReverseComplexation::setPairArcID(int i)
+ *
+ * Save the Lemon Graph library's arcID corresponding the other ReverseComplexation in the pair. (see the constructor)
+ *
+ * @param i the arcID of the arc holding the other interaction 
+ *
+ */
 void ReverseComplexation::setPairArcID(int i){
 	pairArcID = i;
 }
 
+/**
+ * ForwardPTM::ForwardPTM() 
+ * 
+ * Derived class for ForwardPTM interactions.
+ *
+ * A ForwardPTM interaction converts a Protein into a Post-translationally modified protein.
+ * 
+ * Protein >==(ForwardPTM)==> PTM
+ */
 ForwardPTM::ForwardPTM(){
 
 	t.trace("init","Creating new Interaction\n");
@@ -295,6 +364,16 @@ ForwardPTM::ForwardPTM(){
 }
 
 ForwardPTM::~ForwardPTM(){}
+
+/**
+ * ReversePTM::ReversePTM() 
+ * 
+ * Derived class for ReversePTM interactions.
+ *
+ * A ReversePTM interaction converts a Post-translationally modified protein back into it's original form.
+ * 
+ * PTM >==(ReversePTM)==> Protein
+ */
 ReversePTM::ReversePTM(){
 
 	t.trace("init","Creating new Interaction\n");
@@ -308,44 +387,20 @@ ReversePTM::ReversePTM(){
 
 ReversePTM::~ReversePTM(){}
 
-TestInt::TestInt(){
-
-	t.trace("init","Creating new Interaction\n");
-	t.trace("cust","Custom Interaction type TestInt\n");
-	t.trace("mloc","Interaction at location %p\n", this);
-	
-	name="test";	
-	t.trace("init","New Interaction created\n");
-}
-
-TestInt::~TestInt(){
-
-
-}
-
-
-float TestInt::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node n, int rkIter, float rkStep){	
-	
-	
-	t.trace("efct","Original Node value: %f\n", (*m)[n]->getValue());
-	t.trace("efct","Interaction Rate: %f\n", rate);
-	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == n) ? "outgoing" : "incoming");
-	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(n, g->arcFromId(arcID))]->getValue());
-
-
-	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
-
-	if(isSourceNode(g, n) == 1)
-		return 0;
-	else if(isTargetNode(g, n) == 1)
-		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
-	else{
-		t.trace("error", "%s getEffect reached error case, not source or target (%p)\n", name, this);
-		return 0;	
-	}
-
-}
-
+/**
+ * PromoterBind::PromoterBind
+ * 
+ * Derived class for PromoterBind interactions.
+ *
+ * A PromoterBind is an interaction between a Protein and a DNA, where the Protein binds to the DNA. This sequesters the protein (decreases concentration)
+ *  and effects the rate at which the DNA produces mRNA in its Transcription interaction. The rate at which the protein is sequestered is the net total of
+ *  the forward - reverse rates. These rates affect the DNA as well. 
+ *
+ *  Protein >==(PromoterBind)==> DNA
+ *
+ * @param fwdRate The rate of binding to the DNA
+ * @param revRate The rate of unbinding to the DNA
+ */
 PromoterBind::PromoterBind(float fwdRate, float revRate){
 	name="pro";
 	kf = fwdRate;
