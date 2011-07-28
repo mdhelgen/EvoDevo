@@ -201,14 +201,12 @@ float Translation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m,
  * @param n1 The NodeID of the first protein 
  * @param n2 The NodeID of the second protein
  */
-ForwardComplexation::ForwardComplexation(int n1, int n2){
+ForwardComplexation::ForwardComplexation(){
 	t.trace("init","Creating new Interaction\n");
 	t.trace("cust","Custom Interaction type Complexation\n");
 	t.trace("mloc","Interaction at location %p\n", this);
 	name="f_cmplx";
 
-	firstNodeID = n1;
-	secondNodeID = n2;
 	
 	t.trace("init","New Interaction created\n");
 
@@ -283,17 +281,13 @@ void ForwardComplexation::setPairArcID(int i){
  *  Complex                          
  *       >==(ReverseComplexation)==> P2
  *
- * @param n1 The NodeID of the first protein 
- * @param n2 The NodeID of the second protein
  */
-ReverseComplexation::ReverseComplexation(int n1, int n2){
+ReverseComplexation::ReverseComplexation(){
 	t.trace("init","Creating new Interaction\n");
 	t.trace("cust","Custom Interaction type Complexation\n");
 	t.trace("mloc","Interaction at location %p\n", this);
 
 	name="r_cmplx";
-	firstNodeID = n1;
-	secondNodeID = n2;
 	
 	t.trace("init","New Interaction created\n");
 
@@ -324,10 +318,7 @@ float ReverseComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 
 	
 	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
-
-	Molecule* compMol1 = (*m)[g->nodeFromId(firstNodeID)];
-	Molecule* compMol2 = (*m)[g->nodeFromId(secondNodeID)];
-
+	Molecule* pairMol = (*m)[g->source(g->arcFromId(pairArcID))];
 
 	//effect on source node
 	if(isSourceNode(g, n) == 1)
