@@ -239,17 +239,15 @@ float ForwardComplexation::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecu
 
 	Molecule* thisMol = (*m)[n];
 	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
-
-	Molecule* compMol1 = (*m)[g->nodeFromId(firstNodeID)];
-	Molecule* compMol2 = (*m)[g->nodeFromId(secondNodeID)];
+	Molecule* pairMol = (*m)[g->source(g->arcFromId(pairArcID))];
 
 
 	//effect on source node
 	if(isSourceNode(g, n) == 1)
-		return -1 * rate * compMol1->rkApprox(rkIter, rkStep) * compMol2->rkApprox(rkIter, rkStep);
+		return -1 * rate * thisMol->rkApprox(rkIter, rkStep) * pairMol->rkApprox(rkIter, rkStep);
 	//effect on target node
 	else if(isTargetNode(g, n) == 1)
-		return .5 * rate * compMol1->rkApprox(rkIter, rkStep) * compMol2->rkApprox(rkIter, rkStep);
+		return .5 * rate * oppositeMol->rkApprox(rkIter, rkStep) * pairMol->rkApprox(rkIter, rkStep);
 	else{
 		t.trace("error", "%s getEffect reached error case, not source or target (%p)\n", name, this);
 		return 0;	
