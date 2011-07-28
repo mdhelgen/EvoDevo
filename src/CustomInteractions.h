@@ -14,19 +14,6 @@ class DerivGraph;
 using namespace lemon;
 
 
-class TestInt : public Interaction{
-
- public:
-	TestInt();
-	~TestInt();
-	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
-
- private:
-	float kf;
-	float kr;
-	int hill;
-
-};
 
 class Transcription : public Interaction{
  public:
