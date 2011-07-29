@@ -48,38 +48,45 @@ Interaction::~Interaction(){
  * @param g The graph object containing Node-Node relationships. 
  * @param m The NodeMap object containing Node-Molecule mappings.
  * @param i The ArcMap object containing Arc-Interaction mappings.
- * @param a The Node to calculate the effect for
+ * @param n The Node to calculate the effect for
  * @param rkIter The current iteration of Runge-Kutta [0,3]
  * @param rkStep The stepsize of Runge-Kutta
  *
  */
-float Interaction::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node a, int rkIter, float rkStep){	
+float Interaction::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m, ListDigraph::ArcMap<Interaction*>* i, ListDigraph::Node n, int rkIter, float rkStep){	
 	
-	t.trace("efct","Original Node value: %f\n", (*m)[a]->getValue());
+	t.trace("efct","Original Node value: %f\n", (*m)[n]->getValue());
 	t.trace("efct","Interaction Rate: %f\n", rate);
-	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == a) ? "outgoing" : "incoming");
-	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(a, g->arcFromId(arcID))]->getValue());
-	Molecule* thisMol = (*m)[a];
-	Molecule* oppositeMol = (*m)[g->oppositeNode(a, g->arcFromId(arcID))];
+	t.trace("efct","Interaction Dir: %s\n", (g->source(g->arcFromId(arcID)) == n) ? "outgoing" : "incoming");
+	t.trace("efct","Opposite Node value: %f\n", (*m)[g->oppositeNode(n, g->arcFromId(arcID))]->getValue());
+	Molecule* thisMol = (*m)[n];
+	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
 	
-	
-	if(g->source(g->arcFromId(arcID)) == a)
-		return -1 * thisMol->rkApprox(rkIter, rkStep)  * rate;
-	else
-		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
-}
 
+	if(isSourceNode(g, n) == 1)
+		
+		return -1 * thisMol->rkApprox(rkIter, rkStep) * rate;
+	
+	else if(isTargetNode(g, n) == 1)
+		
+		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
+	
+	else{
+		t.trace("error","%s reached error case, not source or target (%p)\n", name, this); 	
+		return 0;
+	}
+
+}
 /*
- * int Interaction::isSourceNode(ListDigraph*, ListDigraph::Node, ListDigraph::Arc)
+ * int Interaction::isSourceNode(ListDigraph*, ListDigraph::Node)
  *
  * Helper method to determine whether a particular node is the source or target node in a
  * particular arc.
  *
  * @param g
  * @param n
- * @param a
  *
- * @return 1 if the node is the source, -1 if it is the target, and 0 otherwise.
+ * @return 1 if the node is the source, and 0 otherwise.
  */
 int Interaction::isSourceNode(ListDigraph* g, ListDigraph::Node n){
 
