@@ -875,14 +875,27 @@ void DerivGraph::newPromoter(){
 		t.trace("mutate","New Promoter Failed: already taken\n");
 		return;
 	}
-	DNA* d = (*DNAList)[selectionIndex];
+	DNA* dnaMolecule = (*DNAList)[selectionIndex];
+	
+	int totalSize = 0;
+	totalSize += ProteinList->size();
+	totalSize += PTMList->size();
+	
+	Molecule* repressionMolecule;
 
+	unsigned int selectionIndex2 = r.randInt(totalSize -1);
+	if(selectionIndex2 >= 0 && selectionIndex2 < ProteinList->size()){
+			
+		repressionMolecule = (*ProteinList)[selectionIndex2];
+	}
+	else if(selectionIndex2 >= ProteinList->size() && selectionIndex2 < ProteinList->size() + PTMList->size()){
+		
+		repressionMolecule = (*PTMList)[selectionIndex2 - ProteinList->size()];
+
+	}	
 	
-	int selectionIndex2 = r.randInt(ProteinList->size() -1);
-	Protein* p = (*ProteinList)[selectionIndex2];
-	
-	ListDigraph::Node nd = derivs->nodeFromId(d->nodeID);
-	ListDigraph::Node np = derivs->nodeFromId(p->nodeID);
+	ListDigraph::Node dnaNode = derivs->nodeFromId(dnaMolecule->nodeID);
+	ListDigraph::Node repressionNode = derivs->nodeFromId(repressionMolecule->nodeID);
 	
 	float fwd = 0;
 	float rev = 1;
@@ -891,10 +904,10 @@ void DerivGraph::newPromoter(){
 		fwd = minKineticRate + r.rand(maxKineticRate - minKineticRate);
 		rev = minKineticRate + r.rand(maxKineticRate - minKineticRate);
 	}
-	t.trace("mutate","gene: %s protein: %s kf: %f kr: %f\n",d->getShortName(),p->getShortName(), fwd, rev);
+	t.trace("mutate","gene: %s protein: %s kf: %f kr: %f\n",dnaMolecule->getShortName(),repressionMolecule->getShortName(), fwd, rev);
 
-	ListDigraph::Arc a = add(new PromoterBind(fwd, rev), np, nd);
-	d->promoterId = derivs->id(a);
+	ListDigraph::Arc a = add(new PromoterBind(fwd, rev), repressionNode, dnaNode);
+	dnaMolecule->promoterId = derivs->id(a);
 
 	PromoterBindList->push_back( (PromoterBind*) (*interactions)[a]);
 	
