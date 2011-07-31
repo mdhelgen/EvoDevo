@@ -878,8 +878,8 @@ void DerivGraph::newPromoter(){
 	DNA* d = (*DNAList)[selectionIndex];
 
 	
-	int selectionIndex2 = r.randInt(ProteinList->size() -1);
-	Protein* p = (*ProteinList)[selectionIndex2];
+	int selectionIndex2 = r.randInt(PTMList->size() -1);
+	PTMProtein* p = (*PTMList)[selectionIndex2];
 	
 	ListDigraph::Node nd = derivs->nodeFromId(d->nodeID);
 	ListDigraph::Node np = derivs->nodeFromId(p->nodeID);
@@ -919,7 +919,7 @@ Molecule* DerivGraph::getBestMolecule(int CellID){
 		}
 
 	}
-	t.trace("score","Cell %d best molecule is %s (%d)\n",CellID, bestMolecule->getShortName(), maxScore);
+	t.trace("best","Cell %d best molecule is %s (%d)\n",CellID, bestMolecule->getShortName(), maxScore);
 	return bestMolecule;
 }
 
@@ -1038,13 +1038,14 @@ void DerivGraph::outputDataCsv(const char* prefix, int pid, int cellNum, int gen
 	FILE * outFile;
 	char buf[500];
 	for(unsigned int i =  0; i < MoleculeList->size(); i++){
-		
+		if((*MoleculeList)[i]->getShortName()[0] == 'g')
+			continue;
 		sprintf(buf, "%s/%d/cell%d/csv/%sc%dg%d.csv", prefix, pid, cellNum, (*MoleculeList)[i]->getShortName(), cellNum, gen);	
 		outFile = fopen(buf,"w");
 		float t = 0;
 		for(unsigned int j = 0; j < (*MoleculeList)[i]->getRungeKuttaSolution()->size(); j++){
 
-			if(j % 5 != 0){
+			if(j % 10 != 0){
 				t+=step;
 				continue;
 			}

@@ -49,6 +49,8 @@ Cell::Cell(int max_basic, int max_ptm, int max_comp, int max_promoter,float min_
 
     //initialize the cell with a single basic protein
     equations->newBasic();
+    equations->newPTM();
+    equations->newPromoter();
 
     t.trace("init", "New Cell created\n");
 
@@ -94,7 +96,8 @@ delete equations;
 int Cell::mutate(){
 	//advance generation
 	currentGen++;
-	
+
+	return 0;	
 	//random values for mutation selection
 	double mutationCategory = r.rand(1);
 	double mutationType = r.rand(1);

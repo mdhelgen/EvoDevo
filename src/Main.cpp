@@ -31,6 +31,8 @@ int main(int argc, char** argv){
   int c;
 
 
+  t.addTraceType("best",1);
+
   //trace related trace messages
   t.addTraceType("trce",0);
   
@@ -38,7 +40,7 @@ int main(int argc, char** argv){
   t.addTraceType("args",0);
 
   //error messages
-  t.addTraceType("error",1);
+  t.addTraceType("error",0);
  
   //object creation / construction
   t.addTraceType("init",0);
@@ -71,7 +73,7 @@ int main(int argc, char** argv){
   t.addTraceType("score",0);
   
   // mutation
-  t.addTraceType("mutate",1);
+  t.addTraceType("mutate",0);
 
   // polymorphic comparisons (not used?)
   t.addTraceType("typeid",0);

@@ -52,8 +52,9 @@ Experiment::Experiment(int ncells, int generations, int max_basic, int max_ptm, 
 	maxGenerations = generations;
 
 	char buf[200];
+	extern int hillParam;
 	pid = getpid();
-	
+	pid = hillParam;
 	prefix = "../output";
 	mkdir(prefix , S_IRWXU | S_IRWXG | S_IRWXO);
 	
@@ -132,12 +133,13 @@ void Experiment::setOutputOptions(int gv_flag, int gp_flag, int eachgen_flag, in
 */
 void Experiment::start()
 {
-
+	
 	t.trace("args","Graphviz: %d\n",graphviz_enabled);
 	t.trace("args","Gnuplot: %d\n", gnuplot_enabled);
 
 	int bestScore = -1;
 	Cell* bestCell = 0;
+
 
 	//generational loop
 	for(int i = 1; i <= maxGenerations; i++)
@@ -156,10 +158,10 @@ void Experiment::start()
 			//if scoring interval is 5, this runs every 5 generations
 			if(i % scoringInterval == 0){
 				cells[c]->rk();
-				if(cells[c]->getScore() < -1  ){
-					cells[c]->outputDataPlot(prefix, pid);
-					cells[c]->outputDotImage(prefix, pid);
-				}	
+//				if(cells[c]->getScore() < -1  ){
+//					cells[c]->outputDataPlot(prefix, pid);
+//					cells[c]->outputDotImage(prefix, pid);
+//				}	
 
 				//keep track of the cell with the highest score so far
 				if(cells[c]->getScore() > bestScore){
@@ -172,8 +174,10 @@ void Experiment::start()
 			//if the flag is set, generate output for every cell during every generation
 			//this will significantly increase the runtime of the simulation
 			if(output_each_gen){
-				//if the flag is set, generate output every generation
-				cells[c]->rk();
+				
+				// if this is not a scoring interval, runge kutta needs to be calculated
+				if(i % scoringInterval != 0)
+					cells[c]->rk();
 				if(graphviz_enabled)
 					cells[c]->outputDotImage(prefix, pid);
 				if(gnuplot_enabled)
