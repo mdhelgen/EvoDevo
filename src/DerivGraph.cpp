@@ -1136,108 +1136,6 @@ void DerivGraph::setDefaultInitialConc(float initial_conc){
 
 void DerivGraph::twoGeneGoodwin(){
 
-	int PTMSelected = -1;
-
-	int totalSize = 0;
-	totalSize += ProteinList->size();
-	totalSize += PTMList->size();
-	
-	t.trace("mutate","size = %d (%d + %d)\n", totalSize-1, ProteinList->size(), PTMList->size());
-
-	Molecule* selectedMolecule;
-
-	unsigned int selectedIndex = 0;
-	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
-	
-	if(selectedIndex < ProteinList->size())
-	{
-		t.trace("mutate","ProteinList[%d]\n", selectedIndex);
-		selectedMolecule = (Molecule*) (*ProteinList)[selectedIndex];
-		PTMSelected = 0;
-	}
-	else if(selectedIndex >= ProteinList->size())
-	{
-		selectedIndex -= ProteinList->size();
-		t.trace("mutate","PTMList[%d]\n",selectedIndex);
-		selectedMolecule = (Molecule*) (*PTMList)[selectedIndex];
-		PTMSelected = 1;
-	}
-
-
-	ListDigraph::Node selectedNode = derivs->nodeFromId(selectedMolecule->nodeID);
-	
-	ListDigraph::Node newPTM;
-	
-	newPTM = add(new PTMProtein());
-	
-	//copy the ptm counts to the new PTMProtein
-	for(int i = 0; i< 4; i++)
-		((PTMProtein*)(*molecules)[newPTM])->setPTMCount(i, selectedMolecule->getPTMCount(i));
-
-	//add the new PTM to the relevant lists
-	PTMList->push_back( (PTMProtein*) (*molecules)[newPTM]);
-	MoleculeList->push_back( (*molecules)[newPTM]);
-	
-	(*molecules)[newPTM]->setID(count++);
-	
-	((PTMProtein*)(*molecules)[newPTM])->addRandPTM(r.randInt(3));
-	
-	ListDigraph::Arc PTM_f = add(new ForwardPTM(), selectedNode, newPTM);
-	ListDigraph::Arc PTM_r = add(new ReversePTM(), newPTM, selectedNode);
-	ListDigraph::Arc PTM_d = add(new Degradation(), newPTM, nullnode);
-
-	DegradationList->push_back( (Degradation*) (*interactions)[PTM_d]);
-	ForwardPTMList->push_back( (ForwardPTM*) (*interactions)[PTM_f]);
-	ReversePTMList->push_back( (ReversePTM*) (*interactions)[PTM_r]);
-
-	t.trace("mutate","OldPTM: %s\n",(PTMProtein*) selectedMolecule->getLongName());
-	t.trace("mutate","NewPTM: %s\n",(PTMProtein*) (*molecules)[newPTM]->getLongName());
-
-	PTMSelected = -1;
-
-	totalSize = 0;
-	totalSize += ProteinList->size();
-	totalSize += PTMList->size();
-	
-	t.trace("mutate","size = %d (%d + %d)\n", totalSize-1, ProteinList->size(), PTMList->size());
-
-
-        selectedIndex = 1;
-	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
-	
-		t.trace("mutate","ProteinList[%d]\n", selectedIndex);
-		selectedMolecule = (Molecule*) (*ProteinList)[selectedIndex];
-		PTMSelected = 0;
-
-
-	 selectedNode = derivs->nodeFromId(selectedMolecule->nodeID);
-	
-	
-	newPTM = add(new PTMProtein());
-	
-	//copy the ptm counts to the new PTMProtein
-	for(int i = 0; i< 4; i++)
-		((PTMProtein*)(*molecules)[newPTM])->setPTMCount(i, selectedMolecule->getPTMCount(i));
-
-	//add the new PTM to the relevant lists
-	PTMList->push_back( (PTMProtein*) (*molecules)[newPTM]);
-	MoleculeList->push_back( (*molecules)[newPTM]);
-	
-	(*molecules)[newPTM]->setID(count++);
-	
-	((PTMProtein*)(*molecules)[newPTM])->addRandPTM(r.randInt(3));
-	
-	PTM_f = add(new ForwardPTM(), selectedNode, newPTM);
-	PTM_r = add(new ReversePTM(), newPTM, selectedNode);
-	PTM_d = add(new Degradation(), newPTM, nullnode);
-
-	DegradationList->push_back( (Degradation*) (*interactions)[PTM_d]);
-	ForwardPTMList->push_back( (ForwardPTM*) (*interactions)[PTM_f]);
-	ReversePTMList->push_back( (ReversePTM*) (*interactions)[PTM_r]);
-
-	t.trace("mutate","OldPTM: %s\n",(PTMProtein*) selectedMolecule->getLongName());
-	t.trace("mutate","NewPTM: %s\n",(PTMProtein*) (*molecules)[newPTM]->getLongName());
-	
 
 	unsigned selectionIndex = 0;
 	if( (*DNAList)[selectionIndex]->promoterId >= 0)
@@ -1249,7 +1147,7 @@ void DerivGraph::twoGeneGoodwin(){
 
 	
 	int selectionIndex2 = 1;
-	PTMProtein* p = (*PTMList)[selectionIndex2];
+	Protein* p = (*ProteinList)[selectionIndex2];
 	
 	ListDigraph::Node nd = derivs->nodeFromId(d->nodeID);
 	ListDigraph::Node np = derivs->nodeFromId(p->nodeID);
@@ -1278,7 +1176,7 @@ void DerivGraph::twoGeneGoodwin(){
 
 	
 	selectionIndex2 = 0;
-	p = (*PTMList)[selectionIndex2];
+	p = (*ProteinList)[selectionIndex2];
 
 	nd = derivs->nodeFromId(d->nodeID);
 	np = derivs->nodeFromId(p->nodeID);
