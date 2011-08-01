@@ -46,7 +46,7 @@ int main(int argc, char** argv){
   t.addTraceType("init",0);
 
   //memory location of created objects
-  t.addTraceType("mloc",1);
+  t.addTraceType("mloc",0);
 
   //object deletion / destruction
   t.addTraceType("free",0);
@@ -73,7 +73,7 @@ int main(int argc, char** argv){
   t.addTraceType("score",0);
   
   // mutation
-  t.addTraceType("mutate",1);
+  t.addTraceType("mutate",0);
 
   // polymorphic comparisons (not used?)
   t.addTraceType("typeid",0);
