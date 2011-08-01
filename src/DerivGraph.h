@@ -59,6 +59,7 @@ public:
 	void newComplex();	
 	void newPromoter();
 	void newPTM();	
+	void twoGeneGoodwin();
 
 private:
 

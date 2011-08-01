@@ -49,8 +49,11 @@ Cell::Cell(int max_basic, int max_ptm, int max_comp, int max_promoter,float min_
 
     //initialize the cell with a single basic protein
     equations->newBasic();
-    equations->newPTM();
-    equations->newPromoter();
+    equations->newBasic();
+//    equations->newPTM();
+//    equations->newPromoter();
+
+    equations->twoGeneGoodwin();
 
     t.trace("init", "New Cell created\n");
 

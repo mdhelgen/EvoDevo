@@ -939,7 +939,7 @@ Molecule* DerivGraph::getBestMolecule(int CellID){
 void DerivGraph::outputDotImage(const char* prefix, int pid, int cellNum, int gen){
 	
 	char buf[200];
-	sprintf(buf, "dot -Gsize=\"20,20\" -Tpng -o%s/%d/cell%d/Cell%dGen%d.png",prefix, pid, cellNum, cellNum, gen);
+	sprintf(buf, "neato -Gsize=\"20,20\" -Tpng -o%s/%d/cell%d/Cell%dGen%d.png -Efontsize=\"10\"",prefix, pid, cellNum, cellNum, gen);
 
 	//popen forks and execs and returns a pipe to the new process stdin
 	FILE* dot = popen(buf,"w");
@@ -1132,3 +1132,172 @@ void DerivGraph::setDefaultInitialConc(float initial_conc){
 	defaultInitialConcentration = initial_conc;
 
 }
+
+
+void DerivGraph::twoGeneGoodwin(){
+
+	int PTMSelected = -1;
+
+	int totalSize = 0;
+	totalSize += ProteinList->size();
+	totalSize += PTMList->size();
+	
+	t.trace("mutate","size = %d (%d + %d)\n", totalSize-1, ProteinList->size(), PTMList->size());
+
+	Molecule* selectedMolecule;
+
+	unsigned int selectedIndex = 0;
+	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
+	
+	if(selectedIndex < ProteinList->size())
+	{
+		t.trace("mutate","ProteinList[%d]\n", selectedIndex);
+		selectedMolecule = (Molecule*) (*ProteinList)[selectedIndex];
+		PTMSelected = 0;
+	}
+	else if(selectedIndex >= ProteinList->size())
+	{
+		selectedIndex -= ProteinList->size();
+		t.trace("mutate","PTMList[%d]\n",selectedIndex);
+		selectedMolecule = (Molecule*) (*PTMList)[selectedIndex];
+		PTMSelected = 1;
+	}
+
+
+	ListDigraph::Node selectedNode = derivs->nodeFromId(selectedMolecule->nodeID);
+	
+	ListDigraph::Node newPTM;
+	
+	newPTM = add(new PTMProtein());
+	
+	//copy the ptm counts to the new PTMProtein
+	for(int i = 0; i< 4; i++)
+		((PTMProtein*)(*molecules)[newPTM])->setPTMCount(i, selectedMolecule->getPTMCount(i));
+
+	//add the new PTM to the relevant lists
+	PTMList->push_back( (PTMProtein*) (*molecules)[newPTM]);
+	MoleculeList->push_back( (*molecules)[newPTM]);
+	
+	(*molecules)[newPTM]->setID(count++);
+	
+	((PTMProtein*)(*molecules)[newPTM])->addRandPTM(r.randInt(3));
+	
+	ListDigraph::Arc PTM_f = add(new ForwardPTM(), selectedNode, newPTM);
+	ListDigraph::Arc PTM_r = add(new ReversePTM(), newPTM, selectedNode);
+	ListDigraph::Arc PTM_d = add(new Degradation(), newPTM, nullnode);
+
+	DegradationList->push_back( (Degradation*) (*interactions)[PTM_d]);
+	ForwardPTMList->push_back( (ForwardPTM*) (*interactions)[PTM_f]);
+	ReversePTMList->push_back( (ReversePTM*) (*interactions)[PTM_r]);
+
+	t.trace("mutate","OldPTM: %s\n",(PTMProtein*) selectedMolecule->getLongName());
+	t.trace("mutate","NewPTM: %s\n",(PTMProtein*) (*molecules)[newPTM]->getLongName());
+
+	PTMSelected = -1;
+
+	totalSize = 0;
+	totalSize += ProteinList->size();
+	totalSize += PTMList->size();
+	
+	t.trace("mutate","size = %d (%d + %d)\n", totalSize-1, ProteinList->size(), PTMList->size());
+
+
+        selectedIndex = 1;
+	t.trace("mutate","selectedIndex = %d\n", selectedIndex);
+	
+		t.trace("mutate","ProteinList[%d]\n", selectedIndex);
+		selectedMolecule = (Molecule*) (*ProteinList)[selectedIndex];
+		PTMSelected = 0;
+
+
+	 selectedNode = derivs->nodeFromId(selectedMolecule->nodeID);
+	
+	
+	newPTM = add(new PTMProtein());
+	
+	//copy the ptm counts to the new PTMProtein
+	for(int i = 0; i< 4; i++)
+		((PTMProtein*)(*molecules)[newPTM])->setPTMCount(i, selectedMolecule->getPTMCount(i));
+
+	//add the new PTM to the relevant lists
+	PTMList->push_back( (PTMProtein*) (*molecules)[newPTM]);
+	MoleculeList->push_back( (*molecules)[newPTM]);
+	
+	(*molecules)[newPTM]->setID(count++);
+	
+	((PTMProtein*)(*molecules)[newPTM])->addRandPTM(r.randInt(3));
+	
+	PTM_f = add(new ForwardPTM(), selectedNode, newPTM);
+	PTM_r = add(new ReversePTM(), newPTM, selectedNode);
+	PTM_d = add(new Degradation(), newPTM, nullnode);
+
+	DegradationList->push_back( (Degradation*) (*interactions)[PTM_d]);
+	ForwardPTMList->push_back( (ForwardPTM*) (*interactions)[PTM_f]);
+	ReversePTMList->push_back( (ReversePTM*) (*interactions)[PTM_r]);
+
+	t.trace("mutate","OldPTM: %s\n",(PTMProtein*) selectedMolecule->getLongName());
+	t.trace("mutate","NewPTM: %s\n",(PTMProtein*) (*molecules)[newPTM]->getLongName());
+	
+
+	unsigned selectionIndex = 0;
+	if( (*DNAList)[selectionIndex]->promoterId >= 0)
+	{
+		t.trace("mutate","New Promoter Failed: already taken\n");
+		return;
+	}
+	DNA* d = (*DNAList)[selectionIndex];
+
+	
+	int selectionIndex2 = 1;
+	PTMProtein* p = (*PTMList)[selectionIndex2];
+	
+	ListDigraph::Node nd = derivs->nodeFromId(d->nodeID);
+	ListDigraph::Node np = derivs->nodeFromId(p->nodeID);
+	
+	float fwd = 0;
+	float rev = 1;
+	while(rev > fwd)
+	{
+		fwd = minKineticRate + r.rand(maxKineticRate - minKineticRate);
+		rev = minKineticRate + r.rand(maxKineticRate - minKineticRate);
+	}
+	t.trace("mutate","gene: %s protein: %s kf: %f kr: %f\n",d->getShortName(),p->getShortName(), fwd, rev);
+
+	ListDigraph::Arc a = add(new PromoterBind(fwd, rev), np, nd);
+	d->promoterId = derivs->id(a);
+
+	PromoterBindList->push_back( (PromoterBind*) (*interactions)[a]);
+
+	selectionIndex = 1;
+	if( (*DNAList)[selectionIndex]->promoterId >= 0)
+	{
+		t.trace("mutate","New Promoter Failed: already taken\n");
+		return;
+	}
+	d = (*DNAList)[selectionIndex];
+
+	
+	selectionIndex2 = 0;
+	p = (*PTMList)[selectionIndex2];
+
+	nd = derivs->nodeFromId(d->nodeID);
+	np = derivs->nodeFromId(p->nodeID);
+	
+	fwd = 0;
+	rev = 1;
+	while(rev > fwd)
+	{
+		fwd = minKineticRate + r.rand(maxKineticRate - minKineticRate);
+		rev = minKineticRate + r.rand(maxKineticRate - minKineticRate);
+	}
+	t.trace("mutate","gene: %s protein: %s kf: %f kr: %f\n",d->getShortName(),p->getShortName(), fwd, rev);
+
+	a = add(new PromoterBind(fwd, rev), np, nd);
+	d->promoterId = derivs->id(a);
+
+	PromoterBindList->push_back( (PromoterBind*) (*interactions)[a]);
+
+}
+
+
+
