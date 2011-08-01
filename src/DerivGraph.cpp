@@ -869,33 +869,59 @@ void DerivGraph::newPromoter(){
 		return;
 	}
 	
+	//select a random DNA molecule	
 	int selectionIndex = r.randInt(DNAList->size() -1);
+	
+	//if the DNA is already bound to a repressor, the mutation is a failed attempt
 	if( (*DNAList)[selectionIndex]->promoterId >= 0)
 	{
-		t.trace("mutate","New Promoter Failed: already taken\n");
+		t.trace("mutate","New Promoter Failed: %s is already being repressed by %s\n", (*DNAList)[selectionIndex]->getShortName(), (*molecules)[derivs->source(derivs->arcFromId((*DNAList)[selectionIndex]->promoterId))]->getShortName());
 		return;
 	}
-	DNA* d = (*DNAList)[selectionIndex];
+	DNA* dnaMolecule = (*DNAList)[selectionIndex];
+	
+	//get a random Protein or PTM to bind to the DNA
+	int totalSize = 0;
+	totalSize += ProteinList->size();
+	totalSize += PTMList->size();
+	
+	Molecule* repressionMolecule;
 
+	unsigned int selectionIndex2 = r.randInt(totalSize -1);
 	
-	int selectionIndex2 = r.randInt(ProteinList->size() -1);
-	Protein* p = (*ProteinList)[selectionIndex2];
+	//if the index falls within the ProteinList
+	if(selectionIndex2 >= 0 && selectionIndex2 < ProteinList->size()){
+			
+		repressionMolecule = (*ProteinList)[selectionIndex2];
+	}
+	//if the index falls within the PTMList
+	else if(selectionIndex2 >= ProteinList->size() && selectionIndex2 < ProteinList->size() + PTMList->size()){
+		
+		repressionMolecule = (*PTMList)[selectionIndex2 - ProteinList->size()];
+
+	}	
 	
-	ListDigraph::Node nd = derivs->nodeFromId(d->nodeID);
-	ListDigraph::Node np = derivs->nodeFromId(p->nodeID);
+	ListDigraph::Node dnaNode = derivs->nodeFromId(dnaMolecule->nodeID);
+	ListDigraph::Node repressionNode = derivs->nodeFromId(repressionMolecule->nodeID);
 	
 	float fwd = 0;
 	float rev = 1;
+	//generate a forward and reverse rate for the repressor binding. 
+	//forward rate must be higher than reverse rate
 	while(rev > fwd)
 	{
 		fwd = minKineticRate + r.rand(maxKineticRate - minKineticRate);
 		rev = minKineticRate + r.rand(maxKineticRate - minKineticRate);
 	}
-	t.trace("mutate","gene: %s protein: %s kf: %f kr: %f\n",d->getShortName(),p->getShortName(), fwd, rev);
+	t.trace("mutate","gene: %s protein: %s kf: %f kr: %f\n",dnaMolecule->getShortName(),repressionMolecule->getShortName(), fwd, rev);
 
-	ListDigraph::Arc a = add(new PromoterBind(fwd, rev), np, nd);
-	d->promoterId = derivs->id(a);
+	//create a new promoter binding interaction from the repressor to the DNA
+	ListDigraph::Arc a = add(new PromoterBind(fwd, rev), repressionNode, dnaNode);
+	
+	//update the DNA with the arcID of its promoter interaction
+	dnaMolecule->promoterId = derivs->id(a);
 
+	//add the new interaction to the promoter list
 	PromoterBindList->push_back( (PromoterBind*) (*interactions)[a]);
 	
 

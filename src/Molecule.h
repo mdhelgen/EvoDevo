@@ -59,6 +59,9 @@ protected:
 	const char* shortName;
 	int moleculeID;
 	vector<float> rungeKuttaSolution;
+	
+	vector<float> maxima;
+	vector<float> minima;
 };
 
 

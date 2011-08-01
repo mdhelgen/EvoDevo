@@ -202,9 +202,16 @@ void Molecule::nextPoint(float step){
 	
 	t.trace("score", "%s%d - (%f , %f), dir = %d, prev = %d\n",shortName, moleculeID,currentConcentration,delta  , currentDir, prevDir);
 
-	//if the value previously decreased and just increased, or previously increased and just decreased, add to the change count
-	if((prevDir == -1 && currentDir == 1) || (prevDir == 1 && currentDir == -1))
+	//if the value previously decreased and just increased, the last point was a minimum
+	if(prevDir == -1 && currentDir == 1){ 
+		minima.push_back(oldConc);
 		numChanges++;
+	}
+	//if the value previously increased and just decreased, the last point was a maximum
+	if(prevDir == 1 && currentDir == -1){
+		maxima.push_back(oldConc);
+		numChanges++;
+        }
 
 	//save for the next point
 	prevDir = currentDir;
@@ -284,6 +291,11 @@ void Molecule::reset(){
 	
 	rungeKuttaSolution.erase(rungeKuttaSolution.begin(), rungeKuttaSolution.end());
 	rungeKuttaSolution.push_back(initialConcentration);
+	
+	minima.erase(minima.begin(), minima.end());
+
+	maxima.erase(maxima.begin(), maxima.end());
+
 	currentConcentration = initialConcentration;
 	rkVal[0] = 0;
 	rkVal[1] = 0;
@@ -323,45 +335,8 @@ int Molecule::getPTMCount(int index){
  */
 int Molecule::getScore(){
 
-
+	t.trace("test","%s numChanges: %d, minima: %d, maxima: %d\n",getShortName(),numChanges, minima.size(), maxima.size());
 	return numChanges;
-
-	/*
-	int prevDir = 0;
-	int currentDir = 0;
-	int numChanges = 0;
-
-	float diff = 0.0;
-
-	for(unsigned int i = 1; i < rungeKuttaSolution.size(); i++){
-		//how has the value changed this timestep	
-		diff = rungeKuttaSolution[i] - rungeKuttaSolution[i-1];
-		
-		//if the value is constant move to the next point	
-		if(diff == 0)
-			continue;
-		//the current slope is negative
-		if(diff < 0)
-			currentDir = -1;
-		//the current slope is positive
-		if(diff > 0)
-			currentDir = 1;
-
-	//	t.trace("score", "%s%d (%d, %f) - (%d, %f), dir = %d, prev = %d\n",shortName, moleculeID ,i, rungeKuttaSolution[i], i-1, rungeKuttaSolution[i-1], currentDir, prevDir);
-
-		// if the current slope direction has changed, add 1 to score
-		if((currentDir == 1 && prevDir == -1) ||
-		   (currentDir == -1 && prevDir == 1)){
-			numChanges += 1;
-		   	//t.trace("score", "%s%d changes: %d\n", shortName, moleculeID, numChanges);
-		}
-		// save the new slope direction	
-		prevDir = currentDir;
-
-
-	}
-	return numChanges;
-*/
 
 }
 
