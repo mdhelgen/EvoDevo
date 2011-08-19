@@ -51,15 +51,26 @@ float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* 
 
 	Molecule* thisMol = (*m)[n];
 	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
-
 	
-	if(isSourceNode(g, n) == 1)
-		return 0;
+	int featureOn = 0;
+	
+	int prom_id = ((DNA*)oppositeMol)->promoterId;
+	
+	if(isSourceNode(g, n) == 1){
+		
+		if(prom_id == -1)
+			return 0;
+
+		PromoterBind* pb = (PromoterBind*)(*i)[g->arcFromId(prom_id)];
+		Molecule* repressor = (*m)[g->source(g->arcFromId(prom_id))];
+		float f = pb->kf;
+		return -1 * oppositeMol->rkApprox(rkIter, rkStep) * repressor->rkApprox(rkIter, rkStep);
+	}
 	else if(isTargetNode(g, n) == 1)
 	{
-		int prom_id = ((DNA*)oppositeMol)->promoterId;
 		if(prom_id == -1)
 			return oppositeMol->rkApprox(rkIter, rkStep) * rate;
+		
 		PromoterBind* pb = (PromoterBind*)(*i)[g->arcFromId(prom_id)];
 		Molecule* repressor = (*m)[g->source(g->arcFromId(prom_id))];
 
@@ -436,7 +447,7 @@ float PromoterBind::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m
 	if(isSourceNode(g, n) == 1)
 		return -1 * oppositeMol->rkApprox(rkIter, rkStep) * (kf-kr);
 	else if(isTargetNode(g, n) == 1)
-		return 0;
+		return kr * (1 - thisMol->rkApprox(rkIter, rkStep));
 	else{
 		t.trace("error", "%s getEffect reached error case, not source or target (%p)\n", name, this);
 		return 0;
