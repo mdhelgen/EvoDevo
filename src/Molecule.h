@@ -26,7 +26,7 @@ public:
 	virtual float getValue();
 	void updateRkVal(int, float);
 	void nextPoint(float);
-	void setValue(float);
+	virtual	void setValue(float);
 	void outputRK();
 	float getrkVal(int);
 	vector<float>* getRungeKuttaSolution();

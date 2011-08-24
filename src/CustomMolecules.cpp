@@ -23,7 +23,7 @@ DNA::DNA(){
 
 	t.trace("init","Molecule %p type:DNA\n", this);	
 	promoterId = -1;
-	currentConcentration = 0;
+	currentConcentration = 1;
 	hill = hillParam;
 	histoneModValue = 1;
 	currentDir = 0;
@@ -64,10 +64,19 @@ float DNA::getValue(){
 }
 float DNA::rkApprox(int rkstep, float step)
 {
-	return DNA::getValue();
+	return currentConcentration * DNA::getValue();
 }
 void DNA::setHistoneModValue(float newVal){
 	histoneModValue = newVal;
+}
+
+void DNA::setValue(float newValue){
+
+	newValue = 1;
+	initialConcentration = newValue;
+	currentConcentration = newValue;
+	rungeKuttaSolution.push_back(newValue);
+
 }
 
 NullNode::NullNode(){

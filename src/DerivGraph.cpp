@@ -321,7 +321,6 @@ ListDigraph::Node DerivGraph::add(Molecule * newMolecule){
 	//this allow sthe molecule to find its position in the graph structure
 	(*molecules)[newNode]->nodeID = derivs->id(newNode);
 
-
 	(*molecules)[newNode]->setValue(defaultInitialConcentration);
 
 	//return the newly created Node
@@ -1016,8 +1015,8 @@ void DerivGraph::outputDataPlot(const char* prefix, int pid, int cellNum, int ge
 
 //	FILE* test = fopen("test.txt","w");
 	for(unsigned int i =  0; i < MoleculeList->size(); i++){
-		if((*MoleculeList)[i]->getScore() < 3)
-			continue;
+		//if((*MoleculeList)[i]->getScore() < 3)
+		//	continue;
 		fprintf(gnuplot, "set term png size 2048,1536\n");
 		fflush(gnuplot);
 	
