@@ -453,3 +453,11 @@ float PromoterBind::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m
 	}	
 
 }
+
+int PromoterBind::isRepression(){
+	return 0;
+}
+
+int PromoterBind::isActivation(){
+	return 0;
+}
