@@ -51,15 +51,24 @@ float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* 
 
 	Molecule* thisMol = (*m)[n];
 	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
-
 	
-	if(isSourceNode(g, n) == 1)
-		return 0;
+	
+	
+	if(isSourceNode(g, n) == 1){
+		
+		int prom_id = ((DNA*)thisMol)->promoterId;
+		if(prom_id == -1)
+			return 0;
+
+		PromoterBind* pb = (PromoterBind*)(*i)[g->arcFromId(prom_id)];
+		Molecule* repressor = (*m)[g->source(g->arcFromId(prom_id))];
+		float f = pb->kf;
+		return -1 * f * oppositeMol->rkApprox(rkIter, rkStep) * repressor->rkApprox(rkIter, rkStep);
+	}
 	else if(isTargetNode(g, n) == 1)
 	{
-		int prom_id = ((DNA*)oppositeMol)->promoterId;
-		if(prom_id == -1)
-			return oppositeMol->rkApprox(rkIter, rkStep) * rate;
+		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
+	/*	
 		PromoterBind* pb = (PromoterBind*)(*i)[g->arcFromId(prom_id)];
 		Molecule* repressor = (*m)[g->source(g->arcFromId(prom_id))];
 
@@ -68,6 +77,7 @@ float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* 
 		int h = ((DNA*)oppositeMol)->hill;
 		t.trace("hill","f:%f r:%f h:%d value:%f\n",f,r,h,(1/(1+pow(f/r,h))));
 		return (1/(1+(f/r)*pow(repressor->rkApprox(rkIter,rkStep),h))) * oppositeMol->rkApprox(rkIter, rkStep) * rate;
+	*/
 	}
 	else{
 		t.trace("error", "%s getEffect reached error case, not source or target (%p)\n", name, this);
@@ -406,6 +416,10 @@ PromoterBind::PromoterBind(float fwdRate, float revRate){
 	kf = fwdRate;
 	kr = revRate;
 	rate = kf - kr;
+	
+	// -1 = repression, 1 = activation
+	// modified by setAsRepression() / setAsActivation()
+	promoterType = 0;
 }
 PromoterBind::~PromoterBind(){}
 
@@ -436,10 +450,55 @@ float PromoterBind::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m
 	if(isSourceNode(g, n) == 1)
 		return -1 * oppositeMol->rkApprox(rkIter, rkStep) * (kf-kr);
 	else if(isTargetNode(g, n) == 1)
-		return 0;
+		return kr * (1 - thisMol->rkApprox(rkIter, rkStep));
 	else{
 		t.trace("error", "%s getEffect reached error case, not source or target (%p)\n", name, this);
 		return 0;
 	}	
 
+}
+/**
+ * Determines if the promoter is repressing the gene it is binding to.
+ * 
+ * @return 1 if the promoter is acting as a repressor, and 0 otherwise.
+*/
+int PromoterBind::isRepression(){
+	
+	//promoterType: -1 = repression, 1 = activation
+	if(promoterType == -1)
+		return 1;
+	return 0;
+}
+
+/**
+ * Determines if the promoter is activating the gene it is binding to. 
+ *
+ * @return 1 if the promoter is acting as an activator, and 0 otherwise.
+*/
+int PromoterBind::isActivation(){
+
+	//promoterType: -1 = repression, 1 = activation
+	if(promoterType == 1)
+		return 1;
+	return 0;
+}
+
+/**
+ * Sets the promoter interaction as a repression type. 
+ *
+ * The concentration of the protein being bound will cause the DNA being bound to to translate at less than it's basal rate (See Transcription::getEffect)
+*/
+void PromoterBind::setAsRepression(){
+	promoterType = -1;
+	name = "rep";
+}
+
+/**
+ * Sets the promoter interaction as an activation type. 
+ *
+ * The concentration of the protein being bound will cause the DNA being bound to to translate at more than it's basal rate (See Transcription::getEffect)
+*/
+void PromoterBind::setAsActivation(){
+	name = "act";
+	promoterType = 1;
 }

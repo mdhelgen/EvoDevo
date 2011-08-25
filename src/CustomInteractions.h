@@ -72,8 +72,15 @@ class PromoterBind : public Interaction{
  public:
 	PromoterBind(float, float);
 	~PromoterBind();
+	
+	int promoterType; // -1 for repression, 1 activation
+	
 	float kf;
 	float kr;
+	int isRepression();
+	int isActivation();
+	void setAsRepression();
+	void setAsActivation();
 	
 	virtual float getEffect(ListDigraph*, ListDigraph::NodeMap<Molecule*>*, ListDigraph::ArcMap<Interaction*>*, ListDigraph::Node, int, float);
 };
