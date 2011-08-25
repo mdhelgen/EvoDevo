@@ -27,6 +27,7 @@ public:
 	float getValue();
 	float rkApprox(int, float);
 	void setHistoneModValue(float);
+	void setG(float);
 	virtual	void setValue(float);
 	int promoterId;
 	int hill;

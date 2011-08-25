@@ -63,15 +63,18 @@ float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* 
 		float f = pb->kf;
 		float r = pb->kr;
 		if(pb->isRepression())
-			return -1 * f * oppositeMol->rkApprox(rkIter, rkStep) * repressor->rkApprox(rkIter, rkStep);
+			return -1 * f * thisMol->rkApprox(rkIter, rkStep) * repressor->rkApprox(rkIter, rkStep);
 		if(pb->isActivation())
-			return -1 * r * oppositeMol->rkApprox(rkIter, rkStep);
+			return -1 * r * thisMol->rkApprox(rkIter, rkStep);
 		
 		t.trace("error", "%s getEffect reached error case, promoter not activation or repression (%p)\n", name, this);
 		return 0;
 	}
 	else if(isTargetNode(g, n) == 1)
 	{
+		if(((PromoterBind*)oppositeMol)->isActivation())
+			return (1 + 10 * oppositeMol->rkApprox(rkIter, rkStep)) * rate;
+
 		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
 	}
 	else{

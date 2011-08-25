@@ -920,7 +920,8 @@ void DerivGraph::newPromoter(){
 	//update the DNA with the arcID of its promoter interaction
 	dnaMolecule->promoterId = derivs->id(a);
 
-	((PromoterBind*)(*interactions)[a])->setAsRepression();
+	((PromoterBind*)(*interactions)[a])->setAsActivation();
+	((DNA*)(dnaMolecule))->setG(0);
 
 	//add the new interaction to the promoter list
 	PromoterBindList->push_back( (PromoterBind*) (*interactions)[a]);

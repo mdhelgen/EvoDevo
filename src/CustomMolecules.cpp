@@ -72,11 +72,18 @@ void DNA::setHistoneModValue(float newVal){
 
 void DNA::setValue(float newValue){
 
-	newValue = 1;
+	newValue = 1;	
 	initialConcentration = newValue;
 	currentConcentration = newValue;
 	rungeKuttaSolution.push_back(newValue);
 
+}
+void DNA::setG(float g){
+	
+	initialConcentration = g;
+	currentConcentration = g;
+	rungeKuttaSolution.push_back(g);
+	reset();
 }
 
 NullNode::NullNode(){
