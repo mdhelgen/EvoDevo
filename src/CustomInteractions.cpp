@@ -52,8 +52,6 @@ float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* 
 	Molecule* thisMol = (*m)[n];
 	Molecule* oppositeMol = (*m)[g->oppositeNode(n, g->arcFromId(arcID))];
 	
-	
-	
 	if(isSourceNode(g, n) == 1){
 		
 		int prom_id = ((DNA*)thisMol)->promoterId;
@@ -63,21 +61,18 @@ float Transcription::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* 
 		PromoterBind* pb = (PromoterBind*)(*i)[g->arcFromId(prom_id)];
 		Molecule* repressor = (*m)[g->source(g->arcFromId(prom_id))];
 		float f = pb->kf;
-		return -1 * f * oppositeMol->rkApprox(rkIter, rkStep) * repressor->rkApprox(rkIter, rkStep);
+		float r = pb->kr;
+		if(pb->isRepression())
+			return -1 * f * oppositeMol->rkApprox(rkIter, rkStep) * repressor->rkApprox(rkIter, rkStep);
+		if(pb->isActivation())
+			return -1 * r * oppositeMol->rkApprox(rkIter, rkStep);
+		
+		t.trace("error", "%s getEffect reached error case, promoter not activation or repression (%p)\n", name, this);
+		return 0;
 	}
 	else if(isTargetNode(g, n) == 1)
 	{
 		return oppositeMol->rkApprox(rkIter, rkStep) * rate;
-	/*	
-		PromoterBind* pb = (PromoterBind*)(*i)[g->arcFromId(prom_id)];
-		Molecule* repressor = (*m)[g->source(g->arcFromId(prom_id))];
-
-		float f = pb->kf;
-		float r = pb->kr;
-		int h = ((DNA*)oppositeMol)->hill;
-		t.trace("hill","f:%f r:%f h:%d value:%f\n",f,r,h,(1/(1+pow(f/r,h))));
-		return (1/(1+(f/r)*pow(repressor->rkApprox(rkIter,rkStep),h))) * oppositeMol->rkApprox(rkIter, rkStep) * rate;
-	*/
 	}
 	else{
 		t.trace("error", "%s getEffect reached error case, not source or target (%p)\n", name, this);
@@ -449,8 +444,14 @@ float PromoterBind::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m
 
 	if(isSourceNode(g, n) == 1)
 		return -1 * oppositeMol->rkApprox(rkIter, rkStep) * (kf-kr);
-	else if(isTargetNode(g, n) == 1)
-		return kr * (1 - thisMol->rkApprox(rkIter, rkStep));
+	else if(isTargetNode(g, n) == 1){
+		if(isRepression())
+			return kr * (1 - thisMol->rkApprox(rkIter, rkStep));
+		if(isActivation())
+			return kf * (1 - thisMol->rkApprox(rkIter, rkStep)) * oppositeMol->rkApprox(rkIter, rkStep);
+		t.trace("error", "%s getEffect reached error case, not activation or repression (%p)\n", name, this);
+		return 0;
+	}
 	else{
 		t.trace("error", "%s getEffect reached error case, not source or target (%p)\n", name, this);
 		return 0;
