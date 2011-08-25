@@ -453,19 +453,38 @@ float PromoterBind::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m
 	}	
 
 }
-
+/**
+ * Determines if the promoter is repressing the gene it is binding to.
+ * 
+ * @return 1 if the promoter is acting as a repressor, and 0 otherwise.
+*/
 int PromoterBind::isRepression(){
 	return 0;
 }
 
+/**
+ * Determines if the promoter is activating the gene it is binding to. 
+ *
+ * @return 1 if the promoter is acting as an activator, and 0 otherwise.
+*/
 int PromoterBind::isActivation(){
 	return 0;
 }
 
+/**
+ * Sets the promoter interaction as a repression type. 
+ *
+ * The concentration of the protein being bound will cause the DNA being bound to to translate at less than it's basal rate (See Transcription::getEffect)
+*/
 void PromoterBind::setAsRepression(){
 	return;
 }
 
+/**
+ * Sets the promoter interaction as an activation type. 
+ *
+ * The concentration of the protein being bound will cause the DNA being bound to to translate at more than it's basal rate (See Transcription::getEffect)
+*/
 void PromoterBind::setAsActivation(){
 	return;
 }
