@@ -461,3 +461,11 @@ int PromoterBind::isRepression(){
 int PromoterBind::isActivation(){
 	return 0;
 }
+
+void PromoterBind::setAsRepression(){
+	return;
+}
+
+void PromoterBind::setAsActivation(){
+	return;
+}
