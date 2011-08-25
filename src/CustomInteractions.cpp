@@ -490,6 +490,7 @@ int PromoterBind::isActivation(){
 */
 void PromoterBind::setAsRepression(){
 	promoterType = -1;
+	name = "rep";
 }
 
 /**
@@ -498,5 +499,6 @@ void PromoterBind::setAsRepression(){
  * The concentration of the protein being bound will cause the DNA being bound to to translate at more than it's basal rate (See Transcription::getEffect)
 */
 void PromoterBind::setAsActivation(){
+	name = "act";
 	promoterType = 1;
 }
