@@ -72,6 +72,9 @@ class PromoterBind : public Interaction{
  public:
 	PromoterBind(float, float);
 	~PromoterBind();
+	
+	int promoterType; // -1 for repression, 1 activation
+	
 	float kf;
 	float kr;
 	int isRepression();

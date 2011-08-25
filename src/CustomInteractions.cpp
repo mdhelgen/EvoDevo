@@ -416,6 +416,10 @@ PromoterBind::PromoterBind(float fwdRate, float revRate){
 	kf = fwdRate;
 	kr = revRate;
 	rate = kf - kr;
+	
+	// -1 = repression, 1 = activation
+	// modified by setAsRepression() / setAsActivation()
+	promoterType = 0;
 }
 PromoterBind::~PromoterBind(){}
 
@@ -459,6 +463,10 @@ float PromoterBind::getEffect(ListDigraph* g, ListDigraph::NodeMap<Molecule*>* m
  * @return 1 if the promoter is acting as a repressor, and 0 otherwise.
 */
 int PromoterBind::isRepression(){
+	
+	//promoterType: -1 = repression, 1 = activation
+	if(promoterType == -1)
+		return 1;
 	return 0;
 }
 
@@ -468,6 +476,10 @@ int PromoterBind::isRepression(){
  * @return 1 if the promoter is acting as an activator, and 0 otherwise.
 */
 int PromoterBind::isActivation(){
+
+	//promoterType: -1 = repression, 1 = activation
+	if(promoterType == 1)
+		return 1;
 	return 0;
 }
 
@@ -477,7 +489,7 @@ int PromoterBind::isActivation(){
  * The concentration of the protein being bound will cause the DNA being bound to to translate at less than it's basal rate (See Transcription::getEffect)
 */
 void PromoterBind::setAsRepression(){
-	return;
+	promoterType = -1;
 }
 
 /**
@@ -486,5 +498,5 @@ void PromoterBind::setAsRepression(){
  * The concentration of the protein being bound will cause the DNA being bound to to translate at more than it's basal rate (See Transcription::getEffect)
 */
 void PromoterBind::setAsActivation(){
-	return;
+	promoterType = 1;
 }
