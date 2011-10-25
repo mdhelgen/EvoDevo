@@ -195,27 +195,29 @@ int main(int argc, char** argv){
 
 if (usage_flag){
 
-      printf("\t--help\n");
-      printf("\t--usage\n");
-      printf("\t--graphviz\n");
-      printf("\t--gnuplot\n");
-      printf("\t--outputall\n");
-      printf("\t--csvCell\n");
-      printf("\t--csvData\n");
+      printf("Flags:\n");
+      printf("  --help        This help message\n");
+      printf("  --usage       This help message\n");
+      printf("  --graphviz    Output graphviz png files displaying the cell configuration\n");
+      printf("  --gnuplot     Output gnuplot png files displaying molecule concentrations over time\n");
+      printf("  --outputall   Output data about each cell every generation\n");
+      printf("  --csvCell     Output csv data containing cell configuration\n");
+      printf("  --csvData     Output csv data containing molecule concentrations\n");
 
-      printf("\t--cells\n");
-      printf("\t--gens\n");
-      printf("\t--minrate\n");
-      printf("\t--maxrate\n");
-      printf("\t--maxbasic\n");
-      printf("\t--maxptm\n");
-      printf("\t--maxcomp\n");
-      printf("\t--maxprom\n");
-      printf("\t--initconc\n");
-      printf("\t--rklim\n");
-      printf("\t--rkstep\n");
-      printf("\t--interval\n");
-      printf("\t--hill\n");
+      printf("Parameters:\n");
+      printf("  --cells <int>        Number of Cells to simulate\n");
+      printf("  --gens  <int>        Number of Generations to run for\n");
+      printf("  --minrate <float>    Minimum value for random kinetic rates\n");
+      printf("  --maxrate <float>    Maximum value for random kinetic rates\n");
+      printf("  --maxbasic <int>     Maximum number of Basic Proteins\n");
+      printf("  --maxptm <int>       Maximum number of Post Translationally Modified proteins\n");
+      printf("  --maxcomp <int>      Maximum number of Protein-Protein Complexes\n");
+      printf("  --maxprom <int>      Maximum number of Protein-Promoter Interactions\n");
+      printf("  --initconc <float>   Initial concentration of molecules\n");
+      printf("  --rklim <float>      Upper limit on time (x-axis) for differential equation solving\n");
+      printf("  --rkstep <float>     Step size between points for differential equation solving\n");
+      printf("  --interval <int>     Number of generations between equation solving and scoring\n");
+      printf("  --hill <int>         Value of Hill Coefficient for DNA Transcription\n");
 
 return 0;
 }
