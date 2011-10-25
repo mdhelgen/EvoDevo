@@ -26,6 +26,7 @@ int main(int argc, char** argv){
   int outputall_flag = 0;
   int csvCell_flag = 0;
   int csvData_flag = 0;
+  int usage_flag = 0;
 
   // used by command line parser
   int c;
@@ -102,6 +103,8 @@ int main(int argc, char** argv){
   //define the command line options and their usage
     static struct option long_options[] =
      {
+      {"help", no_argument, &usage_flag, 1},
+      {"usage", no_argument, &usage_flag, 1},
       {"graphviz", no_argument, &graphviz_flag, 1},
       {"gnuplot",   no_argument, &gnuplot_flag, 1},
       {"outputall", no_argument, &outputall_flag, 1},
@@ -188,6 +191,33 @@ int main(int argc, char** argv){
 	default:
 		abort();
 }	
+}
+
+if (usage_flag){
+
+      printf("\t--help\n");
+      printf("\t--usage\n");
+      printf("\t--graphviz\n");
+      printf("\t--gnuplot\n");
+      printf("\t--outputall\n");
+      printf("\t--csvCell\n");
+      printf("\t--csvData\n");
+
+      printf("\t--cells\n");
+      printf("\t--gens\n");
+      printf("\t--minrate\n");
+      printf("\t--maxrate\n");
+      printf("\t--maxbasic\n");
+      printf("\t--maxptm\n");
+      printf("\t--maxcomp\n");
+      printf("\t--maxprom\n");
+      printf("\t--initconc\n");
+      printf("\t--rklim\n");
+      printf("\t--rkstep\n");
+      printf("\t--interval\n");
+      printf("\t--hill\n");
+
+return 0;
 }
 
 // create our experiment with the options from the command line
