@@ -77,6 +77,7 @@ int main(int argc, char** argv){
   // polymorphic comparisons (not used?)
   t.addTraceType("typeid",0);
 
+  t.addTraceType("stoch",1);
 
   int numCells = 2;
   int numGenerations = 10;
