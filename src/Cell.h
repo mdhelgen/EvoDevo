@@ -26,6 +26,7 @@ public:
 	
 	// runge kutta functions
 	void rk();
+	void stochasticSim();
 	int getScore();
 	
 	int getID(){ return CellID; };

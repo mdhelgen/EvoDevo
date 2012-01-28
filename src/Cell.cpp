@@ -248,3 +248,16 @@ void Cell::rk(){
 	equations->rungeKuttaEvaluate(rkTimeStep, rkTimeLimit);
 }
 
+/**
+ * void Cell::stochasticSim()
+ *
+ * Simulate the cell behavior based on a stochastic model (the gillespie algorithm), as opposed to the deterministic model offered by rk().
+ *
+ * 
+ *
+ *
+ * This method is computationally intensive
+ */
+void Cell::stochasticSim(){
+	equations->gillespieEvaluate();
+}

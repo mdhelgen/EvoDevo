@@ -276,6 +276,16 @@ void DerivGraph::rungeKuttaEvaluate(float rkStep, float rkLimit){
 	//}
 }
 
+/*
+ * void DerivGraph::gillespieEvaluate()
+ *
+ * Simulate the cell using the stochastic model given by the gillespie algorithm.
+ *
+ */
+void DerivGraph::gillespieEvaluate(){
+
+}
+
 /**
  * float DerivGraph::getEffect(ListDigraph::Node, ListDigraph::Arc)
  *

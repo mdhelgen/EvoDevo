@@ -31,6 +31,7 @@ public:
 	
 	void test();
 	void rungeKuttaEvaluate(float, float);
+	void gillespieEvaluate();
 
 	void outputDotImage(const char*, int, int, int);
 	void outputDataPlot(const char*, int, int, int, float);
