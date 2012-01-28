@@ -194,7 +194,8 @@ int main(int argc, char** argv){
 }
 
 if (usage_flag){
-
+      printf("EvoDevo Help\n");
+      printf("---------------------------\n");
       printf("Flags:\n");
       printf("  --help        This help message\n");
       printf("  --usage       This help message\n");
@@ -203,7 +204,7 @@ if (usage_flag){
       printf("  --outputall   Output data about each cell every generation\n");
       printf("  --csvCell     Output csv data containing cell configuration\n");
       printf("  --csvData     Output csv data containing molecule concentrations\n");
-
+      printf("\n");
       printf("Parameters:\n");
       printf("  --cells <int>        Number of Cells to simulate\n");
       printf("  --gens  <int>        Number of Generations to run for\n");
