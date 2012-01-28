@@ -174,6 +174,9 @@ void Experiment::start()
 			if(output_each_gen){
 				//if the flag is set, generate output every generation
 				cells[c]->rk();
+
+				cells[c]->stochasticSim();
+
 				if(graphviz_enabled)
 					cells[c]->outputDotImage(prefix, pid);
 				if(gnuplot_enabled)

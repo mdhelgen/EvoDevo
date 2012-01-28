@@ -284,6 +284,10 @@ void DerivGraph::rungeKuttaEvaluate(float rkStep, float rkLimit){
  */
 void DerivGraph::gillespieEvaluate(){
 
+
+	t.trace("stoch","number of interactions: %d\n", countArcs((*derivs)));
+
+
 }
 
 /**
