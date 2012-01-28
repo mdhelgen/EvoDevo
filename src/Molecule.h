@@ -45,6 +45,10 @@ public:
 	MTRand r;
 	
 	virtual int getPTMCount(int);
+
+	//this will eventually be a user set parameter
+	int gillespie_numMolecules = 50;
+
 protected:	
 	float initialConcentration;
 	float currentConcentration;
