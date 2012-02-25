@@ -44,6 +44,9 @@ Molecule::Molecule(){
 	PTMArray[1] = 0;
 	PTMArray[2] = 0;
 	PTMArray[3] = 0;
+
+
+	//gillespie_numMolecules = 50;
 }
 
 /**

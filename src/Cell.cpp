@@ -259,5 +259,7 @@ void Cell::rk(){
  * This method is computationally intensive
  */
 void Cell::stochasticSim(){
+
+	printf("stochasticsim");
 	equations->gillespieEvaluate();
 }

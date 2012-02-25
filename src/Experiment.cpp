@@ -38,8 +38,8 @@ using namespace std;
  * @param rk_time_step how much time to advance each iteration
  * @param initial_conc the initial concentration for molecules
  */
-Experiment::Experiment(int ncells, int generations, int max_basic, int max_ptm, int max_comp, int max_prom, float min_kinetic_rate, float max_kinetic_rate, float rk_time_limit, float rk_time_step, float initial_conc)
-	   :maxBasic(max_basic), maxPTM(max_ptm), maxComp(max_comp), maxProm(max_prom), minKineticRate(min_kinetic_rate), maxKineticRate(max_kinetic_rate), rkTimeLimit(rk_time_limit), rkTimeStep(rk_time_step), initialConc(initial_conc){
+Experiment::Experiment(int ncells, int generations, int max_basic, int max_ptm, int max_comp, int max_prom, float min_kinetic_rate, float max_kinetic_rate, float rk_time_limit, float rk_time_step, float initial_conc, int rk_enabled, int gillespie_enabled)
+	   :maxBasic(max_basic), maxPTM(max_ptm), maxComp(max_comp), maxProm(max_prom), minKineticRate(min_kinetic_rate), maxKineticRate(max_kinetic_rate), rkTimeLimit(rk_time_limit), rkTimeStep(rk_time_step), initialConc(initial_conc), rungeKutta(rk_enabled), gillespie(gillespie_enabled){
 
 	
 	t.trace("init","Creating new Experiment\n");
@@ -173,9 +173,11 @@ void Experiment::start()
 			//this will significantly increase the runtime of the simulation
 			if(output_each_gen){
 				//if the flag is set, generate output every generation
-				cells[c]->rk();
+				if(rungeKutta)
+					cells[c]->rk();
 
-				cells[c]->stochasticSim();
+				if(gillespie)
+					cells[c]->stochasticSim();
 
 				if(graphviz_enabled)
 					cells[c]->outputDotImage(prefix, pid);

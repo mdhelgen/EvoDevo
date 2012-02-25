@@ -284,9 +284,17 @@ void DerivGraph::rungeKuttaEvaluate(float rkStep, float rkLimit){
  */
 void DerivGraph::gillespieEvaluate(){
 
+//	printf("test");
 
-	t.trace("stoch","number of interactions: %d\n", countArcs((*derivs)));
+	t.trace("stoch","number of interactions: %d\n", lemon::countArcs((*derivs)));
 
+	//initialize 
+	//
+	//update propensities
+	//
+	//pick random numbers
+	//
+	//update the molecule
 
 }
 

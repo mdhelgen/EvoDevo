@@ -23,7 +23,7 @@ using namespace std;
 
 class Experiment {
 public:
-	Experiment(int ncells, int generations, int max_basic, int max_ptm, int max_comp, int max_prom, float min_kinetic_rate, float max_kinetic_rate, float rk_time_limit, float rk_time_step, float initial_conc);
+	Experiment(int ncells, int generations, int max_basic, int max_ptm, int max_comp, int max_prom, float min_kinetic_rate, float max_kinetic_rate, float rk_time_limit, float rk_time_step, float initial_conc, int rk_enabled, int gillespie_enabled);
 	~Experiment();
 
 	void start();
@@ -63,6 +63,9 @@ private:
         int output_each_gen;
 	int output_csv_interactions;
 	int output_csv_data;
+	
+	int rungeKutta;
+	int gillespie;
 
 	// unused ?
 	int numHighScores;

@@ -47,7 +47,7 @@ public:
 	virtual int getPTMCount(int);
 
 	//this will eventually be a user set parameter
-	int gillespie_numMolecules = 50;
+	//int gillespie_numMolecules;
 
 protected:	
 	float initialConcentration;

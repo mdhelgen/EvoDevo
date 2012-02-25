@@ -27,6 +27,8 @@ int main(int argc, char** argv){
   int csvCell_flag = 0;
   int csvData_flag = 0;
   int usage_flag = 0;
+  int gillespie_flag = 0;
+  int rungeKutta_flag = 0;
 
   // used by command line parser
   int c;
@@ -57,10 +59,11 @@ int main(int argc, char** argv){
   t.addTraceType("gens",0);
 
   // runge kutta (data / general messages)
-  t.addTraceType("rk-4",0);
+  t.addTraceType("rk-4",1);
   
   // runge kutta (rk vals)
-  t.addTraceType("rk-val",0);
+  t.addTraceType("rk-val",1);
+ 
   
   // runge kutta (calculation of next points) 
   t.addTraceType("rk-new",0);
@@ -111,6 +114,8 @@ int main(int argc, char** argv){
       {"outputall", no_argument, &outputall_flag, 1},
       {"csvCell", no_argument, &csvCell_flag, 1}, 
       {"csvData", no_argument, &csvData_flag, 1},
+	  {"deterministic", no_argument, &rungeKutta_flag, 1},
+	  {"stochastic", no_argument, &gillespie_flag, 1},
 
       {"cells",  required_argument, 0, 'c'},
       {"gens",  required_argument, 0, 'g'},
@@ -198,13 +203,15 @@ if (usage_flag){
       printf("EvoDevo Help\n");
       printf("---------------------------\n");
       printf("Flags:\n");
-      printf("  --help        This help message\n");
-      printf("  --usage       This help message\n");
-      printf("  --graphviz    Output graphviz png files displaying the cell configuration\n");
-      printf("  --gnuplot     Output gnuplot png files displaying molecule concentrations over time\n");
-      printf("  --outputall   Output data about each cell every generation\n");
-      printf("  --csvCell     Output csv data containing cell configuration\n");
-      printf("  --csvData     Output csv data containing molecule concentrations\n");
+      printf("  --help            This help message\n");
+      printf("  --usage           This help message\n");
+      printf("  --graphviz        Output graphviz png files displaying the cell configuration\n");
+      printf("  --gnuplot         Output gnuplot png files displaying molecule concentrations over time\n");
+      printf("  --outputall       Output data about each cell every generation\n");
+      printf("  --csvCell         Output csv data containing cell configuration\n");
+      printf("  --csvData         Output csv data containing molecule concentrations\n");
+	  printf("  --deterministic   Use deterministic Runge-Kutta solver for solving curves\n");
+	  printf("  --stochastic      Use stochastic gillespie algorithm for solving curves\n");
       printf("\n");
       printf("Parameters:\n");
       printf("  --cells <int>        Number of Cells to simulate\n");
@@ -225,7 +232,7 @@ return 0;
 }
 
 // create our experiment with the options from the command line
-Experiment e = Experiment(numCells, numGenerations, maxBasic, maxPTM, maxComp, maxPromoter, minKineticRate, maxKineticRate, rkTimeLimit, rkTimeStep, initialConcentration);
+Experiment e = Experiment(numCells, numGenerations, maxBasic, maxPTM, maxComp, maxPromoter, minKineticRate, maxKineticRate, rkTimeLimit, rkTimeStep, initialConcentration, rungeKutta_flag, gillespie_flag);
 
 //set options related to output
 e.setOutputOptions(graphviz_flag, gnuplot_flag, outputall_flag, csvCell_flag, csvData_flag, scoringInterval);
