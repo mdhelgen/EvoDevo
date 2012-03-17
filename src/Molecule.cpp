@@ -13,6 +13,7 @@ Molecule::Molecule(){
 	t.trace("init", "Creating new Molecule\n");
 	t.trace("mloc", "Molecule location at %p\n", this);
 
+	t.trace("mloc", "Molecule size: %d\n", sizeof(*this));
 	//set default concentration
 	currentConcentration = 5;
 	initialConcentration = 5;
@@ -24,10 +25,13 @@ Molecule::Molecule(){
 	//set the molecule id
 	moleculeID = -1;
 
+	stoch_numMols = 3;
+
 	numChanges = 0;
 	prevDir = 0;
 	currentDir = 0;
 
+//	n = 1;
 
 	wasPTM = 0;
 
@@ -45,8 +49,6 @@ Molecule::Molecule(){
 	PTMArray[2] = 0;
 	PTMArray[3] = 0;
 
-
-	//gillespie_numMolecules = 50;
 }
 
 /**

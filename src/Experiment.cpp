@@ -91,7 +91,7 @@ Experiment::~Experiment() {
 		delete cells[i];
 	}
 
-	t.trace("free","Deleting Cell[] object at location %d\n", &cells);
+	t.trace("free","Deleting Cell[] object at location %p\n", &cells);
 	cells.clear();
 
 
@@ -155,7 +155,17 @@ void Experiment::start()
 			//find the best cell
 			//if scoring interval is 5, this runs every 5 generations
 			if(i % scoringInterval == 0){
+				
+					
+			if(rungeKutta)	
 				cells[c]->rk();
+
+			if(gillespie)
+				cells[c]->stochasticSim();
+				
+				
+				
+				
 				if(cells[c]->getScore() < -1  ){
 					cells[c]->outputDataPlot(prefix, pid);
 					cells[c]->outputDotImage(prefix, pid);
@@ -172,23 +182,41 @@ void Experiment::start()
 			//if the flag is set, generate output for every cell during every generation
 			//this will significantly increase the runtime of the simulation
 			if(output_each_gen){
-				//if the flag is set, generate output every generation
-				if(rungeKutta)
+				
+				
+				// if the flag is set to perform deterministic calculations, simulate the cell using runge kutta	
+				if(rungeKutta){
 					cells[c]->rk();
 
-				if(gillespie)
+					if(graphviz_enabled)
+						cells[c]->outputDotImage(prefix, pid);
+					if(gnuplot_enabled)
+						cells[c]->outputDataPlot(prefix, pid);
+					if(output_csv_data)
+						cells[c]->outputDataCsv(prefix, pid);
+					if(output_csv_interactions)
+						cells[c]->outputInteractionCsv(prefix, pid);
+				}
+	
+
+				// if the flag is set to perform stochastic calculatoins, simulate the cell using gillepsie algorithm
+				if(gillespie){
 					cells[c]->stochasticSim();
 
-				if(graphviz_enabled)
-					cells[c]->outputDotImage(prefix, pid);
-				if(gnuplot_enabled)
-					cells[c]->outputDataPlot(prefix, pid);
-				if(output_csv_data)
-					cells[c]->outputDataCsv(prefix, pid);
-				if(output_csv_interactions)
-					cells[c]->outputInteractionCsv(prefix, pid);
-			}
+					if(graphviz_enabled)
+						cells[c]->outputDotImage(prefix, pid);
+					if(gnuplot_enabled)
+						cells[c]->outputDataPlot(prefix, pid);
+					if(output_csv_data)
+						cells[c]->outputDataCsv(prefix, pid);
+					if(output_csv_interactions)
+						cells[c]->outputInteractionCsv(prefix, pid);
+				}
 		}
+	}
+		//TODO: fix this if gillespie and rk are both being used
+		
+
 		//if the scoring interval is 5, this runs every 5 generations
 		if(i % scoringInterval == 0){
 			

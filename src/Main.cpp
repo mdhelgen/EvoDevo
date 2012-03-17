@@ -44,13 +44,13 @@ int main(int argc, char** argv){
   t.addTraceType("error",1);
  
   //object creation / construction
-  t.addTraceType("init",0);
+  t.addTraceType("init",1);
 
   //memory location of created objects
-  t.addTraceType("mloc",0);
+  t.addTraceType("mloc",1);
 
   //object deletion / destruction
-  t.addTraceType("free",0);
+  t.addTraceType("free",1);
 
   //calculated effect of interactions
   t.addTraceType("efct",0);
@@ -59,10 +59,10 @@ int main(int argc, char** argv){
   t.addTraceType("gens",0);
 
   // runge kutta (data / general messages)
-  t.addTraceType("rk-4",1);
+  t.addTraceType("rk-4",0);
   
   // runge kutta (rk vals)
-  t.addTraceType("rk-val",1);
+  t.addTraceType("rk-val",0);
  
   
   // runge kutta (calculation of next points) 

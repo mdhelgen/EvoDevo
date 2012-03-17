@@ -38,7 +38,10 @@ public:
 	void reset();
 	int nodeID;
 	int wasPTM;
-	
+	int n;
+
+	int stoch_numMols;
+
 	int getScore();
 	int PTMArray[4];
 	int getPTMCount(int, int);
@@ -46,8 +49,7 @@ public:
 	
 	virtual int getPTMCount(int);
 
-	//this will eventually be a user set parameter
-	//int gillespie_numMolecules;
+
 
 protected:	
 	float initialConcentration;

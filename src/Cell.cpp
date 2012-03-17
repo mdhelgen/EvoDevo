@@ -260,6 +260,6 @@ void Cell::rk(){
  */
 void Cell::stochasticSim(){
 
-	printf("stochasticsim");
 	equations->gillespieEvaluate();
+
 }

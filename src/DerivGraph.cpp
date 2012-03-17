@@ -166,6 +166,7 @@ DerivGraph::~DerivGraph(){
 
    //delete all Molecule objects mapped by Nodes
    t.trace("free","Deleting members of NodeMap at location %p\n",  molecules);
+
    for(ListDigraph::NodeIt it(*derivs); it !=INVALID; ++it){
 	
 	t.trace("free","Deleting NodeMap member at location %p\n",  (*molecules)[it]);
@@ -173,10 +174,12 @@ DerivGraph::~DerivGraph(){
 	//output some information about the molecule being deleted
 	t.trace("free","longnname: %s\n", (*molecules)[it]->getLongName());
 	t.trace("free","shortname: %s\n", (*molecules)[it]->getShortName());
-	
-	delete (*molecules)[it];
+
+	derivs->erase(it);
+
    }
-  
+
+
    //delete the Molecule NodeMap
    t.trace("free","Deleting NodeMap object at location %p\n",molecules);
    delete molecules;
@@ -185,17 +188,17 @@ DerivGraph::~DerivGraph(){
    t.trace("free","Deleting members of ArcMap at location %p\n", interactions);
    for(ListDigraph::ArcIt it(*derivs); it !=INVALID; ++it){
    	
-	t.trace("free","Deleting ArcMap member at location %d\n", (*interactions)[it]);
+	t.trace("free","Deleting ArcMap member at location %p\n", (*interactions)[it]);
 	delete (*interactions)[it];
    }
 
    //delete the Interaction ArcMap
-   t.trace("free","Deleting ArcMap object at location %d\n",interactions);
+   t.trace("free","Deleting ArcMap object at location %p\n",interactions);
    delete interactions;
 
 
    //delete the ListDigraph
-   t.trace("free","Deleting ListDigraph object at location %d\n",derivs);
+   t.trace("free","Deleting ListDigraph object at location %p\n",derivs);
    delete derivs;
 }
 
@@ -286,8 +289,28 @@ void DerivGraph::gillespieEvaluate(){
 
 //	printf("test");
 
+	int num = 0;
 	t.trace("stoch","number of interactions: %d\n", lemon::countArcs((*derivs)));
+	for(ListDigraph::ArcIt it(*derivs); it != INVALID; ++it){
+		t.trace("stoch", "Reaction %d: rate = %f\n", ++num, (*interactions)[it]->getRate());
+		Propensities.push_back(it);
+	}
 
+	float total = 0.0;
+	for(int i = 0; i < Propensities.size(); i++)
+	{
+		float rate = (*interactions)[Propensities[i]]->getRate();
+		int numMols = (*molecules)[derivs->source(Propensities[i])]->stoch_numMols;
+
+		t.trace("stoch", "%d - rate = %f mols = %d total= %f\n", i, rate, numMols, rate * numMols);
+		total += rate*numMols;
+
+	}
+	t.trace("stoch", "total propensity is %f\n", total);
+	t.trace("stoch", "rand: %f\n", r.rand(total));
+
+	total = 0;
+	Propensities.clear();
 	//initialize 
 	//
 	//update propensities

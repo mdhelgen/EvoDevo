@@ -20,6 +20,10 @@
 using namespace std;
 using namespace lemon;
 
+struct prop_entry{
+	float pe_propensity;
+	Interaction* pe_interaction;
+};
 
 class DerivGraph{
 
@@ -99,6 +103,9 @@ private:
 	vector<ForwardPTM*>* ForwardPTMList;
 	vector<ReversePTM*>* ReversePTMList;
 	vector<PromoterBind*>* PromoterBindList;
+
+	//stochastic
+	vector<ListDigraph::Arc> Propensities;
 
 	//null node
 	ListDigraph::Node nullnode;
