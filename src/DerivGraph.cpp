@@ -297,18 +297,36 @@ void DerivGraph::gillespieEvaluate(){
 	}
 
 	float total = 0.0;
+	float randompick;
 	for(int i = 0; i < Propensities.size(); i++)
 	{
 		float rate = (*interactions)[Propensities[i]]->getRate();
 		int numMols = (*molecules)[derivs->source(Propensities[i])]->stoch_numMols;
 
-		t.trace("stoch", "%d - rate = %f mols = %d total= %f\n", i, rate, numMols, rate * numMols);
+		//t.trace("stoch", "%d - rate = %f mols = %d total= %f\n", i, rate, numMols, rate * numMols);
 		total += rate*numMols;
 
 	}
 	t.trace("stoch", "total propensity is %f\n", total);
-	t.trace("stoch", "rand: %f\n", r.rand(total));
+	randompick = r.rand(total);
+	t.trace("stoch", "rand: %f\n", randompick);
 
+	float current = 0.0;
+	for(int i = 0; i < Propensities.size(); i++)
+	{
+		float rate = (*interactions)[Propensities[i]]->getRate();
+		int numMols = (*molecules)[derivs->source(Propensities[i])]->stoch_numMols;
+
+		current += (rate*numMols);
+		t.trace("stoch", "%d - rate = %f mols = %d total= %f runningtotal=%f\n", i, rate, numMols, rate * numMols,current);
+		if( current > randompick){
+			t.trace("stoch","reaction %d selected\n", i);
+			break;
+		}
+	}
+	
+	
+	
 	total = 0;
 	Propensities.clear();
 	//initialize 
