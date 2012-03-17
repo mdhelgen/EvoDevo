@@ -287,38 +287,47 @@ void DerivGraph::rungeKuttaEvaluate(float rkStep, float rkLimit){
  */
 void DerivGraph::gillespieEvaluate(){
 
-//	printf("test");
 
 	int num = 0;
+	float total = 0.0;
+	float randompick;
+
+	//iterate the arcs in the graph and add them to our vector
 	t.trace("stoch","number of interactions: %d\n", lemon::countArcs((*derivs)));
 	for(ListDigraph::ArcIt it(*derivs); it != INVALID; ++it){
 		t.trace("stoch", "Reaction %d: rate = %f\n", ++num, (*interactions)[it]->getRate());
 		Propensities.push_back(it);
-	}
 
-	float total = 0.0;
-	float randompick;
-	for(int i = 0; i < Propensities.size(); i++)
-	{
-		float rate = (*interactions)[Propensities[i]]->getRate();
-		int numMols = (*molecules)[derivs->source(Propensities[i])]->stoch_numMols;
+		//get the rate of the interaction
+		float rate = (*interactions)[Propensities.back()]->getRate();
+		//get the number of molecules from the reaction source
+		int numMols = (*molecules)[derivs->source(Propensities.back())]->stoch_numMols;
 
-		//t.trace("stoch", "%d - rate = %f mols = %d total= %f\n", i, rate, numMols, rate * numMols);
+		//update the total propensity
 		total += rate*numMols;
 
 	}
-	t.trace("stoch", "total propensity is %f\n", total);
+
+
+	//get a random number between 0 and the total propensity
 	randompick = r.rand(total);
+
+	t.trace("stoch", "total propensity is %f\n", total);
 	t.trace("stoch", "rand: %f\n", randompick);
 
+	//use this random number to pick an interaction from the propensity list
 	float current = 0.0;
 	for(int i = 0; i < Propensities.size(); i++)
 	{
+
 		float rate = (*interactions)[Propensities[i]]->getRate();
 		int numMols = (*molecules)[derivs->source(Propensities[i])]->stoch_numMols;
 
+		//add the interactions propensity to a running total
 		current += (rate*numMols);
 		t.trace("stoch", "%d - rate = %f mols = %d total= %f runningtotal=%f\n", i, rate, numMols, rate * numMols,current);
+
+		//if the current running total overcomes the random number, we have our interaction
 		if( current > randompick){
 			t.trace("stoch","reaction %d selected\n", i);
 			break;
