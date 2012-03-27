@@ -25,7 +25,7 @@ Molecule::Molecule(){
 	//set the molecule id
 	moleculeID = -1;
 
-	stoch_numMols = 3;
+	stoch_numMols = 1000;
 
 	numChanges = 0;
 	prevDir = 0;

@@ -292,10 +292,14 @@ void DerivGraph::gillespieEvaluate(){
 	float total = 0.0;
 	float randompick;
 
+	//the amount of time between interactions occurring is randomly selected
+	//TODO: gillespie papers usually use some kind of term here involving a logarithm to skew the distribution
+	float timeToNext = r.rand(.05);
+
 	//iterate the arcs in the graph and add them to our vector
-	t.trace("stoch","number of interactions: %d\n", lemon::countArcs((*derivs)));
 	for(ListDigraph::ArcIt it(*derivs); it != INVALID; ++it){
-		t.trace("stoch", "Reaction %d: rate = %f\n", ++num, (*interactions)[it]->getRate());
+
+
 		Propensities.push_back(it);
 
 		//get the rate of the interaction
@@ -312,6 +316,7 @@ void DerivGraph::gillespieEvaluate(){
 	//get a random number between 0 and the total propensity
 	randompick = r.rand(total);
 
+	t.trace("stoch", "time to next reaction is: %f\n", timeToNext);
 	t.trace("stoch", "total propensity is %f\n", total);
 	t.trace("stoch", "rand: %f\n", randompick);
 
@@ -335,16 +340,9 @@ void DerivGraph::gillespieEvaluate(){
 	}
 	
 	
-	
+	//reset the vector	
 	total = 0;
 	Propensities.clear();
-	//initialize 
-	//
-	//update propensities
-	//
-	//pick random numbers
-	//
-	//update the molecule
 
 }
 
