@@ -290,11 +290,13 @@ void DerivGraph::gillespieEvaluate(){
 
 	int num = 0;
 	float total = 0.0;
+	float currentTime = 0.0;
 	float randompick;
 
 	//the amount of time between interactions occurring is randomly selected
 	//TODO: gillespie papers usually use some kind of term here involving a logarithm to skew the distribution
-	float timeToNext = r.rand(.05);
+	float elapsedTime = r.rand(.05);
+	currentTime += elapsedTime;
 
 	//iterate the arcs in the graph and add them to our vector
 	for(ListDigraph::ArcIt it(*derivs); it != INVALID; ++it){
@@ -316,12 +318,15 @@ void DerivGraph::gillespieEvaluate(){
 	//get a random number between 0 and the total propensity
 	randompick = r.rand(total);
 
-	t.trace("stoch", "time to next reaction is: %f\n", timeToNext);
+	t.trace("stoch", "time to next reaction is: %f\n", elapsedTime);
 	t.trace("stoch", "total propensity is %f\n", total);
 	t.trace("stoch", "rand: %f\n", randompick);
 
 	//use this random number to pick an interaction from the propensity list
 	float current = 0.0;
+
+
+	int flag = 0;
 	for(int i = 0; i < Propensities.size(); i++)
 	{
 
@@ -333,9 +338,52 @@ void DerivGraph::gillespieEvaluate(){
 		t.trace("stoch", "%d - rate = %f mols = %d total= %f runningtotal=%f\n", i, rate, numMols, rate * numMols,current);
 
 		//if the current running total overcomes the random number, we have our interaction
-		if( current > randompick){
-			t.trace("stoch","reaction %d selected\n", i);
-			break;
+		if( current > randompick && flag == 0){
+	
+			flag = 1;
+			
+			char buf[10];
+			memset(buf, '\0', 10);
+			strncpy(buf,(*interactions)[Propensities[i]]->name,  strlen((*interactions)[Propensities[i]]->name));
+
+			t.trace("stoch","reaction %d selected (%s)\n", i, buf);
+
+			//ignore interactions with no coded effect
+			// TODO: probably a better way to do this but it works for now 
+			if( !strcmp(buf, "tsln") + !strcmp(buf, "txn") + !strcmp(buf, "deg") + !strcmp(buf, "f_ptm") + !strcmp(buf, "r_ptm") == 0){
+				t.trace("error", "The interaction class picked by the gillespie algorithm has no implemented effect (%s)\n", buf);
+			}
+
+			if (strcmp(buf, "tsln")){
+
+				(*molecules)[derivs->source(Propensities[i])]->stoch_numMols -= 1;
+				(*molecules)[derivs->target(Propensities[i])]->stoch_numMols += 1; 
+				
+			}
+
+			if (strcmp(buf, "txn")){
+
+				(*molecules)[derivs->target(Propensities[i])]->stoch_numMols += 1;
+			}
+
+			if (strcmp(buf, "deg")){
+
+				(*molecules)[derivs->source(Propensities[i])]->stoch_numMols -= 1;
+			}
+
+			if(strcmp(buf, "f_ptm")){
+	
+				(*molecules)[derivs->source(Propensities[i])]->stoch_numMols -= 1;
+				(*molecules)[derivs->target(Propensities[i])]->stoch_numMols += 1;
+			}
+
+			if(strcmp(buf, "r_ptm")){
+
+				(*molecules)[derivs->source(Propensities[i])]->stoch_numMols -= 1;
+				(*molecules)[derivs->target(Propensities[i])]->stoch_numMols += 1;
+			}
+
+
 		}
 	}
 	
@@ -343,6 +391,8 @@ void DerivGraph::gillespieEvaluate(){
 	//reset the vector	
 	total = 0;
 	Propensities.clear();
+
+	t.trace("stoch","\n");
 
 }
 
