@@ -321,6 +321,48 @@ vector<float>* Molecule::getRungeKuttaSolution(){
 	return &rungeKuttaSolution;
 
 }
+/*
+ *  Molecule:getStochMolCounts()
+ *
+ * 	Returns a pointer to the vector containing the stochastic molecule counts for this molecule over time
+ *
+ *  This is the x data to be graphed, the y data is contained in the stochTimeData vector
+ */
+vector<float>* Molecule::getStochMolCounts(){
+
+	return &stochMolCounts;
+}
+
+/*
+ * Molecule::getStochTimeData()
+ *
+ * Returns a pointer to the vector containing the time values for the molecule. 
+ *
+ * This is the y data to be graphed, the x data is contained in the stochMolCounts vector
+ *
+ */
+vector<float>* Molecule::getStochTimeData(){
+
+	return &stochTimeData;
+
+}
+
+/* 
+ * Molecule::nextPoint(float molCount, float time)
+ *
+ * Add a (molecules, time) data point to the molecule
+ *
+ */
+int Molecule::nextPoint(float molCount, float time){
+
+	
+	stochMolCounts.push_back(molCount);
+	stochTimeData.push_back(time);
+
+
+
+}
+
 
 /**
  *

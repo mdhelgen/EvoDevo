@@ -49,6 +49,8 @@ public:
 	
 	virtual int getPTMCount(int);
 
+	vector<float>* getStochMolCounts();
+	vector<float>* getStochTimeData();
 
 
 protected:	
@@ -65,6 +67,9 @@ protected:
 	const char* shortName;
 	int moleculeID;
 	vector<float> rungeKuttaSolution;
+
+	vector<float> stochMolCounts;
+	vector<float> stochTimeData;
 	
 	vector<float> maxima;
 	vector<float> minima;

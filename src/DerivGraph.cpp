@@ -357,21 +357,33 @@ void DerivGraph::gillespieEvaluate(){
 			// translation
 			if (strcmp(buf, "tsln")){
 
+				//update the numbers of molecules
 				(*molecules)[derivs->source(Propensities[i])]->stoch_numMols -= 1;
 				(*molecules)[derivs->target(Propensities[i])]->stoch_numMols += 1; 
+
+				//update the internal data vectors with the new (stoch_numMols, currentTime) pair
+				(*molecules)[derivs->source(Propensities[i])]->next_point( (*molecules)[derivs->source(Propensities[i])]->stoch_numMols, currentTime);
+				(*molecules)[derivs->target(Propensities[i])]->next_point( (*molecules)[derivs->target(Propensities[i])]->stoch_numMols, currentTime);
 				
 			}
 
 			// transcription
+			// 	 only the target is affected in transcription
 			if (strcmp(buf, "txn")){
 
 				(*molecules)[derivs->target(Propensities[i])]->stoch_numMols += 1;
+
+				(*molecules)[derivs->target(Propensities[i])]->next_point( (*molecules)[derivs->target(Propensities[i])]->stoch_numMols, currentTime);
 			}
 
 			// degradation
+			//   only the source is affected in degradation
 			if (strcmp(buf, "deg")){
 
 				(*molecules)[derivs->source(Propensities[i])]->stoch_numMols -= 1;
+
+				(*molecules)[derivs->source(Propensities[i])]->next_point( (*molecules)[derivs->source(Propensities[i])]->stoch_numMols, currentTime);
+
 			}
 
 			// forward ptm
@@ -379,6 +391,10 @@ void DerivGraph::gillespieEvaluate(){
 	
 				(*molecules)[derivs->source(Propensities[i])]->stoch_numMols -= 1;
 				(*molecules)[derivs->target(Propensities[i])]->stoch_numMols += 1;
+
+
+				(*molecules)[derivs->source(Propensities[i])]->next_point( (*molecules)[derivs->source(Propensities[i])]->stoch_numMols, currentTime);
+				(*molecules)[derivs->target(Propensities[i])]->next_point( (*molecules)[derivs->target(Propensities[i])]->stoch_numMols, currentTime);
 			}
 
 
@@ -387,6 +403,10 @@ void DerivGraph::gillespieEvaluate(){
 
 				(*molecules)[derivs->source(Propensities[i])]->stoch_numMols -= 1;
 				(*molecules)[derivs->target(Propensities[i])]->stoch_numMols += 1;
+
+
+				(*molecules)[derivs->source(Propensities[i])]->next_point( (*molecules)[derivs->source(Propensities[i])]->stoch_numMols, currentTime);
+				(*molecules)[derivs->target(Propensities[i])]->next_point( (*molecules)[derivs->target(Propensities[i])]->stoch_numMols, currentTime);
 			}
 
 
