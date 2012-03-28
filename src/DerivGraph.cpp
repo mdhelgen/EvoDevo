@@ -354,6 +354,7 @@ void DerivGraph::gillespieEvaluate(){
 				t.trace("error", "The interaction class picked by the gillespie algorithm has no implemented effect (%s)\n", buf);
 			}
 
+			// translation
 			if (strcmp(buf, "tsln")){
 
 				(*molecules)[derivs->source(Propensities[i])]->stoch_numMols -= 1;
@@ -361,22 +362,27 @@ void DerivGraph::gillespieEvaluate(){
 				
 			}
 
+			// transcription
 			if (strcmp(buf, "txn")){
 
 				(*molecules)[derivs->target(Propensities[i])]->stoch_numMols += 1;
 			}
 
+			// degradation
 			if (strcmp(buf, "deg")){
 
 				(*molecules)[derivs->source(Propensities[i])]->stoch_numMols -= 1;
 			}
 
+			// forward ptm
 			if(strcmp(buf, "f_ptm")){
 	
 				(*molecules)[derivs->source(Propensities[i])]->stoch_numMols -= 1;
 				(*molecules)[derivs->target(Propensities[i])]->stoch_numMols += 1;
 			}
 
+
+			//reverse ptm
 			if(strcmp(buf, "r_ptm")){
 
 				(*molecules)[derivs->source(Propensities[i])]->stoch_numMols -= 1;
