@@ -26,6 +26,7 @@ public:
 	virtual float getValue();
 	void updateRkVal(int, float);
 	void nextPoint(float);
+	int nextPoint(float, float);
 	virtual	void setValue(float);
 	void outputRK();
 	float getrkVal(int);

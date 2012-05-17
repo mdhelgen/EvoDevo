@@ -285,7 +285,7 @@ void DerivGraph::rungeKuttaEvaluate(float rkStep, float rkLimit){
  * Simulate the cell using the stochastic model given by the gillespie algorithm.
  *
  */
-void DerivGraph::gillespieEvaluate(){
+void DerivGraph::gillespieEvaluate(float timeLimit){
 
 
 	int num = 0;
@@ -293,6 +293,10 @@ void DerivGraph::gillespieEvaluate(){
 	float currentTime = 0.0;
 	float randompick;
 
+
+	//TODO: some of the variables from runge kutta should be renamed to be more generic
+	
+	while(currentTime < timeLimit){
 	//the amount of time between interactions occurring is randomly selected
 	//TODO: gillespie papers usually use some kind of term here involving a logarithm to skew the distribution
 	float elapsedTime = r.rand(.05);
@@ -362,8 +366,8 @@ void DerivGraph::gillespieEvaluate(){
 				(*molecules)[derivs->target(Propensities[i])]->stoch_numMols += 1; 
 
 				//update the internal data vectors with the new (stoch_numMols, currentTime) pair
-				(*molecules)[derivs->source(Propensities[i])]->next_point( (*molecules)[derivs->source(Propensities[i])]->stoch_numMols, currentTime);
-				(*molecules)[derivs->target(Propensities[i])]->next_point( (*molecules)[derivs->target(Propensities[i])]->stoch_numMols, currentTime);
+				(*molecules)[derivs->source(Propensities[i])]->nextPoint( (*molecules)[derivs->source(Propensities[i])]->stoch_numMols, currentTime);
+				(*molecules)[derivs->target(Propensities[i])]->nextPoint( (*molecules)[derivs->target(Propensities[i])]->stoch_numMols, currentTime);
 				
 			}
 
@@ -373,7 +377,7 @@ void DerivGraph::gillespieEvaluate(){
 
 				(*molecules)[derivs->target(Propensities[i])]->stoch_numMols += 1;
 
-				(*molecules)[derivs->target(Propensities[i])]->next_point( (*molecules)[derivs->target(Propensities[i])]->stoch_numMols, currentTime);
+				(*molecules)[derivs->target(Propensities[i])]->nextPoint( (*molecules)[derivs->target(Propensities[i])]->stoch_numMols, currentTime);
 			}
 
 			// degradation
@@ -382,7 +386,7 @@ void DerivGraph::gillespieEvaluate(){
 
 				(*molecules)[derivs->source(Propensities[i])]->stoch_numMols -= 1;
 
-				(*molecules)[derivs->source(Propensities[i])]->next_point( (*molecules)[derivs->source(Propensities[i])]->stoch_numMols, currentTime);
+				(*molecules)[derivs->source(Propensities[i])]->nextPoint( (*molecules)[derivs->source(Propensities[i])]->stoch_numMols, currentTime);
 
 			}
 
@@ -393,8 +397,8 @@ void DerivGraph::gillespieEvaluate(){
 				(*molecules)[derivs->target(Propensities[i])]->stoch_numMols += 1;
 
 
-				(*molecules)[derivs->source(Propensities[i])]->next_point( (*molecules)[derivs->source(Propensities[i])]->stoch_numMols, currentTime);
-				(*molecules)[derivs->target(Propensities[i])]->next_point( (*molecules)[derivs->target(Propensities[i])]->stoch_numMols, currentTime);
+				(*molecules)[derivs->source(Propensities[i])]->nextPoint( (*molecules)[derivs->source(Propensities[i])]->stoch_numMols, currentTime);
+				(*molecules)[derivs->target(Propensities[i])]->nextPoint( (*molecules)[derivs->target(Propensities[i])]->stoch_numMols, currentTime);
 			}
 
 
@@ -405,8 +409,8 @@ void DerivGraph::gillespieEvaluate(){
 				(*molecules)[derivs->target(Propensities[i])]->stoch_numMols += 1;
 
 
-				(*molecules)[derivs->source(Propensities[i])]->next_point( (*molecules)[derivs->source(Propensities[i])]->stoch_numMols, currentTime);
-				(*molecules)[derivs->target(Propensities[i])]->next_point( (*molecules)[derivs->target(Propensities[i])]->stoch_numMols, currentTime);
+				(*molecules)[derivs->source(Propensities[i])]->nextPoint( (*molecules)[derivs->source(Propensities[i])]->stoch_numMols, currentTime);
+				(*molecules)[derivs->target(Propensities[i])]->nextPoint( (*molecules)[derivs->target(Propensities[i])]->stoch_numMols, currentTime);
 			}
 
 
@@ -419,6 +423,7 @@ void DerivGraph::gillespieEvaluate(){
 	Propensities.clear();
 
 	t.trace("stoch","\n");
+	}
 
 }
 
@@ -1204,6 +1209,31 @@ void DerivGraph::outputDataPlot(const char* prefix, int pid, int cellNum, int ge
 		fflush(gnuplot);
 	}
 	pclose(gnuplot);
+}
+
+
+void DerivGraph::gillespieOutputDataCsv(const char* prefix, int pid, int cellNum, int gen, float step){
+
+	FILE * outFile;
+	char buf[500];
+	for(unsigned int i =  0; i < MoleculeList->size(); i++){
+		
+		sprintf(buf, "%s/%d/cell%d/csv/%sc%dg%d.csv", prefix, pid, cellNum, (*MoleculeList)[i]->getShortName(), cellNum, gen);	
+		outFile = fopen(buf,"w");
+		float t = 0;
+		for(unsigned int j = 0; j < (*MoleculeList)[i]->getRungeKuttaSolution()->size(); j++){
+
+			if(j % 5 != 0){
+				t+=step;
+				continue;
+			}
+				float k = (*MoleculeList)[i]->getRungeKuttaSolution()->at(j);
+				fprintf(outFile, "%f, %f\n", t, k);
+				fflush(outFile);
+				t+=step;
+		}
+		fclose(outFile);
+	}
 }
 
 void DerivGraph::outputDataCsv(const char* prefix, int pid, int cellNum, int gen, float step){

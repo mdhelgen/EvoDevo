@@ -35,12 +35,14 @@ public:
 	
 	void test();
 	void rungeKuttaEvaluate(float, float);
-	void gillespieEvaluate();
+	void gillespieEvaluate(float);
 
 	void outputDotImage(const char*, int, int, int);
 	void outputDataPlot(const char*, int, int, int, float);
         void outputDataCsv(const char*, int , int, int, float);
 	void outputInteractionCsv(const char*, int, int, int);
+
+	void gillespieOutputDataCsv(const char*, int, int, int, float);
 
 	Molecule* getBestMolecule(int);
 

@@ -359,6 +359,7 @@ int Molecule::nextPoint(float molCount, float time){
 	stochMolCounts.push_back(molCount);
 	stochTimeData.push_back(time);
 
+	t.trace("stoch", "pushing back new point (%d, %d)\n", molCount, time);
 
 
 }

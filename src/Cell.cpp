@@ -260,6 +260,7 @@ void Cell::rk(){
  */
 void Cell::stochasticSim(){
 
-	equations->gillespieEvaluate();
+	//TODO: some variables from RK that are used for gillespie should get renamed to be more general
+	equations->gillespieEvaluate(rkTimeLimit);
 
 }
