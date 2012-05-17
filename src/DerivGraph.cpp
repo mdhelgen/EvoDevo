@@ -890,6 +890,7 @@ void DerivGraph::newComplex(){
 		t.trace("mutate","New Complex failed. Not enough proteins\n");
 		return;
 	}
+	// the two selected proteins must be different
 	while(i1 == i2)
 	{
 		i1 = r.randInt(totalSize-1);
@@ -925,15 +926,18 @@ void DerivGraph::newComplex(){
 		p2 = (*ComplexList)[i2];
 
 	}
-	
+
+	//get the nodeIDs from the selected proteins
 	int id1 = p1->nodeID;
 	int id2 = p2->nodeID;
+	//get the Node references from the nodeIDS
 	ListDigraph::Node n1 = derivs->nodeFromId(id1);
 	ListDigraph::Node n2 = derivs->nodeFromId(id2);
 
 
 	int a = 0;
 	int b = 0;
+	//check the current complexes within the cell. if a complex already exists between the two selected molecules, fail mutation
 	for(unsigned int c = 0; c < ComplexList->size(); c++)
 	{
 		a = (*ComplexList)[c]->getComponentId(1);
@@ -946,6 +950,7 @@ void DerivGraph::newComplex(){
 	}
 
 
+	// add the new complex. Pass in the nodeIDs to the constructor, so it has a reference of its constituent molecules
 	ListDigraph::Node comp = add(new Complex(id1, id2));
 	(*molecules)[comp]->setID(count++);
 
